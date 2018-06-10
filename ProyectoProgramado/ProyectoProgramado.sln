@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{22D2A662-5A3E-4507-B68F-F18FCA4FBEAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{CA318B55-42BC-407D-BCB2-1340580D90D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22D2A662-5A3E-4507-B68F-F18FCA4FBEAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22D2A662-5A3E-4507-B68F-F18FCA4FBEAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22D2A662-5A3E-4507-B68F-F18FCA4FBEAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22D2A662-5A3E-4507-B68F-F18FCA4FBEAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA318B55-42BC-407D-BCB2-1340580D90D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA318B55-42BC-407D-BCB2-1340580D90D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA318B55-42BC-407D-BCB2-1340580D90D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA318B55-42BC-407D-BCB2-1340580D90D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {665FCE1A-2022-4B38-8E02-08F63E392F60}
+	EndGlobalSection
+EndGlobal
