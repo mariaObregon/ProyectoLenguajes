@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidad
+namespace Datos
 {
-    public class Class1
+    class DatosUsuario
     {
     }
 }
