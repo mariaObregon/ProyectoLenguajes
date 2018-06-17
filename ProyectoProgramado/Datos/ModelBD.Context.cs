@@ -33,6 +33,7 @@ namespace Entidad
         public virtual DbSet<Party> Party { get; set; }
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Plato> Plato { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipoMecanismo> TipoMecanismo { get; set; }
         public virtual DbSet<TipoUsuario> TipoUsuario { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }

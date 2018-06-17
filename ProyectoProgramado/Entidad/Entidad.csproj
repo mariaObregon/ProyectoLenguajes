@@ -70,6 +70,9 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="TipoMecanismo.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
