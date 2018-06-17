@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PedidosExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PedidosExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="PartyID" />
@@ -16,7 +16,7 @@
           <Key>
             <PropertyRef Name="EstadoID" />
           </Key>
-          <Property Name="EstadoID" Type="tinyint" Nullable="false" />
+          <Property Name="EstadoID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DescripcionEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="MecanismoContacto">
@@ -24,7 +24,7 @@
             <PropertyRef Name="MecanismoID" />
             <PropertyRef Name="Valor" />
           </Key>
-          <Property Name="MecanismoID" Type="smallint" Nullable="false" />
+          <Property Name="MecanismoID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoMecanismoID" Type="smallint" Nullable="false" />
           <Property Name="Valor" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -44,7 +44,7 @@
           <Key>
             <PropertyRef Name="PedidoID" />
           </Key>
-          <Property Name="PedidoID" Type="int" Nullable="false" />
+          <Property Name="PedidoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="EstadoID" Type="tinyint" Nullable="false" />
           <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -61,7 +61,7 @@
           <Key>
             <PropertyRef Name="PlatoID" />
           </Key>
-          <Property Name="PlatoID" Type="int" Nullable="false" />
+          <Property Name="PlatoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Precio" Type="money" Nullable="false" />
@@ -83,14 +83,14 @@
           <Key>
             <PropertyRef Name="TipoMecanismoID" />
           </Key>
-          <Property Name="TipoMecanismoID" Type="smallint" Nullable="false" />
+          <Property Name="TipoMecanismoID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoUsuario">
           <Key>
             <PropertyRef Name="TipoID" />
           </Key>
-          <Property Name="TipoID" Type="tinyint" Nullable="false" />
+          <Property Name="TipoID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuario">
@@ -269,6 +269,26 @@
           <Parameter Name="TipoMecanismoIDR" Type="smallint" Mode="In" />
           <Parameter Name="PartyIDR" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="p_EliminarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
+          <Parameter Name="Retorno" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="p_EliminarPedidosRegistro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
+          <Parameter Name="Retorno" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="p_EliminarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PlatoID" Type="int" Mode="In" />
+          <Parameter Name="Retorno" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="p_EliminarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Retorno" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="p_HabilitarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Habilitado" Type="bit" Mode="In" />
+          <Parameter Name="PlatoID" Type="int" Mode="In" />
+        </Function>
         <Function Name="p_modificarMecanismo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ValorMecanismoNuevo" Type="varchar" Mode="In" />
           <Parameter Name="ValorMecanismo" Type="varchar" Mode="In" />
@@ -372,8 +392,7 @@
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PedidosExpressModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -725,6 +744,42 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="proc_EliminarPedido">
+            <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+            <Parameter Name="Retorno" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_EliminarPedidosRegistro">
+            <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+            <Parameter Name="Retorno" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_EliminarPlato">
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+            <Parameter Name="Retorno" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_HabilitarPlato">
+            <Parameter Name="Habilitado" Mode="In" Type="Boolean" />
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="p_EliminarPedido">
+            <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+            <Parameter Name="Retorno" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_EliminarPedidosRegistro">
+            <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+            <Parameter Name="Retorno" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_EliminarPlato">
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+            <Parameter Name="Retorno" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_EliminarUsuario">
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+            <Parameter Name="Retorno" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_HabilitarPlato">
+            <Parameter Name="Habilitado" Mode="In" Type="Boolean" />
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -881,6 +936,11 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PedidosExpressModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PedidosExpressModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="p_EliminarPedido" FunctionName="PedidosExpressModel.Store.p_EliminarPedido" />
+          <FunctionImportMapping FunctionImportName="p_EliminarPedidosRegistro" FunctionName="PedidosExpressModel.Store.p_EliminarPedidosRegistro" />
+          <FunctionImportMapping FunctionImportName="p_EliminarPlato" FunctionName="PedidosExpressModel.Store.p_EliminarPlato" />
+          <FunctionImportMapping FunctionImportName="p_EliminarUsuario" FunctionName="PedidosExpressModel.Store.p_EliminarUsuario" />
+          <FunctionImportMapping FunctionImportName="p_HabilitarPlato" FunctionName="PedidosExpressModel.Store.p_HabilitarPlato" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -446,5 +446,94 @@ namespace Entidad
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual int proc_EliminarPedido(Nullable<int> pedidoID, ObjectParameter retorno)
+        {
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_EliminarPedido", pedidoIDParameter, retorno);
+        }
+    
+        public virtual int proc_EliminarPedidosRegistro(Nullable<int> pedidoID, ObjectParameter retorno)
+        {
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_EliminarPedidosRegistro", pedidoIDParameter, retorno);
+        }
+    
+        public virtual int proc_EliminarPlato(Nullable<int> platoID, ObjectParameter retorno)
+        {
+            var platoIDParameter = platoID.HasValue ?
+                new ObjectParameter("PlatoID", platoID) :
+                new ObjectParameter("PlatoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_EliminarPlato", platoIDParameter, retorno);
+        }
+    
+        public virtual int proc_HabilitarPlato(Nullable<bool> habilitado, Nullable<int> platoID)
+        {
+            var habilitadoParameter = habilitado.HasValue ?
+                new ObjectParameter("Habilitado", habilitado) :
+                new ObjectParameter("Habilitado", typeof(bool));
+    
+            var platoIDParameter = platoID.HasValue ?
+                new ObjectParameter("PlatoID", platoID) :
+                new ObjectParameter("PlatoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_HabilitarPlato", habilitadoParameter, platoIDParameter);
+        }
+    
+        public virtual int p_EliminarPedido(Nullable<int> pedidoID, ObjectParameter retorno)
+        {
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarPedido", pedidoIDParameter, retorno);
+        }
+    
+        public virtual int p_EliminarPedidosRegistro(Nullable<int> pedidoID, ObjectParameter retorno)
+        {
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarPedidosRegistro", pedidoIDParameter, retorno);
+        }
+    
+        public virtual int p_EliminarPlato(Nullable<int> platoID, ObjectParameter retorno)
+        {
+            var platoIDParameter = platoID.HasValue ?
+                new ObjectParameter("PlatoID", platoID) :
+                new ObjectParameter("PlatoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarPlato", platoIDParameter, retorno);
+        }
+    
+        public virtual int p_EliminarUsuario(string partyID, ObjectParameter retorno)
+        {
+            var partyIDParameter = partyID != null ?
+                new ObjectParameter("PartyID", partyID) :
+                new ObjectParameter("PartyID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarUsuario", partyIDParameter, retorno);
+        }
+    
+        public virtual int p_HabilitarPlato(Nullable<bool> habilitado, Nullable<int> platoID)
+        {
+            var habilitadoParameter = habilitado.HasValue ?
+                new ObjectParameter("Habilitado", habilitado) :
+                new ObjectParameter("Habilitado", typeof(bool));
+    
+            var platoIDParameter = platoID.HasValue ?
+                new ObjectParameter("PlatoID", platoID) :
+                new ObjectParameter("PlatoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_HabilitarPlato", habilitadoParameter, platoIDParameter);
+        }
     }
 }
