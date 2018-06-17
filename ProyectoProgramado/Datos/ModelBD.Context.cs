@@ -535,5 +535,31 @@ namespace Entidad
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_HabilitarPlato", habilitadoParameter, platoIDParameter);
         }
+    
+        public virtual int p_BloquearCliente(Nullable<bool> habilitado, string partyID)
+        {
+            var habilitadoParameter = habilitado.HasValue ?
+                new ObjectParameter("Habilitado", habilitado) :
+                new ObjectParameter("Habilitado", typeof(bool));
+    
+            var partyIDParameter = partyID != null ?
+                new ObjectParameter("PartyID", partyID) :
+                new ObjectParameter("PartyID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_BloquearCliente", habilitadoParameter, partyIDParameter);
+        }
+    
+        public virtual int p_CambiarEstadoPedido(Nullable<byte> estadoID, Nullable<int> pedidoID)
+        {
+            var estadoIDParameter = estadoID.HasValue ?
+                new ObjectParameter("EstadoID", estadoID) :
+                new ObjectParameter("EstadoID", typeof(byte));
+    
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_CambiarEstadoPedido", estadoIDParameter, pedidoIDParameter);
+        }
     }
 }

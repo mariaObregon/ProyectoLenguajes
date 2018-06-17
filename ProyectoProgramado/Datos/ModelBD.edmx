@@ -235,6 +235,7 @@
           <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="p_agregarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PlatoID" Type="int" Mode="In" />
           <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
           <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
           <Parameter Name="Precio" Type="money" Mode="In" />
@@ -267,6 +268,14 @@
           <Parameter Name="ValorMecanismoR" Type="varchar" Mode="In" />
           <Parameter Name="TipoMecanismoIDR" Type="smallint" Mode="In" />
           <Parameter Name="PartyIDR" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="p_BloquearCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Habilitado" Type="bit" Mode="In" />
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="p_CambiarEstadoPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EstadoID" Type="tinyint" Mode="In" />
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
         </Function>
         <Function Name="p_EliminarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PedidoID" Type="int" Mode="In" />
@@ -655,6 +664,7 @@
             <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="p_agregarPlato">
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="Precio" Mode="In" Type="Decimal" />
@@ -777,6 +787,14 @@
           <FunctionImport Name="p_HabilitarPlato">
             <Parameter Name="Habilitado" Mode="In" Type="Boolean" />
             <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="p_BloquearCliente">
+            <Parameter Name="Habilitado" Mode="In" Type="Boolean" />
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_CambiarEstadoPedido">
+            <Parameter Name="EstadoID" Mode="In" Type="Byte" />
+            <Parameter Name="PedidoID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -939,6 +957,8 @@
           <FunctionImportMapping FunctionImportName="p_EliminarPlato" FunctionName="PedidosExpressModel.Store.p_EliminarPlato" />
           <FunctionImportMapping FunctionImportName="p_EliminarUsuario" FunctionName="PedidosExpressModel.Store.p_EliminarUsuario" />
           <FunctionImportMapping FunctionImportName="p_HabilitarPlato" FunctionName="PedidosExpressModel.Store.p_HabilitarPlato" />
+          <FunctionImportMapping FunctionImportName="p_BloquearCliente" FunctionName="PedidosExpressModel.Store.p_BloquearCliente" />
+          <FunctionImportMapping FunctionImportName="p_CambiarEstadoPedido" FunctionName="PedidosExpressModel.Store.p_CambiarEstadoPedido" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

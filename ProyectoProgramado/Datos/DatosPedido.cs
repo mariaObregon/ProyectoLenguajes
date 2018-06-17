@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class DatosClientecs
+    class DatosPedido
     {
-
-        public void BloquearCliente(String idCliente, bool bloquear)
+        public void HabDesHabPlato(byte estadoID, int idPedido)
         {
             using (PedidosExpressEntities datos = new PedidosExpressEntities())
             {
-                datos.p_BloquearCliente(bloquear,idCliente);
+                datos.p_CambiarEstadoPedido(estadoID ,idPedido );
             }
         }
     }
