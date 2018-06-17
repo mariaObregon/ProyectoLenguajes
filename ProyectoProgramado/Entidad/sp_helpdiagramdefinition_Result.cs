@@ -10,14 +10,10 @@
 namespace Entidad
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Usuario
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public string PartyID { get; set; }
-        public byte TipoID { get; set; }
-    
-        public virtual Party Party { get; set; }
-        public virtual TipoUsuario TipoUsuario { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

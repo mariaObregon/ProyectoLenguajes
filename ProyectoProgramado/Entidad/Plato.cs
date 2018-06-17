@@ -25,7 +25,7 @@ namespace Entidad
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public byte[] Fotografia { get; set; }
-        public string HabilitadoSN { get; set; }
+        public bool HabilitadoSN { get; set; }
         public Nullable<int> PedidoID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

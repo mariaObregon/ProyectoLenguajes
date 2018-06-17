@@ -12,12 +12,18 @@ namespace Entidad
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class TipoUsuario
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TipoUsuario()
+        {
+            this.Usuario = new HashSet<Usuario>();
+        }
+    
+        public byte TipoID { get; set; }
+        public string Descripcion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuario> Usuario { get; set; }
     }
 }

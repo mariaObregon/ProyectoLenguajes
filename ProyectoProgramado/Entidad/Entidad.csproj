@@ -42,46 +42,52 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Cliente.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Estado.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="MecanismoContacto.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelDB.cs">
+    <Compile Include="ModelBD.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelDB.tt</DependentUpon>
+      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Party.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Pedido.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Plato.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="TipoMecanismo.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoUsuario.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Usuario.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
+      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelDB.tt">
+    <Content Include="ModelBD.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelDB.cs</LastGenOutput>
+      <LastGenOutput>ModelBD.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,874 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PedidosExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HabilitadoSN" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+          </Key>
+          <Property Name="EstadoID" Type="tinyint" Nullable="false" />
+          <Property Name="DescripcionEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MecanismoContacto">
+          <Key>
+            <PropertyRef Name="MecanismoID" />
+            <PropertyRef Name="Valor" />
+          </Key>
+          <Property Name="MecanismoID" Type="smallint" Nullable="false" />
+          <Property Name="TipoMecanismoID" Type="smallint" Nullable="false" />
+          <Property Name="Valor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Party">
+          <Key>
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SegundoNombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contraseña" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="PedidoID" />
+          </Key>
+          <Property Name="PedidoID" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="EstadoID" Type="tinyint" Nullable="false" />
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PedidosRegistro">
+          <Key>
+            <PropertyRef Name="PlatoID" />
+            <PropertyRef Name="PedidoID" />
+          </Key>
+          <Property Name="PlatoID" Type="int" Nullable="false" />
+          <Property Name="PedidoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="PlatoID" />
+          </Key>
+          <Property Name="PlatoID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="Fotografia" Type="image" Nullable="false" />
+          <Property Name="HabilitadoSN" Type="bit" Nullable="false" />
+          <Property Name="PedidoID" Type="int" />
+        </EntityType>
+        <EntityType Name="TipoMecanismo">
+          <Key>
+            <PropertyRef Name="TipoMecanismoID" />
+          </Key>
+          <Property Name="TipoMecanismoID" Type="smallint" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="TipoID" />
+          </Key>
+          <Property Name="TipoID" Type="tinyint" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TipoID" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MecanismoContacto_Party">
+          <End Role="Party" Type="Self.Party" Multiplicity="1" />
+          <End Role="MecanismoContacto" Type="Self.MecanismoContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="PartyID" />
+            </Principal>
+            <Dependent Role="MecanismoContacto">
+              <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MecanismoContacto_TipoMecanismo">
+          <End Role="TipoMecanismo" Type="Self.TipoMecanismo" Multiplicity="1" />
+          <End Role="MecanismoContacto" Type="Self.MecanismoContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMecanismo">
+              <PropertyRef Name="TipoMecanismoID" />
+            </Principal>
+            <Dependent Role="MecanismoContacto">
+              <PropertyRef Name="TipoMecanismoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Party_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PartyID" />
+            </Principal>
+            <Dependent Role="Party">
+              <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Party_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="PartyID" />
+            </Principal>
+            <Dependent Role="Party">
+              <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PartyID" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidosRegistro_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidosRegistro" Type="Self.PedidosRegistro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="PedidoID" />
+            </Principal>
+            <Dependent Role="PedidosRegistro">
+              <PropertyRef Name="PedidoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidosRegistro_Plato">
+          <End Role="Plato" Type="Self.Plato" Multiplicity="1" />
+          <End Role="PedidosRegistro" Type="Self.PedidosRegistro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plato">
+              <PropertyRef Name="PlatoID" />
+            </Principal>
+            <Dependent Role="PedidosRegistro">
+              <PropertyRef Name="PlatoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_TipoUsuario">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="TipoID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="TipoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="p_agregarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PartyIDR" Type="nvarchar" Mode="In" />
+          <Parameter Name="PrimerNombreR" Type="nvarchar" Mode="In" />
+          <Parameter Name="SegundoNombreR" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido1R" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido2R" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContraseñaR" Type="nvarchar" Mode="In" />
+          <Parameter Name="MecanismoIDR" Type="smallint" Mode="In" />
+          <Parameter Name="ValorMecanismoR" Type="varchar" Mode="In" />
+          <Parameter Name="TipoMecanismoIDR" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="p_agregarMecanismo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MecanismoID" Type="smallint" Mode="In" />
+          <Parameter Name="ValorMecanismo" Type="varchar" Mode="In" />
+          <Parameter Name="TipoMecanismoID" Type="smallint" Mode="In" />
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="p_agregarParty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrimerNombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="SegundoNombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido2" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contraseña" Type="nvarchar" Mode="In" />
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="p_agregarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PlatoID" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Precio" Type="money" Mode="In" />
+          <Parameter Name="Fotografia" Type="image" Mode="In" />
+          <Parameter Name="HabilitadoSN" Type="bit" Mode="In" />
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="p_agregarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="TipoID" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="p_agregarUsuarioAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrimerNombreR" Type="nvarchar" Mode="In" />
+          <Parameter Name="SegundoNombreR" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido1R" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido2R" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContraseñaR" Type="nvarchar" Mode="In" />
+          <Parameter Name="MecanismoIDR" Type="smallint" Mode="In" />
+          <Parameter Name="ValorMecanismoR" Type="varchar" Mode="In" />
+          <Parameter Name="TipoMecanismoIDR" Type="smallint" Mode="In" />
+          <Parameter Name="PartyIDR" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="p_agregarUsuarioCocina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrimerNombreR" Type="nvarchar" Mode="In" />
+          <Parameter Name="SegundoNombreR" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido1R" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido2R" Type="nvarchar" Mode="In" />
+          <Parameter Name="ContraseñaR" Type="nvarchar" Mode="In" />
+          <Parameter Name="MecanismoIDR" Type="smallint" Mode="In" />
+          <Parameter Name="ValorMecanismoR" Type="varchar" Mode="In" />
+          <Parameter Name="TipoMecanismoIDR" Type="smallint" Mode="In" />
+          <Parameter Name="PartyIDR" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="p_modificarMecanismo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ValorMecanismoNuevo" Type="varchar" Mode="In" />
+          <Parameter Name="ValorMecanismo" Type="varchar" Mode="In" />
+          <Parameter Name="TipoMecanismoID" Type="smallint" Mode="In" />
+          <Parameter Name="MecanismoID" Type="smallint" Mode="In" />
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="p_modificarParty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PrimerNombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="SegundoNombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellido2" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contraseña" Type="nvarchar" Mode="In" />
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="p_modificarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PlatoID" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Precio" Type="money" Mode="In" />
+          <Parameter Name="Fotografia" Type="image" Mode="In" />
+          <Parameter Name="HabilitadoSN" Type="bit" Mode="In" />
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="PedidosExpressModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MecanismoContacto" EntityType="Self.MecanismoContacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidosRegistro" EntityType="Self.PedidosRegistro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plato" EntityType="Self.Plato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMecanismo" EntityType="Self.TipoMecanismo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MecanismoContacto_Party" Association="Self.FK_MecanismoContacto_Party">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="MecanismoContacto" EntitySet="MecanismoContacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MecanismoContacto_TipoMecanismo" Association="Self.FK_MecanismoContacto_TipoMecanismo">
+            <End Role="TipoMecanismo" EntitySet="TipoMecanismo" />
+            <End Role="MecanismoContacto" EntitySet="MecanismoContacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Cliente" Association="Self.FK_Party_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Party" EntitySet="Party" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Usuario" Association="Self.FK_Party_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Party" EntitySet="Party" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Cliente" Association="Self.FK_Pedido_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Estado" Association="Self.FK_Pedido_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidosRegistro_Pedido" Association="Self.FK_PedidosRegistro_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidosRegistro" EntitySet="PedidosRegistro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidosRegistro_Plato" Association="Self.FK_PedidosRegistro_Plato">
+            <End Role="Plato" EntitySet="Plato" />
+            <End Role="PedidosRegistro" EntitySet="PedidosRegistro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_TipoUsuario" Association="Self.FK_Usuario_TipoUsuario">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PedidosExpressModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HabilitadoSN" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Party" Relationship="Self.FK_Party_Cliente" FromRole="Cliente" ToRole="Party" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Cliente" FromRole="Cliente" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+          </Key>
+          <Property Name="EstadoID" Type="Byte" Nullable="false" />
+          <Property Name="DescripcionEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Estado" FromRole="Estado" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="MecanismoContacto">
+          <Key>
+            <PropertyRef Name="MecanismoID" />
+            <PropertyRef Name="Valor" />
+          </Key>
+          <Property Name="MecanismoID" Type="Int16" Nullable="false" />
+          <Property Name="TipoMecanismoID" Type="Int16" Nullable="false" />
+          <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Party" Relationship="Self.FK_MecanismoContacto_Party" FromRole="MecanismoContacto" ToRole="Party" />
+          <NavigationProperty Name="TipoMecanismo" Relationship="Self.FK_MecanismoContacto_TipoMecanismo" FromRole="MecanismoContacto" ToRole="TipoMecanismo" />
+        </EntityType>
+        <EntityType Name="Party">
+          <Key>
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Party_Cliente" FromRole="Party" ToRole="Cliente" />
+          <NavigationProperty Name="MecanismoContacto" Relationship="Self.FK_MecanismoContacto_Party" FromRole="Party" ToRole="MecanismoContacto" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Party_Usuario" FromRole="Party" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="PedidoID" />
+          </Key>
+          <Property Name="PedidoID" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EstadoID" Type="Byte" Nullable="false" />
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Pedido_Cliente" FromRole="Pedido" ToRole="Cliente" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_Pedido_Estado" FromRole="Pedido" ToRole="Estado" />
+          <NavigationProperty Name="Plato" Relationship="Self.PedidosRegistro" FromRole="Pedido" ToRole="Plato" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="PlatoID" />
+          </Key>
+          <Property Name="PlatoID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Fotografia" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="HabilitadoSN" Type="Boolean" Nullable="false" />
+          <Property Name="PedidoID" Type="Int32" />
+          <NavigationProperty Name="Pedido" Relationship="Self.PedidosRegistro" FromRole="Plato" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="TipoMecanismo">
+          <Key>
+            <PropertyRef Name="TipoMecanismoID" />
+          </Key>
+          <Property Name="TipoMecanismoID" Type="Int16" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MecanismoContacto" Relationship="Self.FK_MecanismoContacto_TipoMecanismo" FromRole="TipoMecanismo" ToRole="MecanismoContacto" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="TipoID" />
+          </Key>
+          <Property Name="TipoID" Type="Byte" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_TipoUsuario" FromRole="TipoUsuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Party" Relationship="Self.FK_Party_Usuario" FromRole="Usuario" ToRole="Party" />
+          <NavigationProperty Name="TipoUsuario" Relationship="Self.FK_Usuario_TipoUsuario" FromRole="Usuario" ToRole="TipoUsuario" />
+        </EntityType>
+        <Association Name="FK_Party_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PartyID" />
+            </Principal>
+            <Dependent Role="Party">
+              <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PartyID" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstadoID" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MecanismoContacto_Party">
+          <End Role="Party" Type="Self.Party" Multiplicity="1" />
+          <End Role="MecanismoContacto" Type="Self.MecanismoContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="PartyID" />
+            </Principal>
+            <Dependent Role="MecanismoContacto">
+              <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MecanismoContacto_TipoMecanismo">
+          <End Role="TipoMecanismo" Type="Self.TipoMecanismo" Multiplicity="1" />
+          <End Role="MecanismoContacto" Type="Self.MecanismoContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMecanismo">
+              <PropertyRef Name="TipoMecanismoID" />
+            </Principal>
+            <Dependent Role="MecanismoContacto">
+              <PropertyRef Name="TipoMecanismoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Party_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="PartyID" />
+            </Principal>
+            <Dependent Role="Party">
+              <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_TipoUsuario">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="TipoID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="TipoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PedidosRegistro">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <End Role="Plato" Type="Self.Plato" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="PedidosExpressEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="MecanismoContacto" EntityType="Self.MecanismoContacto" />
+          <EntitySet Name="Party" EntityType="Self.Party" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" />
+          <EntitySet Name="Plato" EntityType="Self.Plato" />
+          <EntitySet Name="TipoMecanismo" EntityType="Self.TipoMecanismo" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Party_Cliente" Association="Self.FK_Party_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Party" EntitySet="Party" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Cliente" Association="Self.FK_Pedido_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Estado" Association="Self.FK_Pedido_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MecanismoContacto_Party" Association="Self.FK_MecanismoContacto_Party">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="MecanismoContacto" EntitySet="MecanismoContacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MecanismoContacto_TipoMecanismo" Association="Self.FK_MecanismoContacto_TipoMecanismo">
+            <End Role="TipoMecanismo" EntitySet="TipoMecanismo" />
+            <End Role="MecanismoContacto" EntitySet="MecanismoContacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Usuario" Association="Self.FK_Party_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Party" EntitySet="Party" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_TipoUsuario" Association="Self.FK_Usuario_TipoUsuario">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="PedidosRegistro" Association="Self.PedidosRegistro">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Plato" EntitySet="Plato" />
+          </AssociationSet>
+          <FunctionImport Name="p_agregarCliente">
+            <Parameter Name="PartyIDR" Mode="In" Type="String" />
+            <Parameter Name="PrimerNombreR" Mode="In" Type="String" />
+            <Parameter Name="SegundoNombreR" Mode="In" Type="String" />
+            <Parameter Name="Apellido1R" Mode="In" Type="String" />
+            <Parameter Name="Apellido2R" Mode="In" Type="String" />
+            <Parameter Name="ContraseñaR" Mode="In" Type="String" />
+            <Parameter Name="MecanismoIDR" Mode="In" Type="Int16" />
+            <Parameter Name="ValorMecanismoR" Mode="In" Type="String" />
+            <Parameter Name="TipoMecanismoIDR" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="p_agregarMecanismo">
+            <Parameter Name="MecanismoID" Mode="In" Type="Int16" />
+            <Parameter Name="ValorMecanismo" Mode="In" Type="String" />
+            <Parameter Name="TipoMecanismoID" Mode="In" Type="Int16" />
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_agregarParty">
+            <Parameter Name="PrimerNombre" Mode="In" Type="String" />
+            <Parameter Name="SegundoNombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido1" Mode="In" Type="String" />
+            <Parameter Name="Apellido2" Mode="In" Type="String" />
+            <Parameter Name="Contraseña" Mode="In" Type="String" />
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_agregarPlato">
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="Fotografia" Mode="In" Type="Binary" />
+            <Parameter Name="HabilitadoSN" Mode="In" Type="Boolean" />
+            <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="p_agregarUsuario">
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+            <Parameter Name="TipoID" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="p_agregarUsuarioAdmin">
+            <Parameter Name="PrimerNombreR" Mode="In" Type="String" />
+            <Parameter Name="SegundoNombreR" Mode="In" Type="String" />
+            <Parameter Name="Apellido1R" Mode="In" Type="String" />
+            <Parameter Name="Apellido2R" Mode="In" Type="String" />
+            <Parameter Name="ContraseñaR" Mode="In" Type="String" />
+            <Parameter Name="MecanismoIDR" Mode="In" Type="Int16" />
+            <Parameter Name="ValorMecanismoR" Mode="In" Type="String" />
+            <Parameter Name="TipoMecanismoIDR" Mode="In" Type="Int16" />
+            <Parameter Name="PartyIDR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_agregarUsuarioCocina">
+            <Parameter Name="PrimerNombreR" Mode="In" Type="String" />
+            <Parameter Name="SegundoNombreR" Mode="In" Type="String" />
+            <Parameter Name="Apellido1R" Mode="In" Type="String" />
+            <Parameter Name="Apellido2R" Mode="In" Type="String" />
+            <Parameter Name="ContraseñaR" Mode="In" Type="String" />
+            <Parameter Name="MecanismoIDR" Mode="In" Type="Int16" />
+            <Parameter Name="ValorMecanismoR" Mode="In" Type="String" />
+            <Parameter Name="TipoMecanismoIDR" Mode="In" Type="Int16" />
+            <Parameter Name="PartyIDR" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_modificarMecanismo">
+            <Parameter Name="ValorMecanismoNuevo" Mode="In" Type="String" />
+            <Parameter Name="ValorMecanismo" Mode="In" Type="String" />
+            <Parameter Name="TipoMecanismoID" Mode="In" Type="Int16" />
+            <Parameter Name="MecanismoID" Mode="In" Type="Int16" />
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_modificarParty">
+            <Parameter Name="PrimerNombre" Mode="In" Type="String" />
+            <Parameter Name="SegundoNombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido1" Mode="In" Type="String" />
+            <Parameter Name="Apellido2" Mode="In" Type="String" />
+            <Parameter Name="Contraseña" Mode="In" Type="String" />
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_modificarPlato">
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="Fotografia" Mode="In" Type="Binary" />
+            <Parameter Name="HabilitadoSN" Mode="In" Type="Boolean" />
+            <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PedidosExpressModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PedidosExpressModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PedidosExpressModelStoreContainer" CdmEntityContainer="PedidosExpressEntities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="PedidosExpressModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+                <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="PedidosExpressModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MecanismoContacto">
+            <EntityTypeMapping TypeName="PedidosExpressModel.MecanismoContacto">
+              <MappingFragment StoreEntitySet="MecanismoContacto">
+                <ScalarProperty Name="MecanismoID" ColumnName="MecanismoID" />
+                <ScalarProperty Name="TipoMecanismoID" ColumnName="TipoMecanismoID" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Party">
+            <EntityTypeMapping TypeName="PedidosExpressModel.Party">
+              <MappingFragment StoreEntitySet="Party">
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedido">
+            <EntityTypeMapping TypeName="PedidosExpressModel.Pedido">
+              <MappingFragment StoreEntitySet="Pedido">
+                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plato">
+            <EntityTypeMapping TypeName="PedidosExpressModel.Plato">
+              <MappingFragment StoreEntitySet="Plato">
+                <ScalarProperty Name="PlatoID" ColumnName="PlatoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+                <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMecanismo">
+            <EntityTypeMapping TypeName="PedidosExpressModel.TipoMecanismo">
+              <MappingFragment StoreEntitySet="TipoMecanismo">
+                <ScalarProperty Name="TipoMecanismoID" ColumnName="TipoMecanismoID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoUsuario">
+            <EntityTypeMapping TypeName="PedidosExpressModel.TipoUsuario">
+              <MappingFragment StoreEntitySet="TipoUsuario">
+                <ScalarProperty Name="TipoID" ColumnName="TipoID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="PedidosExpressModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+                <ScalarProperty Name="TipoID" ColumnName="TipoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PedidosRegistro" TypeName="PedidosExpressModel.PedidosRegistro" StoreEntitySet="PedidosRegistro">
+            <EndProperty Name="Pedido">
+              <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+            </EndProperty>
+            <EndProperty Name="Plato">
+              <ScalarProperty Name="PlatoID" ColumnName="PlatoID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="p_agregarCliente" FunctionName="PedidosExpressModel.Store.p_agregarCliente" />
+          <FunctionImportMapping FunctionImportName="p_agregarMecanismo" FunctionName="PedidosExpressModel.Store.p_agregarMecanismo" />
+          <FunctionImportMapping FunctionImportName="p_agregarParty" FunctionName="PedidosExpressModel.Store.p_agregarParty" />
+          <FunctionImportMapping FunctionImportName="p_agregarPlato" FunctionName="PedidosExpressModel.Store.p_agregarPlato" />
+          <FunctionImportMapping FunctionImportName="p_agregarUsuario" FunctionName="PedidosExpressModel.Store.p_agregarUsuario" />
+          <FunctionImportMapping FunctionImportName="p_agregarUsuarioAdmin" FunctionName="PedidosExpressModel.Store.p_agregarUsuarioAdmin" />
+          <FunctionImportMapping FunctionImportName="p_agregarUsuarioCocina" FunctionName="PedidosExpressModel.Store.p_agregarUsuarioCocina" />
+          <FunctionImportMapping FunctionImportName="p_modificarMecanismo" FunctionName="PedidosExpressModel.Store.p_modificarMecanismo" />
+          <FunctionImportMapping FunctionImportName="p_modificarParty" FunctionName="PedidosExpressModel.Store.p_modificarParty" />
+          <FunctionImportMapping FunctionImportName="p_modificarPlato" FunctionName="PedidosExpressModel.Store.p_modificarPlato" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PedidosExpressModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PedidosExpressModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PedidosExpressModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PedidosExpressModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PedidosExpressModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PedidosExpressModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PedidosExpressModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
