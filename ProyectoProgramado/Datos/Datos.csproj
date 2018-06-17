@@ -49,12 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="ModelDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBD.Context.tt</DependentUpon>
-    </Compile>
+    <Compile Include="DatosClientecs.cs" />
+    <Compile Include="DatosPlato.cs" />
+    <Compile Include="DatosUsuario.cs" />
+    <Compile Include="ModelBD.Context.cs" />
     <Compile Include="ModelBD.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

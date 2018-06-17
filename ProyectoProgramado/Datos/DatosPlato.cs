@@ -72,7 +72,7 @@ namespace Datos
                 {
                     foreach (var p in plato)
                     {
-                        p.HabilitadoSN = hab_des;
+                       // p.HabilitadoSN = hab_des;
 
                     }
                     datos.SaveChanges();
