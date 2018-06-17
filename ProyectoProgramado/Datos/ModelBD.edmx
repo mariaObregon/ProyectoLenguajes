@@ -235,7 +235,6 @@
           <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="p_agregarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="PlatoID" Type="int" Mode="In" />
           <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
           <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
           <Parameter Name="Precio" Type="money" Mode="In" />
@@ -656,7 +655,6 @@
             <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="p_agregarPlato">
-            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="Precio" Mode="In" Type="Decimal" />
