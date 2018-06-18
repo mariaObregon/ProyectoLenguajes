@@ -129,12 +129,8 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarParty", primerNombreParameter, segundoNombreParameter, apellido1Parameter, apellido2Parameter, contraseñaParameter, partyIDParameter);
         }
     
-        public virtual int p_agregarPlato(Nullable<int> platoID, string nombre, string descripcion, Nullable<decimal> precio, byte[] fotografia, Nullable<bool> habilitadoSN, Nullable<int> pedidoID)
+        public virtual int p_agregarPlato(string nombre, string descripcion, Nullable<decimal> precio, byte[] fotografia, Nullable<bool> habilitadoSN, Nullable<int> pedidoID)
         {
-            var platoIDParameter = platoID.HasValue ?
-                new ObjectParameter("PlatoID", platoID) :
-                new ObjectParameter("PlatoID", typeof(int));
-    
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
                 new ObjectParameter("Nombre", typeof(string));
@@ -159,7 +155,7 @@ namespace Entidad
                 new ObjectParameter("PedidoID", pedidoID) :
                 new ObjectParameter("PedidoID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarPlato", platoIDParameter, nombreParameter, descripcionParameter, precioParameter, fotografiaParameter, habilitadoSNParameter, pedidoIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarPlato", nombreParameter, descripcionParameter, precioParameter, fotografiaParameter, habilitadoSNParameter, pedidoIDParameter);
         }
     
         public virtual int p_agregarUsuario(string partyID, Nullable<byte> tipoID)
