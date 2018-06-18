@@ -68,16 +68,6 @@
           <Property Name="HabilitadoSN" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="PedidoID" Type="int" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TipoMecanismo">
           <Key>
             <PropertyRef Name="TipoMecanismoID" />
@@ -195,7 +185,6 @@
           <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plato" EntityType="Self.Plato" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoMecanismo" EntityType="Self.TipoMecanismo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_MecanismoContacto_Party" Association="Self.FK_MecanismoContacto_Party">
@@ -303,16 +292,6 @@
           <Property Name="PedidoID" Type="Int32" />
           <NavigationProperty Name="Pedido" Relationship="Self.Orden" FromRole="Plato" ToRole="Pedido" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TipoMecanismo">
           <Key>
             <PropertyRef Name="TipoMecanismoID" />
@@ -411,7 +390,6 @@
           <EntitySet Name="Party" EntityType="Self.Party" />
           <EntitySet Name="Pedido" EntityType="Self.Pedido" />
           <EntitySet Name="Plato" EntityType="Self.Plato" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TipoMecanismo" EntityType="Self.TipoMecanismo" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <AssociationSet Name="FK_Party_Cliente" Association="Self.FK_Party_Cliente">
@@ -507,17 +485,6 @@
                 <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
                 <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
                 <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="PedidosExpressModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

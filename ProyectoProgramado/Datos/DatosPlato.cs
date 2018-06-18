@@ -10,27 +10,40 @@ namespace Datos
     class DatosPlato
     {
 
-        public List<Plato> BuscarPlatoNombre(String clave)
+        public Plato BuscarPlatoNombre(String clave)
         {
             using (PedidosExpressEntities datos = new PedidosExpressEntities())
             {
-                var plato = from pl in datos.Plato
-                            where pl.Nombre.Contains(clave)
-                            select pl;
-
-                return plato.ToList();
+                return (from pl in datos.Plato
+                        where pl.Nombre.Equals(clave)
+                        select pl).FirstOrDefault();
             }
         }
 
-        public List<Plato> BuscarPlatoID(int clave)
+        public Plato BuscarPlatoID(int clave)
         {
             using (PedidosExpressEntities datos = new PedidosExpressEntities())
             {
-                var plato = from pl in datos.Plato
-                            where pl.PlatoID == clave
-                            select pl;
+                return (from pl in datos.Plato
+                        where pl.PlatoID == clave
+                        select pl).FirstOrDefault();
+            }
+        }
 
-                return plato.ToList();
+        public List<Pedido> PedidoCliente(int clave)
+        {
+            using (PedidosExpressEntities datos = new PedidosExpressEntities())
+            {
+                return (from p in datos.Pedido
+                        join pl in datos.Plato 
+                        on p.PedidoID equals pl.PedidoID
+                        join pa in datos.Party 
+                        on pa.PartyID equals p.PartyID
+                        where pa.PartyID == clave
+                        select new {
+                            
+
+                        }).ToList();
             }
         }
 

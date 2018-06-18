@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="PedidosExpressModel.Party" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.Pedido" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.Plato" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.TipoMecanismo" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.Usuario" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="PedidosExpressModel.FK_Party_Cliente" ManuallyRouted="false" />
