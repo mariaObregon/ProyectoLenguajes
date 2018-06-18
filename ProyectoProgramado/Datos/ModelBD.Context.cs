@@ -36,9 +36,82 @@ namespace Entidad
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipoMecanismo> TipoMecanismo { get; set; }
         public virtual DbSet<TipoUsuario> TipoUsuario { get; set; }
-        public virtual DbSet<Usuario> Usuario { get; set; }
     
-        public virtual int p_agregarCliente(string partyIDR, string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, Nullable<short> mecanismoIDR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR)
+        [DbFunction("PedidosExpressEntities", "f_buscarPlatoID")]
+        public virtual IQueryable<f_buscarPlatoID_Result> f_buscarPlatoID(Nullable<int> platoID)
+        {
+            var platoIDParameter = platoID.HasValue ?
+                new ObjectParameter("PlatoID", platoID) :
+                new ObjectParameter("PlatoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_buscarPlatoID_Result>("[PedidosExpressEntities].[f_buscarPlatoID](@PlatoID)", platoIDParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_buscarPlatoNombre")]
+        public virtual IQueryable<f_buscarPlatoNombre_Result> f_buscarPlatoNombre(string nombre)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_buscarPlatoNombre_Result>("[PedidosExpressEntities].[f_buscarPlatoNombre](@Nombre)", nombreParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_buscarUsuarioID")]
+        public virtual IQueryable<f_buscarUsuarioID_Result> f_buscarUsuarioID(string partyID)
+        {
+            var partyIDParameter = partyID != null ?
+                new ObjectParameter("PartyID", partyID) :
+                new ObjectParameter("PartyID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_buscarUsuarioID_Result>("[PedidosExpressEntities].[f_buscarUsuarioID](@PartyID)", partyIDParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_buscarUsuarioNombre")]
+        public virtual IQueryable<f_buscarUsuarioNombre_Result> f_buscarUsuarioNombre(string nombre)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_buscarUsuarioNombre_Result>("[PedidosExpressEntities].[f_buscarUsuarioNombre](@Nombre)", nombreParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_pedidoCliente")]
+        public virtual IQueryable<f_pedidoCliente_Result> f_pedidoCliente(string nombre)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidoCliente_Result>("[PedidosExpressEntities].[f_pedidoCliente](@Nombre)", nombreParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_pedidoEstado")]
+        public virtual IQueryable<f_pedidoEstado_Result> f_pedidoEstado(string estado)
+        {
+            var estadoParameter = estado != null ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidoEstado_Result>("[PedidosExpressEntities].[f_pedidoEstado](@Estado)", estadoParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_pedidoFecha")]
+        public virtual IQueryable<f_pedidoFecha_Result> f_pedidoFecha(Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFinal)
+        {
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(System.DateTime));
+    
+            var fechaFinalParameter = fechaFinal.HasValue ?
+                new ObjectParameter("FechaFinal", fechaFinal) :
+                new ObjectParameter("FechaFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidoFecha_Result>("[PedidosExpressEntities].[f_pedidoFecha](@FechaInicio, @FechaFinal)", fechaInicioParameter, fechaFinalParameter);
+        }
+    
+        public virtual int p_agregarCliente(string partyIDR, string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, Nullable<bool> habilitado)
         {
             var partyIDRParameter = partyIDR != null ?
                 new ObjectParameter("PartyIDR", partyIDR) :
@@ -64,10 +137,6 @@ namespace Entidad
                 new ObjectParameter("ContraseñaR", contraseñaR) :
                 new ObjectParameter("ContraseñaR", typeof(string));
     
-            var mecanismoIDRParameter = mecanismoIDR.HasValue ?
-                new ObjectParameter("MecanismoIDR", mecanismoIDR) :
-                new ObjectParameter("MecanismoIDR", typeof(short));
-    
             var valorMecanismoRParameter = valorMecanismoR != null ?
                 new ObjectParameter("ValorMecanismoR", valorMecanismoR) :
                 new ObjectParameter("ValorMecanismoR", typeof(string));
@@ -76,15 +145,15 @@ namespace Entidad
                 new ObjectParameter("TipoMecanismoIDR", tipoMecanismoIDR) :
                 new ObjectParameter("TipoMecanismoIDR", typeof(short));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarCliente", partyIDRParameter, primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, mecanismoIDRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter);
+            var habilitadoParameter = habilitado.HasValue ?
+                new ObjectParameter("Habilitado", habilitado) :
+                new ObjectParameter("Habilitado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarCliente", partyIDRParameter, primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, habilitadoParameter);
         }
     
-        public virtual int p_agregarMecanismo(Nullable<short> mecanismoID, string valorMecanismo, Nullable<short> tipoMecanismoID, string partyID)
+        public virtual int p_agregarMecanismo(string valorMecanismo, Nullable<short> tipoMecanismoID, string partyID)
         {
-            var mecanismoIDParameter = mecanismoID.HasValue ?
-                new ObjectParameter("MecanismoID", mecanismoID) :
-                new ObjectParameter("MecanismoID", typeof(short));
-    
             var valorMecanismoParameter = valorMecanismo != null ?
                 new ObjectParameter("ValorMecanismo", valorMecanismo) :
                 new ObjectParameter("ValorMecanismo", typeof(string));
@@ -97,7 +166,7 @@ namespace Entidad
                 new ObjectParameter("PartyID", partyID) :
                 new ObjectParameter("PartyID", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarMecanismo", mecanismoIDParameter, valorMecanismoParameter, tipoMecanismoIDParameter, partyIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarMecanismo", valorMecanismoParameter, tipoMecanismoIDParameter, partyIDParameter);
         }
     
         public virtual int p_agregarParty(string primerNombre, string segundoNombre, string apellido1, string apellido2, string contraseña, string partyID)
@@ -129,7 +198,7 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarParty", primerNombreParameter, segundoNombreParameter, apellido1Parameter, apellido2Parameter, contraseñaParameter, partyIDParameter);
         }
     
-        public virtual int p_agregarPlato(string nombre, string descripcion, Nullable<decimal> precio, byte[] fotografia, Nullable<bool> habilitadoSN, Nullable<int> pedidoID)
+        public virtual int p_agregarPlato(string nombre, string descripcion, Nullable<decimal> precio, byte[] fotografia, Nullable<bool> habilitadoSN)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -151,11 +220,7 @@ namespace Entidad
                 new ObjectParameter("HabilitadoSN", habilitadoSN) :
                 new ObjectParameter("HabilitadoSN", typeof(bool));
     
-            var pedidoIDParameter = pedidoID.HasValue ?
-                new ObjectParameter("PedidoID", pedidoID) :
-                new ObjectParameter("PedidoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarPlato", nombreParameter, descripcionParameter, precioParameter, fotografiaParameter, habilitadoSNParameter, pedidoIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarPlato", nombreParameter, descripcionParameter, precioParameter, fotografiaParameter, habilitadoSNParameter);
         }
     
         public virtual int p_agregarUsuario(string partyID, Nullable<byte> tipoID)
@@ -171,7 +236,7 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarUsuario", partyIDParameter, tipoIDParameter);
         }
     
-        public virtual int p_agregarUsuarioAdmin(string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, Nullable<short> mecanismoIDR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, string partyIDR)
+        public virtual int p_agregarUsuarioAdmin(string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, string partyIDR)
         {
             var primerNombreRParameter = primerNombreR != null ?
                 new ObjectParameter("PrimerNombreR", primerNombreR) :
@@ -193,10 +258,6 @@ namespace Entidad
                 new ObjectParameter("ContraseñaR", contraseñaR) :
                 new ObjectParameter("ContraseñaR", typeof(string));
     
-            var mecanismoIDRParameter = mecanismoIDR.HasValue ?
-                new ObjectParameter("MecanismoIDR", mecanismoIDR) :
-                new ObjectParameter("MecanismoIDR", typeof(short));
-    
             var valorMecanismoRParameter = valorMecanismoR != null ?
                 new ObjectParameter("ValorMecanismoR", valorMecanismoR) :
                 new ObjectParameter("ValorMecanismoR", typeof(string));
@@ -209,10 +270,10 @@ namespace Entidad
                 new ObjectParameter("PartyIDR", partyIDR) :
                 new ObjectParameter("PartyIDR", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarUsuarioAdmin", primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, mecanismoIDRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, partyIDRParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarUsuarioAdmin", primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, partyIDRParameter);
         }
     
-        public virtual int p_agregarUsuarioCocina(string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, Nullable<short> mecanismoIDR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, string partyIDR)
+        public virtual int p_agregarUsuarioCocina(string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, string partyIDR)
         {
             var primerNombreRParameter = primerNombreR != null ?
                 new ObjectParameter("PrimerNombreR", primerNombreR) :
@@ -234,10 +295,6 @@ namespace Entidad
                 new ObjectParameter("ContraseñaR", contraseñaR) :
                 new ObjectParameter("ContraseñaR", typeof(string));
     
-            var mecanismoIDRParameter = mecanismoIDR.HasValue ?
-                new ObjectParameter("MecanismoIDR", mecanismoIDR) :
-                new ObjectParameter("MecanismoIDR", typeof(short));
-    
             var valorMecanismoRParameter = valorMecanismoR != null ?
                 new ObjectParameter("ValorMecanismoR", valorMecanismoR) :
                 new ObjectParameter("ValorMecanismoR", typeof(string));
@@ -250,7 +307,82 @@ namespace Entidad
                 new ObjectParameter("PartyIDR", partyIDR) :
                 new ObjectParameter("PartyIDR", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarUsuarioCocina", primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, mecanismoIDRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, partyIDRParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarUsuarioCocina", primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, partyIDRParameter);
+        }
+    
+        public virtual int p_BloquearCliente(Nullable<bool> habilitado, string partyID)
+        {
+            var habilitadoParameter = habilitado.HasValue ?
+                new ObjectParameter("Habilitado", habilitado) :
+                new ObjectParameter("Habilitado", typeof(bool));
+    
+            var partyIDParameter = partyID != null ?
+                new ObjectParameter("PartyID", partyID) :
+                new ObjectParameter("PartyID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_BloquearCliente", habilitadoParameter, partyIDParameter);
+        }
+    
+        public virtual int p_CambiarEstadoPedido(Nullable<byte> estadoID, Nullable<int> pedidoID)
+        {
+            var estadoIDParameter = estadoID.HasValue ?
+                new ObjectParameter("EstadoID", estadoID) :
+                new ObjectParameter("EstadoID", typeof(byte));
+    
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_CambiarEstadoPedido", estadoIDParameter, pedidoIDParameter);
+        }
+    
+        public virtual int p_EliminarPedido(Nullable<int> pedidoID, ObjectParameter retorno)
+        {
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarPedido", pedidoIDParameter, retorno);
+        }
+    
+        public virtual int p_EliminarPedidosRegistro(Nullable<int> pedidoID, ObjectParameter retorno)
+        {
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarPedidosRegistro", pedidoIDParameter, retorno);
+        }
+    
+        public virtual int p_EliminarPlato(Nullable<int> platoID, ObjectParameter retorno)
+        {
+            var platoIDParameter = platoID.HasValue ?
+                new ObjectParameter("PlatoID", platoID) :
+                new ObjectParameter("PlatoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarPlato", platoIDParameter, retorno);
+        }
+    
+        public virtual int p_EliminarUsuario(string partyID, ObjectParameter retorno)
+        {
+            var partyIDParameter = partyID != null ?
+                new ObjectParameter("PartyID", partyID) :
+                new ObjectParameter("PartyID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarUsuario", partyIDParameter, retorno);
+        }
+    
+        public virtual int p_HabilitarPlato(Nullable<bool> habilitado, Nullable<int> platoID)
+        {
+            var habilitadoParameter = habilitado.HasValue ?
+                new ObjectParameter("Habilitado", habilitado) :
+                new ObjectParameter("Habilitado", typeof(bool));
+    
+            var platoIDParameter = platoID.HasValue ?
+                new ObjectParameter("PlatoID", platoID) :
+                new ObjectParameter("PlatoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_HabilitarPlato", habilitadoParameter, platoIDParameter);
         }
     
         public virtual int p_modificarMecanismo(string valorMecanismoNuevo, string valorMecanismo, Nullable<short> tipoMecanismoID, Nullable<short> mecanismoID, string partyID)
@@ -307,7 +439,7 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarParty", primerNombreParameter, segundoNombreParameter, apellido1Parameter, apellido2Parameter, contraseñaParameter, partyIDParameter);
         }
     
-        public virtual int p_modificarPlato(Nullable<int> platoID, string nombre, string descripcion, Nullable<decimal> precio, byte[] fotografia, Nullable<bool> habilitadoSN, Nullable<int> pedidoID)
+        public virtual int p_modificarPlato(Nullable<int> platoID, string nombre, string descripcion, Nullable<decimal> precio, byte[] fotografia, Nullable<bool> habilitadoSN)
         {
             var platoIDParameter = platoID.HasValue ?
                 new ObjectParameter("PlatoID", platoID) :
@@ -333,11 +465,16 @@ namespace Entidad
                 new ObjectParameter("HabilitadoSN", habilitadoSN) :
                 new ObjectParameter("HabilitadoSN", typeof(bool));
     
-            var pedidoIDParameter = pedidoID.HasValue ?
-                new ObjectParameter("PedidoID", pedidoID) :
-                new ObjectParameter("PedidoID", typeof(int));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarPlato", platoIDParameter, nombreParameter, descripcionParameter, precioParameter, fotografiaParameter, habilitadoSNParameter);
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarPlato", platoIDParameter, nombreParameter, descripcionParameter, precioParameter, fotografiaParameter, habilitadoSNParameter, pedidoIDParameter);
+        public virtual int p_VerificarPedidos(Nullable<int> platoID, ObjectParameter pedidosPendientes)
+        {
+            var platoIDParameter = platoID.HasValue ?
+                new ObjectParameter("PlatoID", platoID) :
+                new ObjectParameter("PlatoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_VerificarPedidos", platoIDParameter, pedidosPendientes);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -441,130 +578,6 @@ namespace Entidad
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual int proc_EliminarPedido(Nullable<int> pedidoID, ObjectParameter retorno)
-        {
-            var pedidoIDParameter = pedidoID.HasValue ?
-                new ObjectParameter("PedidoID", pedidoID) :
-                new ObjectParameter("PedidoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_EliminarPedido", pedidoIDParameter, retorno);
-        }
-    
-        public virtual int proc_EliminarPedidosRegistro(Nullable<int> pedidoID, ObjectParameter retorno)
-        {
-            var pedidoIDParameter = pedidoID.HasValue ?
-                new ObjectParameter("PedidoID", pedidoID) :
-                new ObjectParameter("PedidoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_EliminarPedidosRegistro", pedidoIDParameter, retorno);
-        }
-    
-        public virtual int proc_EliminarPlato(Nullable<int> platoID, ObjectParameter retorno)
-        {
-            var platoIDParameter = platoID.HasValue ?
-                new ObjectParameter("PlatoID", platoID) :
-                new ObjectParameter("PlatoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_EliminarPlato", platoIDParameter, retorno);
-        }
-    
-        public virtual int proc_HabilitarPlato(Nullable<bool> habilitado, Nullable<int> platoID)
-        {
-            var habilitadoParameter = habilitado.HasValue ?
-                new ObjectParameter("Habilitado", habilitado) :
-                new ObjectParameter("Habilitado", typeof(bool));
-    
-            var platoIDParameter = platoID.HasValue ?
-                new ObjectParameter("PlatoID", platoID) :
-                new ObjectParameter("PlatoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_HabilitarPlato", habilitadoParameter, platoIDParameter);
-        }
-    
-        public virtual int p_EliminarPedido(Nullable<int> pedidoID, ObjectParameter retorno)
-        {
-            var pedidoIDParameter = pedidoID.HasValue ?
-                new ObjectParameter("PedidoID", pedidoID) :
-                new ObjectParameter("PedidoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarPedido", pedidoIDParameter, retorno);
-        }
-    
-        public virtual int p_EliminarPedidosRegistro(Nullable<int> pedidoID, ObjectParameter retorno)
-        {
-            var pedidoIDParameter = pedidoID.HasValue ?
-                new ObjectParameter("PedidoID", pedidoID) :
-                new ObjectParameter("PedidoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarPedidosRegistro", pedidoIDParameter, retorno);
-        }
-    
-        public virtual int p_EliminarPlato(Nullable<int> platoID, ObjectParameter retorno)
-        {
-            var platoIDParameter = platoID.HasValue ?
-                new ObjectParameter("PlatoID", platoID) :
-                new ObjectParameter("PlatoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarPlato", platoIDParameter, retorno);
-        }
-    
-        public virtual int p_EliminarUsuario(string partyID, ObjectParameter retorno)
-        {
-            var partyIDParameter = partyID != null ?
-                new ObjectParameter("PartyID", partyID) :
-                new ObjectParameter("PartyID", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarUsuario", partyIDParameter, retorno);
-        }
-    
-        public virtual int p_HabilitarPlato(Nullable<bool> habilitado, Nullable<int> platoID)
-        {
-            var habilitadoParameter = habilitado.HasValue ?
-                new ObjectParameter("Habilitado", habilitado) :
-                new ObjectParameter("Habilitado", typeof(bool));
-    
-            var platoIDParameter = platoID.HasValue ?
-                new ObjectParameter("PlatoID", platoID) :
-                new ObjectParameter("PlatoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_HabilitarPlato", habilitadoParameter, platoIDParameter);
-        }
-    
-        public virtual int p_BloquearCliente(Nullable<bool> habilitado, string partyID)
-        {
-            var habilitadoParameter = habilitado.HasValue ?
-                new ObjectParameter("Habilitado", habilitado) :
-                new ObjectParameter("Habilitado", typeof(bool));
-    
-            var partyIDParameter = partyID != null ?
-                new ObjectParameter("PartyID", partyID) :
-                new ObjectParameter("PartyID", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_BloquearCliente", habilitadoParameter, partyIDParameter);
-        }
-    
-        public virtual int p_CambiarEstadoPedido(Nullable<byte> estadoID, Nullable<int> pedidoID)
-        {
-            var estadoIDParameter = estadoID.HasValue ?
-                new ObjectParameter("EstadoID", estadoID) :
-                new ObjectParameter("EstadoID", typeof(byte));
-    
-            var pedidoIDParameter = pedidoID.HasValue ?
-                new ObjectParameter("PedidoID", pedidoID) :
-                new ObjectParameter("PedidoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_CambiarEstadoPedido", estadoIDParameter, pedidoIDParameter);
-        }
-    
-        public virtual int p_VerificarPedidos(Nullable<int> platoID, ObjectParameter pedidosPendientes)
-        {
-            var platoIDParameter = platoID.HasValue ?
-                new ObjectParameter("PlatoID", platoID) :
-                new ObjectParameter("PlatoID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_VerificarPedidos", platoIDParameter, pedidosPendientes);
         }
     }
 }

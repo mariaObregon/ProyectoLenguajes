@@ -30,6 +30,6 @@ namespace Entidad
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MecanismoContacto> MecanismoContacto { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        public virtual TipoUsuario TipoUsuario { get; set; }
     }
 }

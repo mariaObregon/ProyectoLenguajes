@@ -10,14 +10,14 @@
 namespace Entidad
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Usuario
+    public partial class f_buscarPlatoID_Result
     {
-        public string PartyID { get; set; }
-        public byte TipoID { get; set; }
-    
-        public virtual Party Party { get; set; }
-        public virtual TipoUsuario TipoUsuario { get; set; }
+        public int PlatoID { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Precio { get; set; }
+        public byte[] Fotografia { get; set; }
+        public bool HabilitadoSN { get; set; }
     }
 }

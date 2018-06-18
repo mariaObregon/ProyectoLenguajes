@@ -46,6 +46,27 @@
     <Compile Include="Estado.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="f_buscarPlatoID_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_buscarPlatoNombre_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_buscarUsuarioID_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_buscarUsuarioNombre_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_pedidoCliente_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_pedidoEstado_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="f_pedidoFecha_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="MecanismoContacto.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
@@ -77,9 +98,6 @@
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="TipoUsuario.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Usuario.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
   </ItemGroup>

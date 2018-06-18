@@ -17,13 +17,13 @@ namespace Entidad
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TipoUsuario()
         {
-            this.Usuario = new HashSet<Usuario>();
+            this.Party = new HashSet<Party>();
         }
     
         public byte TipoID { get; set; }
         public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuario { get; set; }
+        public virtual ICollection<Party> Party { get; set; }
     }
 }
