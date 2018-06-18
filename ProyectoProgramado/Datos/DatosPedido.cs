@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class DatosPedido
+    public class DatosPedido
     {
-        public void HabDesHabPlato(byte estadoID, int idPedido)
+        public void HabilitarPedido(byte estadoID, int idPedido)
         {
             using (PedidosExpressEntities datos = new PedidosExpressEntities())
             {

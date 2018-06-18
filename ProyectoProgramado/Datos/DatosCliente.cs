@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class DatosClientecs
+    public class DatosCliente
     {
 
         public void BloquearCliente(String idCliente, bool bloquear)

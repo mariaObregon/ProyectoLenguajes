@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatosClientecs.cs" />
+    <Compile Include="DatosCliente.cs" />
     <Compile Include="DatosPedido.cs" />
     <Compile Include="DatosPlato.cs" />
     <Compile Include="DatosUsuario.cs" />

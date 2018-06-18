@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class DatosUsuario
+    public class DatosUsuario
     {
 
         public String EliminarUsuario(String idUsuario)

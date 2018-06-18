@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PedidosExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PedidosExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="PartyID" />
@@ -493,8 +493,7 @@
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PedidosExpressModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -744,22 +743,22 @@
             <End Role="TipoUsuario" EntitySet="TipoUsuario" />
           </AssociationSet>
           <FunctionImport Name="f_buscarPlatoID" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarPlatoID_Result)">
-            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+          <Parameter Name="PlatoID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_buscarPlatoNombre" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarPlatoNombre_Result)">
-            <Parameter Name="Nombre" Mode="In" Type="String" />
+          <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_buscarUsuarioID" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarUsuarioID_Result)">
-            <Parameter Name="PartyID" Mode="In" Type="String" />
+          <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_buscarUsuarioNombre" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarUsuarioNombre_Result)">
-            <Parameter Name="Nombre" Mode="In" Type="String" />
+          <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoCliente" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoCliente_Result)">
-            <Parameter Name="Nombre" Mode="In" Type="String" />
+          <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoEstado" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoEstado_Result)">
-            <Parameter Name="Estado" Mode="In" Type="String" />
+          <Parameter Name="Estado" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoFecha" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoFecha_Result)">
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
