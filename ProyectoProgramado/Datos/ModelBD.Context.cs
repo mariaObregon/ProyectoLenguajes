@@ -561,5 +561,14 @@ namespace Entidad
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_CambiarEstadoPedido", estadoIDParameter, pedidoIDParameter);
         }
+    
+        public virtual int p_VerificarPedidos(Nullable<int> platoID, ObjectParameter pedidosPendientes)
+        {
+            var platoIDParameter = platoID.HasValue ?
+                new ObjectParameter("PlatoID", platoID) :
+                new ObjectParameter("PlatoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_VerificarPedidos", platoIDParameter, pedidosPendientes);
+        }
     }
 }

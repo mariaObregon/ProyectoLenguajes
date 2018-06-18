@@ -321,6 +321,10 @@
           <Parameter Name="HabilitadoSN" Type="bit" Mode="In" />
           <Parameter Name="PedidoID" Type="int" Mode="In" />
         </Function>
+        <Function Name="p_VerificarPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PlatoID" Type="int" Mode="In" />
+          <Parameter Name="PedidosPendientes" Type="int" Mode="InOut" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -796,6 +800,10 @@
             <Parameter Name="EstadoID" Mode="In" Type="Byte" />
             <Parameter Name="PedidoID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="p_VerificarPedidos">
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+            <Parameter Name="PedidosPendientes" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -959,6 +967,7 @@
           <FunctionImportMapping FunctionImportName="p_HabilitarPlato" FunctionName="PedidosExpressModel.Store.p_HabilitarPlato" />
           <FunctionImportMapping FunctionImportName="p_BloquearCliente" FunctionName="PedidosExpressModel.Store.p_BloquearCliente" />
           <FunctionImportMapping FunctionImportName="p_CambiarEstadoPedido" FunctionName="PedidosExpressModel.Store.p_CambiarEstadoPedido" />
+          <FunctionImportMapping FunctionImportName="p_VerificarPedidos" FunctionName="PedidosExpressModel.Store.p_VerificarPedidos" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
