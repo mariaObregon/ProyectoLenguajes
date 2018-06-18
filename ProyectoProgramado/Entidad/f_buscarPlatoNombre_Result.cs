@@ -10,16 +10,14 @@
 namespace Entidad
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class MecanismoContacto
+    public partial class f_buscarPlatoNombre_Result
     {
-        public short MecanismoID { get; set; }
-        public short TipoMecanismoID { get; set; }
-        public string Valor { get; set; }
-        public string PartyID { get; set; }
-    
-        public virtual Party Party { get; set; }
-        public virtual TipoMecanismo TipoMecanismo { get; set; }
+        public int PlatoID { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Precio { get; set; }
+        public byte[] Fotografia { get; set; }
+        public bool HabilitadoSN { get; set; }
     }
 }

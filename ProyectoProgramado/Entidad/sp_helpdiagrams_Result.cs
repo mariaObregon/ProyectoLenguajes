@@ -10,16 +10,13 @@
 namespace Entidad
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class MecanismoContacto
+    public partial class sp_helpdiagrams_Result
     {
-        public short MecanismoID { get; set; }
-        public short TipoMecanismoID { get; set; }
-        public string Valor { get; set; }
-        public string PartyID { get; set; }
-    
-        public virtual Party Party { get; set; }
-        public virtual TipoMecanismo TipoMecanismo { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

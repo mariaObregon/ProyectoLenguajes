@@ -10,16 +10,10 @@
 namespace Entidad
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class MecanismoContacto
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public short MecanismoID { get; set; }
-        public short TipoMecanismoID { get; set; }
-        public string Valor { get; set; }
-        public string PartyID { get; set; }
-    
-        public virtual Party Party { get; set; }
-        public virtual TipoMecanismo TipoMecanismo { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

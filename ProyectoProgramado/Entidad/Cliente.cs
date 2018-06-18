@@ -14,9 +14,17 @@ namespace Entidad
     
     public partial class Cliente
     {
-        public int PartyID { get; set; }
-        public string HabilitadoSN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cliente()
+        {
+            this.Pedido = new HashSet<Pedido>();
+        }
+    
+        public string PartyID { get; set; }
+        public bool HabilitadoSN { get; set; }
     
         public virtual Party Party { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pedido> Pedido { get; set; }
     }
 }

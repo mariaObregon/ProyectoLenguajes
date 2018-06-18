@@ -12,22 +12,18 @@ namespace Entidad
     using System;
     using System.Collections.Generic;
     
-    public partial class Pedido
+    public partial class TipoUsuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pedido()
+        public TipoUsuario()
         {
-            this.Plato = new HashSet<Plato>();
+            this.Party = new HashSet<Party>();
         }
     
-        public int PedidoID { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public byte EstadoID { get; set; }
-        public string PartyID { get; set; }
+        public byte TipoID { get; set; }
+        public string Descripcion { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
-        public virtual Estado Estado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Plato> Plato { get; set; }
+        public virtual ICollection<Party> Party { get; set; }
     }
 }
