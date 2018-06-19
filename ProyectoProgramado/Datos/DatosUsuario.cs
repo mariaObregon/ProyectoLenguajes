@@ -11,15 +11,23 @@ namespace Datos
     public class DatosUsuario
     {
 
+        PedidosExpressEntities datos = new PedidosExpressEntities();
+
         public String EliminarUsuario(String idUsuario)
         {
-            using (PedidosExpressEntities datos = new PedidosExpressEntities())
-            {
-
                 ObjectParameter salida = new ObjectParameter("Retorno", typeof(String));
                 datos.p_EliminarUsuario(idUsuario, salida);
                 return salida.ToString();
-            }
+        }
+
+        public List<f_buscarUsuarioID_Result> BusquedaUsuarioId(String usuarioId)
+        {
+            return datos.f_buscarUsuarioID(usuarioId).ToList();
+        }
+
+        public List<f_buscarUsuarioNombre_Result> BusquedaUsuarioNombre(String usuarioNombre)
+        {
+            return datos.f_buscarUsuarioNombre(usuarioNombre).ToList();
         }
     }
 }

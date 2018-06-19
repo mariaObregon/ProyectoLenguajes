@@ -9,13 +9,11 @@ namespace Datos
 {
     public class DatosCliente
     {
+        PedidosExpressEntities datos = new PedidosExpressEntities();
 
         public void BloquearCliente(String idCliente, bool bloquear)
         {
-            using (PedidosExpressEntities datos = new PedidosExpressEntities())
-            {
                 datos.p_BloquearCliente(bloquear,idCliente);
-            }
         }
     }
 }

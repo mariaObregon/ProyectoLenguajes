@@ -11,22 +11,28 @@ namespace Datos
     public class DatosPlato
     {
 
+        PedidosExpressEntities datos = new PedidosExpressEntities();
+
         public String EliminarPlato(int idPlato)
         {
-             using (PedidosExpressEntities datos = new PedidosExpressEntities())
-            {
-
                 ObjectParameter salida = new ObjectParameter("Retorno", typeof(String));
-              datos.p_EliminarPlato(idPlato, salida );
+                datos.p_EliminarPlato(idPlato, salida );
                 return salida.ToString();
-            }
         }
+
+        public List<f_buscarPlatoID_Result> BuscarPlatoID(int idPlato)
+        {
+                return datos.f_buscarPlatoID(idPlato).ToList();
+        }
+
+        public List<f_buscarPlatoNombre_Result> BuscarPlatoNombre(String nombrePlato)
+        {
+            return datos.f_buscarPlatoNombre(nombrePlato).ToList();
+        }
+
         public void HabilitarPlato(int idPlato, bool habilitar)
         {
-            using (PedidosExpressEntities datos = new PedidosExpressEntities())
-            {
                 datos.p_HabilitarPlato(habilitar, idPlato);
-            }
         }
     }
 

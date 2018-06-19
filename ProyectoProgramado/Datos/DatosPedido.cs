@@ -9,12 +9,26 @@ namespace Datos
 {
     public class DatosPedido
     {
+        PedidosExpressEntities datos = new PedidosExpressEntities();
+
         public void HabilitarPedido(byte estadoID, int idPedido)
         {
-            using (PedidosExpressEntities datos = new PedidosExpressEntities())
-            {
                 datos.p_CambiarEstadoPedido(estadoID ,idPedido );
-            }
+        }
+
+        public List<f_pedidoFecha_Result> PedidoPorFecha(DateTime fechaInicioo, DateTime fechaFin)
+        {
+            return datos.f_pedidoFecha(fechaInicioo,fechaFin).ToList();
+        }
+
+        public List<f_pedidoCliente_Result> PedidoPorCliente(String nombreCliente)
+        {
+            return datos.f_pedidoCliente(nombreCliente).ToList();
+        }
+
+        public List<f_pedidoEstado_Result> PedidoPorEstado(String estadoPedido)
+        {
+            return datos.f_pedidoEstado(estadoPedido).ToList();
         }
     }
 }
