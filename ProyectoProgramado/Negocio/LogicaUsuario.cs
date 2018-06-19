@@ -1,4 +1,5 @@
 ﻿using Datos;
+using Entidad;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,15 @@ namespace Negocio
             else {
                 return "Usuario inválido";
             }
+        }
+
+        public List<f_buscarUsuarioID_Result> busquedaUsuarioId(String idUsuario)
+        {
+            return du.BusquedaUsuarioId(idUsuario);
+        }
+        public List<f_buscarUsuarioNombre_Result> busquedaUsuarioNombre(String nombreUsuario)
+        {
+            return du.BusquedaUsuarioNombre(nombreUsuario);
         }
     }
 }
