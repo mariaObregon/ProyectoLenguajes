@@ -26,6 +26,7 @@ namespace Negocio
         {
             return du.BusquedaUsuarioId(idUsuario);
         }
+
         public List<f_buscarUsuarioNombre_Result> busquedaUsuarioNombre(String nombreUsuario)
         {
             return du.BusquedaUsuarioNombre(nombreUsuario);
