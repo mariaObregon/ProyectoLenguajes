@@ -74,9 +74,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="InsertarPlato.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InsertarPlato.aspx.cs">
+      <DependentUpon>InsertarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsertarPlato.aspx.designer.cs">
+      <DependentUpon>InsertarPlato.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

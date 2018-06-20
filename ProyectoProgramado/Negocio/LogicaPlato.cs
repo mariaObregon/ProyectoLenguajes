@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using Datos;
 using Entidad;
 
@@ -21,14 +22,14 @@ namespace Negocio
             else {
                 return "Plato no existente";
             }
-            
+
         }
 
         public String HabilitarPlato(int idPlato, bool habilitar) {
 
             if (idPlato > 0)
             {
-                 dp.HabilitarPlato(idPlato, habilitar);
+                dp.HabilitarPlato(idPlato, habilitar);
                 if (habilitar == true) {
                     return "Plato habilitado con exito";
                 }
@@ -49,6 +50,38 @@ namespace Negocio
         public List<f_buscarPlatoNombre_Result> buscarPlatoNombre(String nombrePlato)
         {
             return dp.BuscarPlatoNombre(nombrePlato);
+        }
+
+        public void agregarPlato(String nombre, String descripcion, decimal precio, byte[] imagen, bool habilitado)
+        {
+           dp.AgregarPlato(nombre, descripcion, precio, imagen, habilitado);
+        }
+
+        public bool estadoHabilitado(String valor) {
+
+            if (valor.Equals("True"))
+                return true;
+
+            return false;
+        }
+
+        public byte[] convertirImagenBinario(FileUpload FileUpload1) {
+
+            byte[] input = new Byte[0];
+
+            if (FileUpload1.HasFile)
+            {
+                int fileLen;
+
+                fileLen = FileUpload1.PostedFile.ContentLength;
+
+                input = new byte[fileLen - 1];
+                input = FileUpload1.FileBytes;
+ 
+            }
+
+            return input;
+
         }
 
     }

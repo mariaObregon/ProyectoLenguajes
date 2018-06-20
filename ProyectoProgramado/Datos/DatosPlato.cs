@@ -34,6 +34,12 @@ namespace Datos
         {
                 datos.p_HabilitarPlato(habilitar, idPlato);
         }
+
+        public void AgregarPlato(String nombre, String descripcion, decimal precio, byte[] imagen, bool habilitado)
+        {
+          datos.p_agregarPlato(nombre, descripcion, precio, imagen, habilitado);
+
+        }
     }
 
 }
