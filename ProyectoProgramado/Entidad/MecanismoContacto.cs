@@ -15,9 +15,7 @@ namespace Entidad
     public partial class MecanismoContacto
     {
         public short MecanismoID { get; set; }
-        public short TipoMecanismoID { get; set; }
         public string Valor { get; set; }
-        public string PartyID { get; set; }
     
         public virtual Party Party { get; set; }
         public virtual TipoMecanismo TipoMecanismo { get; set; }

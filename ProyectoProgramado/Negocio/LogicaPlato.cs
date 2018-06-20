@@ -43,21 +43,21 @@ namespace Negocio
             }
         }
 
-        public List<f_buscarPlatoID_Result> buscarPlatoId(int idPlato) {
+        public List<f_buscarPlatoID_Result> BuscarPlatoId(int idPlato) {
             return dp.BuscarPlatoID(idPlato);
         }
 
-        public List<f_buscarPlatoNombre_Result> buscarPlatoNombre(String nombrePlato)
+        public List<f_buscarPlatoNombre_Result> BuscarPlatoNombre(String nombrePlato)
         {
             return dp.BuscarPlatoNombre(nombrePlato);
         }
 
-        public void agregarPlato(String nombre, String descripcion, decimal precio, byte[] imagen, bool habilitado)
+        public void AgregarPlato(String nombre, String descripcion, decimal precio, byte[] imagen, bool habilitado)
         {
            dp.AgregarPlato(nombre, descripcion, precio, imagen, habilitado);
         }
 
-        public bool estadoHabilitado(String valor) {
+        public bool EstadoHabilitado(String valor) {
 
             if (valor.Equals("True"))
                 return true;
@@ -65,7 +65,7 @@ namespace Negocio
             return false;
         }
 
-        public byte[] convertirImagenBinario(FileUpload FileUpload1) {
+        public byte[] ConvertirImagenBinario(FileUpload FileUpload1) {
 
             byte[] input = new Byte[0];
 
@@ -82,6 +82,11 @@ namespace Negocio
 
             return input;
 
+        }
+
+        public void ModificarPlato(int IntPatoID, String StrNombre, String StrDescripcion, decimal DecPrecio, byte[] Imagen, bool BoolHabilitado)
+        {
+            dp.ModificarPlato(IntPatoID, StrNombre, StrDescripcion, DecPrecio, Imagen, BoolHabilitado);
         }
 
     }

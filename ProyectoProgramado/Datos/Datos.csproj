@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatosCliente.cs" />
+    <Compile Include="DatosGeneral.cs" />
     <Compile Include="DatosPedido.cs" />
     <Compile Include="DatosPlato.cs" />
     <Compile Include="DatosUsuario.cs" />

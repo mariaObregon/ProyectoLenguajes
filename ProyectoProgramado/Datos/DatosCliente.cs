@@ -15,5 +15,12 @@ namespace Datos
         {
                 datos.p_BloquearCliente(bloquear,idCliente);
         }
+
+        public void AgregarCliente(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
+                    String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
+                    short ShTipoMecanismo, String StrPartyID, Boolean BoolHabilitado)
+        {
+            datos.p_agregarCliente(StrPartyID, StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña, StrValorMecanismo, ShTipoMecanismo, BoolHabilitado);
+        }
     }
 }

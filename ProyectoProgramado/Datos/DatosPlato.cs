@@ -38,7 +38,11 @@ namespace Datos
         public void AgregarPlato(String nombre, String descripcion, decimal precio, byte[] imagen, bool habilitado)
         {
           datos.p_agregarPlato(nombre, descripcion, precio, imagen, habilitado);
+        }
 
+        public void ModificarPlato(int IntPatoID, String StrNombre, String StrDescripcion, decimal DecPrecio, byte[] Imagen, bool BoolHabilitado)
+        {
+            datos.p_modificarPlato(IntPatoID, StrNombre, StrDescripcion, DecPrecio, Imagen, BoolHabilitado);
         }
     }
 

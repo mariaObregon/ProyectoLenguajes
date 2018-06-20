@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LogicaCliente.cs" />
+    <Compile Include="LogicaGeneral.cs" />
     <Compile Include="LogicaPedido.cs" />
     <Compile Include="LogicaPlato.cs" />
     <Compile Include="LogicaUsuario.cs" />
@@ -56,6 +57,9 @@
       <Project>{d499963a-7801-41e6-bcb1-f681d6da31ae}</Project>
       <Name>Entidad</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Excepciones\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -410,6 +410,10 @@
           <Parameter Name="Fotografia" Type="image" Mode="In" />
           <Parameter Name="HabilitadoSN" Type="bit" Mode="In" />
         </Function>
+        <Function Name="p_modificarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="TipoID" Type="tinyint" Mode="In" />
+        </Function>
         <Function Name="p_VerificarPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PlatoID" Type="int" Mode="In" />
           <Parameter Name="PedidosPendientes" Type="int" Mode="InOut" />
@@ -566,9 +570,7 @@
             <PropertyRef Name="Valor" />
           </Key>
           <Property Name="MecanismoID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TipoMecanismoID" Type="Int16" Nullable="false" />
           <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Party" Relationship="Self.FK_MecanismoContacto_Party1" FromRole="MecanismoContacto" ToRole="Party" />
           <NavigationProperty Name="TipoMecanismo" Relationship="Self.FK_MecanismoContacto_TipoMecanismo" FromRole="MecanismoContacto" ToRole="TipoMecanismo" />
         </EntityType>
@@ -592,8 +594,6 @@
           </Key>
           <Property Name="PedidoID" Type="Int32" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="EstadoID" Type="Byte" Nullable="false" />
-          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_Pedido_Cliente" FromRole="Pedido" ToRole="Cliente" />
           <NavigationProperty Name="Estado" Relationship="Self.FK_Pedido_Estado" FromRole="Pedido" ToRole="Estado" />
           <NavigationProperty Name="Plato" Relationship="Self.PedidosRegistro" FromRole="Pedido" ToRole="Plato" />
@@ -651,50 +651,18 @@
         <Association Name="FK_Pedido_Cliente">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cliente">
-              <PropertyRef Name="PartyID" />
-            </Principal>
-            <Dependent Role="Pedido">
-              <PropertyRef Name="PartyID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Pedido_Estado">
           <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Estado">
-              <PropertyRef Name="EstadoID" />
-            </Principal>
-            <Dependent Role="Pedido">
-              <PropertyRef Name="EstadoID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_MecanismoContacto_Party1">
           <End Role="Party" Type="Self.Party" Multiplicity="1" />
           <End Role="MecanismoContacto" Type="Self.MecanismoContacto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Party">
-              <PropertyRef Name="PartyID" />
-            </Principal>
-            <Dependent Role="MecanismoContacto">
-              <PropertyRef Name="PartyID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="FK_MecanismoContacto_TipoMecanismo">
           <End Role="TipoMecanismo" Type="Self.TipoMecanismo" Multiplicity="1" />
           <End Role="MecanismoContacto" Type="Self.MecanismoContacto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoMecanismo">
-              <PropertyRef Name="TipoMecanismoID" />
-            </Principal>
-            <Dependent Role="MecanismoContacto">
-              <PropertyRef Name="TipoMecanismoID" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="PedidosRegistro">
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
@@ -904,6 +872,10 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="p_modificarUsuario">
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+            <Parameter Name="TipoID" Mode="In" Type="Byte" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -942,9 +914,7 @@
             <EntityTypeMapping TypeName="PedidosExpressModel.MecanismoContacto">
               <MappingFragment StoreEntitySet="MecanismoContacto">
                 <ScalarProperty Name="MecanismoID" ColumnName="MecanismoID" />
-                <ScalarProperty Name="TipoMecanismoID" ColumnName="TipoMecanismoID" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
-                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -965,8 +935,6 @@
               <MappingFragment StoreEntitySet="Pedido">
                 <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
-                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1009,6 +977,40 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Pedido_Cliente" TypeName="PedidosExpressModel.FK_Pedido_Cliente" StoreEntitySet="Pedido">
+            <EndProperty Name="Cliente">
+              <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+            </EndProperty>
+            <EndProperty Name="Pedido">
+              <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Pedido_Estado" TypeName="PedidosExpressModel.FK_Pedido_Estado" StoreEntitySet="Pedido">
+            <EndProperty Name="Estado">
+              <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+            </EndProperty>
+            <EndProperty Name="Pedido">
+              <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_MecanismoContacto_Party1" TypeName="PedidosExpressModel.FK_MecanismoContacto_Party1" StoreEntitySet="MecanismoContacto">
+            <EndProperty Name="Party">
+              <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+            </EndProperty>
+            <EndProperty Name="MecanismoContacto">
+              <ScalarProperty Name="MecanismoID" ColumnName="MecanismoID" />
+              <ScalarProperty Name="Valor" ColumnName="Valor" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_MecanismoContacto_TipoMecanismo" TypeName="PedidosExpressModel.FK_MecanismoContacto_TipoMecanismo" StoreEntitySet="MecanismoContacto">
+            <EndProperty Name="TipoMecanismo">
+              <ScalarProperty Name="TipoMecanismoID" ColumnName="TipoMecanismoID" />
+            </EndProperty>
+            <EndProperty Name="MecanismoContacto">
+              <ScalarProperty Name="MecanismoID" ColumnName="MecanismoID" />
+              <ScalarProperty Name="Valor" ColumnName="Valor" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="PedidosRegistro" TypeName="PedidosExpressModel.PedidosRegistro" StoreEntitySet="PedidosRegistro">
             <EndProperty Name="Pedido">
               <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
@@ -1141,6 +1143,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PedidosExpressModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PedidosExpressModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="p_modificarUsuario" FunctionName="PedidosExpressModel.Store.p_modificarUsuario" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1156,7 +1159,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>

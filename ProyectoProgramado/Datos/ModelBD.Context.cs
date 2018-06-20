@@ -579,5 +579,18 @@ namespace Entidad
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual int p_modificarUsuario(string partyID, Nullable<byte> tipoID)
+        {
+            var partyIDParameter = partyID != null ?
+                new ObjectParameter("PartyID", partyID) :
+                new ObjectParameter("PartyID", typeof(string));
+    
+            var tipoIDParameter = tipoID.HasValue ?
+                new ObjectParameter("TipoID", tipoID) :
+                new ObjectParameter("TipoID", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarUsuario", partyIDParameter, tipoIDParameter);
+        }
     }
 }

@@ -31,5 +31,25 @@ namespace Negocio
         {
             return du.BusquedaUsuarioNombre(nombreUsuario);
         }
+
+        public void AgregarUsuarioAdmin(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
+                   String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
+                   short ShTipoMecanismo, String StrPartyID)
+        {
+            du.AgregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID);
+        }
+
+        public void AgregarUsuarioCocina(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
+                  String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
+                  short ShTipoMecanismo, String StrPartyID)
+        {
+            du.AgregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID);
+        }
+
+        public void ModificarUsuario(String StrPartyID, Byte ShTipoID)
+        {
+            du.ModificarUsuario(StrPartyID, ShTipoID);
+        }
+
     }
 }
