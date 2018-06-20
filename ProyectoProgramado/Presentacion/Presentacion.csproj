@@ -78,6 +78,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuAdmin.master.cs">
+      <DependentUpon>MenuAdmin.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuAdmin.master.designer.cs">
+      <DependentUpon>MenuAdmin.master</DependentUpon>
+    </Compile>
+    <Compile Include="MenuCocina.master.cs">
+      <DependentUpon>MenuCocina.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuCocina.master.designer.cs">
+      <DependentUpon>MenuCocina.master</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.Master.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal.Master.designer.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+    </Compile>
     <Compile Include="Pruebas.aspx.cs">
       <DependentUpon>Pruebas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -88,7 +109,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MenuAdmin.master" />
+    <Content Include="MenuCocina.master" />
     <None Include="packages.config" />
+    <Content Include="Principal.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
