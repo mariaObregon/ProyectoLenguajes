@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c64cc80fdd964784872aa27d159f8201" Name="Diagram1">
+      <Diagram DiagramId="e9817068da83482d9849c21bea5a3a5f" Name="Diagram1">
         <EntityTypeShape EntityType="PedidosExpressModel.Cliente" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.Estado" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.MecanismoContacto" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />

@@ -469,6 +469,19 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarPlato", platoIDParameter, nombreParameter, descripcionParameter, precioParameter, fotografiaParameter, habilitadoSNParameter);
         }
     
+        public virtual int p_modificarUsuario(string partyID, Nullable<byte> tipoID)
+        {
+            var partyIDParameter = partyID != null ?
+                new ObjectParameter("PartyID", partyID) :
+                new ObjectParameter("PartyID", typeof(string));
+    
+            var tipoIDParameter = tipoID.HasValue ?
+                new ObjectParameter("TipoID", tipoID) :
+                new ObjectParameter("TipoID", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarUsuario", partyIDParameter, tipoIDParameter);
+        }
+    
         public virtual int p_VerificarPedidos(Nullable<int> platoID, ObjectParameter pedidosPendientes)
         {
             var platoIDParameter = platoID.HasValue ?
@@ -533,7 +546,7 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -543,10 +556,10 @@ namespace Entidad
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -556,7 +569,7 @@ namespace Entidad
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
@@ -579,19 +592,6 @@ namespace Entidad
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual int p_modificarUsuario(string partyID, Nullable<byte> tipoID)
-        {
-            var partyIDParameter = partyID != null ?
-                new ObjectParameter("PartyID", partyID) :
-                new ObjectParameter("PartyID", typeof(string));
-    
-            var tipoIDParameter = tipoID.HasValue ?
-                new ObjectParameter("TipoID", tipoID) :
-                new ObjectParameter("TipoID", typeof(byte));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarUsuario", partyIDParameter, tipoIDParameter);
         }
     }
 }
