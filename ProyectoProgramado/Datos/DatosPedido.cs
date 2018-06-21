@@ -30,5 +30,10 @@ namespace Datos
         {
             return datos.f_pedidoEstado(estadoPedido).ToList();
         }
+
+     /*   public List<v_Estado> MostrarEstados()
+        {
+            return datos.v_Estado.ToList();
+        }*/
     }
 }

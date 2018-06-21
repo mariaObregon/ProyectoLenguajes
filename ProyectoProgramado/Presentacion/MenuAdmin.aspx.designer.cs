@@ -11,7 +11,7 @@ namespace Presentacion
 {
 
 
-    public partial class MenuAdmin
+    public partial class MenuAdmin1
     {
     }
 }

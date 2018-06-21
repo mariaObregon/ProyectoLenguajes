@@ -8,13 +8,33 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 40%;
+        }
+        .auto-style2 {
+            width: 179px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+            <table class="auto-style1">
+                <tr>
+                    <td class="auto-style2">
+                        <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl="~/Imagenes/logo.png" Width="120px" />
+                    </td>
+                    <td>Cocina MaCaRon</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+
             </asp:ContentPlaceHolder>
-        </div>
+            <br />
+            Derechos de Autor Maria &amp; Carlos &amp; Ronny</div>
     </form>
 </body>
 </html>

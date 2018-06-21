@@ -74,23 +74,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministracionPedidos.aspx" />
+    <Content Include="Imagenes\logo.png" />
+    <Content Include="MenuAdmin.aspx" />
+    <Content Include="MenuCocina.aspx" />
     <Content Include="Pruebas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuAdmin.master.cs">
-      <DependentUpon>MenuAdmin.master</DependentUpon>
+    <Compile Include="AdministracionPedidos.aspx.cs">
+      <DependentUpon>AdministracionPedidos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MenuAdmin.master.designer.cs">
-      <DependentUpon>MenuAdmin.master</DependentUpon>
+    <Compile Include="AdministracionPedidos.aspx.designer.cs">
+      <DependentUpon>AdministracionPedidos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MenuCocina.master.cs">
-      <DependentUpon>MenuCocina.master</DependentUpon>
+    <Compile Include="MenuAdmin.aspx.cs">
+      <DependentUpon>MenuAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MenuCocina.master.designer.cs">
-      <DependentUpon>MenuCocina.master</DependentUpon>
+    <Compile Include="MenuAdmin.aspx.designer.cs">
+      <DependentUpon>MenuAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MenuCocina.aspx.cs">
+      <DependentUpon>MenuCocina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuCocina.aspx.designer.cs">
+      <DependentUpon>MenuCocina.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
@@ -109,8 +120,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MenuAdmin.master" />
-    <Content Include="MenuCocina.master" />
     <None Include="packages.config" />
     <Content Include="Principal.Master" />
     <None Include="Web.Debug.config">
@@ -121,11 +130,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Entidad\Entidad.csproj">
+      <Project>{D499963A-7801-41E6-BCB1-F681D6DA31AE}</Project>
+      <Name>Entidad</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Negocio\Negocio.csproj">
       <Project>{ca318b55-42bc-407d-bcb2-1340580d90d4}</Project>
       <Name>Negocio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
