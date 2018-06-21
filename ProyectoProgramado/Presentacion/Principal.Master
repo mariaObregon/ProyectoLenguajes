@@ -32,6 +32,9 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
 
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/Imagenes/kit2.jpg" Width="1207px" />
+
+
             </asp:ContentPlaceHolder>
             <br />
             Derechos de Autor Maria &amp; Carlos &amp; Ronny</div>

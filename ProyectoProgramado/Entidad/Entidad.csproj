@@ -100,6 +100,9 @@
     <Compile Include="TipoUsuario.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="v_Estado.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

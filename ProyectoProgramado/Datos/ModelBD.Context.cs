@@ -36,6 +36,7 @@ namespace Entidad
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipoMecanismo> TipoMecanismo { get; set; }
         public virtual DbSet<TipoUsuario> TipoUsuario { get; set; }
+        public virtual DbSet<v_Estado> v_Estado { get; set; }
     
         [DbFunction("PedidosExpressEntities", "f_buscarPlatoID")]
         public virtual IQueryable<f_buscarPlatoID_Result> f_buscarPlatoID(Nullable<int> platoID)
@@ -88,11 +89,11 @@ namespace Entidad
         }
     
         [DbFunction("PedidosExpressEntities", "f_pedidoEstado")]
-        public virtual IQueryable<f_pedidoEstado_Result> f_pedidoEstado(string estado)
+        public virtual IQueryable<f_pedidoEstado_Result> f_pedidoEstado(Nullable<int> estado)
         {
-            var estadoParameter = estado != null ?
+            var estadoParameter = estado.HasValue ?
                 new ObjectParameter("Estado", estado) :
-                new ObjectParameter("Estado", typeof(string));
+                new ObjectParameter("Estado", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidoEstado_Result>("[PedidosExpressEntities].[f_pedidoEstado](@Estado)", estadoParameter);
         }

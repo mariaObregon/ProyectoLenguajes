@@ -19,10 +19,10 @@ namespace Presentacion
             {
 
 
-             /*   Estado.DataValueField = "EstadoID";
+                Estado.DataValueField = "EstadoID";
                 Estado.DataTextField = "DescripcionEstado";
                 Estado.DataSource = lgp.MostrarEstados();
-                Estado.DataBind();*/
+                Estado.DataBind();
 
             }
         }
@@ -48,9 +48,14 @@ namespace Presentacion
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            List<f_pedidoEstado_Result> dt = lgp.BusquedaPedidoClienteEstado(Estado.SelectedValue);
+            List<f_pedidoEstado_Result> dt = lgp.BusquedaPedidoClienteEstado(int.Parse(Estado.SelectedValue));
               Pedidos.DataSource = dt;
                Pedidos.DataBind();
+        }
+
+        protected void Calendar2_SelectionChanged(object sender, EventArgs e)
+        {
+
         }
     }
     }

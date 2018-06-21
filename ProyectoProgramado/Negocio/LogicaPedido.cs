@@ -36,13 +36,13 @@ namespace Negocio
             return dp.PedidoPorFecha(DateTime.Parse(fechaUno), DateTime.Parse(fechaDos));
         }
 
-        public List<f_pedidoEstado_Result> BusquedaPedidoClienteEstado(String estado)
+        public List<f_pedidoEstado_Result> BusquedaPedidoClienteEstado(int estado)
         {
             return dp.PedidoPorEstado(estado);
         }
 
-    /*    public List<v_Estado> MostrarEstados() {
+        public List<v_Estado> MostrarEstados() {
             return dp.MostrarEstados();
-        }*/
+        }
     }
 }

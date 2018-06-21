@@ -26,14 +26,14 @@ namespace Datos
             return datos.f_pedidoCliente(nombreCliente).ToList();
         }
 
-        public List<f_pedidoEstado_Result> PedidoPorEstado(String estadoPedido)
+        public List<f_pedidoEstado_Result> PedidoPorEstado(int estadoPedido)
         {
             return datos.f_pedidoEstado(estadoPedido).ToList();
         }
 
-     /*   public List<v_Estado> MostrarEstados()
+        public List<v_Estado> MostrarEstados()
         {
             return datos.v_Estado.ToList();
-        }*/
+        }
     }
 }

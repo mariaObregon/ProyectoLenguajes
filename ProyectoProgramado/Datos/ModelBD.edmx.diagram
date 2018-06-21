@@ -21,6 +21,7 @@
         <AssociationConnector Association="PedidosExpressModel.FK_MecanismoContacto_TipoMecanismo" ManuallyRouted="false" />
         <AssociationConnector Association="PedidosExpressModel.PedidosRegistro" ManuallyRouted="false" />
         <AssociationConnector Association="PedidosExpressModel.Usuario" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_Estado" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

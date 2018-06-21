@@ -101,6 +101,14 @@
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_Estado">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+            <PropertyRef Name="DescripcionEstado" />
+          </Key>
+          <Property Name="EstadoID" Type="tinyint" Nullable="false" />
+          <Property Name="DescripcionEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Cliente_Party">
           <End Role="Party" Type="Self.Party" Multiplicity="1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
@@ -280,7 +288,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           </ReturnType>
         </Function>
         <Function Name="f_pedidoEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Estado" Type="nvarchar" Mode="In" />
+          <Parameter Name="Estado" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -462,6 +470,12 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <EntitySet Name="TipoMecanismo" EntityType="Self.TipoMecanismo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_Estado" EntityType="Self.v_Estado" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Estado].[EstadoID] AS [EstadoID], 
+    [v_Estado].[DescripcionEstado] AS [DescripcionEstado]
+    FROM [dbo].[v_Estado] AS [v_Estado]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Cliente_Party" Association="Self.FK_Cliente_Party">
             <End Role="Party" EntitySet="Party" />
             <End Role="Cliente" EntitySet="Cliente" />
@@ -728,7 +742,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoEstado" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoEstado_Result)">
-          <Parameter Name="Estado" Mode="In" Type="String" />
+          <Parameter Name="Estado" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoFecha" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoFecha_Result)">
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
@@ -878,6 +892,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             <Parameter Name="PartyID" Mode="In" Type="String" />
             <Parameter Name="TipoID" Mode="In" Type="Byte" />
           </FunctionImport>
+          <EntitySet Name="v_Estado" EntityType="PedidosExpressModel.v_Estado" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -890,6 +905,14 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="v_Estado">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+            <PropertyRef Name="DescripcionEstado" />
+          </Key>
+          <Property Name="EstadoID" Type="Byte" Nullable="false" />
+          <Property Name="DescripcionEstado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1146,6 +1169,14 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PedidosExpressModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PedidosExpressModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="p_modificarUsuario" FunctionName="PedidosExpressModel.Store.p_modificarUsuario" />
+          <EntitySetMapping Name="v_Estado">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_Estado">
+              <MappingFragment StoreEntitySet="v_Estado">
+                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

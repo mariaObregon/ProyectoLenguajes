@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdministracionPedidos.aspx" />
+    <Content Include="Imagenes\kit2.jpg" />
     <Content Include="Imagenes\logo.png" />
     <Content Include="MenuAdmin.aspx" />
     <Content Include="MenuCocina.aspx" />
