@@ -28,15 +28,25 @@ namespace Entidad
         }
     
         public virtual DbSet<Cliente> Cliente { get; set; }
+        public virtual DbSet<Direccion> Direccion { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
+        public virtual DbSet<Geo> Geo { get; set; }
         public virtual DbSet<MecanismoContacto> MecanismoContacto { get; set; }
         public virtual DbSet<Party> Party { get; set; }
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Plato> Plato { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TipoDireccion> TipoDireccion { get; set; }
         public virtual DbSet<TipoMecanismo> TipoMecanismo { get; set; }
         public virtual DbSet<TipoUsuario> TipoUsuario { get; set; }
+        public virtual DbSet<v_Cliente> v_Cliente { get; set; }
         public virtual DbSet<v_Estado> v_Estado { get; set; }
+        public virtual DbSet<v_MecanismoContacto> v_MecanismoContacto { get; set; }
+        public virtual DbSet<v_Party> v_Party { get; set; }
+        public virtual DbSet<v_Pedido> v_Pedido { get; set; }
+        public virtual DbSet<v_Platos> v_Platos { get; set; }
+        public virtual DbSet<v_TipoUsuario> v_TipoUsuario { get; set; }
+        public virtual DbSet<v_Usuario> v_Usuario { get; set; }
     
         [DbFunction("PedidosExpressEntities", "f_buscarPlatoID")]
         public virtual IQueryable<f_buscarPlatoID_Result> f_buscarPlatoID(Nullable<int> platoID)
@@ -112,7 +122,7 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidoFecha_Result>("[PedidosExpressEntities].[f_pedidoFecha](@FechaInicio, @FechaFinal)", fechaInicioParameter, fechaFinalParameter);
         }
     
-        public virtual int p_agregarCliente(string partyIDR, string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, Nullable<bool> habilitado)
+        public virtual int p_agregarCliente(string partyIDR, string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, Nullable<bool> habilitado, Nullable<short> geoID, string lineaDireccion1, string lineaDireccion2, string lineaDireccion3, string instrucciones, Nullable<byte> tipoDireccionID)
         {
             var partyIDRParameter = partyIDR != null ?
                 new ObjectParameter("PartyIDR", partyIDR) :
@@ -150,7 +160,64 @@ namespace Entidad
                 new ObjectParameter("Habilitado", habilitado) :
                 new ObjectParameter("Habilitado", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarCliente", partyIDRParameter, primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, habilitadoParameter);
+            var geoIDParameter = geoID.HasValue ?
+                new ObjectParameter("GeoID", geoID) :
+                new ObjectParameter("GeoID", typeof(short));
+    
+            var lineaDireccion1Parameter = lineaDireccion1 != null ?
+                new ObjectParameter("LineaDireccion1", lineaDireccion1) :
+                new ObjectParameter("LineaDireccion1", typeof(string));
+    
+            var lineaDireccion2Parameter = lineaDireccion2 != null ?
+                new ObjectParameter("LineaDireccion2", lineaDireccion2) :
+                new ObjectParameter("LineaDireccion2", typeof(string));
+    
+            var lineaDireccion3Parameter = lineaDireccion3 != null ?
+                new ObjectParameter("LineaDireccion3", lineaDireccion3) :
+                new ObjectParameter("LineaDireccion3", typeof(string));
+    
+            var instruccionesParameter = instrucciones != null ?
+                new ObjectParameter("Instrucciones", instrucciones) :
+                new ObjectParameter("Instrucciones", typeof(string));
+    
+            var tipoDireccionIDParameter = tipoDireccionID.HasValue ?
+                new ObjectParameter("TipoDireccionID", tipoDireccionID) :
+                new ObjectParameter("TipoDireccionID", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarCliente", partyIDRParameter, primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, habilitadoParameter, geoIDParameter, lineaDireccion1Parameter, lineaDireccion2Parameter, lineaDireccion3Parameter, instruccionesParameter, tipoDireccionIDParameter);
+        }
+    
+        public virtual int p_agregarDireccion(Nullable<short> geoID, string lineaDireccion1, string lineaDireccion2, string lineaDireccion3, string instrucciones, Nullable<byte> tipoDireccionID, string partyID)
+        {
+            var geoIDParameter = geoID.HasValue ?
+                new ObjectParameter("GeoID", geoID) :
+                new ObjectParameter("GeoID", typeof(short));
+    
+            var lineaDireccion1Parameter = lineaDireccion1 != null ?
+                new ObjectParameter("LineaDireccion1", lineaDireccion1) :
+                new ObjectParameter("LineaDireccion1", typeof(string));
+    
+            var lineaDireccion2Parameter = lineaDireccion2 != null ?
+                new ObjectParameter("LineaDireccion2", lineaDireccion2) :
+                new ObjectParameter("LineaDireccion2", typeof(string));
+    
+            var lineaDireccion3Parameter = lineaDireccion3 != null ?
+                new ObjectParameter("LineaDireccion3", lineaDireccion3) :
+                new ObjectParameter("LineaDireccion3", typeof(string));
+    
+            var instruccionesParameter = instrucciones != null ?
+                new ObjectParameter("Instrucciones", instrucciones) :
+                new ObjectParameter("Instrucciones", typeof(string));
+    
+            var tipoDireccionIDParameter = tipoDireccionID.HasValue ?
+                new ObjectParameter("TipoDireccionID", tipoDireccionID) :
+                new ObjectParameter("TipoDireccionID", typeof(byte));
+    
+            var partyIDParameter = partyID != null ?
+                new ObjectParameter("PartyID", partyID) :
+                new ObjectParameter("PartyID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarDireccion", geoIDParameter, lineaDireccion1Parameter, lineaDireccion2Parameter, lineaDireccion3Parameter, instruccionesParameter, tipoDireccionIDParameter, partyIDParameter);
         }
     
         public virtual int p_agregarMecanismo(string valorMecanismo, Nullable<short> tipoMecanismoID, string partyID)
@@ -237,7 +304,7 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarUsuario", partyIDParameter, tipoIDParameter);
         }
     
-        public virtual int p_agregarUsuarioAdmin(string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, string partyIDR)
+        public virtual int p_agregarUsuarioAdmin(string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, string partyIDR, Nullable<short> geoID, string lineaDireccion1, string lineaDireccion2, string lineaDireccion3, string instrucciones, Nullable<byte> tipoDireccionID)
         {
             var primerNombreRParameter = primerNombreR != null ?
                 new ObjectParameter("PrimerNombreR", primerNombreR) :
@@ -271,10 +338,34 @@ namespace Entidad
                 new ObjectParameter("PartyIDR", partyIDR) :
                 new ObjectParameter("PartyIDR", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarUsuarioAdmin", primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, partyIDRParameter);
+            var geoIDParameter = geoID.HasValue ?
+                new ObjectParameter("GeoID", geoID) :
+                new ObjectParameter("GeoID", typeof(short));
+    
+            var lineaDireccion1Parameter = lineaDireccion1 != null ?
+                new ObjectParameter("LineaDireccion1", lineaDireccion1) :
+                new ObjectParameter("LineaDireccion1", typeof(string));
+    
+            var lineaDireccion2Parameter = lineaDireccion2 != null ?
+                new ObjectParameter("LineaDireccion2", lineaDireccion2) :
+                new ObjectParameter("LineaDireccion2", typeof(string));
+    
+            var lineaDireccion3Parameter = lineaDireccion3 != null ?
+                new ObjectParameter("LineaDireccion3", lineaDireccion3) :
+                new ObjectParameter("LineaDireccion3", typeof(string));
+    
+            var instruccionesParameter = instrucciones != null ?
+                new ObjectParameter("Instrucciones", instrucciones) :
+                new ObjectParameter("Instrucciones", typeof(string));
+    
+            var tipoDireccionIDParameter = tipoDireccionID.HasValue ?
+                new ObjectParameter("TipoDireccionID", tipoDireccionID) :
+                new ObjectParameter("TipoDireccionID", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarUsuarioAdmin", primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, partyIDRParameter, geoIDParameter, lineaDireccion1Parameter, lineaDireccion2Parameter, lineaDireccion3Parameter, instruccionesParameter, tipoDireccionIDParameter);
         }
     
-        public virtual int p_agregarUsuarioCocina(string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, string partyIDR)
+        public virtual int p_agregarUsuarioCocina(string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, string partyIDR, Nullable<short> geoID, string lineaDireccion1, string lineaDireccion2, string lineaDireccion3, string instrucciones, Nullable<byte> tipoDireccionID)
         {
             var primerNombreRParameter = primerNombreR != null ?
                 new ObjectParameter("PrimerNombreR", primerNombreR) :
@@ -308,7 +399,31 @@ namespace Entidad
                 new ObjectParameter("PartyIDR", partyIDR) :
                 new ObjectParameter("PartyIDR", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarUsuarioCocina", primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, partyIDRParameter);
+            var geoIDParameter = geoID.HasValue ?
+                new ObjectParameter("GeoID", geoID) :
+                new ObjectParameter("GeoID", typeof(short));
+    
+            var lineaDireccion1Parameter = lineaDireccion1 != null ?
+                new ObjectParameter("LineaDireccion1", lineaDireccion1) :
+                new ObjectParameter("LineaDireccion1", typeof(string));
+    
+            var lineaDireccion2Parameter = lineaDireccion2 != null ?
+                new ObjectParameter("LineaDireccion2", lineaDireccion2) :
+                new ObjectParameter("LineaDireccion2", typeof(string));
+    
+            var lineaDireccion3Parameter = lineaDireccion3 != null ?
+                new ObjectParameter("LineaDireccion3", lineaDireccion3) :
+                new ObjectParameter("LineaDireccion3", typeof(string));
+    
+            var instruccionesParameter = instrucciones != null ?
+                new ObjectParameter("Instrucciones", instrucciones) :
+                new ObjectParameter("Instrucciones", typeof(string));
+    
+            var tipoDireccionIDParameter = tipoDireccionID.HasValue ?
+                new ObjectParameter("TipoDireccionID", tipoDireccionID) :
+                new ObjectParameter("TipoDireccionID", typeof(byte));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarUsuarioCocina", primerNombreRParameter, segundoNombreRParameter, apellido1RParameter, apellido2RParameter, contraseñaRParameter, valorMecanismoRParameter, tipoMecanismoIDRParameter, partyIDRParameter, geoIDParameter, lineaDireccion1Parameter, lineaDireccion2Parameter, lineaDireccion3Parameter, instruccionesParameter, tipoDireccionIDParameter);
         }
     
         public virtual int p_BloquearCliente(Nullable<bool> habilitado, string partyID)
@@ -384,6 +499,43 @@ namespace Entidad
                 new ObjectParameter("PlatoID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_HabilitarPlato", habilitadoParameter, platoIDParameter);
+        }
+    
+        public virtual int p_modificarDireccion(Nullable<byte> direccionID, Nullable<short> geoID, string lineaDireccion1, string lineaDireccion2, string lineaDireccion3, string instrucciones, Nullable<byte> tipoDireccionID, string partyID)
+        {
+            var direccionIDParameter = direccionID.HasValue ?
+                new ObjectParameter("DireccionID", direccionID) :
+                new ObjectParameter("DireccionID", typeof(byte));
+    
+            var geoIDParameter = geoID.HasValue ?
+                new ObjectParameter("GeoID", geoID) :
+                new ObjectParameter("GeoID", typeof(short));
+    
+            var lineaDireccion1Parameter = lineaDireccion1 != null ?
+                new ObjectParameter("LineaDireccion1", lineaDireccion1) :
+                new ObjectParameter("LineaDireccion1", typeof(string));
+    
+            var lineaDireccion2Parameter = lineaDireccion2 != null ?
+                new ObjectParameter("LineaDireccion2", lineaDireccion2) :
+                new ObjectParameter("LineaDireccion2", typeof(string));
+    
+            var lineaDireccion3Parameter = lineaDireccion3 != null ?
+                new ObjectParameter("LineaDireccion3", lineaDireccion3) :
+                new ObjectParameter("LineaDireccion3", typeof(string));
+    
+            var instruccionesParameter = instrucciones != null ?
+                new ObjectParameter("Instrucciones", instrucciones) :
+                new ObjectParameter("Instrucciones", typeof(string));
+    
+            var tipoDireccionIDParameter = tipoDireccionID.HasValue ?
+                new ObjectParameter("TipoDireccionID", tipoDireccionID) :
+                new ObjectParameter("TipoDireccionID", typeof(byte));
+    
+            var partyIDParameter = partyID != null ?
+                new ObjectParameter("PartyID", partyID) :
+                new ObjectParameter("PartyID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarDireccion", direccionIDParameter, geoIDParameter, lineaDireccion1Parameter, lineaDireccion2Parameter, lineaDireccion3Parameter, instruccionesParameter, tipoDireccionIDParameter, partyIDParameter);
         }
     
         public virtual int p_modificarMecanismo(string valorMecanismoNuevo, string valorMecanismo, Nullable<short> tipoMecanismoID, Nullable<short> mecanismoID, string partyID)
@@ -546,7 +698,7 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -556,10 +708,10 @@ namespace Entidad
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -569,7 +721,7 @@ namespace Entidad
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)

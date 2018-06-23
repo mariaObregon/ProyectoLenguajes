@@ -34,16 +34,24 @@ namespace Negocio
 
         public void AgregarUsuarioAdmin(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
                    String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
-                   short ShTipoMecanismo, String StrPartyID)
+                   short ShTipoMecanismo, String StrPartyID, short ShGeoID,
+                    String StrLineaDireccion1, String StrLineaDireccion2, String StrLineaDireccion3,
+                    String StrInstrucciones, Byte ByteTipoDireccionID)
         {
-            du.AgregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID);
+            du.AgregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido,
+                StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID, ShGeoID, StrLineaDireccion1,
+                StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
         }
 
         public void AgregarUsuarioCocina(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
                   String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
-                  short ShTipoMecanismo, String StrPartyID)
+                  short ShTipoMecanismo, String StrPartyID, short ShGeoID,
+                    String StrLineaDireccion1, String StrLineaDireccion2, String StrLineaDireccion3,
+                    String StrInstrucciones, Byte ByteTipoDireccionID)
         {
-            du.AgregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID);
+            du.AgregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña,
+                StrValorMecanismo, ShTipoMecanismo, StrPartyID ,ShGeoID, StrLineaDireccion1,
+                StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
         }
 
         public void ModificarUsuario(String StrPartyID, Byte ShTipoID)

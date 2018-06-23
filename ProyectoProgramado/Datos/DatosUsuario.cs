@@ -31,17 +31,24 @@ namespace Datos
         }
 
         public void AgregarUsuarioAdmin(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
-                    String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
-                    short ShTipoMecanismo, String StrPartyID)
+                    String StrSegundoApellido, String StrContraseña, String StrValorMecanismo, short ShTipoMecanismo, 
+                    String StrPartyID, short ShGeoID, String StrLineaDireccion1, String StrLineaDireccion2, 
+                    String StrLineaDireccion3, String StrInstrucciones, Byte ByteTipoDireccionID)
         {
-            datos.p_agregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID);
+            datos.p_agregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, 
+                StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID, ShGeoID, StrLineaDireccion1,
+                StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
         }
 
         public void AgregarUsuarioCocina(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
                    String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
-                   short ShTipoMecanismo, String StrPartyID)
+                   short ShTipoMecanismo, String StrPartyID, short ShGeoID, String StrLineaDireccion1, 
+                   String StrLineaDireccion2, String StrLineaDireccion3, String StrInstrucciones, 
+                   Byte ByteTipoDireccionID)
         {
-            datos.p_agregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID);
+            datos.p_agregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, 
+                StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID, ShGeoID, StrLineaDireccion1,
+                StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
         }
 
         public void ModificarUsuario(String StrPartyID, Byte ShTipoID)

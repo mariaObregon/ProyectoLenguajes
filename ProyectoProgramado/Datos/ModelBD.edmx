@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PedidosExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PedidosExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="PartyID" />
@@ -12,12 +12,34 @@
           <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="HabilitadoSN" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Direccion">
+          <Key>
+            <PropertyRef Name="DireccionID" />
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="DireccionID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LineaDireccion1" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LineaDireccion2" Type="nvarchar" MaxLength="100" />
+          <Property Name="LineaDireccion3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Instrucciones" Type="nvarchar" MaxLength="100" />
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GeoID" Type="smallint" Nullable="false" />
+          <Property Name="TipoDireccionID" Type="tinyint" Nullable="false" />
+        </EntityType>
         <EntityType Name="Estado">
           <Key>
             <PropertyRef Name="EstadoID" />
           </Key>
           <Property Name="EstadoID" Type="tinyint" Nullable="false" />
           <Property Name="DescripcionEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Geo">
+          <Key>
+            <PropertyRef Name="GeoID" />
+          </Key>
+          <Property Name="GeoID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescripcionGeo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GeoIDPrincipal" Type="smallint" />
         </EntityType>
         <EntityType Name="MecanismoContacto">
           <Key>
@@ -78,6 +100,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TipoDireccion">
+          <Key>
+            <PropertyRef Name="TipoDireccionID" />
+          </Key>
+          <Property Name="TipoDireccionID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="TipoMecanismo">
           <Key>
             <PropertyRef Name="TipoMecanismoID" />
@@ -100,6 +129,16 @@
           <Property Name="TipoID" Type="tinyint" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Cliente' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_Cliente">
+          <Key>
+            <PropertyRef Name="PartyID" />
+            <PropertyRef Name="HabilitadoSN" />
+          </Key>
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HabilitadoSN" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_Estado">
           <Key>
@@ -108,6 +147,88 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           </Key>
           <Property Name="EstadoID" Type="tinyint" Nullable="false" />
           <Property Name="DescripcionEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_MecanismoContacto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_MecanismoContacto">
+          <Key>
+            <PropertyRef Name="MecanismoID" />
+            <PropertyRef Name="TipoMecanismoID" />
+            <PropertyRef Name="Valor" />
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="MecanismoID" Type="smallint" Nullable="false" />
+          <Property Name="TipoMecanismoID" Type="smallint" Nullable="false" />
+          <Property Name="Valor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Party' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_Party">
+          <Key>
+            <PropertyRef Name="PartyID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Apellido1" />
+            <PropertyRef Name="Apellido2" />
+            <PropertyRef Name="Contraseña" />
+          </Key>
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SegundoNombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contraseña" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Pedido' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_Pedido">
+          <Key>
+            <PropertyRef Name="PedidoID" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="EstadoID" />
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="PedidoID" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="EstadoID" Type="tinyint" Nullable="false" />
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Platos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_Platos">
+          <Key>
+            <PropertyRef Name="PlatoID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Precio" />
+            <PropertyRef Name="HabilitadoSN" />
+          </Key>
+          <Property Name="PlatoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="Fotografia" Type="image" />
+          <Property Name="HabilitadoSN" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_TipoUsuario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_TipoUsuario">
+          <Key>
+            <PropertyRef Name="TipoID" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="TipoID" Type="tinyint" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_Usuario">
+          <Key>
+            <PropertyRef Name="PartyID" />
+            <PropertyRef Name="TipoID" />
+          </Key>
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TipoID" Type="tinyint" Nullable="false" />
         </EntityType>
         <Association Name="FK_Cliente_Party">
           <End Role="Party" Type="Self.Party" Multiplicity="1" />
@@ -118,6 +239,54 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             </Principal>
             <Dependent Role="Cliente">
               <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Direccion_Geo">
+          <End Role="Geo" Type="Self.Geo" Multiplicity="1" />
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geo">
+              <PropertyRef Name="GeoID" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="GeoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Direccion_Party">
+          <End Role="Party" Type="Self.Party" Multiplicity="1" />
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="PartyID" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Direccion_TipoDireccion">
+          <End Role="TipoDireccion" Type="Self.TipoDireccion" Multiplicity="1" />
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDireccion">
+              <PropertyRef Name="TipoDireccionID" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="TipoDireccionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Geo_Geo">
+          <End Role="Geo" Type="Self.Geo" Multiplicity="0..1" />
+          <End Role="Geo1" Type="Self.Geo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geo">
+              <PropertyRef Name="GeoID" />
+            </Principal>
+            <Dependent Role="Geo1">
+              <PropertyRef Name="GeoIDPrincipal" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -324,6 +493,21 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <Parameter Name="ValorMecanismoR" Type="varchar" Mode="In" />
           <Parameter Name="TipoMecanismoIDR" Type="smallint" Mode="In" />
           <Parameter Name="Habilitado" Type="bit" Mode="In" />
+          <Parameter Name="GeoID" Type="smallint" Mode="In" />
+          <Parameter Name="LineaDireccion1" Type="nvarchar" Mode="In" />
+          <Parameter Name="LineaDireccion2" Type="nvarchar" Mode="In" />
+          <Parameter Name="LineaDireccion3" Type="nvarchar" Mode="In" />
+          <Parameter Name="Instrucciones" Type="nvarchar" Mode="In" />
+          <Parameter Name="TipoDireccionID" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="p_agregarDireccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GeoID" Type="smallint" Mode="In" />
+          <Parameter Name="LineaDireccion1" Type="nvarchar" Mode="In" />
+          <Parameter Name="LineaDireccion2" Type="nvarchar" Mode="In" />
+          <Parameter Name="LineaDireccion3" Type="nvarchar" Mode="In" />
+          <Parameter Name="Instrucciones" Type="nvarchar" Mode="In" />
+          <Parameter Name="TipoDireccionID" Type="tinyint" Mode="In" />
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="p_agregarMecanismo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ValorMecanismo" Type="varchar" Mode="In" />
@@ -358,6 +542,12 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <Parameter Name="ValorMecanismoR" Type="varchar" Mode="In" />
           <Parameter Name="TipoMecanismoIDR" Type="smallint" Mode="In" />
           <Parameter Name="PartyIDR" Type="nvarchar" Mode="In" />
+          <Parameter Name="GeoID" Type="smallint" Mode="In" />
+          <Parameter Name="LineaDireccion1" Type="nvarchar" Mode="In" />
+          <Parameter Name="LineaDireccion2" Type="nvarchar" Mode="In" />
+          <Parameter Name="LineaDireccion3" Type="nvarchar" Mode="In" />
+          <Parameter Name="Instrucciones" Type="nvarchar" Mode="In" />
+          <Parameter Name="TipoDireccionID" Type="tinyint" Mode="In" />
         </Function>
         <Function Name="p_agregarUsuarioCocina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PrimerNombreR" Type="nvarchar" Mode="In" />
@@ -368,6 +558,12 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <Parameter Name="ValorMecanismoR" Type="varchar" Mode="In" />
           <Parameter Name="TipoMecanismoIDR" Type="smallint" Mode="In" />
           <Parameter Name="PartyIDR" Type="nvarchar" Mode="In" />
+          <Parameter Name="GeoID" Type="smallint" Mode="In" />
+          <Parameter Name="LineaDireccion1" Type="nvarchar" Mode="In" />
+          <Parameter Name="LineaDireccion2" Type="nvarchar" Mode="In" />
+          <Parameter Name="LineaDireccion3" Type="nvarchar" Mode="In" />
+          <Parameter Name="Instrucciones" Type="nvarchar" Mode="In" />
+          <Parameter Name="TipoDireccionID" Type="tinyint" Mode="In" />
         </Function>
         <Function Name="p_BloquearCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Habilitado" Type="bit" Mode="In" />
@@ -396,6 +592,16 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
         <Function Name="p_HabilitarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Habilitado" Type="bit" Mode="In" />
           <Parameter Name="PlatoID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="p_modificarDireccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DireccionID" Type="tinyint" Mode="In" />
+          <Parameter Name="GeoID" Type="smallint" Mode="In" />
+          <Parameter Name="LineaDireccion1" Type="nvarchar" Mode="In" />
+          <Parameter Name="LineaDireccion2" Type="nvarchar" Mode="In" />
+          <Parameter Name="LineaDireccion3" Type="nvarchar" Mode="In" />
+          <Parameter Name="Instrucciones" Type="nvarchar" Mode="In" />
+          <Parameter Name="TipoDireccionID" Type="tinyint" Mode="In" />
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="p_modificarMecanismo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ValorMecanismoNuevo" Type="varchar" Mode="In" />
@@ -460,25 +666,98 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="PedidosExpressModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Geo" EntityType="Self.Geo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MecanismoContacto" EntityType="Self.MecanismoContacto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PedidosRegistro" EntityType="Self.PedidosRegistro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plato" EntityType="Self.Plato" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDireccion" EntityType="Self.TipoDireccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoMecanismo" EntityType="Self.TipoMecanismo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_Cliente" EntityType="Self.v_Cliente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Cliente].[PartyID] AS [PartyID], 
+    [v_Cliente].[HabilitadoSN] AS [HabilitadoSN]
+    FROM [dbo].[v_Cliente] AS [v_Cliente]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_Estado" EntityType="Self.v_Estado" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_Estado].[EstadoID] AS [EstadoID], 
     [v_Estado].[DescripcionEstado] AS [DescripcionEstado]
     FROM [dbo].[v_Estado] AS [v_Estado]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_MecanismoContacto" EntityType="Self.v_MecanismoContacto" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_MecanismoContacto].[MecanismoID] AS [MecanismoID], 
+    [v_MecanismoContacto].[TipoMecanismoID] AS [TipoMecanismoID], 
+    [v_MecanismoContacto].[Valor] AS [Valor], 
+    [v_MecanismoContacto].[PartyID] AS [PartyID]
+    FROM [dbo].[v_MecanismoContacto] AS [v_MecanismoContacto]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Party" EntityType="Self.v_Party" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Party].[PartyID] AS [PartyID], 
+    [v_Party].[Nombre] AS [Nombre], 
+    [v_Party].[SegundoNombre] AS [SegundoNombre], 
+    [v_Party].[Apellido1] AS [Apellido1], 
+    [v_Party].[Apellido2] AS [Apellido2], 
+    [v_Party].[Contraseña] AS [Contraseña]
+    FROM [dbo].[v_Party] AS [v_Party]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Pedido" EntityType="Self.v_Pedido" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Pedido].[PedidoID] AS [PedidoID], 
+    [v_Pedido].[Fecha] AS [Fecha], 
+    [v_Pedido].[EstadoID] AS [EstadoID], 
+    [v_Pedido].[PartyID] AS [PartyID]
+    FROM [dbo].[v_Pedido] AS [v_Pedido]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Platos" EntityType="Self.v_Platos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Platos].[PlatoID] AS [PlatoID], 
+    [v_Platos].[Nombre] AS [Nombre], 
+    [v_Platos].[Descripcion] AS [Descripcion], 
+    [v_Platos].[Precio] AS [Precio], 
+    [v_Platos].[Fotografia] AS [Fotografia], 
+    [v_Platos].[HabilitadoSN] AS [HabilitadoSN]
+    FROM [dbo].[v_Platos] AS [v_Platos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_TipoUsuario" EntityType="Self.v_TipoUsuario" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_TipoUsuario].[TipoID] AS [TipoID], 
+    [v_TipoUsuario].[Descripcion] AS [Descripcion]
+    FROM [dbo].[v_TipoUsuario] AS [v_TipoUsuario]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Usuario" EntityType="Self.v_Usuario" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Usuario].[PartyID] AS [PartyID], 
+    [v_Usuario].[TipoID] AS [TipoID]
+    FROM [dbo].[v_Usuario] AS [v_Usuario]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Cliente_Party" Association="Self.FK_Cliente_Party">
             <End Role="Party" EntitySet="Party" />
             <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Direccion_Geo" Association="Self.FK_Direccion_Geo">
+            <End Role="Geo" EntitySet="Geo" />
+            <End Role="Direccion" EntitySet="Direccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Direccion_Party" Association="Self.FK_Direccion_Party">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="Direccion" EntitySet="Direccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Direccion_TipoDireccion" Association="Self.FK_Direccion_TipoDireccion">
+            <End Role="TipoDireccion" EntitySet="TipoDireccion" />
+            <End Role="Direccion" EntitySet="Direccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Geo_Geo" Association="Self.FK_Geo_Geo">
+            <End Role="Geo" EntitySet="Geo" />
+            <End Role="Geo1" EntitySet="Geo" />
           </AssociationSet>
           <AssociationSet Name="FK_MecanismoContacto_Party1" Association="Self.FK_MecanismoContacto_Party1">
             <End Role="Party" EntitySet="Party" />
@@ -513,7 +792,8 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PedidosExpressModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -572,6 +852,21 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <NavigationProperty Name="Party" Relationship="Self.FK_Cliente_Party" FromRole="Cliente" ToRole="Party" />
           <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Cliente" FromRole="Cliente" ToRole="Pedido" />
         </EntityType>
+        <EntityType Name="Direccion">
+          <Key>
+            <PropertyRef Name="DireccionID" />
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="DireccionID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LineaDireccion1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LineaDireccion2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LineaDireccion3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Instrucciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Geo" Relationship="Self.FK_Direccion_Geo" FromRole="Direccion" ToRole="Geo" />
+          <NavigationProperty Name="Party" Relationship="Self.FK_Direccion_Party" FromRole="Direccion" ToRole="Party" />
+          <NavigationProperty Name="TipoDireccion" Relationship="Self.FK_Direccion_TipoDireccion" FromRole="Direccion" ToRole="TipoDireccion" />
+        </EntityType>
         <EntityType Name="Estado">
           <Key>
             <PropertyRef Name="EstadoID" />
@@ -579,6 +874,16 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <Property Name="EstadoID" Type="Byte" Nullable="false" />
           <Property Name="DescripcionEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Estado" FromRole="Estado" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="Geo">
+          <Key>
+            <PropertyRef Name="GeoID" />
+          </Key>
+          <Property Name="GeoID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescripcionGeo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Direccion" Relationship="Self.FK_Direccion_Geo" FromRole="Geo" ToRole="Direccion" />
+          <NavigationProperty Name="Geo1" Relationship="Self.FK_Geo_Geo" FromRole="Geo" ToRole="Geo1" />
+          <NavigationProperty Name="Geo2" Relationship="Self.FK_Geo_Geo" FromRole="Geo1" ToRole="Geo" />
         </EntityType>
         <EntityType Name="MecanismoContacto">
           <Key>
@@ -601,6 +906,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Party" FromRole="Party" ToRole="Cliente" />
+          <NavigationProperty Name="Direccion" Relationship="Self.FK_Direccion_Party" FromRole="Party" ToRole="Direccion" />
           <NavigationProperty Name="MecanismoContacto" Relationship="Self.FK_MecanismoContacto_Party1" FromRole="Party" ToRole="MecanismoContacto" />
           <NavigationProperty Name="TipoUsuario" Relationship="Self.Usuario" FromRole="Party" ToRole="TipoUsuario" />
         </EntityType>
@@ -636,6 +942,14 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="TipoDireccion">
+          <Key>
+            <PropertyRef Name="TipoDireccionID" />
+          </Key>
+          <Property Name="TipoDireccionID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Direccion" Relationship="Self.FK_Direccion_TipoDireccion" FromRole="TipoDireccion" ToRole="Direccion" />
+        </EntityType>
         <EntityType Name="TipoMecanismo">
           <Key>
             <PropertyRef Name="TipoMecanismoID" />
@@ -651,6 +965,92 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <Property Name="TipoID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Party" Relationship="Self.Usuario" FromRole="TipoUsuario" ToRole="Party" />
+        </EntityType>
+        <EntityType Name="v_Cliente">
+          <Key>
+            <PropertyRef Name="PartyID" />
+            <PropertyRef Name="HabilitadoSN" />
+          </Key>
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HabilitadoSN" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_Estado">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+            <PropertyRef Name="DescripcionEstado" />
+          </Key>
+          <Property Name="EstadoID" Type="Byte" Nullable="false" />
+          <Property Name="DescripcionEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_MecanismoContacto">
+          <Key>
+            <PropertyRef Name="MecanismoID" />
+            <PropertyRef Name="TipoMecanismoID" />
+            <PropertyRef Name="Valor" />
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="MecanismoID" Type="Int16" Nullable="false" />
+          <Property Name="TipoMecanismoID" Type="Int16" Nullable="false" />
+          <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_Party">
+          <Key>
+            <PropertyRef Name="PartyID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Apellido1" />
+            <PropertyRef Name="Apellido2" />
+            <PropertyRef Name="Contraseña" />
+          </Key>
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_Pedido">
+          <Key>
+            <PropertyRef Name="PedidoID" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="EstadoID" />
+            <PropertyRef Name="PartyID" />
+          </Key>
+          <Property Name="PedidoID" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EstadoID" Type="Byte" Nullable="false" />
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_Platos">
+          <Key>
+            <PropertyRef Name="PlatoID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Precio" />
+            <PropertyRef Name="HabilitadoSN" />
+          </Key>
+          <Property Name="PlatoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Fotografia" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="HabilitadoSN" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_TipoUsuario">
+          <Key>
+            <PropertyRef Name="TipoID" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="TipoID" Type="Byte" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_Usuario">
+          <Key>
+            <PropertyRef Name="PartyID" />
+            <PropertyRef Name="TipoID" />
+          </Key>
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoID" Type="Byte" Nullable="false" />
         </EntityType>
         <Association Name="FK_Cliente_Party">
           <End Role="Party" Type="Self.Party" Multiplicity="1" />
@@ -668,9 +1068,33 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
         </Association>
+        <Association Name="FK_Direccion_Geo">
+          <End Role="Geo" Type="Self.Geo" Multiplicity="1" />
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Direccion_Party">
+          <End Role="Party" Type="Self.Party" Multiplicity="1" />
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="PartyID" />
+            </Principal>
+            <Dependent Role="Direccion">
+              <PropertyRef Name="PartyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Direccion_TipoDireccion">
+          <End Role="TipoDireccion" Type="Self.TipoDireccion" Multiplicity="1" />
+          <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+        </Association>
         <Association Name="FK_Pedido_Estado">
           <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Geo_Geo">
+          <End Role="Geo" Type="Self.Geo" Multiplicity="0..1" />
+          <End Role="Geo1" Type="Self.Geo" Multiplicity="*" />
         </Association>
         <Association Name="FK_MecanismoContacto_Party1">
           <End Role="Party" Type="Self.Party" Multiplicity="1" />
@@ -690,14 +1114,25 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
         </Association>
         <EntityContainer Name="PedidosExpressEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Direccion" EntityType="Self.Direccion" />
           <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Geo" EntityType="Self.Geo" />
           <EntitySet Name="MecanismoContacto" EntityType="Self.MecanismoContacto" />
           <EntitySet Name="Party" EntityType="Self.Party" />
           <EntitySet Name="Pedido" EntityType="Self.Pedido" />
           <EntitySet Name="Plato" EntityType="Self.Plato" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TipoDireccion" EntityType="Self.TipoDireccion" />
           <EntitySet Name="TipoMecanismo" EntityType="Self.TipoMecanismo" />
           <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
+          <EntitySet Name="v_Cliente" EntityType="Self.v_Cliente" />
+          <EntitySet Name="v_Estado" EntityType="Self.v_Estado" />
+          <EntitySet Name="v_MecanismoContacto" EntityType="Self.v_MecanismoContacto" />
+          <EntitySet Name="v_Party" EntityType="Self.v_Party" />
+          <EntitySet Name="v_Pedido" EntityType="Self.v_Pedido" />
+          <EntitySet Name="v_Platos" EntityType="Self.v_Platos" />
+          <EntitySet Name="v_TipoUsuario" EntityType="Self.v_TipoUsuario" />
+          <EntitySet Name="v_Usuario" EntityType="Self.v_Usuario" />
           <AssociationSet Name="FK_Cliente_Party" Association="Self.FK_Cliente_Party">
             <End Role="Party" EntitySet="Party" />
             <End Role="Cliente" EntitySet="Cliente" />
@@ -706,9 +1141,25 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Pedido" EntitySet="Pedido" />
           </AssociationSet>
+          <AssociationSet Name="FK_Direccion_Geo" Association="Self.FK_Direccion_Geo">
+            <End Role="Geo" EntitySet="Geo" />
+            <End Role="Direccion" EntitySet="Direccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Direccion_Party" Association="Self.FK_Direccion_Party">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="Direccion" EntitySet="Direccion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Direccion_TipoDireccion" Association="Self.FK_Direccion_TipoDireccion">
+            <End Role="TipoDireccion" EntitySet="TipoDireccion" />
+            <End Role="Direccion" EntitySet="Direccion" />
+          </AssociationSet>
           <AssociationSet Name="FK_Pedido_Estado" Association="Self.FK_Pedido_Estado">
             <End Role="Estado" EntitySet="Estado" />
             <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Geo_Geo" Association="Self.FK_Geo_Geo">
+            <End Role="Geo" EntitySet="Geo" />
+            <End Role="Geo1" EntitySet="Geo" />
           </AssociationSet>
           <AssociationSet Name="FK_MecanismoContacto_Party1" Association="Self.FK_MecanismoContacto_Party1">
             <End Role="Party" EntitySet="Party" />
@@ -727,22 +1178,22 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             <End Role="TipoUsuario" EntitySet="TipoUsuario" />
           </AssociationSet>
           <FunctionImport Name="f_buscarPlatoID" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarPlatoID_Result)">
-          <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_buscarPlatoNombre" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarPlatoNombre_Result)">
-          <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_buscarUsuarioID" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarUsuarioID_Result)">
-          <Parameter Name="PartyID" Mode="In" Type="String" />
+            <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_buscarUsuarioNombre" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarUsuarioNombre_Result)">
-          <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoCliente" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoCliente_Result)">
-          <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoEstado" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoEstado_Result)">
-          <Parameter Name="Estado" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoFecha" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoFecha_Result)">
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
@@ -758,6 +1209,21 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             <Parameter Name="ValorMecanismoR" Mode="In" Type="String" />
             <Parameter Name="TipoMecanismoIDR" Mode="In" Type="Int16" />
             <Parameter Name="Habilitado" Mode="In" Type="Boolean" />
+            <Parameter Name="GeoID" Mode="In" Type="Int16" />
+            <Parameter Name="LineaDireccion1" Mode="In" Type="String" />
+            <Parameter Name="LineaDireccion2" Mode="In" Type="String" />
+            <Parameter Name="LineaDireccion3" Mode="In" Type="String" />
+            <Parameter Name="Instrucciones" Mode="In" Type="String" />
+            <Parameter Name="TipoDireccionID" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="p_agregarDireccion">
+            <Parameter Name="GeoID" Mode="In" Type="Int16" />
+            <Parameter Name="LineaDireccion1" Mode="In" Type="String" />
+            <Parameter Name="LineaDireccion2" Mode="In" Type="String" />
+            <Parameter Name="LineaDireccion3" Mode="In" Type="String" />
+            <Parameter Name="Instrucciones" Mode="In" Type="String" />
+            <Parameter Name="TipoDireccionID" Mode="In" Type="Byte" />
+            <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="p_agregarMecanismo">
             <Parameter Name="ValorMecanismo" Mode="In" Type="String" />
@@ -792,6 +1258,12 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             <Parameter Name="ValorMecanismoR" Mode="In" Type="String" />
             <Parameter Name="TipoMecanismoIDR" Mode="In" Type="Int16" />
             <Parameter Name="PartyIDR" Mode="In" Type="String" />
+            <Parameter Name="GeoID" Mode="In" Type="Int16" />
+            <Parameter Name="LineaDireccion1" Mode="In" Type="String" />
+            <Parameter Name="LineaDireccion2" Mode="In" Type="String" />
+            <Parameter Name="LineaDireccion3" Mode="In" Type="String" />
+            <Parameter Name="Instrucciones" Mode="In" Type="String" />
+            <Parameter Name="TipoDireccionID" Mode="In" Type="Byte" />
           </FunctionImport>
           <FunctionImport Name="p_agregarUsuarioCocina">
             <Parameter Name="PrimerNombreR" Mode="In" Type="String" />
@@ -802,6 +1274,12 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             <Parameter Name="ValorMecanismoR" Mode="In" Type="String" />
             <Parameter Name="TipoMecanismoIDR" Mode="In" Type="Int16" />
             <Parameter Name="PartyIDR" Mode="In" Type="String" />
+            <Parameter Name="GeoID" Mode="In" Type="Int16" />
+            <Parameter Name="LineaDireccion1" Mode="In" Type="String" />
+            <Parameter Name="LineaDireccion2" Mode="In" Type="String" />
+            <Parameter Name="LineaDireccion3" Mode="In" Type="String" />
+            <Parameter Name="Instrucciones" Mode="In" Type="String" />
+            <Parameter Name="TipoDireccionID" Mode="In" Type="Byte" />
           </FunctionImport>
           <FunctionImport Name="p_BloquearCliente">
             <Parameter Name="Habilitado" Mode="In" Type="Boolean" />
@@ -830,6 +1308,16 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <FunctionImport Name="p_HabilitarPlato">
             <Parameter Name="Habilitado" Mode="In" Type="Boolean" />
             <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="p_modificarDireccion">
+            <Parameter Name="DireccionID" Mode="In" Type="Byte" />
+            <Parameter Name="GeoID" Mode="In" Type="Int16" />
+            <Parameter Name="LineaDireccion1" Mode="In" Type="String" />
+            <Parameter Name="LineaDireccion2" Mode="In" Type="String" />
+            <Parameter Name="LineaDireccion3" Mode="In" Type="String" />
+            <Parameter Name="Instrucciones" Mode="In" Type="String" />
+            <Parameter Name="TipoDireccionID" Mode="In" Type="Byte" />
+            <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="p_modificarMecanismo">
             <Parameter Name="ValorMecanismoNuevo" Mode="In" Type="String" />
@@ -878,11 +1366,11 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PedidosExpressModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PedidosExpressModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -892,16 +1380,18 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="v_Estado" EntityType="PedidosExpressModel.v_Estado" />
         </EntityContainer>
-        <EntityType Name="v_Estado">
-          <Key>
-            <PropertyRef Name="EstadoID" />
-            <PropertyRef Name="DescripcionEstado" />
-          </Key>
-          <Property Name="EstadoID" Type="Byte" Nullable="false" />
-          <Property Name="DescripcionEstado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -916,11 +1406,31 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Direccion">
+            <EntityTypeMapping TypeName="PedidosExpressModel.Direccion">
+              <MappingFragment StoreEntitySet="Direccion">
+                <ScalarProperty Name="DireccionID" ColumnName="DireccionID" />
+                <ScalarProperty Name="LineaDireccion1" ColumnName="LineaDireccion1" />
+                <ScalarProperty Name="LineaDireccion2" ColumnName="LineaDireccion2" />
+                <ScalarProperty Name="LineaDireccion3" ColumnName="LineaDireccion3" />
+                <ScalarProperty Name="Instrucciones" ColumnName="Instrucciones" />
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Estado">
             <EntityTypeMapping TypeName="PedidosExpressModel.Estado">
               <MappingFragment StoreEntitySet="Estado">
                 <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
                 <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geo">
+            <EntityTypeMapping TypeName="PedidosExpressModel.Geo">
+              <MappingFragment StoreEntitySet="Geo">
+                <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+                <ScalarProperty Name="DescripcionGeo" ColumnName="DescripcionGeo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -975,6 +1485,14 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TipoDireccion">
+            <EntityTypeMapping TypeName="PedidosExpressModel.TipoDireccion">
+              <MappingFragment StoreEntitySet="TipoDireccion">
+                <ScalarProperty Name="TipoDireccionID" ColumnName="TipoDireccionID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TipoMecanismo">
             <EntityTypeMapping TypeName="PedidosExpressModel.TipoMecanismo">
               <MappingFragment StoreEntitySet="TipoMecanismo">
@@ -991,12 +1509,106 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="v_Cliente">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_Cliente">
+              <MappingFragment StoreEntitySet="v_Cliente">
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+                <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Estado">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_Estado">
+              <MappingFragment StoreEntitySet="v_Estado">
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_MecanismoContacto">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_MecanismoContacto">
+              <MappingFragment StoreEntitySet="v_MecanismoContacto">
+                <ScalarProperty Name="MecanismoID" ColumnName="MecanismoID" />
+                <ScalarProperty Name="TipoMecanismoID" ColumnName="TipoMecanismoID" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Party">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_Party">
+              <MappingFragment StoreEntitySet="v_Party">
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Pedido">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_Pedido">
+              <MappingFragment StoreEntitySet="v_Pedido">
+                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Platos">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_Platos">
+              <MappingFragment StoreEntitySet="v_Platos">
+                <ScalarProperty Name="PlatoID" ColumnName="PlatoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+                <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_TipoUsuario">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_TipoUsuario">
+              <MappingFragment StoreEntitySet="v_TipoUsuario">
+                <ScalarProperty Name="TipoID" ColumnName="TipoID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Usuario">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_Usuario">
+              <MappingFragment StoreEntitySet="v_Usuario">
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+                <ScalarProperty Name="TipoID" ColumnName="TipoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="FK_Pedido_Cliente" TypeName="PedidosExpressModel.FK_Pedido_Cliente" StoreEntitySet="Pedido">
             <EndProperty Name="Cliente">
               <ScalarProperty Name="PartyID" ColumnName="PartyID" />
             </EndProperty>
             <EndProperty Name="Pedido">
               <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Direccion_Geo" TypeName="PedidosExpressModel.FK_Direccion_Geo" StoreEntitySet="Direccion">
+            <EndProperty Name="Geo">
+              <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+            </EndProperty>
+            <EndProperty Name="Direccion">
+              <ScalarProperty Name="DireccionID" ColumnName="DireccionID" />
+              <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Direccion_TipoDireccion" TypeName="PedidosExpressModel.FK_Direccion_TipoDireccion" StoreEntitySet="Direccion">
+            <EndProperty Name="TipoDireccion">
+              <ScalarProperty Name="TipoDireccionID" ColumnName="TipoDireccionID" />
+            </EndProperty>
+            <EndProperty Name="Direccion">
+              <ScalarProperty Name="DireccionID" ColumnName="DireccionID" />
+              <ScalarProperty Name="PartyID" ColumnName="PartyID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Pedido_Estado" TypeName="PedidosExpressModel.FK_Pedido_Estado" StoreEntitySet="Pedido">
@@ -1006,6 +1618,15 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             <EndProperty Name="Pedido">
               <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
             </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Geo_Geo" TypeName="PedidosExpressModel.FK_Geo_Geo" StoreEntitySet="Geo">
+            <EndProperty Name="Geo">
+              <ScalarProperty Name="GeoID" ColumnName="GeoIDPrincipal" />
+            </EndProperty>
+            <EndProperty Name="Geo1">
+              <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="GeoIDPrincipal" />
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_MecanismoContacto_Party1" TypeName="PedidosExpressModel.FK_MecanismoContacto_Party1" StoreEntitySet="MecanismoContacto">
             <EndProperty Name="Party">
@@ -1116,6 +1737,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="p_agregarCliente" FunctionName="PedidosExpressModel.Store.p_agregarCliente" />
+          <FunctionImportMapping FunctionImportName="p_agregarDireccion" FunctionName="PedidosExpressModel.Store.p_agregarDireccion" />
           <FunctionImportMapping FunctionImportName="p_agregarMecanismo" FunctionName="PedidosExpressModel.Store.p_agregarMecanismo" />
           <FunctionImportMapping FunctionImportName="p_agregarParty" FunctionName="PedidosExpressModel.Store.p_agregarParty" />
           <FunctionImportMapping FunctionImportName="p_agregarPlato" FunctionName="PedidosExpressModel.Store.p_agregarPlato" />
@@ -1129,6 +1751,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <FunctionImportMapping FunctionImportName="p_EliminarPlato" FunctionName="PedidosExpressModel.Store.p_EliminarPlato" />
           <FunctionImportMapping FunctionImportName="p_EliminarUsuario" FunctionName="PedidosExpressModel.Store.p_EliminarUsuario" />
           <FunctionImportMapping FunctionImportName="p_HabilitarPlato" FunctionName="PedidosExpressModel.Store.p_HabilitarPlato" />
+          <FunctionImportMapping FunctionImportName="p_modificarDireccion" FunctionName="PedidosExpressModel.Store.p_modificarDireccion" />
           <FunctionImportMapping FunctionImportName="p_modificarMecanismo" FunctionName="PedidosExpressModel.Store.p_modificarMecanismo" />
           <FunctionImportMapping FunctionImportName="p_modificarParty" FunctionName="PedidosExpressModel.Store.p_modificarParty" />
           <FunctionImportMapping FunctionImportName="p_modificarPlato" FunctionName="PedidosExpressModel.Store.p_modificarPlato" />
@@ -1137,18 +1760,27 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PedidosExpressModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PedidosExpressModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PedidosExpressModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PedidosExpressModel.Store.sp_helpdiagramdefinition" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PedidosExpressModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PedidosExpressModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PedidosExpressModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PedidosExpressModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PedidosExpressModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="v_Estado">
-            <EntityTypeMapping TypeName="PedidosExpressModel.v_Estado">
-              <MappingFragment StoreEntitySet="v_Estado">
-                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
-                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

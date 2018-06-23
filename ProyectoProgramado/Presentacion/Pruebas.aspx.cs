@@ -31,12 +31,12 @@ namespace Presentacion
 
         protected void AgregarAdmin_Click(object sender, EventArgs e)
         {
-            lu.AgregarUsuarioAdmin("Pedro", null, "Arguedas", "Barrantes", "123", "Heredia", 1, "pedro.arguedas");
+            //lu.AgregarUsuarioAdmin("Pedro", null, "Arguedas", "Barrantes", "123", "Heredia", 1, "pedro.arguedas");
         }
 
         protected void AgregarCocina_Click(object sender, EventArgs e)
         {
-            lu.AgregarUsuarioCocina("Stefano", null, "Maietta", "Bolivar", "123", "San Jose", 1, "stefano.maietta");
+           // lu.AgregarUsuarioCocina("Stefano", null, "Maietta", "Bolivar", "123", "San Jose", 1, "stefano.maietta");
         }
 
         protected void ModificarPlato_Click(object sender, EventArgs e)
