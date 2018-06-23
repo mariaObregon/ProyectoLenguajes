@@ -23,9 +23,9 @@ namespace Presentacion
         {
 
             byte[] newB = lp.ConvertirImagenBinario(InsertarImagenPlato);
-
-            //lp.agregarPlato(txtNombrePlato.Text,txtDescPlato.Text,Decimal.Parse(txtPrecioPlato.Text),newB, lp.estadoHabilitado(DropDownList1.SelectedValue));
-            lp.AgregarPlato("Casado","Arroz y chuleta",3000,null, false);
+            
+            lp.AgregarPlato(txtNombrePlato.Text,txtDescPlato.Text,Decimal.Parse(txtPrecioPlato.Text),newB, lp.EstadoHabilitado(DropDownList1.SelectedValue));
+          
 
         }
 
