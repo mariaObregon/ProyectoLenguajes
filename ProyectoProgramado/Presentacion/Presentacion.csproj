@@ -76,6 +76,7 @@
   <ItemGroup>
     <Content Include="AdministracionPedidos.aspx" />
     <Content Include="AgregarUsuarioCliente.aspx" />
+    <Content Include="EstadoPedido.aspx" />
     <Content Include="Imagenes\kit2.jpg" />
     <Content Include="Imagenes\logo.png" />
     <Content Include="MenuAdmin.aspx" />
@@ -97,6 +98,13 @@
     </Compile>
     <Compile Include="AgregarUsuarioCliente.aspx.designer.cs">
       <DependentUpon>AgregarUsuarioCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoPedido.aspx.cs">
+      <DependentUpon>EstadoPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EstadoPedido.aspx.designer.cs">
+      <DependentUpon>EstadoPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="MenuAdmin.aspx.cs">
       <DependentUpon>MenuAdmin.aspx</DependentUpon>
