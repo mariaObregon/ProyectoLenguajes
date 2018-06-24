@@ -446,6 +446,19 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="f_LineasPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Cantidad" Type="smallint" />
+                <Property Name="Precio" Type="money" />
+                <Property Name="DescripcionEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="f_pedido_Fecha_Cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaInicio" Type="date" Mode="In" />
           <Parameter Name="FechaFinal" Type="date" Mode="In" />
@@ -455,6 +468,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               <RowType>
                 <Property Name="PedidoID" Type="int" Nullable="false" />
                 <Property Name="Fecha" Type="date" Nullable="false" />
+                <Property Name="EstadoID" Type="tinyint" Nullable="false" />
                 <Property Name="Cliente" Type="nvarchar" MaxLength="152" Nullable="false" />
               </RowType>
             </CollectionType>
@@ -467,6 +481,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               <RowType>
                 <Property Name="PedidoID" Type="int" Nullable="false" />
                 <Property Name="Fecha" Type="date" Nullable="false" />
+                <Property Name="EstadoID" Type="tinyint" Nullable="false" />
                 <Property Name="Cliente" Type="nvarchar" MaxLength="152" Nullable="false" />
               </RowType>
             </CollectionType>
@@ -538,6 +553,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               <RowType>
                 <Property Name="PedidoID" Type="int" Nullable="false" />
                 <Property Name="Fecha" Type="date" Nullable="false" />
+                <Property Name="DescripcionEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
                 <Property Name="Cliente" Type="nvarchar" MaxLength="152" Nullable="false" />
               </RowType>
             </CollectionType>
@@ -1456,6 +1472,9 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <End Role="Pedido" EntitySet="Pedido" />
             <End Role="Plato" EntitySet="Plato" />
           </AssociationSet>
+          <FunctionImport Name="f_LineasPedido" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_LineasPedido_Result)">
+          <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1495,6 +1514,12 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <End Type="PedidosExpressModel.Pedido" Role="Pedido" Multiplicity="*" />
           <End Type="PedidosExpressModel.Plato" Role="Plato" Multiplicity="*" />
         </Association>
+        <ComplexType Name="f_LineasPedido_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Int16" Name="Cantidad" Nullable="true" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="19" Scale="4" />
+          <Property Type="String" Name="DescripcionEstado" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1912,6 +1937,16 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
                 <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_LineasPedido" FunctionName="PedidosExpressModel.Store.f_LineasPedido">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_LineasPedido_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

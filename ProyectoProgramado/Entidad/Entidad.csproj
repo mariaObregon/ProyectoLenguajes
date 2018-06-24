@@ -61,6 +61,9 @@
     <Compile Include="f_buscarUsuarioNombre_Result.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="f_LineasPedido_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="f_pedidoCliente_Result.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>

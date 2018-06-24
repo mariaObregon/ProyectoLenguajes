@@ -817,5 +817,15 @@ namespace Entidad
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidoEstado_Fecha_Result>("[PedidosExpressEntities].[f_pedidoEstado_Fecha](@Estado, @FechaInicio, @FechaFinal)", estadoParameter, fechaInicioParameter, fechaFinalParameter);
         }
+    
+        [DbFunction("PedidosExpressEntities", "f_LineasPedido")]
+        public virtual IQueryable<f_LineasPedido_Result> f_LineasPedido(Nullable<int> pedidoID)
+        {
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_LineasPedido_Result>("[PedidosExpressEntities].[f_LineasPedido](@PedidoID)", pedidoIDParameter);
+        }
     }
 }
