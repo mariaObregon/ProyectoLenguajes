@@ -10,12 +10,16 @@
 namespace Entidad
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class f_pedido_Fecha_Cliente_Result
+    public partial class LineaPedido
     {
+        public int PlatoID { get; set; }
         public int PedidoID { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public byte EstadoID { get; set; }
-        public string Cliente { get; set; }
+        public Nullable<short> Cantidad { get; set; }
+        public Nullable<decimal> Precio { get; set; }
+    
+        public virtual Pedido Pedido { get; set; }
+        public virtual Plato Plato { get; set; }
     }
 }

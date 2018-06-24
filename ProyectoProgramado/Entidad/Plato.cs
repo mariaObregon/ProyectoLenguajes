@@ -17,7 +17,7 @@ namespace Entidad
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Plato()
         {
-            this.Pedido1 = new HashSet<Pedido>();
+            this.LineaPedido = new HashSet<LineaPedido>();
         }
     
         public int PlatoID { get; set; }
@@ -28,6 +28,6 @@ namespace Entidad
         public bool HabilitadoSN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido> Pedido1 { get; set; }
+        public virtual ICollection<LineaPedido> LineaPedido { get; set; }
     }
 }

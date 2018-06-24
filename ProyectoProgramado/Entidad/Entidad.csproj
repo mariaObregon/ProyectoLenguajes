@@ -88,6 +88,9 @@
     <Compile Include="Geo.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="LineaPedido.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="MecanismoContacto.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
