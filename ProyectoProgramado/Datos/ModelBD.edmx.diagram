@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d19560471d4141958c86284c1dd880f2" Name="Diagram1">
+      <Diagram DiagramId="d19560471d4141958c86284c1dd880f2" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="PedidosExpressModel.Cliente" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.Direccion" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.Estado" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
@@ -34,8 +34,8 @@
         <AssociationConnector Association="PedidosExpressModel.FK_Geo_Geo" ManuallyRouted="false" />
         <AssociationConnector Association="PedidosExpressModel.FK_MecanismoContacto_Party1" ManuallyRouted="false" />
         <AssociationConnector Association="PedidosExpressModel.FK_MecanismoContacto_TipoMecanismo" ManuallyRouted="false" />
-        <AssociationConnector Association="PedidosExpressModel.PedidosRegistro" ManuallyRouted="false" />
         <AssociationConnector Association="PedidosExpressModel.Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosExpressModel.LineaPedido" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

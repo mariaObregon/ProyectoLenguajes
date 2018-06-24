@@ -745,5 +745,77 @@ namespace Entidad
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        [DbFunction("PedidosExpressEntities", "f_pedido_Fecha_Cliente")]
+        public virtual IQueryable<f_pedido_Fecha_Cliente_Result> f_pedido_Fecha_Cliente(Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFinal, string nombre)
+        {
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(System.DateTime));
+    
+            var fechaFinalParameter = fechaFinal.HasValue ?
+                new ObjectParameter("FechaFinal", fechaFinal) :
+                new ObjectParameter("FechaFinal", typeof(System.DateTime));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedido_Fecha_Cliente_Result>("[PedidosExpressEntities].[f_pedido_Fecha_Cliente](@FechaInicio, @FechaFinal, @Nombre)", fechaInicioParameter, fechaFinalParameter, nombreParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_pedidoEstado_Cliente")]
+        public virtual IQueryable<f_pedidoEstado_Cliente_Result> f_pedidoEstado_Cliente(Nullable<int> estado, string nombre)
+        {
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidoEstado_Cliente_Result>("[PedidosExpressEntities].[f_pedidoEstado_Cliente](@Estado, @Nombre)", estadoParameter, nombreParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_pedidoEstado_Cliente_Fecha")]
+        public virtual IQueryable<f_pedidoEstado_Cliente_Fecha_Result> f_pedidoEstado_Cliente_Fecha(Nullable<int> estado, string nombre, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFinal)
+        {
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(System.DateTime));
+    
+            var fechaFinalParameter = fechaFinal.HasValue ?
+                new ObjectParameter("FechaFinal", fechaFinal) :
+                new ObjectParameter("FechaFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidoEstado_Cliente_Fecha_Result>("[PedidosExpressEntities].[f_pedidoEstado_Cliente_Fecha](@Estado, @Nombre, @FechaInicio, @FechaFinal)", estadoParameter, nombreParameter, fechaInicioParameter, fechaFinalParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_pedidoEstado_Fecha")]
+        public virtual IQueryable<f_pedidoEstado_Fecha_Result> f_pedidoEstado_Fecha(Nullable<int> estado, Nullable<System.DateTime> fechaInicio, Nullable<System.DateTime> fechaFinal)
+        {
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(int));
+    
+            var fechaInicioParameter = fechaInicio.HasValue ?
+                new ObjectParameter("FechaInicio", fechaInicio) :
+                new ObjectParameter("FechaInicio", typeof(System.DateTime));
+    
+            var fechaFinalParameter = fechaFinal.HasValue ?
+                new ObjectParameter("FechaFinal", fechaFinal) :
+                new ObjectParameter("FechaFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidoEstado_Fecha_Result>("[PedidosExpressEntities].[f_pedidoEstado_Fecha](@Estado, @FechaInicio, @FechaFinal)", estadoParameter, fechaInicioParameter, fechaFinalParameter);
+        }
     }
 }

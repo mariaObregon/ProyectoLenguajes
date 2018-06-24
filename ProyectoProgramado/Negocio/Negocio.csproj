@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filtros.cs" />
     <Compile Include="LogicaCliente.cs" />
     <Compile Include="LogicaGeneral.cs" />
     <Compile Include="LogicaPedido.cs" />

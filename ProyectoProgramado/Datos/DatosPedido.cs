@@ -31,6 +31,27 @@ namespace Datos
             return datos.f_pedidoEstado(estadoPedido).ToList();
         }
 
+        public List<f_pedidoEstado_Fecha_Result> PedidoPorEstadoYFecha(int estadoPedido, DateTime fechaInicioo, DateTime fechaFin)
+        {
+            return datos.f_pedidoEstado_Fecha(estadoPedido, fechaInicioo, fechaFin).ToList();
+        }
+
+        public List<f_pedidoEstado_Cliente_Result> PedidoPorEstadoYCliente(int estadoPedido, String nombreCliente )
+        {
+            return datos.f_pedidoEstado_Cliente(estadoPedido, nombreCliente).ToList();
+        }
+
+
+        public List<f_pedido_Fecha_Cliente_Result> PedidoPorClienteYFecha(String nombreCliente, DateTime fechaInicioo, DateTime fechaFin)
+        {
+            return datos.f_pedido_Fecha_Cliente(fechaInicioo, fechaFin, nombreCliente).ToList();
+        }
+
+        public List<f_pedidoEstado_Cliente_Fecha_Result> PedidoPorClienteYFechaYEstado(String nombreCliente, DateTime fechaInicioo, DateTime fechaFin, int estadoPedido)
+        {
+            return datos.f_pedidoEstado_Cliente_Fecha(estadoPedido, nombreCliente,fechaInicioo, fechaFin ).ToList();
+        }
+
         public List<v_Estado> MostrarEstados()
         {
             return datos.v_Estado.ToList();

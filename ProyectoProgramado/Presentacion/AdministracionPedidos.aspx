@@ -1,15 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="AdministracionPedidos.aspx.cs" Inherits="Presentacion.AdministracionPedidos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .auto-style4 {
-            width: 120px;
-        }
-    .auto-style16 {
+        .auto-style16 {
         width: 219px;
     }
     .auto-style17 {
-        width: 437px;
-    }
+            width: 626px;
+        }
     .auto-style18 {
         height: 211px;
     }
@@ -17,15 +14,64 @@
         width: 219px;
         height: 211px;
     }
-    .auto-style20 {
-        width: 437px;
-        height: 211px;
-    }
+        .auto-style21 {
+            width: 300px;
+        }
+        .auto-style22 {
+            width: 300px;
+            height: 211px;
+        }
+        .auto-style23 {
+            margin-left: 0px;
+        }
+        .auto-style24 {
+            width: 1118px;
+        }
     </style>
+
+
+
+
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <table>
+            <tr>
+                <td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Habilite los filtros que desea utilizar:&nbsp;</td>
+    
+            </tr>
+            <tr>
+                <td>
+&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label5" runat="server" Text="Nombre"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="Nombre" runat="server" OnClick="Nombre_Click" Text="Habilitar" />
+                </td>
+                <td>&nbsp;</td>
+                <td class="auto-style16">
+&nbsp;&nbsp;<asp:Label ID="Label6" runat="server" Text="Fecha"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="Fecha" runat="server" Text="Habilitar" OnClick="Fecha_Click" />
+                </td>
+                <td>&nbsp;</td>
+                <td colspan="2">
+&nbsp;&nbsp;&nbsp;<asp:Label ID="Label7" runat="server" Text="Estado"></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Estadoo" runat="server" Text="Habilitar" OnClick="Estadoo_Click" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="Button4" runat="server" Text="Buscar" CssClass="auto-style23" OnClick="Button4_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="auto-style16">
+                    &nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="auto-style21">
+                    &nbsp;</td>
+                <td class="auto-style24">&nbsp;</td>
+            </tr>
             <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Label ID="Label1" runat="server" CssClass="auto-style1" ForeColor="#584545" Text="Nombre del cliente"></asp:Label>
@@ -35,20 +81,17 @@
                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
-                <td>
-                <asp:Button ID="Button1" runat="server" BackColor="#FFF29D" CssClass="auto-style4" OnClick="Button1_Click" Text="Buscar por cliente" />
-                </td>
-                <td>&nbsp;</td>
-                <td class="auto-style17">&nbsp;</td>
+                <td class="auto-style21">
+                    &nbsp;</td>
+                <td class="auto-style24">&nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td class="auto-style16">&nbsp;</td>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td class="auto-style17">&nbsp;</td>
+                <td class="auto-style21">&nbsp;</td>
+                <td class="auto-style24">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -61,11 +104,9 @@
                 <asp:Calendar ID="Calendar2" runat="server" CssClass="auto-style1" ForeColor="#584545" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
                 </td>
                 <td class="auto-style18">&nbsp;&nbsp;&nbsp; &nbsp;</td>
-                <td class="auto-style18">
-                <asp:Button ID="Button2" runat="server" BackColor="#FFF29D" CssClass="auto-style4" OnClick="Button2_Click" Text="Buscar por fechas" />
-                </td>
-                <td class="auto-style18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</td>
-                <td class="auto-style20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <td class="auto-style22">
+                    &nbsp;</td>
+                <td class="auto-style18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:GridView ID="Pedidos" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
                     <AlternatingRowStyle BackColor="White" />
                     <FooterStyle BackColor="#CCCC99" />
@@ -85,9 +126,8 @@
                 <td>&nbsp;</td>
                 <td class="auto-style16">&nbsp;</td>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td class="auto-style17">&nbsp;</td>
+                <td class="auto-style21">&nbsp;</td>
+                <td class="auto-style24">&nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -99,13 +139,14 @@
                 </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
-                <td>
-                <asp:Button ID="Button3" runat="server" BackColor="#FFF29D" CssClass="auto-style4" OnClick="Button3_Click" Text="Bucar por estado" />
-                </td>
-                <td>&nbsp;</td>
-                <td class="auto-style17">&nbsp;</td>
+                <td class="auto-style21">
+                    &nbsp;</td>
+                <td class="auto-style24">&nbsp;</td>
             </tr>
 </table>
 <br />
         
 </asp:Content>
+
+
+
