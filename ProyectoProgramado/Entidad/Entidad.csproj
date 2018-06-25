@@ -64,6 +64,9 @@
     <Compile Include="f_LineasPedido_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="f_MostrarPedidos_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="f_pedidoCliente_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>

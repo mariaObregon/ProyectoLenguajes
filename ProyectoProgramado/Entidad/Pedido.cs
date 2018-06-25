@@ -22,6 +22,7 @@ namespace Entidad
     
         public int PedidoID { get; set; }
         public System.DateTime Fecha { get; set; }
+        public Nullable<System.TimeSpan> HoraInicio { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         public virtual Estado Estado { get; set; }

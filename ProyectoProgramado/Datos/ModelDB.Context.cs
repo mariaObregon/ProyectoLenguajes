@@ -828,5 +828,11 @@ namespace Entidad
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        [DbFunction("PedidosExpressEntities", "f_MostrarPedidos")]
+        public virtual IQueryable<f_MostrarPedidos_Result> f_MostrarPedidos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_MostrarPedidos_Result>("[PedidosExpressEntities].[f_MostrarPedidos]()");
+        }
     }
 }
