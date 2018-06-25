@@ -64,5 +64,10 @@ namespace Negocio
         public List<v_Estado> MostrarEstados() {
             return dp.MostrarEstados();
         }
+
+        public List<f_LineasPedido_Result> MostrarLineasPedido(int idOrden)
+        {
+            return dp.LineasPedido(idOrden);
+        }
     }
 }

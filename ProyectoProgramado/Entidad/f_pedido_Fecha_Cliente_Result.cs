@@ -15,7 +15,7 @@ namespace Entidad
     {
         public int PedidoID { get; set; }
         public System.DateTime Fecha { get; set; }
-        public byte EstadoID { get; set; }
+        public string DescripcionEstado { get; set; }
         public string Cliente { get; set; }
     }
 }

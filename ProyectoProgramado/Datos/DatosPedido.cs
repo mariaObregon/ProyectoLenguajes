@@ -56,5 +56,9 @@ namespace Datos
         {
             return datos.v_Estado.ToList();
         }
+
+        public List<f_LineasPedido_Result> LineasPedido(int idOrden) {
+            return datos.f_LineasPedido(idOrden).ToList();
+        }
     }
 }

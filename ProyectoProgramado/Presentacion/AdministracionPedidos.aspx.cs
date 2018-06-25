@@ -110,22 +110,26 @@ namespace Presentacion
                  if (Filtros.GetNombre() == 1 && Filtros.GetEstado() == 1 && Filtros.GetFecha() == 1)
                 {
                     List<f_pedidoEstado_Cliente_Fecha_Result> dt = lgp.BusquedaPedidoCliente_Fecha_Estado(TextBox1.Text, Calendar1.SelectedDate, Calendar2.SelectedDate, int.Parse(Estado.SelectedValue));
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 } else if (Filtros.GetNombre() == 1 && Filtros.GetFecha() == 1)
                 {
                     List<f_pedido_Fecha_Cliente_Result> dt = lgp.BusquedaPedidoCliente_Fecha(TextBox1.Text, Calendar1.SelectedDate, Calendar2.SelectedDate);
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 }else if (Filtros.GetNombre() == 1 && Filtros.GetEstado() == 1)
                 {
                     List<f_pedidoEstado_Cliente_Result> dt = lgp.BusquedaPedidoEstado_Cliente(int.Parse(Estado.SelectedValue), TextBox1.Text);
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 } else {
                     List<f_pedidoCliente_Result> dt = lgp.BusquedaPedidoNombre(TextBox1.Text);
-                Pedidos.DataSource = dt;
-                Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
+
+                    List<f_pedidoCliente_Result> dtt = lgp.BusquedaPedidoNombre(TextBox1.Text);
+                    Lista.DataSource = dtt;
+                    Lista.DataBind();
                 }
 
                 
@@ -136,25 +140,25 @@ namespace Presentacion
                 if (Filtros.GetNombre() == 1 && Filtros.GetEstado() == 1 && Filtros.GetFecha() == 1)
                 {
                     List<f_pedidoEstado_Cliente_Fecha_Result> dt = lgp.BusquedaPedidoCliente_Fecha_Estado(TextBox1.Text, Calendar1.SelectedDate, Calendar2.SelectedDate, int.Parse(Estado.SelectedValue));
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 }
                 else if (Filtros.GetNombre() == 1 && Filtros.GetFecha() == 1)
                 {
                     List<f_pedido_Fecha_Cliente_Result> dt = lgp.BusquedaPedidoCliente_Fecha(TextBox1.Text, Calendar1.SelectedDate, Calendar2.SelectedDate);
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 }
                 else if (Filtros.GetFecha() == 1 && Filtros.GetEstado() == 1)
                 {
                     List<f_pedidoEstado_Fecha_Result> dt = lgp.BusquedaPedidoEstado_Fecha(int.Parse(Estado.SelectedValue), Calendar1.SelectedDate, Calendar2.SelectedDate);
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 } else
                 { 
                    List<f_pedidoFecha_Result> dt = lgp.BusquedaPedidoFecha(Calendar1.SelectedDate.ToShortDateString(), Calendar2.SelectedDate.ToShortDateString());
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 }
                 
             }
@@ -163,25 +167,25 @@ namespace Presentacion
                 if (Filtros.GetNombre() == 1 && Filtros.GetEstado() == 1 && Filtros.GetFecha() == 1)
                 {
                     List<f_pedidoEstado_Cliente_Fecha_Result> dt = lgp.BusquedaPedidoCliente_Fecha_Estado(TextBox1.Text, Calendar1.SelectedDate, Calendar2.SelectedDate, int.Parse(Estado.SelectedValue));
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 }
                 else if (Filtros.GetFecha() == 1 && Filtros.GetEstado() == 1)
                 {
                     List<f_pedidoEstado_Fecha_Result> dt = lgp.BusquedaPedidoEstado_Fecha(int.Parse(Estado.SelectedValue), Calendar1.SelectedDate, Calendar2.SelectedDate);
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 }
                 else if (Filtros.GetNombre() == 1 && Filtros.GetEstado() == 1)
                 {
                     List<f_pedidoEstado_Cliente_Result> dt = lgp.BusquedaPedidoEstado_Cliente(int.Parse(Estado.SelectedValue), TextBox1.Text);
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 }
                 else {
                     List<f_pedidoEstado_Result> dt = lgp.BusquedaPedidoEstado(int.Parse(Estado.SelectedValue));
-                    Pedidos.DataSource = dt;
-                    Pedidos.DataBind();
+                    Lista.DataSource = dt;
+                    Lista.DataBind();
                 }
                 
             }
@@ -213,6 +217,23 @@ namespace Presentacion
                 Pedidos.DataSource = dt;
                 Pedidos.DataBind();
             }*/
+        }
+
+        protected void Lista_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            GridViewRow item;
+            GridView gv2;
+            int id;
+            if ((e.Row.RowType == DataControlRowType.DataRow))
+            {
+                item = e.Row;
+                id = int.Parse((item.Cells[0]).Text);
+                gv2 = (GridView)e.Row.Cells[4].Controls[1];
+                gv2.DataSource = lgp.MostrarLineasPedido(id);
+                gv2.DataBind();
+            }
+
+
         }
     }
     }
