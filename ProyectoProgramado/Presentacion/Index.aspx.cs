@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Presentacion
 {
-    public partial class AgregarUsuarioCliente : System.Web.UI.Page
+    public partial class Index : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

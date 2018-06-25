@@ -16,10 +16,10 @@ namespace Datos
             datos.p_BloquearCliente(bloquear, idCliente);
         }
 
-        public void AgregarCliente(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
-                    String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
-                    short ShTipoMecanismo, String StrPartyID, Boolean BoolHabilitado, short ShGeoID,
-                    String StrLineaDireccion1, String StrLineaDireccion2, String StrLineaDireccion3,
+        public void AgregarCliente(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido, String StrSegundoApellido,
+                    String StrContraseña, String StrValorMecanismo, short ShTipoMecanismo, String StrPartyID, 
+                    Boolean BoolHabilitado, short ShGeoID, String StrLineaDireccion1, 
+                    String StrLineaDireccion2, String StrLineaDireccion3,
                     String StrInstrucciones, Byte ByteTipoDireccionID)
         {
             datos.p_agregarCliente(StrPartyID, StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido,
