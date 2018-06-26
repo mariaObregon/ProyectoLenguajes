@@ -95,7 +95,9 @@
     <Content Include="AdministracionUsuario\ModificarUsuario.aspx" />
     <Content Include="ModificarPlato.aspx" />
     <Content Include="Pruebas.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministracionUsuario\BuscarUsuario.aspx.cs">
