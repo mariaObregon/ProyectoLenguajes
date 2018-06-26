@@ -60,5 +60,9 @@ namespace Datos
         public List<f_LineasPedido_Result> LineasPedido(int idOrden) {
             return datos.f_LineasPedido(idOrden).ToList();
         }
+
+        public List<f_MostrarPedidos_Result> MostrarPedidos() {
+            return datos.f_MostrarPedidos().ToList();
+        }
     }
 }

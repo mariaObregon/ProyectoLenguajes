@@ -11,6 +11,11 @@ namespace Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Linea.
+        }
+
+        protected void Linea_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

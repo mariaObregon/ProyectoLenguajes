@@ -69,5 +69,10 @@ namespace Negocio
         {
             return dp.LineasPedido(idOrden);
         }
+
+        public List<f_MostrarPedidos_Result> TodosLosPedidos()
+        {
+            return dp.MostrarPedidos();
+        }
     }
 }

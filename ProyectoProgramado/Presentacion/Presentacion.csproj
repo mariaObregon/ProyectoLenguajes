@@ -82,10 +82,14 @@
     <Content Include="AdministracionCliente\BuscarCliente.aspx" />
     <Content Include="AdministracionCliente\ModificarCliente.aspx" />
     <Content Include="EstadoPedido.aspx" />
+    <Content Include="Imagenes\edit.png" />
+    <Content Include="Imagenes\icon.png" />
     <Content Include="Imagenes\kit2.jpg" />
     <Content Include="Imagenes\logo.png" />
     <Content Include="AdministracionCliente\BloqueoCliente.aspx" />
+    <Content Include="Imagenes\pencil.png" />
     <Content Include="Index.aspx" />
+    <Content Include="InsertarPlato.aspx" />
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCocina.aspx" />
     <Content Include="AdministracionUsuario\ModificarUsuario.aspx" />
@@ -162,6 +166,13 @@
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InsertarPlato.aspx.cs">
+      <DependentUpon>InsertarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsertarPlato.aspx.designer.cs">
+      <DependentUpon>InsertarPlato.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menus\MenuAdmin.aspx.cs">
       <DependentUpon>MenuAdmin.aspx</DependentUpon>
