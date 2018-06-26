@@ -64,5 +64,11 @@ namespace Datos
         public List<f_MostrarPedidos_Result> MostrarPedidos() {
             return datos.f_MostrarPedidos().ToList();
         }
+
+        public void CambiarEstadoPedido(byte estadoID, int pedidoID)
+        {
+
+            datos.p_CambiarEstadoPedido(estadoID, pedidoID);
+        }
     }
 }
