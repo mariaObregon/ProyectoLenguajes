@@ -89,6 +89,7 @@
     <Content Include="AdministracionCliente\BloqueoCliente.aspx" />
     <Content Include="Imagenes\pencil.png" />
     <Content Include="Index.aspx" />
+    <Content Include="InsertarPlato.aspx" />
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCocina.aspx" />
     <Content Include="AdministracionUsuario\ModificarUsuario.aspx" />
@@ -165,6 +166,13 @@
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InsertarPlato.aspx.cs">
+      <DependentUpon>InsertarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsertarPlato.aspx.designer.cs">
+      <DependentUpon>InsertarPlato.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menus\MenuAdmin.aspx.cs">
       <DependentUpon>MenuAdmin.aspx</DependentUpon>
