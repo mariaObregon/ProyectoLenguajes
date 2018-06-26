@@ -12,7 +12,7 @@ namespace Negocio
     {
         DatosPedido dp = new DatosPedido();
 
-        public String CambiarEstadoPedido(byte estadoID, int idPedido)
+     /*   public String CambiarEstadoPedido(byte estadoID, int idPedido)
         {
             if (estadoID > 0 && idPedido > 0)
             {
@@ -24,7 +24,7 @@ namespace Negocio
                 return "Estado o pedido no válidos";
             }
                 
-        }
+        }*/
 
         public List<f_pedidoCliente_Result> BusquedaPedidoNombre(String nombre)
         {
@@ -73,6 +73,12 @@ namespace Negocio
         public List<f_MostrarPedidos_Result> TodosLosPedidos()
         {
             return dp.MostrarPedidos();
+        }
+
+        public void ActualizarEstadoPedido(byte estadoID, int pedidoID)
+        {
+
+            dp.CambiarEstadoPedido(estadoID, pedidoID);
         }
     }
 }

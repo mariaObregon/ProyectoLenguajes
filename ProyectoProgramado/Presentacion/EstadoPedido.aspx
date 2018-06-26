@@ -30,33 +30,58 @@
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="Linea" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="Linea_SelectedIndexChanged">
+                <asp:GridView ID="Linea" runat="server" AutoGenerateColumns="False" DataKeyNames="PedidoID" OnRowUpdating="Linea_RowUpdating" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="Linea_RowCancelingEdit" OnRowEditing="Linea_RowEditing" Width="790px">
+                    <AlternatingRowStyle BackColor="White" />
                     <Columns>
-                        <asp:CommandField AccessibleHeaderText="Editar" ButtonType="Image" SelectImageUrl="~/Imagenes/icon.png" ShowHeader="True" ShowSelectButton="True">
-                        <ControlStyle Height="25px" Width="25px" />
-                        </asp:CommandField>
-                        <asp:BoundField DataField="PedidoID" HeaderText="PedidoID" />
-                        <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
-                        <asp:BoundField DataField="DescripcionEstado" HeaderText="DescripcionEstado" />
-                        <asp:TemplateField HeaderText="NuevoEstado">
+                        <asp:TemplateField HeaderText="PedidoID">
                             <ItemTemplate>
-                                <asp:DropDownList ID="NuevoEstado" runat="server" Enabled="False">
-                                </asp:DropDownList>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("PedidoID") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
-                        <asp:TemplateField HeaderText="LineasPedido">
+                        <asp:TemplateField HeaderText="Fecha">
                             <ItemTemplate>
-                                <asp:GridView ID="Detalle" runat="server" AutoGenerateColumns="False">
-                                    <Columns>
-                                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                                        <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
-                                        <asp:BoundField DataField="Precio" HeaderText="Precio" />
-                                    </Columns>
-                                </asp:GridView>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("Fecha") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="DescripcionEstado">
+                            <EditItemTemplate>
+                                <asp:DropDownList ID="dpp" runat="server">
+                                    <asp:ListItem Value="1">Entregado</asp:ListItem>
+                                    <asp:ListItem Value="2">A Tiempo</asp:ListItem>
+                                    <asp:ListItem Value="3">Sobre Tiempo</asp:ListItem>
+                                    <asp:ListItem Value="4">Demorado</asp:ListItem>
+                                    <asp:ListItem Value="5">Anulado</asp:ListItem>
+                                </asp:DropDownList>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("DescripcionEstado") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Cliente">
+                            <ItemTemplate>
+                                <asp:Label ID="Label4" runat="server" Text='<%# Bind("Cliente") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Modificar">
+                            <EditItemTemplate>
+                                <asp:Button ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar"></asp:Button>
+                                &nbsp;<asp:Button ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar"></asp:Button>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Button ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar"></asp:Button>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
+                    <EditRowStyle BackColor="#faffbf" />
+                    <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#E3EAEB" />
+                    <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                    <SortedAscendingHeaderStyle BackColor="#246B61" />
+                    <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                    <SortedDescendingHeaderStyle BackColor="#15524A" />
                 </asp:GridView>
             </td>
             <td class="auto-style4">&nbsp;</td>
