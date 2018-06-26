@@ -89,11 +89,15 @@
     <Content Include="AdministracionCliente\BloqueoCliente.aspx" />
     <Content Include="Imagenes\pencil.png" />
     <Content Include="Index.aspx" />
+    <Content Include="InsertarPlato.aspx" />
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCocina.aspx" />
     <Content Include="AdministracionUsuario\ModificarUsuario.aspx" />
+    <Content Include="ModificarPlato.aspx" />
     <Content Include="Pruebas.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministracionUsuario\BuscarUsuario.aspx.cs">
@@ -166,6 +170,13 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InsertarPlato.aspx.cs">
+      <DependentUpon>InsertarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsertarPlato.aspx.designer.cs">
+      <DependentUpon>InsertarPlato.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menus\MenuAdmin.aspx.cs">
       <DependentUpon>MenuAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -186,6 +197,13 @@
     </Compile>
     <Compile Include="AdministracionUsuario\ModificarUsuario.aspx.designer.cs">
       <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarPlato.aspx.cs">
+      <DependentUpon>ModificarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarPlato.aspx.designer.cs">
+      <DependentUpon>ModificarPlato.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
