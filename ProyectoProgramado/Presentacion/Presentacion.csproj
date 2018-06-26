@@ -93,6 +93,7 @@
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCocina.aspx" />
     <Content Include="AdministracionUsuario\ModificarUsuario.aspx" />
+    <Content Include="ModificarPlato.aspx" />
     <Content Include="Pruebas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -194,6 +195,13 @@
     </Compile>
     <Compile Include="AdministracionUsuario\ModificarUsuario.aspx.designer.cs">
       <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarPlato.aspx.cs">
+      <DependentUpon>ModificarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarPlato.aspx.designer.cs">
+      <DependentUpon>ModificarPlato.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
