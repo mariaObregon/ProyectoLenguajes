@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Presentacion
 {
-    public partial class InsertarPlato1 : System.Web.UI.Page
+    public partial class InsertarPlato : System.Web.UI.Page
     {
         LogicaPlato lp = new LogicaPlato();
 

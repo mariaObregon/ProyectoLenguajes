@@ -10,7 +10,7 @@
 namespace Presentacion {
     
     
-    public partial class InsertarPlato {
+    public partial class pruebas {
         
         /// <summary>
         /// Control form1.

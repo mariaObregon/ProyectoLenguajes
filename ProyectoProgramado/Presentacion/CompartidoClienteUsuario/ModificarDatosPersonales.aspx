@@ -1,3 +1,3 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CompartidoClienteUsuario/ModificarMaster.master" AutoEventWireup="true" CodeBehind="ModificarDatosPersonales.aspx.cs" Inherits="Presentacion.CompartidoClienteUsuario.ModificarDatosPersonales" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="Content3" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CompartidoClienteUsuario/MasterModificar.master" AutoEventWireup="true" CodeBehind="ModificarDatosPersonales.aspx.cs" Inherits="Presentacion.CompartidoClienteUsuario.ModificarDatosPersonales" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 </asp:Content>

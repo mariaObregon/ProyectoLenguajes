@@ -74,13 +74,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministracionUsuario\Agregar Usuario.aspx" />
     <Content Include="AdministracionUsuario\BuscarUsuario.aspx" />
     <Content Include="AdministracionPedidos.aspx" />
-    <Content Include="AdministracionUsuario\AgregarUsuario.aspx" />
     <Content Include="AdministracionUsuario\EliminarUsuario.aspx" />
     <Content Include="AdministracionCliente\AgregarCliente.aspx" />
     <Content Include="AdministracionCliente\BuscarCliente.aspx" />
     <Content Include="AdministracionCliente\ModificarCliente.aspx" />
+    <Content Include="CompartidoClienteUsuario\AgregarContacto.aspx" />
+    <Content Include="CompartidoClienteUsuario\AgregarDireccion.aspx" />
+    <Content Include="CompartidoClienteUsuario\ModificarContacto.aspx" />
+    <Content Include="CompartidoClienteUsuario\ModificarDatosPersonales.aspx" />
+    <Content Include="CompartidoClienteUsuario\ModificarDireccion.aspx" />
     <Content Include="EstadoPedido.aspx" />
     <Content Include="Imagenes\edit.png" />
     <Content Include="Imagenes\icon.png" />
@@ -92,7 +97,6 @@
     <Content Include="InsertarPlato.aspx" />
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCocina.aspx" />
-    <Content Include="AdministracionUsuario\ModificarUsuario.aspx" />
     <Content Include="ModificarPlato.aspx" />
     <Content Include="Pruebas.aspx" />
     <Content Include="Web.config">
@@ -100,6 +104,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministracionUsuario\Agregar Usuario.aspx.cs">
+      <DependentUpon>Agregar Usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionUsuario\Agregar Usuario.aspx.designer.cs">
+      <DependentUpon>Agregar Usuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdministracionUsuario\BuscarUsuario.aspx.cs">
       <DependentUpon>BuscarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -113,13 +124,6 @@
     </Compile>
     <Compile Include="AdministracionPedidos.aspx.designer.cs">
       <DependentUpon>AdministracionPedidos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdministracionUsuario\AgregarUsuario.aspx.cs">
-      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdministracionUsuario\AgregarUsuario.aspx.designer.cs">
-      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdministracionUsuario\EliminarUsuario.aspx.cs">
       <DependentUpon>EliminarUsuario.aspx</DependentUpon>
@@ -148,6 +152,48 @@
     </Compile>
     <Compile Include="AdministracionCliente\ModificarCliente.aspx.designer.cs">
       <DependentUpon>ModificarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\AgregarContacto.aspx.cs">
+      <DependentUpon>AgregarContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\AgregarContacto.aspx.designer.cs">
+      <DependentUpon>AgregarContacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\AgregarDireccion.aspx.cs">
+      <DependentUpon>AgregarDireccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\AgregarDireccion.aspx.designer.cs">
+      <DependentUpon>AgregarDireccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\MasterModificar.master.cs">
+      <DependentUpon>MasterModificar.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\MasterModificar.master.designer.cs">
+      <DependentUpon>MasterModificar.master</DependentUpon>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\ModificarContacto.aspx.cs">
+      <DependentUpon>ModificarContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\ModificarContacto.aspx.designer.cs">
+      <DependentUpon>ModificarContacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\ModificarDatosPersonales.aspx.cs">
+      <DependentUpon>ModificarDatosPersonales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\ModificarDatosPersonales.aspx.designer.cs">
+      <DependentUpon>ModificarDatosPersonales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\ModificarDireccion.aspx.cs">
+      <DependentUpon>ModificarDireccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompartidoClienteUsuario\ModificarDireccion.aspx.designer.cs">
+      <DependentUpon>ModificarDireccion.aspx</DependentUpon>
     </Compile>
     <Compile Include="EstadoPedido.aspx.cs">
       <DependentUpon>EstadoPedido.aspx</DependentUpon>
@@ -191,13 +237,6 @@
     <Compile Include="Menus\MenuCocina.aspx.designer.cs">
       <DependentUpon>MenuCocina.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdministracionUsuario\ModificarUsuario.aspx.cs">
-      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdministracionUsuario\ModificarUsuario.aspx.designer.cs">
-      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ModificarPlato.aspx.cs">
       <DependentUpon>ModificarPlato.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -222,6 +261,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CompartidoClienteUsuario\MasterModificar.master" />
     <None Include="packages.config" />
     <Content Include="Principal.Master" />
     <None Include="Web.Debug.config">

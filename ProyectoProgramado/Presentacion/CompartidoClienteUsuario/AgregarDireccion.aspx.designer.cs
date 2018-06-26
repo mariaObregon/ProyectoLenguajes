@@ -11,7 +11,7 @@ namespace Presentacion.CompartidoClienteUsuario
 {
 
 
-    public partial class ModificarDatosPersonales
+    public partial class AgregarDireccion
     {
     }
 }

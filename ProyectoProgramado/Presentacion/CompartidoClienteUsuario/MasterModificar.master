@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="MasterModificar.master.cs" Inherits="Presentacion.CompartidoClienteUsuario.MasterModificar" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+
+
+        .auto-style3 {
+            width: 100%;
+            height: 101px;
+        }
+
+        .auto-style17 {
+            width: 206px;
+            height: 42px;
+        }
+
+        .auto-style41 {
+            width: 76px;
+            height: 42px;
+        }
+        
+        .auto-style5 {
+            width: 225px;
+            height: 42px;
+        }
+
+        .auto-style18 {
+            height: 17px;
+        }
+
+        </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <asp:Panel ID="Panel1" runat="server">
+                
+    <table class="auto-style3" >
+        <tr >
+            <td class="auto-style17" >
+                <asp:Label ID="LabelPregunta" runat="server" Text="¿Qué desea modificar?" Font-Names="Verdana" Font-Overline="False" Font-Size="Large" Font-Strikeout="False" Font-Underline="False" ForeColor="#996600"></asp:Label>
+            </td>
+            <td class="auto-style41">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+        </tr>
+        <tr >
+            <td class="auto-style18" colspan="3">
+                
+                <asp:Menu ID="Menu1" runat="server" OnMenuItemClick="Menu1_MenuItemClick" Orientation="Horizontal" StaticSubMenuIndent="16px" Width="100%">
+                    <Items>
+                        <asp:MenuItem Text="Datos Personales" Value="0"></asp:MenuItem>
+                        <asp:MenuItem Text="Dirección" Value="1">
+                            <asp:MenuItem Text="Agregar" Value="2"></asp:MenuItem>
+                            <asp:MenuItem Text="Modificar" Value="3"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Mecanismo de Contacto" Value="4">
+                            <asp:MenuItem Text="Agregar" Value="5"></asp:MenuItem>
+                            <asp:MenuItem Text="Modificar" Value="6"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </td>
+        </tr>
+    </table>
+    </asp:Panel>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"> 
+       </asp:ContentPlaceHolder>
+
+
+</asp:Content>
