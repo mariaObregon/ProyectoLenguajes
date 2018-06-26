@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Presentacion {
+namespace Presentacion.AdministracionUsuario {
     
     
-    public partial class AgregarUsuarioCliente {
+    public partial class Agregar_Usuario {
         
         /// <summary>
         /// Control PanelContenedor.

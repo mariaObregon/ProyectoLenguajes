@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="AgregarCliente.aspx.cs" Inherits="Presentacion.AdministrarCliente.AgregarCliente" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="AgregarCliente.aspx.cs" Inherits="Presentacion.AdministracionCliente.AgregarCliente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
+
         .auto-style3 {
             width: 100%;
         }
@@ -15,9 +15,9 @@
         }
 
         .auto-style75 {
-            width: 187px;
-        }
-
+        width: 187px;
+    }
+        
         .auto-style60 {
             width: 169px;
         }
@@ -39,17 +39,17 @@
             height: 23px;
             width: 142px;
         }
-
+    
         .auto-style40 {
             height: 23px;
             width: 180px;
         }
 
         .auto-style74 {
-            height: 23px;
-            width: 187px;
-        }
-
+        height: 23px;
+        width: 187px;
+    }
+    
         .auto-style61 {
             height: 23px;
             width: 169px;
@@ -82,10 +82,7 @@
             height: 21px;
         }
 
-        .auto-style76 {
-            margin-bottom: 0px;
-        }
-    </style>
+        </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="PanelContenedor" runat="server" Height="529px" Width="1317px">
@@ -295,7 +292,7 @@
                         <td class="auto-style75">&nbsp;</td>
                         <td class="auto-style60">&nbsp;</td>
                         <td class="auto-style71">
-                            <asp:Button ID="BtnAgregarUsuario" runat="server" CssClass="auto-style76" OnClick="BtnAgregarUsuario_Click" Text="Insertar Usuario" Width="141px" />
+                            <asp:Button ID="BtnAgregarCliente" runat="server" OnClick="BtnAgregarCliente_Click" Text="Insertar Cliente" Width="141px" />
                         </td>
                         <td>
                             <asp:Button ID="BtnCancelar" runat="server" OnClick="BtnCancelar_Click" Text="Cancelar" Width="111px" />
