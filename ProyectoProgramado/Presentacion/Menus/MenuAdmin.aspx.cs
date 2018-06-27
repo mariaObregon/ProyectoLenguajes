@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Presentacion
+namespace Presentacion.Menus
 {
     public partial class MenuAdmin1 : System.Web.UI.Page
     {

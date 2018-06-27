@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Excepciones\ExcepcionUsuarioIncorrecto.cs" />
     <Compile Include="Filtros.cs" />
     <Compile Include="LogicaCliente.cs" />
     <Compile Include="LogicaGeneral.cs" />
+    <Compile Include="LogicaLoginUsuarios.cs" />
     <Compile Include="LogicaPedido.cs" />
     <Compile Include="LogicaPlato.cs" />
     <Compile Include="LogicaUsuario.cs" />
@@ -59,8 +61,6 @@
       <Name>Entidad</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Excepciones\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="MasterAdmin.master.cs" Inherits="Presentacion.Menus.MenuAdmin" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style3 {
+            width: 100%;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+   
+    <asp:Menu ID="MenuAdministrador" runat="server" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Small" ForeColor="#7C6F57" Orientation="Horizontal" StaticSubMenuIndent="10px" Width="100%" OnMenuItemClick="MenuAdministrador_MenuItemClick">
+        <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+        <DynamicMenuStyle BackColor="#F7F6F3" />
+        <DynamicSelectedStyle BackColor="#5D7B9D" />
+        <Items>
+            <asp:MenuItem Text="Administrar usuarios" Value="Administrar usuarios">
+                <asp:MenuItem Text="Agregar Usuario" Value="Agregar Usuario"></asp:MenuItem>
+                <asp:MenuItem Text="Modificar usuario" Value="Modificar usuario"></asp:MenuItem>
+                <asp:MenuItem Text="Eliminar usuario" Value="Eliminar usuario"></asp:MenuItem>
+                <asp:MenuItem Text="Buscar usuario" Value="Buscar usuario"></asp:MenuItem>
+            </asp:MenuItem>
+            <asp:MenuItem Text="Administrar clientes" Value="Administrar clientes">
+                <asp:MenuItem Text="Agregar cliente" Value="Agregar cliente"></asp:MenuItem>
+                <asp:MenuItem Text="Modificar cliente" Value="Modificar cliente"></asp:MenuItem>
+                <asp:MenuItem Text="Habilitar cliente" Value="Habilitar cliente"></asp:MenuItem>
+                <asp:MenuItem Text="Buscar cliente" Value="Buscar cliente"></asp:MenuItem>
+            </asp:MenuItem>
+            <asp:MenuItem Text="Administrar pedidos" Value="Administrar pedidos">
+                <asp:MenuItem Text="Mostrar pedidos" Value="Mostrar pedidos"></asp:MenuItem>
+                <asp:MenuItem Text="Nuevo elemento" Value="Nuevo elemento"></asp:MenuItem>
+            </asp:MenuItem>
+            <asp:MenuItem Text="Administrar platos" Value="Administrar platos">
+                <asp:MenuItem Text="Agregar plato" Value="Agregar plato"></asp:MenuItem>
+                <asp:MenuItem Text="Modificar plato" Value="Modificar plato"></asp:MenuItem>
+                <asp:MenuItem Text="Habilitar plato" Value="Habilitar plato"></asp:MenuItem>
+                <asp:MenuItem Text="Buscar plato" Value="Buscar plato"></asp:MenuItem>
+            </asp:MenuItem>
+        </Items>
+        <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+        <StaticSelectedStyle BackColor="#5D7B9D" />
+    </asp:Menu>
+
+     <table class="auto-style3">
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+
+</asp:Content>

@@ -1,32 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="EliminarUsuario.aspx.cs" Inherits="Presentacion.EliminarUsuario" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-
-
-        .auto-style19 {
-            width: 100%;
-        }
-
-        .auto-style31 {
-            width: 238px;
-        }
-
-        .auto-style32 {
-            width: 231px;
-        }
-        .auto-style40 {
-            margin-left: 0px;
-        }
-        .auto-style42 {
-            width: 213px;
-        }
-        .auto-style43 {
-            width: 132px;
-        }
-    </style>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="PanelMostarLista" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menus/MasterAdmin.master" AutoEventWireup="true" CodeBehind="EliminarUsuario.aspx.cs" Inherits="Presentacion.AdministracionUsuario.EliminarUsuario" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+        <asp:Panel ID="PanelMostarLista" runat="server">
         <table class="auto-style19">
             <tr>
                 <td class="auto-style31">&nbsp;</td>

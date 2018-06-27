@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Presentacion {
+namespace Presentacion.AdministracionCliente {
     
     
-    public partial class InhabilitarCliente {
+    public partial class BloqueoCliente {
         
         /// <summary>
         /// Control PanelMostarLista.
@@ -49,22 +49,22 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.TextBox TbUsuario;
         
         /// <summary>
-        /// Control Button2.
+        /// Control BtnHabilitar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button BtnHabilitar;
         
         /// <summary>
-        /// Control Button3.
+        /// Control BtnDeshabilitar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button BtnDeshabilitar;
         
         /// <summary>
         /// Control Label10.

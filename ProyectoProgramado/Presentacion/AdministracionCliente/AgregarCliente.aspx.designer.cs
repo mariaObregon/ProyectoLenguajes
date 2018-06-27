@@ -22,15 +22,6 @@ namespace Presentacion.AdministracionCliente {
         protected global::System.Web.UI.WebControls.Panel PanelContenedor;
         
         /// <summary>
-        /// Control ScriptManager.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager;
-        
-        /// <summary>
         /// Control UpdatePanel.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace Presentacion.AdministracionCliente {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel;
+        
+        /// <summary>
+        /// Control Label20.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label20;
         
         /// <summary>
         /// Control Label19.

@@ -1,99 +1,18 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="AgregarCliente.aspx.cs" Inherits="Presentacion.AdministracionCliente.AgregarCliente" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-
-        .auto-style3 {
-            width: 100%;
-        }
-
-        .auto-style71 {
-            width: 142px;
-        }
-
-        .auto-style39 {
-            width: 180px;
-        }
-
-        .auto-style75 {
-        width: 187px;
-    }
-        
-        .auto-style60 {
-            width: 169px;
-        }
-
-        .auto-style65 {
-            width: 147px;
-        }
-
-        .auto-style49 {
-            height: 23px;
-        }
-
-        .auto-style66 {
-            height: 23px;
-            width: 147px;
-        }
-
-        .auto-style72 {
-            height: 23px;
-            width: 142px;
-        }
-    
-        .auto-style40 {
-            height: 23px;
-            width: 180px;
-        }
-
-        .auto-style74 {
-        height: 23px;
-        width: 187px;
-    }
-    
-        .auto-style61 {
-            height: 23px;
-            width: 169px;
-        }
-
-        .auto-style4 {
-            height: 23px;
-        }
-
-        .auto-style38 {
-            height: 23px;
-        }
-
-        .auto-style69 {
-            height: 23px;
-            width: 165px;
-        }
-
-        .auto-style68 {
-            height: 23px;
-            width: 162px;
-        }
-
-        .auto-style64 {
-            height: 19px;
-            width: 160px;
-        }
-
-        .auto-style43 {
-            height: 21px;
-        }
-
-        </style>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menus/MasterAdmin.master" AutoEventWireup="true" CodeBehind="AgregarCliente.aspx.cs" Inherits="Presentacion.AdministracionCliente.AgregarCliente" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <asp:Panel ID="PanelContenedor" runat="server" Height="529px" Width="1317px">
-        <asp:ScriptManager ID="ScriptManager" runat="server">
-        </asp:ScriptManager>
+        
         <asp:UpdatePanel ID="UpdatePanel" runat="server">
             <ContentTemplate>
                 <table class="auto-style3" style="border-color: #C0C0C0; font-family: verdana, Geneva, Tahoma, sans-serif; color: #000000; background-color: #C0C0C0; font-size: small;">
                     <tr>
+                        <td class="auto-style48" colspan="8" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0; text-align: center;">
+                            <asp:Label ID="Label20" runat="server" Text="REGISTRAR CLIENTE NUEVO"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="auto-style48" colspan="2" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:Label ID="Label19" runat="server" Text="Datos obligatorios*" ForeColor="#CC0000"></asp:Label>
+                            <asp:Label ID="Label19" runat="server" ForeColor="Red" Text="Datos obligatorios*"></asp:Label>
                         </td>
                         <td class="auto-style71" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
                         <td class="auto-style39" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0"></td>

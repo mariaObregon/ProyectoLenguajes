@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Presentacion {
+namespace Presentacion.AdministracionUsuario {
     
     
     public partial class EliminarUsuario {

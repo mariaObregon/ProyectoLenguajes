@@ -1,7 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="BloqueoCliente.aspx.cs" Inherits="Presentacion.InhabilitarCliente" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menus/MasterAdmin.master" AutoEventWireup="true" CodeBehind="BloqueoCliente.aspx.cs" Inherits="Presentacion.AdministracionCliente.BloqueoCliente" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <asp:Panel ID="PanelMostarLista" runat="server">
         <table class="auto-style19">
             <tr>
@@ -22,10 +20,10 @@
                     <asp:TextBox ID="TbUsuario" runat="server" CssClass="auto-style40" ReadOnly="True" Width="144px"></asp:TextBox>
                 </td>
                 <td class="auto-style43">
-                    <asp:Button ID="Button2" runat="server" Text="Eliminar" />
+                    <asp:Button ID="BtnHabilitar" runat="server" Text="Habilitar" />
                 </td>
                 <td>
-                    <asp:Button ID="Button3" runat="server" Text="Cancelar" />
+                    <asp:Button ID="BtnDeshabilitar" runat="server" Text="Deshabilitar" />
                 </td>
             </tr>
             <tr>

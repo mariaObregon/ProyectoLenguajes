@@ -74,49 +74,64 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdministracionUsuario\Agregar Usuario.aspx" />
-    <Content Include="AdministracionUsuario\BuscarUsuario.aspx" />
+    <Content Include="AdministracionCliente\AgregarCliente.aspx" />
+    <Content Include="AdministracionCliente\BloqueoCliente.aspx" />
+    <Content Include="AdministracionCliente\PrincipalCliente.aspx" />
+    <Content Include="AdministracionUsuario\AgregarUsuario.aspx" />
     <Content Include="AdministracionPedidos.aspx" />
     <Content Include="AdministracionUsuario\EliminarUsuario.aspx" />
-    <Content Include="AdministracionCliente\AgregarCliente.aspx" />
-    <Content Include="AdministracionCliente\BuscarCliente.aspx" />
-    <Content Include="AdministracionCliente\ModificarCliente.aspx" />
-    <Content Include="CompartidoClienteUsuario\AgregarContacto.aspx" />
-    <Content Include="CompartidoClienteUsuario\AgregarDireccion.aspx" />
-    <Content Include="CompartidoClienteUsuario\ModificarContacto.aspx" />
-    <Content Include="CompartidoClienteUsuario\ModificarDatosPersonales.aspx" />
-    <Content Include="CompartidoClienteUsuario\ModificarDireccion.aspx" />
+    <Content Include="AdministracionUsuario\PrincipalUsuario.aspx" />
+    <Content Include="BuscarUsuarioCliente\BuscarUsuarioCliente.aspx" />
+    <Content Include="Menus\MenuAdmin.aspx" />
+    <Content Include="Menus\MenuCliente.aspx" />
+    <Content Include="ModificarClienteUsuario\AgregarContacto.aspx" />
+    <Content Include="ModificarClienteUsuario\AgregarDireccion.aspx" />
+    <Content Include="ModificarClienteUsuario\ModificarContacto.aspx" />
+    <Content Include="ModificarClienteUsuario\ModificarDatosPersonales.aspx" />
     <Content Include="EstadoPedido.aspx" />
     <Content Include="Imagenes\edit.png" />
     <Content Include="Imagenes\icon.png" />
     <Content Include="Imagenes\kit2.jpg" />
     <Content Include="Imagenes\logo.png" />
-    <Content Include="AdministracionCliente\BloqueoCliente.aspx" />
     <Content Include="Imagenes\pencil.png" />
     <Content Include="Index.aspx" />
     <Content Include="InsertarPlato.aspx" />
-    <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCocina.aspx" />
+    <Content Include="ModificarClienteUsuario\ModificarDireccion.aspx" />
+    <Content Include="ModificarClienteUsuario\PrincipalModificar.aspx" />
     <Content Include="ModificarPlato.aspx" />
-    <Content Include="Pruebas.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministracionUsuario\Agregar Usuario.aspx.cs">
-      <DependentUpon>Agregar Usuario.aspx</DependentUpon>
+    <Compile Include="AdministracionCliente\AgregarCliente.aspx.cs">
+      <DependentUpon>AgregarCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdministracionUsuario\Agregar Usuario.aspx.designer.cs">
-      <DependentUpon>Agregar Usuario.aspx</DependentUpon>
+    <Compile Include="AdministracionCliente\AgregarCliente.aspx.designer.cs">
+      <DependentUpon>AgregarCliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdministracionUsuario\BuscarUsuario.aspx.cs">
-      <DependentUpon>BuscarUsuario.aspx</DependentUpon>
+    <Compile Include="AdministracionCliente\BloqueoCliente.aspx.cs">
+      <DependentUpon>BloqueoCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdministracionUsuario\BuscarUsuario.aspx.designer.cs">
-      <DependentUpon>BuscarUsuario.aspx</DependentUpon>
+    <Compile Include="AdministracionCliente\BloqueoCliente.aspx.designer.cs">
+      <DependentUpon>BloqueoCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionCliente\PrincipalCliente.aspx.cs">
+      <DependentUpon>PrincipalCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionCliente\PrincipalCliente.aspx.designer.cs">
+      <DependentUpon>PrincipalCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionUsuario\AgregarUsuario.aspx.cs">
+      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionUsuario\AgregarUsuario.aspx.designer.cs">
+      <DependentUpon>AgregarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdministracionPedidos.aspx.cs">
       <DependentUpon>AdministracionPedidos.aspx</DependentUpon>
@@ -132,68 +147,75 @@
     <Compile Include="AdministracionUsuario\EliminarUsuario.aspx.designer.cs">
       <DependentUpon>EliminarUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdministracionCliente\AgregarCliente.aspx.cs">
-      <DependentUpon>AgregarCliente.aspx</DependentUpon>
+    <Compile Include="AdministracionUsuario\PrincipalUsuario.aspx.cs">
+      <DependentUpon>PrincipalUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdministracionCliente\AgregarCliente.aspx.designer.cs">
-      <DependentUpon>AgregarCliente.aspx</DependentUpon>
+    <Compile Include="AdministracionUsuario\PrincipalUsuario.aspx.designer.cs">
+      <DependentUpon>PrincipalUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdministracionCliente\BuscarCliente.aspx.cs">
-      <DependentUpon>BuscarCliente.aspx</DependentUpon>
+    <Compile Include="BuscarUsuarioCliente\BuscarUsuarioCliente.aspx.cs">
+      <DependentUpon>BuscarUsuarioCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdministracionCliente\BuscarCliente.aspx.designer.cs">
-      <DependentUpon>BuscarCliente.aspx</DependentUpon>
+    <Compile Include="BuscarUsuarioCliente\BuscarUsuarioCliente.aspx.designer.cs">
+      <DependentUpon>BuscarUsuarioCliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdministracionCliente\ModificarCliente.aspx.cs">
-      <DependentUpon>ModificarCliente.aspx</DependentUpon>
+    <Compile Include="Menus\MasterAdmin.master.cs">
+      <DependentUpon>MasterAdmin.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdministracionCliente\ModificarCliente.aspx.designer.cs">
-      <DependentUpon>ModificarCliente.aspx</DependentUpon>
+    <Compile Include="Menus\MasterAdmin.master.designer.cs">
+      <DependentUpon>MasterAdmin.master</DependentUpon>
     </Compile>
-    <Compile Include="CompartidoClienteUsuario\AgregarContacto.aspx.cs">
+    <Compile Include="Menus\MenuAdmin.aspx.cs">
+      <DependentUpon>MenuAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menus\MenuAdmin.aspx.designer.cs">
+      <DependentUpon>MenuAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\MenuCliente.aspx.cs">
+      <DependentUpon>MenuCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menus\MenuCliente.aspx.designer.cs">
+      <DependentUpon>MenuCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarClienteUsuario\AgregarContacto.aspx.cs">
       <DependentUpon>AgregarContacto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CompartidoClienteUsuario\AgregarContacto.aspx.designer.cs">
+    <Compile Include="ModificarClienteUsuario\AgregarContacto.aspx.designer.cs">
       <DependentUpon>AgregarContacto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CompartidoClienteUsuario\AgregarDireccion.aspx.cs">
+    <Compile Include="ModificarClienteUsuario\AgregarDireccion.aspx.cs">
       <DependentUpon>AgregarDireccion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CompartidoClienteUsuario\AgregarDireccion.aspx.designer.cs">
+    <Compile Include="ModificarClienteUsuario\AgregarDireccion.aspx.designer.cs">
       <DependentUpon>AgregarDireccion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CompartidoClienteUsuario\MasterModificar.master.cs">
+    <Compile Include="ModificarClienteUsuario\MasterModificar.master.cs">
       <DependentUpon>MasterModificar.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CompartidoClienteUsuario\MasterModificar.master.designer.cs">
+    <Compile Include="ModificarClienteUsuario\MasterModificar.master.designer.cs">
       <DependentUpon>MasterModificar.master</DependentUpon>
     </Compile>
-    <Compile Include="CompartidoClienteUsuario\ModificarContacto.aspx.cs">
+    <Compile Include="ModificarClienteUsuario\ModificarContacto.aspx.cs">
       <DependentUpon>ModificarContacto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CompartidoClienteUsuario\ModificarContacto.aspx.designer.cs">
+    <Compile Include="ModificarClienteUsuario\ModificarContacto.aspx.designer.cs">
       <DependentUpon>ModificarContacto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CompartidoClienteUsuario\ModificarDatosPersonales.aspx.cs">
+    <Compile Include="ModificarClienteUsuario\ModificarDatosPersonales.aspx.cs">
       <DependentUpon>ModificarDatosPersonales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CompartidoClienteUsuario\ModificarDatosPersonales.aspx.designer.cs">
+    <Compile Include="ModificarClienteUsuario\ModificarDatosPersonales.aspx.designer.cs">
       <DependentUpon>ModificarDatosPersonales.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CompartidoClienteUsuario\ModificarDireccion.aspx.cs">
-      <DependentUpon>ModificarDireccion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CompartidoClienteUsuario\ModificarDireccion.aspx.designer.cs">
-      <DependentUpon>ModificarDireccion.aspx</DependentUpon>
     </Compile>
     <Compile Include="EstadoPedido.aspx.cs">
       <DependentUpon>EstadoPedido.aspx</DependentUpon>
@@ -201,13 +223,6 @@
     </Compile>
     <Compile Include="EstadoPedido.aspx.designer.cs">
       <DependentUpon>EstadoPedido.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdministracionCliente\BloqueoCliente.aspx.cs">
-      <DependentUpon>BloqueoCliente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdministracionCliente\BloqueoCliente.aspx.designer.cs">
-      <DependentUpon>BloqueoCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -223,19 +238,26 @@
     <Compile Include="InsertarPlato.aspx.designer.cs">
       <DependentUpon>InsertarPlato.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Menus\MenuAdmin.aspx.cs">
-      <DependentUpon>MenuAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Menus\MenuAdmin.aspx.designer.cs">
-      <DependentUpon>MenuAdmin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Menus\MenuCocina.aspx.cs">
       <DependentUpon>MenuCocina.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Menus\MenuCocina.aspx.designer.cs">
       <DependentUpon>MenuCocina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarClienteUsuario\ModificarDireccion.aspx.cs">
+      <DependentUpon>ModificarDireccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarClienteUsuario\ModificarDireccion.aspx.designer.cs">
+      <DependentUpon>ModificarDireccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarClienteUsuario\PrincipalModificar.aspx.cs">
+      <DependentUpon>PrincipalModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarClienteUsuario\PrincipalModificar.aspx.designer.cs">
+      <DependentUpon>PrincipalModificar.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificarPlato.aspx.cs">
       <DependentUpon>ModificarPlato.aspx</DependentUpon>
@@ -251,17 +273,11 @@
     <Compile Include="Principal.Master.designer.cs">
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
-    <Compile Include="Pruebas.aspx.cs">
-      <DependentUpon>Pruebas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pruebas.aspx.designer.cs">
-      <DependentUpon>Pruebas.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CompartidoClienteUsuario\MasterModificar.master" />
+    <Content Include="Menus\MasterAdmin.master" />
+    <Content Include="ModificarClienteUsuario\MasterModificar.master" />
     <None Include="packages.config" />
     <Content Include="Principal.Master" />
     <None Include="Web.Debug.config">

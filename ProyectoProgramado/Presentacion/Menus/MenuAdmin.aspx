@@ -1,5 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="MenuAdmin.aspx.cs" Inherits="Presentacion.MenuAdmin1" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menus/MasterAdmin.master" AutoEventWireup="true" CodeBehind="MenuAdmin.aspx.cs" Inherits="Presentacion.Menus.MenuAdmin1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+
+
+    <asp:Label ID="Label1" runat="server" Text="Pner imagen"></asp:Label>
+
+
 </asp:Content>
