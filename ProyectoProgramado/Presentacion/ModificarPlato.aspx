@@ -35,7 +35,7 @@
         <tr>
             <td>&nbsp;</td>
             <td>
-                <asp:Button ID="butBuscarPlato" runat="server" Text="Buscar" />
+                <asp:Button ID="butBuscarPlato" runat="server" Text="Buscar" OnClick="butBuscarPlato_Click" />
                 <asp:TextBox ID="txtBuscPLato" runat="server"></asp:TextBox>
                 <asp:Label ID="labelBuscPlato" runat="server" Text="Buscar Plato"></asp:Label>
             </td>
@@ -162,7 +162,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="butModifPlato" runat="server" Text="Modificar" />
+                <asp:Button ID="butModifPlato" runat="server" Text="Modificar" OnClick="butModifPlato_Click" />
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>

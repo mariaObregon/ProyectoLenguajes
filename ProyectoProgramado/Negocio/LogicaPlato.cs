@@ -52,6 +52,8 @@ namespace Negocio
             return dp.BuscarPlatoNombre(nombrePlato);
         }
 
+
+
         public void AgregarPlato(String nombre, String descripcion, decimal precio, byte[] imagen, bool habilitado)
         {
            dp.AgregarPlato(nombre, descripcion, precio, imagen, habilitado);
@@ -87,6 +89,15 @@ namespace Negocio
         public void ModificarPlato(int IntPatoID, String StrNombre, String StrDescripcion, decimal DecPrecio, byte[] Imagen, bool BoolHabilitado)
         {
             dp.ModificarPlato(IntPatoID, StrNombre, StrDescripcion, DecPrecio, Imagen, BoolHabilitado);
+        }
+
+        public String PlatoHabilitado(bool estado) {
+
+            if (estado)
+                return "Habilitar";
+
+            return "Deshabilitar";
+
         }
 
     }
