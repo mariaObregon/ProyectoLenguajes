@@ -100,6 +100,7 @@
     <Content Include="ModificarClienteUsuario\ModificarDireccion.aspx" />
     <Content Include="ModificarClienteUsuario\PrincipalModificar.aspx" />
     <Content Include="ModificarPlato.aspx" />
+    <Content Include="ModuloCocina.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -265,6 +266,13 @@
     </Compile>
     <Compile Include="ModificarPlato.aspx.designer.cs">
       <DependentUpon>ModificarPlato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCocina.aspx.cs">
+      <DependentUpon>ModuloCocina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuloCocina.aspx.designer.cs">
+      <DependentUpon>ModuloCocina.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
