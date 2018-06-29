@@ -100,5 +100,10 @@ namespace Negocio
 
         }
 
+        public String RutaImagen(Byte[] arreglo)
+        {
+            return "data:image/jpg;base64," + Convert.ToBase64String(arreglo);
+        }
+
     }
 }

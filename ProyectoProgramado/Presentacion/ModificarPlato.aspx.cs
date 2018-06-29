@@ -27,7 +27,10 @@ namespace Presentacion
             txtModPrePlato.Text = String.Concat(plato[0].Precio);
             txtModDescPlato.Text = plato[0].Descripcion;
             dropModHabPlato.Text = lp.PlatoHabilitado(plato[0].HabilitadoSN);
+            imageShowModPlato.ImageUrl = lp.RutaImagen(plato[0].Fotografia);
+            imageShowModPlato.Visible = true;
 
+            
         }
 
         protected void butModifPlato_Click(object sender, EventArgs e)

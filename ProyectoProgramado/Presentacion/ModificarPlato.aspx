@@ -11,7 +11,7 @@
                 var reader = new FileReader();
                 reader.onload = function (e) {
 
-                    document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
+                    document.getElementsByTagName("img")[1].setAttribute("src", e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
             }
@@ -136,7 +136,7 @@
         </tr>
         <tr>
             <td>
-                <img src="NULL" ID="imageShowModPlato" alt="" style="width:200px" />
+                <asp:Image runat="server" src="NULL" ID="imageShowModPlato" alt="" style="width:200px" />
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -182,6 +182,12 @@
            <Triggers>
                <asp:PostBackTrigger ControlID="butModifPlato" />
            </Triggers>
+
+           <Triggers>
+               <asp:PostBackTrigger ControlID="butBuscarPlato" />
+           </Triggers>
+
+           
 
        </asp:UpdatePanel>
 
