@@ -48,6 +48,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <table>
+            <div class="Container">
+            <div class="Row">
+            <div class="col-sm-4 col-md-4 col-lg-4">
             <tr>
                 <td colspan="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Habilite los filtros que desea utilizar:&nbsp;</td>
     
@@ -182,6 +185,9 @@
                     &nbsp;</td>
                 <td class="auto-style24">&nbsp;</td>
             </tr>
+            </div>
+            </div>
+            </div>
 </table>
 <br />
         

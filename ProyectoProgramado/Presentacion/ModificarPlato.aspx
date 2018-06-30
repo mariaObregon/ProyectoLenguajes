@@ -30,7 +30,7 @@
        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 
        <ContentTemplate>
-    
+  
     <table class="auto-style3">
         <tr>
             <td>&nbsp;</td>
@@ -136,7 +136,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Image runat="server" src="NULL" ID="imageShowModPlato" alt="" style="width:200px" />
+                <asp:Image runat="server" ID="imageShowModPlato" alt="" style="width:200px" />
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
