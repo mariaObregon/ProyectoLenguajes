@@ -55,9 +55,7 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td>
-                <asp:Button ID="Button1" runat="server" Text="Deshacer" />
-            </td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td class="auto-style4">&nbsp;</td>
@@ -74,10 +72,19 @@
                         <ControlStyle Height="50px" Width="50px" />
                         <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
-                        <asp:BoundField DataField="DescripcionEstado" HeaderText="DescripcionEstado" />
-                        <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
-                        <asp:BoundField DataField="HoraPedido" HeaderText="HoraPedido" />
+                        <asp:BoundField DataField="Fecha" HeaderText="Fecha" >
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="DescripcionEstado" HeaderText="DescripcionEstado" >
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Cliente" HeaderText="Cliente" >
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="HoraPedido" HeaderText="HoraPedido" >
+                        <HeaderStyle HorizontalAlign="Center" />
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
                         <asp:TemplateField HeaderText="Platos">
                             <ItemTemplate>
                                 <asp:GridView ID="Lineas" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" ForeColor="Black">
@@ -100,8 +107,11 @@
                                     <SortedDescendingHeaderStyle BackColor="#575357" />
                                 </asp:GridView>
                             </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
-                        <asp:ButtonField ButtonType="Button" Text="Entregar" CommandName="Entregar" />
+                        <asp:ButtonField ButtonType="Button" Text="Entregar" CommandName="Entregar" >
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:ButtonField>
                     </Columns>
                     <FooterStyle BackColor="#CCCC99" />
                     <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -116,7 +126,9 @@
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td>
+                <asp:Button ID="Button1" runat="server" Height="70px" OnClick="Button1_Click" Text="Deshacer" Width="100px" />
+            </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td class="auto-style4">&nbsp;</td>

@@ -85,5 +85,10 @@ namespace Negocio
         {
             return dp.PedidosActivos();
         }
+
+        public byte UltimoEstadoPedido(int idPedido)
+        {
+            return dp.UltimoEstadoPedido(idPedido);
+        }
     }
 }
