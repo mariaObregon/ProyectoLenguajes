@@ -15,7 +15,7 @@
     </asp:ContentPlaceHolder>
     <style type="text/css">
         .auto-style1 {
-            width: 40%;
+            width: 53%;
         }
         .auto-style2 {
             width: 179px;
@@ -37,7 +37,9 @@
                     <td class="auto-style2">
                         <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl="~/Imagenes/logo.png" Width="120px" />
                     </td>
-                    <td>Cocina MaCaRon</td>
+                    <td>
+                        <asp:Label ID="Label1" runat="server" Font-Size="25pt" ForeColor="Black" Text="Cocina MaCaRon"></asp:Label>
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
             </table>

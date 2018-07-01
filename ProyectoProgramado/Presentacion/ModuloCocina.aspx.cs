@@ -12,19 +12,19 @@ namespace Presentacion
     public partial class ModuloCocina : System.Web.UI.Page
     {
         LogicaPedido lgp = new LogicaPedido();
-   
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        //   int  ultimaEntregadaID = int.Parse(Request.QueryString["UltimaEntregada"].ToString());
-        // byte   estadoAnterior = byte.Parse(Request.QueryString["EstadoAnterior"].ToString());
+            //   int  ultimaEntregadaID = int.Parse(Request.QueryString["UltimaEntregada"].ToString());
+            // byte   estadoAnterior = byte.Parse(Request.QueryString["EstadoAnterior"].ToString());
             if (!IsPostBack) {
 
                 int ultimaEntregadaID = int.Parse(Request.QueryString["UltimaEntregada"].ToString());
                 byte estadoAnterior = byte.Parse(Request.QueryString["EstadoAnterior"].ToString());
                 List<f_pedidosActivos_Result> dtt = lgp.MostrarPedidosActivos();
-            Ordenes.DataSource = dtt;
-            Ordenes.DataBind();
+                Ordenes.DataSource = dtt;
+                Ordenes.DataBind();
 
                 if (ultimaEntregadaID == 0) {
                     Button1.Enabled = false;
@@ -33,8 +33,10 @@ namespace Presentacion
                 {
                     Button1.Enabled = true;
                 }
+
+                alertarPedidos();
             }
-            
+
         }
 
         protected void Ordenes_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -52,12 +54,12 @@ namespace Presentacion
             }
         }
 
-       
+
         protected void Ordenes_SelectedIndexChanged(object sender, EventArgs e)
         {
-           }
+        }
 
-        
+
         protected void Ordenes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Entregar") {
@@ -70,8 +72,8 @@ namespace Presentacion
                 byte estAnt = lgp.UltimoEstadoPedido(idPedido);
 
                 lgp.ActualizarEstadoPedido(1, idPedido);
-               
-                Response.Redirect("ModuloCocina.aspx?UltimaEntregada="+idPedido+"&EstadoAnterior="+ estAnt);
+
+                Response.Redirect("ModuloCocina.aspx?UltimaEntregada=" + idPedido + "&EstadoAnterior=" + estAnt);
             }
         }
 
@@ -85,5 +87,16 @@ namespace Presentacion
 
             Response.Redirect("ModuloCocina.aspx?UltimaEntregada=0&EstadoAnterior=0");
         }
+
+
+        public void alertarPedidos() {
+            if (lgp.ConteoPedidos() > 10) {
+                Label2.Text = "Hay pedidos en espera";
+            }
+            else
+            {
+                Label2.Text = "";
+            }
+        } 
     }
 }

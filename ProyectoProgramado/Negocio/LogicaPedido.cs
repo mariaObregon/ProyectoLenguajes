@@ -90,5 +90,9 @@ namespace Negocio
         {
             return dp.UltimoEstadoPedido(idPedido);
         }
+
+        public int ConteoPedidos() {
+            return dp.PedidosActivos().Count;
+        }
     }
 }

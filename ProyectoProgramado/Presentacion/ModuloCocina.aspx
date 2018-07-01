@@ -6,7 +6,12 @@
         }
 
         body {  
-        background-image:url(/Imagenes/pasta.jpg); background-repeat: no-repeat; background-attachment: fixed; ;                   
+        background-size: cover;
+        background-image:url(/Imagenes/food.jpg); 
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        ;                    
  }
         .auto-style4 {
             width: 249px;
@@ -65,7 +70,7 @@
                 &nbsp;</td>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</td>
             <td>
-                <asp:GridView ID="Ordenes" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" OnRowDataBound="Ordenes_RowDataBound" OnSelectedIndexChanged="Ordenes_SelectedIndexChanged" Width="1113px" ForeColor="Black" OnRowCommand="Ordenes_RowCommand" DataKeyNames="PedidoID">
+                <asp:GridView ID="Ordenes" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Vertical" OnRowDataBound="Ordenes_RowDataBound" OnSelectedIndexChanged="Ordenes_SelectedIndexChanged" Width="1113px" ForeColor="Black" OnRowCommand="Ordenes_RowCommand" DataKeyNames="PedidoID" AllowCustomPaging="True" AllowPaging="True">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="PedidoID" HeaderText="PedidoID">
@@ -115,6 +120,7 @@
                     </Columns>
                     <FooterStyle BackColor="#CCCC99" />
                     <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerSettings FirstPageText="Hay mas ordenes en espera;" Mode="NextPreviousFirstLast" />
                     <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
                     <RowStyle BackColor="#F7F7DE" />
                     <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
@@ -147,7 +153,9 @@
         <tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="Label2" runat="server" Font-Size="25pt" ForeColor="White" Text="ooo"></asp:Label>
+            </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
