@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="Linea" runat="server" AutoGenerateColumns="False" DataKeyNames="PedidoID" OnRowUpdating="Linea_RowUpdating" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="Linea_RowCancelingEdit" OnRowEditing="Linea_RowEditing" Width="790px">
+                <asp:GridView ID="Linea" runat="server" AutoGenerateColumns="False" DataKeyNames="PedidoID" OnRowUpdating="Linea_RowUpdating" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="Linea_RowCancelingEdit" OnRowEditing="Linea_RowEditing" Width="790px" OnSelectedIndexChanged="Linea_SelectedIndexChanged">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="PedidoID">

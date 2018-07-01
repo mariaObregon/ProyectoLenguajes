@@ -834,5 +834,11 @@ namespace Entidad
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_MostrarPedidos_Result>("[PedidosExpressEntities].[f_MostrarPedidos]()");
         }
+    
+        [DbFunction("PedidosExpressEntities", "f_pedidosActivos")]
+        public virtual IQueryable<f_pedidosActivos_Result> f_pedidosActivos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidosActivos_Result>("[PedidosExpressEntities].[f_pedidosActivos]()");
+        }
     }
 }

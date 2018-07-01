@@ -90,6 +90,11 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Imagenes\118.jpg" />
+    <Content Include="Imagenes\cr.jpg" />
+    <Content Include="Imagenes\kitt.jpg" />
+    <Content Include="Imagenes\pasta.jpg" />
+    <Content Include="Imagenes\silver.jpg" />
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCliente.aspx" />
     <Content Include="ModificarClienteUsuario\AgregarContacto.aspx" />
@@ -97,11 +102,8 @@
     <Content Include="ModificarClienteUsuario\ModificarContacto.aspx" />
     <Content Include="ModificarClienteUsuario\ModificarDatosPersonales.aspx" />
     <Content Include="EstadoPedido.aspx" />
-    <Content Include="Imagenes\edit.png" />
-    <Content Include="Imagenes\icon.png" />
     <Content Include="Imagenes\kit2.jpg" />
     <Content Include="Imagenes\logo.png" />
-    <Content Include="Imagenes\pencil.png" />
     <Content Include="Index.aspx" />
     <Content Include="InsertarPlato.aspx" />
     <Content Include="Menus\MenuCocina.aspx" />
