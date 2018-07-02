@@ -13,11 +13,11 @@ namespace Datos
 
         PedidosExpressEntities datos = new PedidosExpressEntities();
 
-        public String EliminarUsuario(String idUsuario)
+        public void EliminarUsuario(String idUsuario)
         {
-            ObjectParameter salida = new ObjectParameter("Retorno", typeof(String));
-            datos.p_EliminarUsuario(idUsuario, salida);
-            return salida.ToString();
+          
+            datos.p_EliminarUsuario(idUsuario);
+           
         }
 
         public List<f_buscarUsuarioID_Result> BusquedaUsuarioId(String usuarioId)
@@ -31,22 +31,22 @@ namespace Datos
         }
 
         public void AgregarUsuarioAdmin(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
-                    String StrSegundoApellido, String StrContraseña, String StrValorMecanismo, short ShTipoMecanismo, 
-                    String StrPartyID, short ShGeoID, String StrLineaDireccion1, String StrLineaDireccion2, 
+                    String StrSegundoApellido, String StrContraseña, String StrValorMecanismo, short ShTipoMecanismo,
+                    String StrPartyID, short ShGeoID, String StrLineaDireccion1, String StrLineaDireccion2,
                     String StrLineaDireccion3, String StrInstrucciones, Byte ByteTipoDireccionID)
         {
-            datos.p_agregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, 
+            datos.p_agregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido,
                 StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID, ShGeoID, StrLineaDireccion1,
                 StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
         }
 
         public void AgregarUsuarioCocina(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
                    String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
-                   short ShTipoMecanismo, String StrPartyID, short ShGeoID, String StrLineaDireccion1, 
-                   String StrLineaDireccion2, String StrLineaDireccion3, String StrInstrucciones, 
+                   short ShTipoMecanismo, String StrPartyID, short ShGeoID, String StrLineaDireccion1,
+                   String StrLineaDireccion2, String StrLineaDireccion3, String StrInstrucciones,
                    Byte ByteTipoDireccionID)
         {
-            datos.p_agregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, 
+            datos.p_agregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido,
                 StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID, ShGeoID, StrLineaDireccion1,
                 StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
         }
@@ -56,5 +56,11 @@ namespace Datos
             datos.p_modificarUsuario(StrPartyID, ShTipoID);
         }
 
+        public List<f_mostrarUsuarios_Result> MostrarUsuarios() {
+            return datos.f_mostrarUsuarios().ToList();
+
+        }
+
     }
+  
 }

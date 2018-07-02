@@ -10,10 +10,9 @@
 using System;
 using System.Collections.Generic;
 
-public partial class f_pedidoEstado_Cliente_Result
+public partial class v_Geo
 {
-    public int PedidoID { get; set; }
-    public System.DateTime Fecha { get; set; }
-    public string DescripcionEstado { get; set; }
-    public string Cliente { get; set; }
+    public short GeoID { get; set; }
+    public string DescripcionGeo { get; set; }
+    public Nullable<short> GeoIDPrincipal { get; set; }
 }

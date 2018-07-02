@@ -16,7 +16,7 @@ namespace Presentacion
         {
 
         }
-        
+
         protected void Ordenes_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             GridViewRow item;
@@ -30,5 +30,6 @@ namespace Presentacion
                 gv2.DataSource = lgp.MostrarLineasPedido(id);
                 gv2.DataBind();
             }
+        }
     }
 }

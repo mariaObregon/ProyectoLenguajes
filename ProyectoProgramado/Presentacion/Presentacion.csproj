@@ -296,18 +296,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AdministracionPedidos\" />
+    <Folder Include="AdministracionPlatos\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Entidad\Entidad.csproj">
-      <Project>{D499963A-7801-41E6-BCB1-F681D6DA31AE}</Project>
+      <Project>{d499963a-7801-41e6-bcb1-f681d6da31ae}</Project>
       <Name>Entidad</Name>
     </ProjectReference>
     <ProjectReference Include="..\Negocio\Negocio.csproj">
       <Project>{ca318b55-42bc-407d-bcb2-1340580d90d4}</Project>
       <Name>Negocio</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AdministracionPedidos\" />
-    <Folder Include="AdministracionPlatos\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

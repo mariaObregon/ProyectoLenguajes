@@ -7,23 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidad
+using System;
+using System.Collections.Generic;
+
+public partial class TipoUsuario
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class TipoUsuario
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public TipoUsuario()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoUsuario()
-        {
-            this.Party = new HashSet<Party>();
-        }
-    
-        public byte TipoID { get; set; }
-        public string Descripcion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Party> Party { get; set; }
+        this.Party = new HashSet<Party>();
     }
+
+    public byte TipoID { get; set; }
+    public string Descripcion { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Party> Party { get; set; }
 }

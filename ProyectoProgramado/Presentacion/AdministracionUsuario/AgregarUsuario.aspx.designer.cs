@@ -202,13 +202,13 @@ namespace Presentacion.AdministracionUsuario {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// Control ListTipContacto.
+        /// Control DropDownListContacto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ListTipContacto;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListContacto;
         
         /// <summary>
         /// Control Label10.
@@ -247,13 +247,13 @@ namespace Presentacion.AdministracionUsuario {
         protected global::System.Web.UI.WebControls.Label Label15;
         
         /// <summary>
-        /// Control ListTipoDireccion.
+        /// Control DropDownListDireccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ListTipoDireccion;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListDireccion;
         
         /// <summary>
         /// Control Label9.
@@ -265,13 +265,13 @@ namespace Presentacion.AdministracionUsuario {
         protected global::System.Web.UI.WebControls.Label Label9;
         
         /// <summary>
-        /// Control ListUbicacion.
+        /// Control DropDownListUbicacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ListUbicacion;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListUbicacion;
         
         /// <summary>
         /// Control Label11.
@@ -344,6 +344,24 @@ namespace Presentacion.AdministracionUsuario {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbInstrucciones;
+        
+        /// <summary>
+        /// Control Label21.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label21;
+        
+        /// <summary>
+        /// Control DropDownListTipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListTipo;
         
         /// <summary>
         /// Control BtnAgregarUsuario.

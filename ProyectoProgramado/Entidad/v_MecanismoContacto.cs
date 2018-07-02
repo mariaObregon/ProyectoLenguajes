@@ -7,16 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidad
+using System;
+using System.Collections.Generic;
+
+public partial class v_MecanismoContacto
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class v_MecanismoContacto
-    {
-        public short MecanismoID { get; set; }
-        public short TipoMecanismoID { get; set; }
-        public string Valor { get; set; }
-        public string PartyID { get; set; }
-    }
+    public short MecanismoID { get; set; }
+    public short TipoMecanismoID { get; set; }
+    public string Valor { get; set; }
+    public string PartyID { get; set; }
 }

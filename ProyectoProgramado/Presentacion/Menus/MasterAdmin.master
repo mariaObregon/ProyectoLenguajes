@@ -7,8 +7,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-   
+  
     <asp:Menu ID="MenuAdministrador" runat="server" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Small" ForeColor="#7C6F57" Orientation="Horizontal" StaticSubMenuIndent="10px" Width="100%" OnMenuItemClick="MenuAdministrador_MenuItemClick">
         <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
         <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />

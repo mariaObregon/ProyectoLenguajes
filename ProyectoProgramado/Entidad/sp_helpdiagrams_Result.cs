@@ -10,10 +10,11 @@
 using System;
 using System.Collections.Generic;
 
-public partial class f_pedidoEstado_Cliente_Result
+public partial class sp_helpdiagrams_Result
 {
-    public int PedidoID { get; set; }
-    public System.DateTime Fecha { get; set; }
-    public string DescripcionEstado { get; set; }
-    public string Cliente { get; set; }
+    public string Database { get; set; }
+    public string Name { get; set; }
+    public int ID { get; set; }
+    public string Owner { get; set; }
+    public int OwnerID { get; set; }
 }

@@ -7,24 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidad
+using System;
+using System.Collections.Generic;
+
+public partial class Cliente
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Cliente
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Cliente()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cliente()
-        {
-            this.Pedido = new HashSet<Pedido>();
-        }
-    
-        public string PartyID { get; set; }
-        public bool HabilitadoSN { get; set; }
-    
-        public virtual Party Party { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido> Pedido { get; set; }
+        this.Pedido = new HashSet<Pedido>();
     }
+
+    public string PartyID { get; set; }
+    public bool HabilitadoSN { get; set; }
+
+    public virtual Party Party { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Pedido> Pedido { get; set; }
 }

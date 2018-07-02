@@ -7,14 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidad
+using System;
+using System.Collections.Generic;
+
+public partial class v_Usuario
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class v_Usuario
-    {
-        public string PartyID { get; set; }
-        public byte TipoID { get; set; }
-    }
+    public string PartyID { get; set; }
+    public byte TipoID { get; set; }
 }

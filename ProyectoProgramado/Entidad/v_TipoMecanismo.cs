@@ -10,10 +10,8 @@
 using System;
 using System.Collections.Generic;
 
-public partial class f_pedidoEstado_Cliente_Result
+public partial class v_TipoMecanismo
 {
-    public int PedidoID { get; set; }
-    public System.DateTime Fecha { get; set; }
-    public string DescripcionEstado { get; set; }
-    public string Cliente { get; set; }
+    public short TipoMecanismoID { get; set; }
+    public string Descripcion { get; set; }
 }

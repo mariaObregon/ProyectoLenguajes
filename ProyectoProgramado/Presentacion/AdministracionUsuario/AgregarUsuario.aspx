@@ -107,7 +107,7 @@
                         <asp:Label ID="Label4" runat="server" Text="Seleccione una forma de contacto*"></asp:Label>
                     </td>
                     <td class="auto-style38" colspan="2">
-                        <asp:DropDownList ID="ListTipContacto" runat="server">
+                        <asp:DropDownList ID="DropDownListContacto" runat="server">
                         </asp:DropDownList>
                     </td>
                     <td class="auto-style74">
@@ -152,14 +152,14 @@
                         <asp:Label ID="Label15" runat="server" Text="Seleccione el tipo de dirección*"></asp:Label>
                     </td>
                     <td class="auto-style37" colspan="2">
-                        <asp:DropDownList ID="ListTipoDireccion" runat="server">
+                        <asp:DropDownList ID="DropDownListDireccion" runat="server">
                         </asp:DropDownList>
                     </td>
                     <td class="auto-style75">
                         <asp:Label ID="Label9" runat="server" Text="Seleccione una ubicación*"></asp:Label>
                     </td>
                     <td class="auto-style33" colspan="2">
-                        <asp:DropDownList ID="ListUbicacion" runat="server">
+                        <asp:DropDownList ID="DropDownListUbicacion" runat="server">
                         </asp:DropDownList>
                     </td>
                     <td>&nbsp;</td>
@@ -207,9 +207,13 @@
                     <td class="auto-style48">&nbsp;</td>
                     <td class="auto-style65">&nbsp;</td>
                     <td class="auto-style71">&nbsp;</td>
-                    <td class="auto-style39">&nbsp;</td>
-                    <td class="auto-style75">&nbsp;</td>
-                    <td class="auto-style60">&nbsp;</td>
+                    <td class="auto-style39" colspan="2" style="text-align: right">
+                        <asp:Label ID="Label21" runat="server" Text="Seleccione el tipo de usuario*"></asp:Label>
+                    </td>
+                    <td class="auto-style60">
+                        <asp:DropDownList ID="DropDownListTipo" runat="server">
+                        </asp:DropDownList>
+                    </td>
                     <td class="auto-style71">
                         <asp:Button ID="BtnAgregarUsuario" runat="server" OnClick="BtnAgregarUsuario_Click" Text="Insertar Usuario" Width="141px" />
                     </td>

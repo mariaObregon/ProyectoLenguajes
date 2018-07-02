@@ -8,6 +8,7 @@ namespace Presentacion
     {
 
         LogicaLoginUsuarios lg = new LogicaLoginUsuarios();
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {

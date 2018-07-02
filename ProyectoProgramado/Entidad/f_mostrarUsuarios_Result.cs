@@ -10,10 +10,9 @@
 using System;
 using System.Collections.Generic;
 
-public partial class f_pedidoEstado_Cliente_Result
+public partial class f_mostrarUsuarios_Result
 {
-    public int PedidoID { get; set; }
-    public System.DateTime Fecha { get; set; }
-    public string DescripcionEstado { get; set; }
-    public string Cliente { get; set; }
+    public string Usuario { get; set; }
+    public string Nombre { get; set; }
+    public string Rol { get; set; }
 }

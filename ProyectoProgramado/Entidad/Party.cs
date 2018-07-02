@@ -7,32 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidad
+using System;
+using System.Collections.Generic;
+
+public partial class Party
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Party
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Party()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Party()
-        {
-            this.Direccion = new HashSet<Direccion>();
-            this.MecanismoContacto = new HashSet<MecanismoContacto>();
-        }
-    
-        public string PartyID { get; set; }
-        public string Nombre { get; set; }
-        public string SegundoNombre { get; set; }
-        public string Apellido1 { get; set; }
-        public string Apellido2 { get; set; }
-        public string Contraseña { get; set; }
-    
-        public virtual Cliente Cliente { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Direccion> Direccion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MecanismoContacto> MecanismoContacto { get; set; }
-        public virtual TipoUsuario TipoUsuario { get; set; }
+        this.Direccion = new HashSet<Direccion>();
+        this.MecanismoContacto = new HashSet<MecanismoContacto>();
     }
+
+    public string PartyID { get; set; }
+    public string Nombre { get; set; }
+    public string SegundoNombre { get; set; }
+    public string Apellido1 { get; set; }
+    public string Apellido2 { get; set; }
+    public string Contraseña { get; set; }
+
+    public virtual Cliente Cliente { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Direccion> Direccion { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<MecanismoContacto> MecanismoContacto { get; set; }
+    public virtual TipoUsuario TipoUsuario { get; set; }
 }
