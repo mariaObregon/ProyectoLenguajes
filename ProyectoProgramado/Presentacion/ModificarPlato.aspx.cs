@@ -28,7 +28,11 @@ namespace Presentacion
             txtModDescPlato.Text = plato[0].Descripcion;
             dropModHabPlato.Text = lp.PlatoHabilitado(plato[0].HabilitadoSN);
             imageShowModPlato.ImageUrl = lp.RutaImagen(plato[0].Fotografia);
+            imageShowModPlato.DataBind();
             imageShowModPlato.Visible = true;
+            
+            
+            
 
             
         }

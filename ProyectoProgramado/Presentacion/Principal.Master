@@ -7,27 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 
-     <!--   <script type="text/javascript">
-
-        function showimagepreview(input) {
-
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-
-                    document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-    </script> -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
         .auto-style1 {
-            width: 40%;
+            width: 53%;
         }
         .auto-style2 {
             width: 179px;
@@ -51,7 +39,9 @@
                     <td class="auto-style2">
                         <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl="~/Imagenes/logo.png" Width="120px" />
                     </td>
-                    <td>Cocina MaCaRon</td>
+                    <td>
+                        <asp:Label ID="Label1" runat="server" Font-Size="25pt" ForeColor="Black" Text="Cocina MaCaRon"></asp:Label>
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
             </table>

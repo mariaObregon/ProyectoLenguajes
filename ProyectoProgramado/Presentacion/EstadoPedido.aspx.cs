@@ -59,6 +59,11 @@ namespace Presentacion
             this.Linea.DataSource = lgp.TodosLosPedidos();
             this.Linea.DataBind();
         }
+
+        protected void Linea_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

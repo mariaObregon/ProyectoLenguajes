@@ -1,6 +1,7 @@
 ﻿using Entidad;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,6 +70,16 @@ namespace Datos
         {
 
             datos.p_CambiarEstadoPedido(estadoID, pedidoID);
+        }
+
+        public List<f_pedidosActivos_Result> PedidosActivos() {
+            return datos.f_pedidosActivos().ToList();
+        }
+
+        public byte UltimoEstadoPedido(int idPedido) {
+           List<byte?>  ultimo = datos.f_UltimoEstado(idPedido).ToList();
+            
+            return ultimo.First().Value;
         }
     }
 }

@@ -42,13 +42,10 @@ namespace Entidad
         public virtual DbSet<TipoUsuario> TipoUsuario { get; set; }
         public virtual DbSet<v_Cliente> v_Cliente { get; set; }
         public virtual DbSet<v_Estado> v_Estado { get; set; }
-        public virtual DbSet<v_Geo> v_Geo { get; set; }
         public virtual DbSet<v_MecanismoContacto> v_MecanismoContacto { get; set; }
         public virtual DbSet<v_Party> v_Party { get; set; }
         public virtual DbSet<v_Pedido> v_Pedido { get; set; }
         public virtual DbSet<v_Platos> v_Platos { get; set; }
-        public virtual DbSet<v_TIpoDireccion> v_TIpoDireccion { get; set; }
-        public virtual DbSet<v_TipoMecanismo> v_TipoMecanismo { get; set; }
         public virtual DbSet<v_TipoUsuario> v_TipoUsuario { get; set; }
         public virtual DbSet<v_Usuario> v_Usuario { get; set; }
     
@@ -100,18 +97,6 @@ namespace Entidad
                 new ObjectParameter("PedidoID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_LineasPedido_Result>("[PedidosExpressEntities].[f_LineasPedido](@PedidoID)", pedidoIDParameter);
-        }
-    
-        [DbFunction("PedidosExpressEntities", "f_MostrarPedidos")]
-        public virtual IQueryable<f_MostrarPedidos_Result> f_MostrarPedidos()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_MostrarPedidos_Result>("[PedidosExpressEntities].[f_MostrarPedidos]()");
-        }
-    
-        [DbFunction("PedidosExpressEntities", "f_mostrarUsuarios")]
-        public virtual IQueryable<f_mostrarUsuarios_Result> f_mostrarUsuarios()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_mostrarUsuarios_Result>("[PedidosExpressEntities].[f_mostrarUsuarios]()");
         }
     
         [DbFunction("PedidosExpressEntities", "f_pedido_Fecha_Cliente")]
@@ -577,13 +562,13 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarPlato", platoIDParameter, retorno);
         }
     
-        public virtual int p_EliminarUsuario(string partyID)
+        public virtual int p_EliminarUsuario(string partyID, ObjectParameter retorno)
         {
             var partyIDParameter = partyID != null ?
                 new ObjectParameter("PartyID", partyID) :
                 new ObjectParameter("PartyID", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarUsuario", partyIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EliminarUsuario", partyIDParameter, retorno);
         }
     
         public virtual int p_HabilitarPlato(Nullable<bool> habilitado, Nullable<int> platoID)
@@ -796,7 +781,7 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -806,10 +791,10 @@ namespace Entidad
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -819,7 +804,7 @@ namespace Entidad
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
@@ -842,6 +827,37 @@ namespace Entidad
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_MostrarPedidos")]
+        public virtual IQueryable<f_MostrarPedidos_Result> f_MostrarPedidos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_MostrarPedidos_Result>("[PedidosExpressEntities].[f_MostrarPedidos]()");
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_pedidosActivos")]
+        public virtual IQueryable<f_pedidosActivos_Result> f_pedidosActivos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_pedidosActivos_Result>("[PedidosExpressEntities].[f_pedidosActivos]()");
+        }
+    
+        public virtual int p_EstadoActual(Nullable<int> pedidoID)
+        {
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_EstadoActual", pedidoIDParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_UltimoEstado")]
+        public virtual IQueryable<Nullable<byte>> f_UltimoEstado(Nullable<int> pedidoID)
+        {
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<byte>>("[PedidosExpressEntities].[f_UltimoEstado](@PedidoID)", pedidoIDParameter);
         }
     }
 }
