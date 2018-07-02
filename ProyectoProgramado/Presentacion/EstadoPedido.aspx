@@ -32,7 +32,7 @@
                 <asp:GridView ID="Linea" runat="server" AutoGenerateColumns="False" DataKeyNames="PedidoID" OnRowUpdating="Linea_RowUpdating" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="Linea_RowCancelingEdit" OnRowEditing="Linea_RowEditing" Width="790px" OnSelectedIndexChanged="Linea_SelectedIndexChanged">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
-                        <asp:TemplateField HeaderText="PedidoID">
+                        <asp:TemplateField HeaderText="# Pedido">
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("PedidoID") %>'></asp:Label>
                             </ItemTemplate>
@@ -42,7 +42,7 @@
                                 <asp:Label ID="Label3" runat="server" Text='<%# Bind("Fecha") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="DescripcionEstado">
+                        <asp:TemplateField HeaderText="Estado">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="dpp" runat="server">
                                     <asp:ListItem Value="1">Entregado</asp:ListItem>

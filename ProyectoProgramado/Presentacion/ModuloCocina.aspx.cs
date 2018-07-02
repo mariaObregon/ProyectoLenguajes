@@ -2,6 +2,7 @@
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,11 +16,7 @@ namespace Presentacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //   int  ultimaEntregadaID = int.Parse(Request.QueryString["UltimaEntregada"].ToString());
-            // byte   estadoAnterior = byte.Parse(Request.QueryString["EstadoAnterior"].ToString());
             if (!IsPostBack) {
-
                 int ultimaEntregadaID = int.Parse(Request.QueryString["UltimaEntregada"].ToString());
                 byte estadoAnterior = byte.Parse(Request.QueryString["EstadoAnterior"].ToString());
                 List<f_pedidosActivos_Result> dtt = lgp.MostrarPedidosActivos();
@@ -51,6 +48,40 @@ namespace Presentacion
                 gv2 = (GridView)e.Row.Cells[5].Controls[1];
                 gv2.DataSource = lgp.MostrarLineasPedido(id);
                 gv2.DataBind();
+
+
+                
+                TimeSpan tiempo = TimeSpan.Parse((item.Cells[4]).Text);
+
+                double diferencia = DateTime.Now.Minute - tiempo.Minutes;
+                if (diferencia < 0)
+                {
+                    lgp.ActualizarEstadoPedido(4, id);
+                    e.Row.BackColor = Color.LightCoral;
+                    
+                }
+                else if (diferencia >=  0 && diferencia < 5) {
+                    lgp.ActualizarEstadoPedido(2, id);
+                    e.Row.BackColor = Color.LightGreen;
+                    
+                }
+                else if (diferencia >= 5 && diferencia < 10)
+                {
+                    lgp.ActualizarEstadoPedido(3, id);
+                    e.Row.BackColor = Color.Yellow;
+                    
+                }
+                else if (diferencia >= 10)
+                {
+                    lgp.ActualizarEstadoPedido(4, id);
+                    e.Row.BackColor = Color.LightCoral;
+                    
+                }
+                    
+
+
+
+
             }
         }
 
@@ -97,6 +128,14 @@ namespace Presentacion
             {
                 Label2.Text = "";
             }
-        } 
+        }
+
+        protected void Tiempo_Tick(object sender, EventArgs e)
+        {
+
+            Response.Redirect("ModuloCocina.aspx?UltimaEntregada=0&EstadoAnterior=0");
+            // Label3.Text = "UpdatePanel1 refreshed at: " +
+            // DateTime.Now.ToLongTimeString();
+        }
     }
 }
