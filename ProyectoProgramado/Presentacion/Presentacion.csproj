@@ -93,6 +93,7 @@
     <Content Include="Imagenes\118.jpg" />
     <Content Include="Imagenes\food.jpg" />
     <Content Include="Imagenes\logo2.png" />
+    <Content Include="Imagenes\pasta.jpg" />
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCliente.aspx" />
     <Content Include="ModificarClienteUsuario\AgregarContacto.aspx" />

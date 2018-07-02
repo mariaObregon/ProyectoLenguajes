@@ -10,9 +10,8 @@
         background-image:url(/Imagenes/food.jpg); 
         background-position: center center;
         background-repeat: no-repeat;
-        background-attachment: fixed;
-        ;                    
- }
+        background-attachment: fixed;                    
+        }
         .auto-style4 {
             width: 249px;
         }
