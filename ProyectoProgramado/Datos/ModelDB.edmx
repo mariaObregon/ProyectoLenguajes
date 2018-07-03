@@ -571,6 +571,29 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="f_pedidosActivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PedidoID" Type="int" Nullable="false" />
+                <Property Name="Fecha" Type="date" Nullable="false" />
+                <Property Name="DescripcionEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Cliente" Type="nvarchar" MaxLength="152" Nullable="false" />
+                <Property Name="HoraPedido" Type="time" Precision="7" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="f_UltimoEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="EstadoID" Type="tinyint" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="p_agregarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PartyIDR" Type="nvarchar" Mode="In" />
@@ -1561,12 +1584,26 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="f_MostrarPedidos" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_MostrarPedidos_Result)" />
+          <FunctionImport Name="f_pedidosActivos" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidosActivos_Result)" />
+          <FunctionImport Name="p_EstadoActual">
+          <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="f_UltimoEstado" IsComposable="true" ReturnType="Collection(Byte)">
+          <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="f_MostrarPedidos_Result">
           <Property Type="Int32" Name="PedidoID" Nullable="false" />
           <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="10" />
           <Property Type="String" Name="DescripcionEstado" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Cliente" Nullable="false" MaxLength="152" />
+        </ComplexType>
+        <ComplexType Name="f_pedidosActivos_Result">
+          <Property Type="Int32" Name="PedidoID" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="10" />
+          <Property Type="String" Name="DescripcionEstado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="152" />
+          <Property Type="Time" Name="HoraPedido" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2004,6 +2041,18 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_pedidosActivos" FunctionName="PedidosExpressModel.Store.f_pedidosActivos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_pedidosActivos_Result">
+                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="HoraPedido" ColumnName="HoraPedido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="f_UltimoEstado" FunctionName="PedidosExpressModel.Store.f_UltimoEstado" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

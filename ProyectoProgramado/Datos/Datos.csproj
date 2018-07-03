@@ -55,6 +55,7 @@
     <Compile Include="DatosPedido.cs" />
     <Compile Include="DatosPlato.cs" />
     <Compile Include="DatosUsuario.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ModelDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

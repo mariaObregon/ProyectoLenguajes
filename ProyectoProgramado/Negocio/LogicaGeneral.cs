@@ -1,5 +1,7 @@
 ﻿using Datos;
+using Entidad;
 using System;
+using System.Collections.Generic;
 
 namespace Negocio
 {
@@ -28,6 +30,31 @@ namespace Negocio
             dg.ModificarDireccion(ByteDireccionID, ShGeoID, StrLineaDireccion1, StrLineaDireccion2,
                                        StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID,
                                        StrPartyID);
+        }
+
+
+        public List<v_TipoMecanismo> CargarTipoMecanismo()
+        {
+            return dg.CargarTipoMecanismo();
+
+        }
+
+        public List<v_TIpoDireccion> CargarTipoDireccion()
+        {
+            return dg.CargarTipoDireccion();
+
+        }
+
+
+        public List<v_Geo> CargarUbicacion()
+        {
+
+            return dg.CargarUbicacion();
+        }
+
+        public List<v_TipoUsuario> CargarTipoUsuario()
+        {
+            return dg.CargarTipoUsuario();
         }
     }
 }

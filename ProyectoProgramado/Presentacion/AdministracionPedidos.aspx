@@ -3,6 +3,14 @@
     <style type="text/css">
         .auto-style16 {
         width: 219px;
+
+        body {  
+        background-size: cover;
+        background-image:url(/Imagenes/pasta.jpg); 
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;                    
+        }
     }
     .auto-style18 {
         height: 211px;
@@ -125,11 +133,11 @@
                     <asp:GridView ID="Lista" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" OnRowDataBound="Lista_RowDataBound">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:BoundField DataField="PedidoID" HeaderText="PedidoID" />
+                            <asp:BoundField DataField="PedidoID" HeaderText="# Pedido" />
                             <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
-                            <asp:BoundField DataField="DescripcionEstado" HeaderText="DescripcionEstado" />
+                            <asp:BoundField DataField="DescripcionEstado" HeaderText="Estado" />
                             <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
-                            <asp:TemplateField HeaderText="LineasOrden">
+                            <asp:TemplateField HeaderText="Platos">
                                 <ItemTemplate>
                                     <asp:GridView ID="Detalles" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
                                         <AlternatingRowStyle BackColor="White" />

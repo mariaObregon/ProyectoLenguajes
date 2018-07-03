@@ -32,8 +32,10 @@ namespace Datos
             return coincide;
         }
 
-        public List<v_TipoUsuario> CargarTipoUsuario() {
+        public List<v_TipoUsuario> CargarTipoUsuario()
+        {
             return datos.v_TipoUsuario.ToList();
         }
+
     }
 }

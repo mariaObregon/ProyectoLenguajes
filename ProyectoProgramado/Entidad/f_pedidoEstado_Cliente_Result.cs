@@ -7,15 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidad
+using System;
+using System.Collections.Generic;
+
+public partial class f_pedidoEstado_Cliente_Result
 {
-    using System;
-    
-    public partial class f_pedidoEstado_Cliente_Result
-    {
-        public int PedidoID { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public string DescripcionEstado { get; set; }
-        public string Cliente { get; set; }
-    }
+    public int PedidoID { get; set; }
+    public System.DateTime Fecha { get; set; }
+    public string DescripcionEstado { get; set; }
+    public string Cliente { get; set; }
 }

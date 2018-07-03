@@ -1,5 +1,7 @@
 ﻿using Entidad;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Datos
 {
@@ -31,5 +33,34 @@ namespace Datos
                                        StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID, 
                                        StrPartyID);
         }
+
+        public List<v_TipoMecanismo> CargarTipoMecanismo()
+        {
+            return datos.v_TipoMecanismo.ToList();
+           
+        }
+
+        public List<v_TIpoDireccion> CargarTipoDireccion()
+        {
+            return datos.v_TIpoDireccion.ToList();
+
+        }
+
+        public List<v_Geo> CargarUbicacion() {
+
+            return datos.v_Geo.ToList();
+        }
+
+        public List<v_TipoUsuario> CargarTipoUsuario()
+        {
+            var usuario = from u in datos.v_TipoUsuario
+                          where u.TipoID != 1
+                          select u;
+
+            return usuario.ToList();
+        }
+
+
+
     }
 }

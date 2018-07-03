@@ -7,23 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidad
+using System;
+using System.Collections.Generic;
+
+public partial class TipoMecanismo
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class TipoMecanismo
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public TipoMecanismo()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoMecanismo()
-        {
-            this.MecanismoContacto = new HashSet<MecanismoContacto>();
-        }
-    
-        public short TipoMecanismoID { get; set; }
-        public string Descripcion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MecanismoContacto> MecanismoContacto { get; set; }
+        this.MecanismoContacto = new HashSet<MecanismoContacto>();
     }
+
+    public short TipoMecanismoID { get; set; }
+    public string Descripcion { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<MecanismoContacto> MecanismoContacto { get; set; }
 }

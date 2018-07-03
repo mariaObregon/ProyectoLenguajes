@@ -7,14 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidad
+using System;
+using System.Collections.Generic;
+
+public partial class v_Estado
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class v_Estado
-    {
-        public byte EstadoID { get; set; }
-        public string DescripcionEstado { get; set; }
-    }
+    public byte EstadoID { get; set; }
+    public string DescripcionEstado { get; set; }
 }

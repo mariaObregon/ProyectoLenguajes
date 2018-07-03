@@ -7,18 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidad
+using System;
+using System.Collections.Generic;
+
+public partial class v_Party
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class v_Party
-    {
-        public string PartyID { get; set; }
-        public string Nombre { get; set; }
-        public string SegundoNombre { get; set; }
-        public string Apellido1 { get; set; }
-        public string Apellido2 { get; set; }
-        public string Contraseña { get; set; }
-    }
+    public string PartyID { get; set; }
+    public string Nombre { get; set; }
+    public string SegundoNombre { get; set; }
+    public string Apellido1 { get; set; }
+    public string Apellido2 { get; set; }
+    public string Contraseña { get; set; }
 }

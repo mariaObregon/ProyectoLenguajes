@@ -15,7 +15,8 @@ namespace Negocio
         {
             if (idUsuario.Trim() != "" || idUsuario != null)
             {
-                return du.EliminarUsuario(idUsuario);
+                 du.EliminarUsuario(idUsuario);
+                return "Usuario eliminado";
             }
             else {
                 return "Usuario inválido";
@@ -59,5 +60,11 @@ namespace Negocio
             du.ModificarUsuario(StrPartyID, ShTipoID);
         }
 
+
+        public List<f_mostrarUsuarios_Result> MostrarUsuarios()
+        {
+            return du.MostrarUsuarios();
+
+        }
     }
 }

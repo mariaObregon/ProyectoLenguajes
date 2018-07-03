@@ -80,5 +80,19 @@ namespace Negocio
 
             dp.CambiarEstadoPedido(estadoID, pedidoID);
         }
+
+        public List<f_pedidosActivos_Result> MostrarPedidosActivos()
+        {
+            return dp.PedidosActivos();
+        }
+
+        public byte UltimoEstadoPedido(int idPedido)
+        {
+            return dp.UltimoEstadoPedido(idPedido);
+        }
+
+        public int ConteoPedidos() {
+            return dp.PedidosActivos().Count;
+        }
     }
 }

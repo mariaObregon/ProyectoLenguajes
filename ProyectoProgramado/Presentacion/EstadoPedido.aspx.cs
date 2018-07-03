@@ -1,4 +1,4 @@
-﻿using Entidad;
+﻿//using Entidad;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -58,6 +58,11 @@ namespace Presentacion
             Linea.EditIndex = -1;
             this.Linea.DataSource = lgp.TodosLosPedidos();
             this.Linea.DataBind();
+        }
+
+        protected void Linea_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

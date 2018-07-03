@@ -7,14 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Entidad
+using System;
+using System.Collections.Generic;
+
+public partial class v_Cliente
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class v_Cliente
-    {
-        public string PartyID { get; set; }
-        public bool HabilitadoSN { get; set; }
-    }
+    public string PartyID { get; set; }
+    public bool HabilitadoSN { get; set; }
 }
