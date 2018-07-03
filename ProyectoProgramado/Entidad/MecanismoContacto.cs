@@ -7,14 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class MecanismoContacto
+namespace Entidad
 {
-    public short MecanismoID { get; set; }
-    public string Valor { get; set; }
-
-    public virtual Party Party { get; set; }
-    public virtual TipoMecanismo TipoMecanismo { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class MecanismoContacto
+    {
+        public short MecanismoID { get; set; }
+        public string Valor { get; set; }
+    
+        public virtual Party Party { get; set; }
+        public virtual TipoMecanismo TipoMecanismo { get; set; }
+    }
 }

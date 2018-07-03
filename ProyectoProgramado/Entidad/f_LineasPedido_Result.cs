@@ -7,12 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class f_LineasPedido_Result
+namespace Entidad
 {
-    public string Nombre { get; set; }
-    public Nullable<short> Cantidad { get; set; }
-    public Nullable<decimal> Precio { get; set; }
+    using System;
+    
+    public partial class f_LineasPedido_Result
+    {
+        public string Nombre { get; set; }
+        public Nullable<short> Cantidad { get; set; }
+        public Nullable<decimal> Precio { get; set; }
+    }
 }

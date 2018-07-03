@@ -1,4 +1,4 @@
-﻿//using Entidad;
+﻿using Entidad;
 using Negocio;
 using System;
 using System.Collections.Generic;

@@ -7,11 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class v_TipoUsuario
+namespace Entidad
 {
-    public byte TipoID { get; set; }
-    public string Descripcion { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class v_TipoUsuario
+    {
+        public byte TipoID { get; set; }
+        public string Descripcion { get; set; }
+    }
 }

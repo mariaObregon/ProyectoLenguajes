@@ -7,24 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Plato
+namespace Entidad
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Plato()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Plato
     {
-        this.LineaPedido = new HashSet<LineaPedido>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Plato()
+        {
+            this.LineaPedido = new HashSet<LineaPedido>();
+        }
+    
+        public int PlatoID { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Precio { get; set; }
+        public byte[] Fotografia { get; set; }
+        public bool HabilitadoSN { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LineaPedido> LineaPedido { get; set; }
     }
-
-    public int PlatoID { get; set; }
-    public string Nombre { get; set; }
-    public string Descripcion { get; set; }
-    public decimal Precio { get; set; }
-    public byte[] Fotografia { get; set; }
-    public bool HabilitadoSN { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LineaPedido> LineaPedido { get; set; }
 }

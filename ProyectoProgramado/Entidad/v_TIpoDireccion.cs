@@ -7,11 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class v_TIpoDireccion
+namespace Entidad
 {
-    public byte TipoDireccionID { get; set; }
-    public string Descripcion { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class v_TIpoDireccion
+    {
+        public byte TipoDireccionID { get; set; }
+        public string Descripcion { get; set; }
+    }
 }

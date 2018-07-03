@@ -12,9 +12,11 @@ namespace Entidad
     using System;
     using System.Collections.Generic;
     
-    public partial class v_Estado
+    public partial class v_LineaPedido
     {
-        public byte EstadoID { get; set; }
-        public string DescripcionEstado { get; set; }
+        public int PlatoID { get; set; }
+        public int PedidoID { get; set; }
+        public Nullable<short> Cantidad { get; set; }
+        public Nullable<decimal> Precio { get; set; }
     }
 }

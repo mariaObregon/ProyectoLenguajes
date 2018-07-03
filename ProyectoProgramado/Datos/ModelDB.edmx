@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PedidosExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PedidosExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="PartyID" />
@@ -152,6 +152,29 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene defini
           <Property Name="DescripcionEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Geo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_Geo">
+          <Key>
+            <PropertyRef Name="GeoID" />
+            <PropertyRef Name="DescripcionGeo" />
+          </Key>
+          <Property Name="GeoID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescripcionGeo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GeoIDPrincipal" Type="smallint" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_LineaPedido' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_LineaPedido">
+          <Key>
+            <PropertyRef Name="PlatoID" />
+            <PropertyRef Name="PedidoID" />
+          </Key>
+          <Property Name="PlatoID" Type="int" Nullable="false" />
+          <Property Name="PedidoID" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="smallint" />
+          <Property Name="Precio" Type="money" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_MecanismoContacto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_MecanismoContacto">
           <Key>
@@ -212,6 +235,26 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Platos' no tiene defini
           <Property Name="Precio" Type="money" Nullable="false" />
           <Property Name="Fotografia" Type="image" />
           <Property Name="HabilitadoSN" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_TIpoDireccion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_TIpoDireccion">
+          <Key>
+            <PropertyRef Name="TipoDireccionID" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="TipoDireccionID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_TipoMecanismo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_TipoMecanismo">
+          <Key>
+            <PropertyRef Name="TipoMecanismoID" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="TipoMecanismoID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_TipoUsuario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -389,6 +432,30 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="f_buscarClienteID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Nombre" Type="nvarchar" MaxLength="203" Nullable="false" />
+                <Property Name="HabilitadoSN" Type="bit" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="f_buscarClienteNombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Nombre" Type="nvarchar" MaxLength="203" Nullable="false" />
+                <Property Name="HabilitadoSN" Type="bit" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="f_buscarPlatoID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PlatoID" Type="int" Mode="In" />
           <ReturnType>
@@ -424,10 +491,8 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-                <Property Name="SegundoNombre" Type="nvarchar" MaxLength="50" />
-                <Property Name="PrimerApellido" Type="nvarchar" MaxLength="50" Nullable="false" />
-                <Property Name="SegundoApellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Nombre" Type="nvarchar" MaxLength="203" Nullable="false" />
                 <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
               </RowType>
             </CollectionType>
@@ -438,10 +503,8 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-                <Property Name="SegundoNombre" Type="nvarchar" MaxLength="50" />
-                <Property Name="PrimerApellido" Type="nvarchar" MaxLength="50" Nullable="false" />
-                <Property Name="SegundoApellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Nombre" Type="nvarchar" MaxLength="203" Nullable="false" />
                 <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
               </RowType>
             </CollectionType>
@@ -459,6 +522,27 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="f_listaPlatosHabilitados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Precio" Type="money" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="f_mostrarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Nombre" Type="nvarchar" MaxLength="203" Nullable="false" />
+                <Property Name="HabilitadoSN" Type="bit" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="f_MostrarPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <ReturnType>
             <CollectionType>
@@ -467,6 +551,17 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
                 <Property Name="Fecha" Type="date" Nullable="false" />
                 <Property Name="DescripcionEstado" Type="nvarchar" MaxLength="50" Nullable="false" />
                 <Property Name="Cliente" Type="nvarchar" MaxLength="152" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="f_mostrarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Nombre" Type="nvarchar" MaxLength="203" Nullable="false" />
+                <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -621,6 +716,12 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Parameter Name="TipoDireccionID" Type="tinyint" Mode="In" />
           <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="p_agregarLineaPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PlatoID" Type="int" Mode="In" />
+          <Parameter Name="PedidoID" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="smallint" Mode="In" />
+          <Parameter Name="Precio" Type="money" Mode="In" />
+        </Function>
         <Function Name="p_agregarMecanismo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ValorMecanismo" Type="varchar" Mode="In" />
           <Parameter Name="TipoMecanismoID" Type="smallint" Mode="In" />
@@ -699,7 +800,6 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
         </Function>
         <Function Name="p_EliminarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
-          <Parameter Name="Retorno" Type="varchar" Mode="InOut" />
         </Function>
         <Function Name="p_HabilitarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Habilitado" Type="bit" Mode="In" />
@@ -803,6 +903,21 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
     [v_Estado].[DescripcionEstado] AS [DescripcionEstado]
     FROM [dbo].[v_Estado] AS [v_Estado]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_Geo" EntityType="Self.v_Geo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Geo].[GeoID] AS [GeoID], 
+    [v_Geo].[DescripcionGeo] AS [DescripcionGeo], 
+    [v_Geo].[GeoIDPrincipal] AS [GeoIDPrincipal]
+    FROM [dbo].[v_Geo] AS [v_Geo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_LineaPedido" EntityType="Self.v_LineaPedido" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_LineaPedido].[PlatoID] AS [PlatoID], 
+    [v_LineaPedido].[PedidoID] AS [PedidoID], 
+    [v_LineaPedido].[Cantidad] AS [Cantidad], 
+    [v_LineaPedido].[Precio] AS [Precio]
+    FROM [dbo].[v_LineaPedido] AS [v_LineaPedido]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_MecanismoContacto" EntityType="Self.v_MecanismoContacto" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_MecanismoContacto].[MecanismoID] AS [MecanismoID], 
@@ -838,6 +953,18 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
     [v_Platos].[Fotografia] AS [Fotografia], 
     [v_Platos].[HabilitadoSN] AS [HabilitadoSN]
     FROM [dbo].[v_Platos] AS [v_Platos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_TIpoDireccion" EntityType="Self.v_TIpoDireccion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_TIpoDireccion].[TipoDireccionID] AS [TipoDireccionID], 
+    [v_TIpoDireccion].[Descripcion] AS [Descripcion]
+    FROM [dbo].[v_TIpoDireccion] AS [v_TIpoDireccion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_TipoMecanismo" EntityType="Self.v_TipoMecanismo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_TipoMecanismo].[TipoMecanismoID] AS [TipoMecanismoID], 
+    [v_TipoMecanismo].[Descripcion] AS [Descripcion]
+    FROM [dbo].[v_TipoMecanismo] AS [v_TipoMecanismo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_TipoUsuario" EntityType="Self.v_TipoUsuario" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -904,10 +1031,21 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PedidosExpressModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="f_buscarClienteID_Result">
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HabilitadoSN" Type="Boolean" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="f_buscarClienteNombre_Result">
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HabilitadoSN" Type="Boolean" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="f_buscarPlatoID_Result">
           <Property Name="PlatoID" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -925,23 +1063,39 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Property Name="HabilitadoSN" Type="Boolean" Nullable="false" />
         </ComplexType>
         <ComplexType Name="f_buscarUsuarioID_Result">
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Rol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
         </ComplexType>
         <ComplexType Name="f_buscarUsuarioNombre_Result">
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Rol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
         </ComplexType>
         <ComplexType Name="f_LineasPedido_Result">
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cantidad" Type="Int16" />
           <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="f_listaPlatosHabilitados_Result">
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="f_mostrarClientes_Result">
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HabilitadoSN" Type="Boolean" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="f_MostrarPedidos_Result">
+          <Property Name="PedidoID" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="DescripcionEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cliente" Type="String" MaxLength="152" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="f_mostrarUsuarios_Result">
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="203" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
         </ComplexType>
         <ComplexType Name="f_pedido_Fecha_Cliente_Result">
           <Property Name="PedidoID" Type="Int32" Nullable="false" />
@@ -984,6 +1138,16 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Property Name="Fecha" Type="DateTime" Nullable="false" />
           <Property Name="DescripcionEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cliente" Type="String" MaxLength="152" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="f_pedidosActivos_Result">
+          <Property Name="PedidoID" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="DescripcionEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cliente" Type="String" MaxLength="152" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoraPedido" Type="Time" />
+        </ComplexType>
+        <ComplexType Name="f_UltimoEstado_Result">
+          <Property Name="EstadoID" Type="Byte" Nullable="false" />
         </ComplexType>
         <EntityType Name="Cliente">
           <Key>
@@ -1070,10 +1234,10 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           </Key>
           <Property Name="PedidoID" Type="Int32" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HoraInicio" Type="Time" Precision="7" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_Pedido_Cliente" FromRole="Pedido" ToRole="Cliente" />
           <NavigationProperty Name="Estado" Relationship="Self.FK_Pedido_Estado" FromRole="Pedido" ToRole="Estado" />
           <NavigationProperty Name="LineaPedido" Relationship="Self.FK_PedidosRegistro_Pedido" FromRole="Pedido" ToRole="LineaPedido" />
-          <Property Name="HoraInicio" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="Plato">
           <Key>
@@ -1137,6 +1301,25 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Property Name="EstadoID" Type="Byte" Nullable="false" />
           <Property Name="DescripcionEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
+        <EntityType Name="v_Geo">
+          <Key>
+            <PropertyRef Name="GeoID" />
+            <PropertyRef Name="DescripcionGeo" />
+          </Key>
+          <Property Name="GeoID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescripcionGeo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GeoIDPrincipal" Type="Int16" />
+        </EntityType>
+        <EntityType Name="v_LineaPedido">
+          <Key>
+            <PropertyRef Name="PlatoID" />
+            <PropertyRef Name="PedidoID" />
+          </Key>
+          <Property Name="PlatoID" Type="Int32" Nullable="false" />
+          <Property Name="PedidoID" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int16" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
         <EntityType Name="v_MecanismoContacto">
           <Key>
             <PropertyRef Name="MecanismoID" />
@@ -1190,6 +1373,22 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Fotografia" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="HabilitadoSN" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_TIpoDireccion">
+          <Key>
+            <PropertyRef Name="TipoDireccionID" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="TipoDireccionID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_TipoMecanismo">
+          <Key>
+            <PropertyRef Name="TipoMecanismoID" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="TipoMecanismoID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="v_TipoUsuario">
           <Key>
@@ -1303,10 +1502,14 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
           <EntitySet Name="v_Cliente" EntityType="Self.v_Cliente" />
           <EntitySet Name="v_Estado" EntityType="Self.v_Estado" />
+          <EntitySet Name="v_Geo" EntityType="Self.v_Geo" />
+          <EntitySet Name="v_LineaPedido" EntityType="Self.v_LineaPedido" />
           <EntitySet Name="v_MecanismoContacto" EntityType="Self.v_MecanismoContacto" />
           <EntitySet Name="v_Party" EntityType="Self.v_Party" />
           <EntitySet Name="v_Pedido" EntityType="Self.v_Pedido" />
           <EntitySet Name="v_Platos" EntityType="Self.v_Platos" />
+          <EntitySet Name="v_TIpoDireccion" EntityType="Self.v_TIpoDireccion" />
+          <EntitySet Name="v_TipoMecanismo" EntityType="Self.v_TipoMecanismo" />
           <EntitySet Name="v_TipoUsuario" EntityType="Self.v_TipoUsuario" />
           <EntitySet Name="v_Usuario" EntityType="Self.v_Usuario" />
           <AssociationSet Name="FK_Cliente_Party" Association="Self.FK_Cliente_Party">
@@ -1357,31 +1560,41 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <End Role="Party" EntitySet="Party" />
             <End Role="TipoUsuario" EntitySet="TipoUsuario" />
           </AssociationSet>
+          <FunctionImport Name="f_buscarClienteID" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarClienteID_Result)">
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="f_buscarClienteNombre" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarClienteNombre_Result)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="f_buscarPlatoID" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarPlatoID_Result)">
-          <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_buscarPlatoNombre" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarPlatoNombre_Result)">
-          <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_buscarUsuarioID" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarUsuarioID_Result)">
-          <Parameter Name="PartyID" Mode="In" Type="String" />
+            <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_buscarUsuarioNombre" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_buscarUsuarioNombre_Result)">
-          <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_LineasPedido" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_LineasPedido_Result)">
-          <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+            <Parameter Name="PedidoID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="f_listaPlatosHabilitados" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_listaPlatosHabilitados_Result)" />
+          <FunctionImport Name="f_mostrarClientes" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_mostrarClientes_Result)" />
+          <FunctionImport Name="f_MostrarPedidos" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_MostrarPedidos_Result)" />
+          <FunctionImport Name="f_mostrarUsuarios" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_mostrarUsuarios_Result)" />
           <FunctionImport Name="f_pedido_Fecha_Cliente" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedido_Fecha_Cliente_Result)">
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoCliente" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoCliente_Result)">
-          <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoEstado" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoEstado_Result)">
-          <Parameter Name="Estado" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="f_pedidoEstado_Cliente" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoEstado_Cliente_Result)">
             <Parameter Name="Estado" Mode="In" Type="Int32" />
@@ -1401,6 +1614,10 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <FunctionImport Name="f_pedidoFecha" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidoFecha_Result)">
             <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="f_pedidosActivos" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidosActivos_Result)" />
+          <FunctionImport Name="f_UltimoEstado" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_UltimoEstado_Result)">
+            <Parameter Name="PedidoID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="p_agregarCliente">
             <Parameter Name="PartyIDR" Mode="In" Type="String" />
@@ -1427,6 +1644,12 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <Parameter Name="Instrucciones" Mode="In" Type="String" />
             <Parameter Name="TipoDireccionID" Mode="In" Type="Byte" />
             <Parameter Name="PartyID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_agregarLineaPedido">
+            <Parameter Name="PlatoID" Mode="In" Type="Int32" />
+            <Parameter Name="PedidoID" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int16" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="p_agregarMecanismo">
             <Parameter Name="ValorMecanismo" Mode="In" Type="String" />
@@ -1506,7 +1729,6 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           </FunctionImport>
           <FunctionImport Name="p_EliminarUsuario">
             <Parameter Name="PartyID" Mode="In" Type="String" />
-            <Parameter Name="Retorno" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="p_HabilitarPlato">
             <Parameter Name="Habilitado" Mode="In" Type="Boolean" />
@@ -1569,11 +1791,11 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PedidosExpressModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PedidosExpressModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1583,27 +1805,17 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="f_MostrarPedidos" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_MostrarPedidos_Result)" />
-          <FunctionImport Name="f_pedidosActivos" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_pedidosActivos_Result)" />
-          <FunctionImport Name="p_EstadoActual">
-          <Parameter Name="PedidoID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="f_UltimoEstado" IsComposable="true" ReturnType="Collection(Byte)">
-          <Parameter Name="PedidoID" Mode="In" Type="Int32" />
-          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="f_MostrarPedidos_Result">
-          <Property Type="Int32" Name="PedidoID" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="10" />
-          <Property Type="String" Name="DescripcionEstado" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="152" />
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="f_pedidosActivos_Result">
-          <Property Type="Int32" Name="PedidoID" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="10" />
-          <Property Type="String" Name="DescripcionEstado" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="152" />
-          <Property Type="Time" Name="HoraPedido" Nullable="true" />
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1680,9 +1892,9 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <EntitySetMapping Name="Pedido">
             <EntityTypeMapping TypeName="PedidosExpressModel.Pedido">
               <MappingFragment StoreEntitySet="Pedido">
-                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
                 <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1749,6 +1961,25 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="v_Geo">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_Geo">
+              <MappingFragment StoreEntitySet="v_Geo">
+                <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+                <ScalarProperty Name="DescripcionGeo" ColumnName="DescripcionGeo" />
+                <ScalarProperty Name="GeoIDPrincipal" ColumnName="GeoIDPrincipal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_LineaPedido">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_LineaPedido">
+              <MappingFragment StoreEntitySet="v_LineaPedido">
+                <ScalarProperty Name="PlatoID" ColumnName="PlatoID" />
+                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="v_MecanismoContacto">
             <EntityTypeMapping TypeName="PedidosExpressModel.v_MecanismoContacto">
               <MappingFragment StoreEntitySet="v_MecanismoContacto">
@@ -1790,6 +2021,22 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
                 <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_TIpoDireccion">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_TIpoDireccion">
+              <MappingFragment StoreEntitySet="v_TIpoDireccion">
+                <ScalarProperty Name="TipoDireccionID" ColumnName="TipoDireccionID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_TipoMecanismo">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_TipoMecanismo">
+              <MappingFragment StoreEntitySet="v_TipoMecanismo">
+                <ScalarProperty Name="TipoMecanismoID" ColumnName="TipoMecanismoID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1878,6 +2125,24 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               <ScalarProperty Name="TipoID" ColumnName="TipoID" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_buscarClienteID" FunctionImportName="f_buscarClienteID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_buscarClienteID_Result">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_buscarClienteNombre" FunctionImportName="f_buscarClienteNombre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_buscarClienteNombre_Result">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_buscarPlatoID" FunctionImportName="f_buscarPlatoID">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PedidosExpressModel.f_buscarPlatoID_Result">
@@ -1905,10 +2170,8 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_buscarUsuarioID" FunctionImportName="f_buscarUsuarioID">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PedidosExpressModel.f_buscarUsuarioID_Result">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
-                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
-                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
                 <ScalarProperty Name="Rol" ColumnName="Rol" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -1916,10 +2179,8 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_buscarUsuarioNombre" FunctionImportName="f_buscarUsuarioNombre">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PedidosExpressModel.f_buscarUsuarioNombre_Result">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
-                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
-                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
                 <ScalarProperty Name="Rol" ColumnName="Rol" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -1930,6 +2191,42 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_listaPlatosHabilitados" FunctionImportName="f_listaPlatosHabilitados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_listaPlatosHabilitados_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_mostrarClientes" FunctionImportName="f_mostrarClientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_mostrarClientes_Result">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_MostrarPedidos" FunctionImportName="f_MostrarPedidos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_MostrarPedidos_Result">
+                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_mostrarUsuarios" FunctionImportName="f_mostrarUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_mostrarUsuarios_Result">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2003,8 +2300,27 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_pedidosActivos" FunctionImportName="f_pedidosActivos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_pedidosActivos_Result">
+                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="HoraPedido" ColumnName="HoraPedido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_UltimoEstado" FunctionImportName="f_UltimoEstado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_UltimoEstado_Result">
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="p_agregarCliente" FunctionName="PedidosExpressModel.Store.p_agregarCliente" />
           <FunctionImportMapping FunctionImportName="p_agregarDireccion" FunctionName="PedidosExpressModel.Store.p_agregarDireccion" />
+          <FunctionImportMapping FunctionImportName="p_agregarLineaPedido" FunctionName="PedidosExpressModel.Store.p_agregarLineaPedido" />
           <FunctionImportMapping FunctionImportName="p_agregarMecanismo" FunctionName="PedidosExpressModel.Store.p_agregarMecanismo" />
           <FunctionImportMapping FunctionImportName="p_agregarParty" FunctionName="PedidosExpressModel.Store.p_agregarParty" />
           <FunctionImportMapping FunctionImportName="p_agregarPlato" FunctionName="PedidosExpressModel.Store.p_agregarPlato" />
@@ -2027,32 +2343,27 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PedidosExpressModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PedidosExpressModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PedidosExpressModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PedidosExpressModel.Store.sp_helpdiagramdefinition" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PedidosExpressModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PedidosExpressModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PedidosExpressModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PedidosExpressModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PedidosExpressModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="f_MostrarPedidos" FunctionName="PedidosExpressModel.Store.f_MostrarPedidos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PedidosExpressModel.f_MostrarPedidos_Result">
-                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
-                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="f_pedidosActivos" FunctionName="PedidosExpressModel.Store.f_pedidosActivos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PedidosExpressModel.f_pedidosActivos_Result">
-                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
-                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-                <ScalarProperty Name="HoraPedido" ColumnName="HoraPedido" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="f_UltimoEstado" FunctionName="PedidosExpressModel.Store.f_UltimoEstado" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

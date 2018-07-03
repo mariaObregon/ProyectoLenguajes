@@ -7,19 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Direccion
+namespace Entidad
 {
-    public byte DireccionID { get; set; }
-    public string LineaDireccion1 { get; set; }
-    public string LineaDireccion2 { get; set; }
-    public string LineaDireccion3 { get; set; }
-    public string Instrucciones { get; set; }
-    public string PartyID { get; set; }
-
-    public virtual Geo Geo { get; set; }
-    public virtual Party Party { get; set; }
-    public virtual TipoDireccion TipoDireccion { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Direccion
+    {
+        public byte DireccionID { get; set; }
+        public string LineaDireccion1 { get; set; }
+        public string LineaDireccion2 { get; set; }
+        public string LineaDireccion3 { get; set; }
+        public string Instrucciones { get; set; }
+        public string PartyID { get; set; }
+    
+        public virtual Geo Geo { get; set; }
+        public virtual Party Party { get; set; }
+        public virtual TipoDireccion TipoDireccion { get; set; }
+    }
 }

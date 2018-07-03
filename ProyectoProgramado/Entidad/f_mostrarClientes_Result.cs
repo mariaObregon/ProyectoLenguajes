@@ -10,11 +10,11 @@
 namespace Entidad
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class v_Estado
+    public partial class f_mostrarClientes_Result
     {
-        public byte EstadoID { get; set; }
-        public string DescripcionEstado { get; set; }
+        public string Usuario { get; set; }
+        public string Nombre { get; set; }
+        public bool HabilitadoSN { get; set; }
     }
 }

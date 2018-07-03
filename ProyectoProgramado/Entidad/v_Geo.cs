@@ -7,12 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class v_Geo
+namespace Entidad
 {
-    public short GeoID { get; set; }
-    public string DescripcionGeo { get; set; }
-    public Nullable<short> GeoIDPrincipal { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class v_Geo
+    {
+        public short GeoID { get; set; }
+        public string DescripcionGeo { get; set; }
+        public Nullable<short> GeoIDPrincipal { get; set; }
+    }
 }

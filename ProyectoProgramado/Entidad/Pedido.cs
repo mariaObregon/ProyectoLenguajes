@@ -7,23 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Pedido
+namespace Entidad
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Pedido()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Pedido
     {
-        this.LineaPedido = new HashSet<LineaPedido>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Pedido()
+        {
+            this.LineaPedido = new HashSet<LineaPedido>();
+        }
+    
+        public int PedidoID { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public Nullable<System.TimeSpan> HoraInicio { get; set; }
+    
+        public virtual Cliente Cliente { get; set; }
+        public virtual Estado Estado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LineaPedido> LineaPedido { get; set; }
     }
-
-    public int PedidoID { get; set; }
-    public System.DateTime Fecha { get; set; }
-    public Nullable<System.TimeSpan> HoraInicio { get; set; }
-
-    public virtual Cliente Cliente { get; set; }
-    public virtual Estado Estado { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LineaPedido> LineaPedido { get; set; }
 }
