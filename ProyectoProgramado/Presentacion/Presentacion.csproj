@@ -90,6 +90,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="ListadoPlatos.aspx" />
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCliente.aspx" />
     <Content Include="ModificarClienteUsuario\AgregarContacto.aspx" />
@@ -204,6 +205,13 @@
     </Compile>
     <Compile Include="BuscarUsuarioCliente\BuscarUsuarioCliente.aspx.designer.cs">
       <DependentUpon>BuscarUsuarioCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoPlatos.aspx.cs">
+      <DependentUpon>ListadoPlatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoPlatos.aspx.designer.cs">
+      <DependentUpon>ListadoPlatos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menus\MasterAdmin.master.cs">
       <DependentUpon>MasterAdmin.master</DependentUpon>
