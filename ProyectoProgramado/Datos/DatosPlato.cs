@@ -44,6 +44,11 @@ namespace Datos
         {
             datos.p_modificarPlato(IntPatoID, StrNombre, StrDescripcion, DecPrecio, Imagen, BoolHabilitado);
         }
+
+        public List<f_listaPlatosHabilitados_Result> PlatosHabilitados()
+        {
+            return datos.f_listaPlatosHabilitados().ToList();
+        }
     }
 
 }

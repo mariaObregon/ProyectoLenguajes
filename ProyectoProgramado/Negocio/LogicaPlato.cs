@@ -105,5 +105,32 @@ namespace Negocio
             return "data:image/jpg;base64," + Convert.ToBase64String(arreglo);
         }
 
+        public List<f_listaPlatosHabilitados_Result> PlatosHabilitados() {
+
+            return dp.PlatosHabilitados();
+        }
+
+        public List<String> ListaPlatosSeleccion() {
+
+            List<f_listaPlatosHabilitados_Result> lista = PlatosHabilitados();
+            List<String> rLista = new List<string>();
+
+            if (lista.Count > 0)
+            {
+
+                for (int i = 0; i < lista.Count; i++)
+                {
+
+                    rLista.Add(lista[i].Nombre + "/" + lista[i].Precio);
+
+                }
+
+            }
+            else { rLista.Add("Sin platos Habiles"); }
+
+            return rLista;
+
+        }
+
     }
 }
