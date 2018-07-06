@@ -148,6 +148,10 @@
            <asp:PostBackTrigger ControlID="Button1" />
          </Triggers>
 
+         <Triggers>
+           <asp:PostBackTrigger ControlID="dropPlatosHab" />
+         </Triggers>
+
     </asp:UpdatePanel>
 
 </asp:Content>

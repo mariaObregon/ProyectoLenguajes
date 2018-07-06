@@ -13,7 +13,7 @@ namespace Entidad
     
     public partial class f_listaPlatosHabilitados_Result
     {
-        public string Nombre { get; set; }
-        public decimal Precio { get; set; }
+        public string NamePrice { get; set; }
+        public int PlatoID { get; set; }
     }
 }

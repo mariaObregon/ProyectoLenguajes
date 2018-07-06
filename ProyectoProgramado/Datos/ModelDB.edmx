@@ -526,8 +526,8 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-                <Property Name="Precio" Type="money" Nullable="false" />
+                <Property Name="NamePrice" Type="nvarchar" MaxLength="91" Nullable="false" />
+                <Property Name="PlatoID" Type="int" Nullable="false" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -1078,8 +1078,8 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
         </ComplexType>
         <ComplexType Name="f_listaPlatosHabilitados_Result">
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="NamePrice" Type="String" MaxLength="91" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlatoID" Type="Int32" Nullable="false" />
         </ComplexType>
         <ComplexType Name="f_mostrarClientes_Result">
           <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -2197,8 +2197,8 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_listaPlatosHabilitados" FunctionImportName="f_listaPlatosHabilitados">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PedidosExpressModel.f_listaPlatosHabilitados_Result">
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="NamePrice" ColumnName="NamePrice" />
+                <ScalarProperty Name="PlatoID" ColumnName="PlatoID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -18,15 +18,15 @@ namespace Presentacion
 
             dropPlatosHab.Items.Clear();
             dropPlatosHab.DataSource = lp.PlatosHabilitados();
-            dropPlatosHab.DataValueField = "Nombre";
-            dropPlatosHab.DataTextField = "Precio";
+            dropPlatosHab.DataValueField = "PlatoID";
+            dropPlatosHab.DataTextField = "NamePrice";
             dropPlatosHab.DataBind();
 
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            labelPlatoshab.Text = dropPlatosHab.Text;
+            labelPlatoshab.Text = dropPlatosHab.SelectedValue;
         }
     }
 }

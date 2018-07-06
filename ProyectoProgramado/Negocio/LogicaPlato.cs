@@ -110,7 +110,7 @@ namespace Negocio
             return dp.PlatosHabilitados();
         }
 
-        public List<String> ListaPlatosSeleccion() {
+       /* public List<String> ListaPlatosSeleccion() {
 
             List<f_listaPlatosHabilitados_Result> lista = PlatosHabilitados();
             List<String> rLista = new List<string>();
@@ -130,7 +130,7 @@ namespace Negocio
 
             return rLista;
 
-        }
+        }*/
 
     }
 }
