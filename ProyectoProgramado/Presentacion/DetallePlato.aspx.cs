@@ -14,13 +14,15 @@ namespace Presentacion
         LogicaPlato lp = new LogicaPlato();
         List<f_buscarPlatoID_Result> plato;
         public const int maxPlatoPermitido = 100;//Cantidad Maxima Pueda Agregar el cliente respecto a un plato especifico
+        int platoID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Cargar todo mediante el id que viene de la otra pagina apenas cargue
-            //Recibir el int mediante variable de ssesion que viene del otro lado
 
-            plato = lp.BuscarPlatoId(Int32.Parse("16"));//Capturar  variable session viene plato id
+            String idPlato = Session["idPlato"].ToString(); // Capturar error si viene null el id o es un string, no se caiga redireccione pagina errores
+            platoID = Int32.Parse(idPlato);
+
+            plato = lp.BuscarPlatoId(platoID);//Capturar  variable session viene plato id
             lbNombrePlato.Text = plato[0].Nombre;
             lbPrecioPlato.Text = String.Concat(plato[0].Precio);
             lbDescPlato.Text = plato[0].Descripcion;
