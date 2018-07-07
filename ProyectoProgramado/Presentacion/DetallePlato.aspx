@@ -1,9 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="DetallePlato.aspx.cs" Inherits="Presentacion.DetallePlato" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .auto-style4 {
-            height: 179px;
-        }
         .auto-style5 {
             height: 41px;
         }
@@ -26,6 +23,8 @@
         <tr>
             <td class="auto-style6">&nbsp;</td>
             <td>
+                Nombre Plato:
+                <br />
                 <asp:Label ID="lbNombrePlato" runat="server" Text="Nombre PLato"></asp:Label>
             </td>
             <td>&nbsp;</td>
@@ -36,6 +35,8 @@
         <tr>
             <td class="auto-style6">&nbsp;</td>
             <td>
+                Precio Plato:
+                <br />
                 <asp:Label ID="lbPrecioPlato" runat="server" Text="Precio Plato"></asp:Label>
             </td>
             <td>&nbsp;</td>
@@ -47,6 +48,8 @@
             <td class="auto-style7">
             </td>
             <td class="auto-style5">
+                Descripcion PLato:
+                <br />
                 <asp:Label ID="lbDescPlato" runat="server" Text="Descripcion Plato"></asp:Label>
             </td>
             <td class="auto-style5"></td>
@@ -56,7 +59,10 @@
         </tr>
         <tr>
             <td class="auto-style6">&nbsp;</td>
-            <td>&nbsp;</td>
+            <td>Seleccion Cantidad De Platos A Agregar<br />
+                <asp:DropDownList ID="dropCantidadPlatos" runat="server">
+                </asp:DropDownList>
+            </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -73,7 +79,11 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style6">
+                <asp:Button ID="butAgregarPlato" runat="server" Text="Agregar" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="butRegresar" runat="server" Text="Regresar" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>

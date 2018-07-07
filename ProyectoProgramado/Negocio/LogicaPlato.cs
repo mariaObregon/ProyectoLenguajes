@@ -117,6 +117,17 @@ namespace Negocio
             return dp.PlatosHabilitados();
         }
 
+        public List<int> CantidadPlato(int max) {
+
+            List<int> fullList = new List<int>();
+
+            for (int i = 1; i <= max; i++)
+            {
+                fullList.Add(i);
+            }
+            return fullList;
+        }
+
        /* public List<String> ListaPlatosSeleccion() {
 
             List<f_listaPlatosHabilitados_Result> lista = PlatosHabilitados();

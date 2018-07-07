@@ -13,6 +13,7 @@ namespace Presentacion
     {
         LogicaPlato lp = new LogicaPlato();
         List<f_buscarPlatoID_Result> plato;
+        public const int maxPlatoPermitido = 100;//Cantidad Maxima Pueda Agregar el cliente respecto a un plato especifico
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,13 +21,11 @@ namespace Presentacion
             //Recibir el int mediante variable de ssesion que viene del otro lado
 
             plato = lp.BuscarPlatoId(Int32.Parse("16"));//Capturar  variable session viene plato id
-            //txtModNombPlato.Text = plato[0].Nombre;
             lbNombrePlato.Text = plato[0].Nombre;
-            //txtModPrePlato.Text = String.Concat(plato[0].Precio);
             lbPrecioPlato.Text = String.Concat(plato[0].Precio);
-            //txtModDescPlato.Text = plato[0].Descripcion;
             lbDescPlato.Text = plato[0].Descripcion;
-            //dropModHabPlato.Text = lp.PlatoHabilitado(plato[0].HabilitadoSN);
+            dropCantidadPlatos.DataSource = lp.CantidadPlato(maxPlatoPermitido);
+            dropCantidadPlatos.DataBind();
             imgPlatoDeta.ImageUrl = lp.RutaImagen(plato[0].Fotografia);
             imgPlatoDeta.DataBind();
             imgPlatoDeta.Visible = true;
