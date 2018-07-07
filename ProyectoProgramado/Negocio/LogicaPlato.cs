@@ -102,7 +102,14 @@ namespace Negocio
 
         public String RutaImagen(Byte[] arreglo)
         {
-            return "data:image/jpg;base64," + Convert.ToBase64String(arreglo);
+            if (arreglo == null)
+            {
+                return "";
+            }
+            else
+            {
+                return "data:image/jpg;base64," + Convert.ToBase64String(arreglo);
+            }
         }
 
         public List<f_listaPlatosHabilitados_Result> PlatosHabilitados() {

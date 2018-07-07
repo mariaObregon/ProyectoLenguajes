@@ -40,15 +40,6 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.Label lbPrecioPlato;
         
         /// <summary>
-        /// Control imgPlatoDeta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPlatoDeta;
-        
-        /// <summary>
         /// Control lbDescPlato.
         /// </summary>
         /// <remarks>
@@ -56,5 +47,14 @@ namespace Presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDescPlato;
+        
+        /// <summary>
+        /// Control imgPlatoDeta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPlatoDeta;
     }
 }
