@@ -33,5 +33,10 @@ namespace Presentacion
             imgPlatoDeta.Visible = true;
 
         }
+
+        protected void butRegresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PrincipalLineaPedido.aspx");
+        }
     }
 }

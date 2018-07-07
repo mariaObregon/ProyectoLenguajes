@@ -82,7 +82,7 @@
             <td class="auto-style6">
                 <asp:Button ID="butAgregarPlato" runat="server" Text="Agregar" />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="butRegresar" runat="server" Text="Regresar" />
+                <asp:Button ID="butRegresar" runat="server" OnClick="butRegresar_Click" Text="Regresar" />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
