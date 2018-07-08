@@ -41,9 +41,9 @@ namespace Entidad
         public virtual DbSet<TipoMecanismo> TipoMecanismo { get; set; }
         public virtual DbSet<TipoUsuario> TipoUsuario { get; set; }
         public virtual DbSet<v_Cliente> v_Cliente { get; set; }
-        public virtual DbSet<v_Direccion> v_Direccion { get; set; }
         public virtual DbSet<v_Estado> v_Estado { get; set; }
         public virtual DbSet<v_Geo> v_Geo { get; set; }
+        public virtual DbSet<v_LineaPedido> v_LineaPedido { get; set; }
         public virtual DbSet<v_MecanismoContacto> v_MecanismoContacto { get; set; }
         public virtual DbSet<v_Party> v_Party { get; set; }
         public virtual DbSet<v_Pedido> v_Pedido { get; set; }
@@ -121,6 +121,12 @@ namespace Entidad
                 new ObjectParameter("PedidoID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_LineasPedido_Result>("[PedidosExpressEntities].[f_LineasPedido](@PedidoID)", pedidoIDParameter);
+        }
+    
+        [DbFunction("PedidosExpressEntities", "f_listaPlatosHabilitados")]
+        public virtual IQueryable<f_listaPlatosHabilitados_Result> f_listaPlatosHabilitados()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_listaPlatosHabilitados_Result>("[PedidosExpressEntities].[f_listaPlatosHabilitados]()");
         }
     
         [DbFunction("PedidosExpressEntities", "f_mostrarClientes")]
@@ -361,6 +367,27 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarDireccion", geoIDParameter, lineaDireccion1Parameter, lineaDireccion2Parameter, lineaDireccion3Parameter, instruccionesParameter, tipoDireccionIDParameter, partyIDParameter);
         }
     
+        public virtual int p_agregarLineaPedido(Nullable<int> platoID, Nullable<int> pedidoID, Nullable<short> cantidad, Nullable<decimal> precio)
+        {
+            var platoIDParameter = platoID.HasValue ?
+                new ObjectParameter("PlatoID", platoID) :
+                new ObjectParameter("PlatoID", typeof(int));
+    
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(short));
+    
+            var precioParameter = precio.HasValue ?
+                new ObjectParameter("Precio", precio) :
+                new ObjectParameter("Precio", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarLineaPedido", platoIDParameter, pedidoIDParameter, cantidadParameter, precioParameter);
+        }
+    
         public virtual int p_agregarMecanismo(string valorMecanismo, Nullable<short> tipoMecanismoID, string partyID)
         {
             var valorMecanismoParameter = valorMecanismo != null ?
@@ -580,19 +607,6 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_BloquearCliente", habilitadoParameter, partyIDParameter);
         }
     
-        public virtual int p_cambiarContraseña(string partyID, string nuevaContraseña)
-        {
-            var partyIDParameter = partyID != null ?
-                new ObjectParameter("PartyID", partyID) :
-                new ObjectParameter("PartyID", typeof(string));
-    
-            var nuevaContraseñaParameter = nuevaContraseña != null ?
-                new ObjectParameter("NuevaContraseña", nuevaContraseña) :
-                new ObjectParameter("NuevaContraseña", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_cambiarContraseña", partyIDParameter, nuevaContraseñaParameter);
-        }
-    
         public virtual int p_CambiarEstadoPedido(Nullable<byte> estadoID, Nullable<int> pedidoID)
         {
             var estadoIDParameter = estadoID.HasValue ?
@@ -692,8 +706,12 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarDireccion", direccionIDParameter, geoIDParameter, lineaDireccion1Parameter, lineaDireccion2Parameter, lineaDireccion3Parameter, instruccionesParameter, tipoDireccionIDParameter, partyIDParameter);
         }
     
-        public virtual int p_modificarMecanismo(string valorMecanismo, Nullable<short> tipoMecanismoID, Nullable<short> mecanismoID, string partyID)
+        public virtual int p_modificarMecanismo(string valorMecanismoNuevo, string valorMecanismo, Nullable<short> tipoMecanismoID, Nullable<short> mecanismoID, string partyID)
         {
+            var valorMecanismoNuevoParameter = valorMecanismoNuevo != null ?
+                new ObjectParameter("ValorMecanismoNuevo", valorMecanismoNuevo) :
+                new ObjectParameter("ValorMecanismoNuevo", typeof(string));
+    
             var valorMecanismoParameter = valorMecanismo != null ?
                 new ObjectParameter("ValorMecanismo", valorMecanismo) :
                 new ObjectParameter("ValorMecanismo", typeof(string));
@@ -710,7 +728,7 @@ namespace Entidad
                 new ObjectParameter("PartyID", partyID) :
                 new ObjectParameter("PartyID", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarMecanismo", valorMecanismoParameter, tipoMecanismoIDParameter, mecanismoIDParameter, partyIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_modificarMecanismo", valorMecanismoNuevoParameter, valorMecanismoParameter, tipoMecanismoIDParameter, mecanismoIDParameter, partyIDParameter);
         }
     
         public virtual int p_modificarParty(string primerNombre, string segundoNombre, string apellido1, string apellido2, string contraseña, string partyID)

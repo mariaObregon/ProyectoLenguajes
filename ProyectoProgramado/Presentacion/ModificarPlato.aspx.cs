@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidad;
 using Negocio;
-//using Entidad;
+using Entidad;
 
 namespace Presentacion
 {

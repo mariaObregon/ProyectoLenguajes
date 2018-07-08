@@ -70,6 +70,9 @@
     <Compile Include="f_LineasPedido_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="f_listaPlatosHabilitados_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="f_mostrarClientes_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
@@ -151,13 +154,13 @@
     <Compile Include="v_Cliente.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="v_Direccion.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="v_Estado.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="v_Geo.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_LineaPedido.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="v_MecanismoContacto.cs">
