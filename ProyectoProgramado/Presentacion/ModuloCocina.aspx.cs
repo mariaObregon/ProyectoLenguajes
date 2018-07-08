@@ -47,41 +47,34 @@ namespace Presentacion
                 id = int.Parse((item.Cells[0]).Text);
                 gv2 = (GridView)e.Row.Cells[5].Controls[1];
                 gv2.DataSource = lgp.MostrarLineasPedido(id);
-                gv2.DataBind();
+                gv2.DataBind();                
 
+                   TimeSpan tiempo = TimeSpan.Parse((item.Cells[4]).Text);
 
-                
-                TimeSpan tiempo = TimeSpan.Parse((item.Cells[4]).Text);
+                   double diferencia = DateTime.Now.Minute - tiempo.Minutes;
+                   if (diferencia < 0)
+                   {
+                       lgp.ActualizarEstadoPedido(4, id);
+                       e.Row.BackColor = Color.Coral;
 
-                double diferencia = DateTime.Now.Minute - tiempo.Minutes;
-                if (diferencia < 0)
-                {
-                    lgp.ActualizarEstadoPedido(4, id);
-                    e.Row.BackColor = Color.LightCoral;
-                    
-                }
-                else if (diferencia >=  0 && diferencia < 5) {
-                    lgp.ActualizarEstadoPedido(2, id);
-                    e.Row.BackColor = Color.LightGreen;
-                    
-                }
-                else if (diferencia >= 5 && diferencia < 10)
-                {
-                    lgp.ActualizarEstadoPedido(3, id);
-                    e.Row.BackColor = Color.Yellow;
-                    
-                }
-                else if (diferencia >= 10)
-                {
-                    lgp.ActualizarEstadoPedido(4, id);
-                    e.Row.BackColor = Color.LightCoral;
-                    
-                }
-                    
+                   }
+                   else if (diferencia >=  0 && diferencia < 5) {
+                       lgp.ActualizarEstadoPedido(2, id);
+                       e.Row.BackColor = Color.DarkSeaGreen;
 
+                   }
+                   else if (diferencia >= 5 && diferencia < 10)
+                   {
+                       lgp.ActualizarEstadoPedido(3, id);
+                       e.Row.BackColor = Color.Yellow;
 
+                   }
+                   else if (diferencia >= 10)
+                   {
+                       lgp.ActualizarEstadoPedido(4, id);
+                       e.Row.BackColor = Color.Coral;
 
-
+                   }
             }
         }
 
@@ -110,7 +103,6 @@ namespace Presentacion
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //debe tomar la orden y ponerle el estado anterior
             int ultimaEntregadaID = int.Parse(Request.QueryString["UltimaEntregada"].ToString());
             byte estadoAnterior = byte.Parse(Request.QueryString["EstadoAnterior"].ToString());
 
@@ -132,10 +124,9 @@ namespace Presentacion
 
         protected void Tiempo_Tick(object sender, EventArgs e)
         {
-
-            Response.Redirect("ModuloCocina.aspx?UltimaEntregada=0&EstadoAnterior=0");
-            // Label3.Text = "UpdatePanel1 refreshed at: " +
-            // DateTime.Now.ToLongTimeString();
+            List<f_pedidosActivos_Result> dtt = lgp.MostrarPedidosActivos();
+            Ordenes.DataSource = dtt;
+            Ordenes.DataBind();
         }
     }
 }

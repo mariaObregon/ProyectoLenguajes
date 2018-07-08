@@ -15,10 +15,13 @@
     </asp:ContentPlaceHolder>
     <style type="text/css">
         .auto-style1 {
-            width: 53%;
+            width: 89%;
         }
         .auto-style2 {
             width: 179px;
+        }
+        .auto-style3 {
+            width: 414px;
         }
     </style>
 </head>
@@ -37,10 +40,10 @@
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style2">
-                        <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl="~/Imagenes/logo.png" Width="120px" />
+                        <asp:Image ID="Image1" runat="server" Height="120px" ImageUrl="~/Imagenes/kk.png" Width="392px" />
                     </td>
-                    <td>
-                        <asp:Label ID="Label1" runat="server" Font-Size="25pt" ForeColor="Black" Text="Cocina MaCaRon"></asp:Label>
+                    <td class="auto-style3">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                     <td>&nbsp;</td>
                 </tr>

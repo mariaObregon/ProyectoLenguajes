@@ -92,9 +92,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="DetallePlato.aspx" />
     <Content Include="Imagenes\118.jpg" />
+    <Content Include="Imagenes\13.jpg" />
+    <Content Include="Imagenes\14.jpg" />
     <Content Include="Imagenes\food.jpg" />
-    <Content Include="Imagenes\logo2.png" />
+    <Content Include="Imagenes\kk.png" />
     <Content Include="Imagenes\pasta.jpg" />
+    <Content Include="Imagenes\shr.jpg" />
+    <Content Include="Imagenes\spaguetti.jpg" />
+    <Content Include="Imagenes\spoon.jpg" />
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCliente.aspx" />
     <Content Include="ModificarClienteUsuario\AgregarContacto.aspx" />
@@ -102,7 +107,6 @@
     <Content Include="ModificarClienteUsuario\ModificarContacto.aspx" />
     <Content Include="ModificarClienteUsuario\ModificarDatosPersonales.aspx" />
     <Content Include="EstadoPedido.aspx" />
-    <Content Include="Imagenes\logo.png" />
     <Content Include="Index.aspx" />
     <Content Include="InsertarPlato.aspx" />
     <Content Include="Menus\MenuCocina.aspx" />
