@@ -147,7 +147,7 @@
                     <asp:Label ID="Label3" runat="server" Text="Contacto*"></asp:Label>
                 </td>
                 <td class="auto-style23" style="background-color: #C0C0C0; border-color: #C0C0C0">
-                    <asp:TextBox ID="TbContacto" runat="server" Width="290px" style="margin-left: 64"></asp:TextBox>
+                    <asp:TextBox ID="TbContacto" runat="server" Width="290px" style="margin-left: 64px"></asp:TextBox>
                 </td>
             </tr>
             <tr>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d0b4659fbce6417d99c6852f331cab8a" Name="Diagram1">
+      <Diagram DiagramId="42fccdca59b44b9a8b442440ac4c0eca" Name="Diagram1">
         <EntityTypeShape EntityType="PedidosExpressModel.Cliente" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.Direccion" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.Estado" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
@@ -19,17 +19,18 @@
         <EntityTypeShape EntityType="PedidosExpressModel.TipoMecanismo" Width="1.5" PointX="3.75" PointY="16.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.TipoUsuario" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.v_Cliente" Width="1.5" PointX="8.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.v_Estado" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.v_Geo" Width="1.5" PointX="9.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.v_LineaPedido" Width="1.5" PointX="5.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.v_MecanismoContacto" Width="1.5" PointX="10.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.v_Party" Width="1.5" PointX="7.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.v_Pedido" Width="1.5" PointX="10.75" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.v_Platos" Width="1.5" PointX="11.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.v_TIpoDireccion" Width="1.5" PointX="11.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_Direccion" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_Estado" Width="1.5" PointX="9.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_Geo" Width="1.5" PointX="5.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_LineaPedido" Width="1.5" PointX="10.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_MecanismoContacto" Width="1.5" PointX="7.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_Party" Width="1.5" PointX="9.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_Pedido" Width="1.5" PointX="11.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_Platos" Width="1.5" PointX="11.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_TIpoDireccion" Width="1.5" PointX="11.75" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PedidosExpressModel.v_TipoMecanismo" Width="1.5" PointX="12.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.v_TipoUsuario" Width="1.5" PointX="12.75" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PedidosExpressModel.v_Usuario" Width="1.5" PointX="9.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_TipoUsuario" Width="1.5" PointX="13.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosExpressModel.v_Usuario" Width="1.5" PointX="13.75" PointY="4.25" IsExpanded="true" />
         <AssociationConnector Association="PedidosExpressModel.FK_Cliente_Party" ManuallyRouted="false" />
         <AssociationConnector Association="PedidosExpressModel.FK_Pedido_Cliente" ManuallyRouted="false" />
         <AssociationConnector Association="PedidosExpressModel.FK_Direccion_Geo" ManuallyRouted="false" />

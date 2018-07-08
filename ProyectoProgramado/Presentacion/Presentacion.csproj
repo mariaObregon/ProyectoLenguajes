@@ -100,6 +100,7 @@
     <Content Include="Imagenes\shr.jpg" />
     <Content Include="Imagenes\spaguetti.jpg" />
     <Content Include="Imagenes\spoon.jpg" />
+    <Content Include="ListadoPlatos.aspx" />
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCliente.aspx" />
     <Content Include="EstadoPedido.aspx" />
@@ -213,6 +214,13 @@
     </Compile>
     <Compile Include="DetallePlato.aspx.designer.cs">
       <DependentUpon>DetallePlato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoPlatos.aspx.cs">
+      <DependentUpon>ListadoPlatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoPlatos.aspx.designer.cs">
+      <DependentUpon>ListadoPlatos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menus\MasterAdmin.master.cs">
       <DependentUpon>MasterAdmin.master</DependentUpon>

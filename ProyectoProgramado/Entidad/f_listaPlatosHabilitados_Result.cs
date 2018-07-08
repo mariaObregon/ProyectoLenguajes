@@ -15,5 +15,6 @@ namespace Entidad
     {
         public string NamePrice { get; set; }
         public int PlatoID { get; set; }
+        public decimal Precio { get; set; }
     }
 }

@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <asp:Panel ID="PanelContenedor" runat="server" Height="529px" Width="1317px">
     
-    <asp:UpdatePanel ID="UpdatePanel" runat="server">
-        <ContentTemplate>
+    
+       
             <table class="auto-style3" style="border-color: #C0C0C0; font-family: verdana, Geneva, Tahoma, sans-serif; color: #000000; background-color: #C0C0C0; font-size: small;">
                 <tr>
                     <td class="auto-style48" colspan="8" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0; text-align: center;">
@@ -222,7 +222,6 @@
                     </td>
                 </tr>
             </table>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+        
 </asp:Panel>
 </asp:Content>
