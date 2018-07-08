@@ -16,17 +16,31 @@ namespace Presentacion
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!IsPostBack)
+            {
+                dropPlatosHab.Items.Clear();
+                dropPlatosHab.DataSource = lp.PlatosHabilitados();
+                dropPlatosHab.DataValueField = "PlatoID";
+                dropPlatosHab.DataTextField = "NamePrice";
+                dropPlatosHab.DataBind();
+            }
+
+            /*
             dropPlatosHab.Items.Clear();
             dropPlatosHab.DataSource = lp.PlatosHabilitados();
             dropPlatosHab.DataValueField = "PlatoID";
             dropPlatosHab.DataTextField = "NamePrice";
             dropPlatosHab.DataBind();
+            */
 
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            labelPlatoshab.Text = dropPlatosHab.SelectedValue;
+            
+            Session["idPlato"] = dropPlatosHab.SelectedValue;
+            Response.Redirect("DetallePlato.aspx");
+
         }
     }
 }

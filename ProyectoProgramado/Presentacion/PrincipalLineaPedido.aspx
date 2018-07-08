@@ -3,6 +3,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+    <style type="text/css">
+        .auto-style3 {
+            width: 164px;
+        }
+        .auto-style4 {
+            width: 285px;
+        }
+    </style>
+
 </asp:Content>
 
 
@@ -14,20 +23,8 @@
 
        <table class="w-100">
            <tr>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-           </tr>
-           <tr>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
+               <td class="auto-style4">&nbsp;</td>
+               <td class="auto-style3">&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
@@ -38,8 +35,8 @@
                <td>&nbsp;</td>
            </tr>
            <tr>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
+               <td class="auto-style4">&nbsp;</td>
+               <td class="auto-style3">&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
@@ -50,12 +47,24 @@
                <td>&nbsp;</td>
            </tr>
            <tr>
-               <td>
+               <td class="auto-style4">&nbsp;</td>
+               <td class="auto-style3">&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td class="auto-style4">
                    <asp:DropDownList ID="dropPlatosHab" runat="server">
                    </asp:DropDownList>
                    <asp:Label ID="labelPlatoshab" runat="server" Text="Platos Habilitados"></asp:Label>
                </td>
-               <td>&nbsp;</td>
+               <td class="auto-style3">&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
@@ -66,21 +75,9 @@
                <td>&nbsp;</td>
            </tr>
            <tr>
-               <td>
+               <td class="auto-style4">
                    &nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-           </tr>
-           <tr>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
+               <td class="auto-style3">&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
@@ -91,20 +88,8 @@
                <td>&nbsp;</td>
            </tr>
            <tr>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
-           </tr>
-           <tr>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
+               <td class="auto-style4">&nbsp;</td>
+               <td class="auto-style3">&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
@@ -115,8 +100,8 @@
                <td>&nbsp;</td>
            </tr>
            <tr>
-               <td>&nbsp;</td>
-               <td>&nbsp;</td>
+               <td class="auto-style4">&nbsp;</td>
+               <td class="auto-style3">&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
@@ -127,9 +112,33 @@
                <td>&nbsp;</td>
            </tr>
            <tr>
+               <td class="auto-style4">&nbsp;</td>
+               <td class="auto-style3">&nbsp;</td>
                <td>&nbsp;</td>
-               <td>
-                   <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Detalles Platos" />
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td class="auto-style4">&nbsp;</td>
+               <td class="auto-style3">&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td>&nbsp;</td>
+           </tr>
+           <tr>
+               <td class="auto-style4">&nbsp;</td>
+               <td class="auto-style3">
+                   <asp:Button ID="butDetallePlato" runat="server" OnClick="Button1_Click" Text="Detalle Plato" />
                </td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
@@ -145,7 +154,8 @@
      </ContentTemplate>
 
          <Triggers>
-           <asp:PostBackTrigger ControlID="Button1" />
+           <asp:PostBackTrigger ControlID="butDetallePlato" />
+<asp:PostBackTrigger ControlID="dropPlatosHab"></asp:PostBackTrigger>
          </Triggers>
 
          <Triggers>

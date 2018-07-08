@@ -40,6 +40,24 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.Label lbPrecioPlato;
         
         /// <summary>
+        /// Control lbDescPlato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbDescPlato;
+        
+        /// <summary>
+        /// Control dropCantidadPlatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropCantidadPlatos;
+        
+        /// <summary>
         /// Control imgPlatoDeta.
         /// </summary>
         /// <remarks>
@@ -49,12 +67,21 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.Image imgPlatoDeta;
         
         /// <summary>
-        /// Control lbDescPlato.
+        /// Control butAgregarPlato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbDescPlato;
+        protected global::System.Web.UI.WebControls.Button butAgregarPlato;
+        
+        /// <summary>
+        /// Control butRegresar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button butRegresar;
     }
 }
