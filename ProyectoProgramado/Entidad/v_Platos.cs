@@ -7,15 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class v_Platos
+namespace Entidad
 {
-    public int PlatoID { get; set; }
-    public string Nombre { get; set; }
-    public string Descripcion { get; set; }
-    public decimal Precio { get; set; }
-    public byte[] Fotografia { get; set; }
-    public bool HabilitadoSN { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class v_Platos
+    {
+        public int PlatoID { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Precio { get; set; }
+        public byte[] Fotografia { get; set; }
+        public bool HabilitadoSN { get; set; }
+    }
 }

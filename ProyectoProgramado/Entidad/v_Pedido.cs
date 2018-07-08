@@ -7,13 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class v_Pedido
+namespace Entidad
 {
-    public int PedidoID { get; set; }
-    public System.DateTime Fecha { get; set; }
-    public byte EstadoID { get; set; }
-    public string PartyID { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class v_Pedido
+    {
+        public int PedidoID { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public byte EstadoID { get; set; }
+        public string PartyID { get; set; }
+    }
 }

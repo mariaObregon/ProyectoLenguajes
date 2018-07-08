@@ -7,12 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class f_buscarUsuarioNombre_Result
+namespace Entidad
 {
-    public string Usuario { get; set; }
-    public string Nombre { get; set; }
-    public string Rol { get; set; }
+    using System;
+    
+    public partial class f_buscarUsuarioNombre_Result
+    {
+        public string Usuario { get; set; }
+        public string Nombre { get; set; }
+        public string Rol { get; set; }
+    }
 }

@@ -96,16 +96,11 @@
     <Content Include="Imagenes\pasta.jpg" />
     <Content Include="Menus\MenuAdmin.aspx" />
     <Content Include="Menus\MenuCliente.aspx" />
-    <Content Include="ModificarClienteUsuario\AgregarContacto.aspx" />
-    <Content Include="ModificarClienteUsuario\AgregarDireccion.aspx" />
-    <Content Include="ModificarClienteUsuario\ModificarContacto.aspx" />
-    <Content Include="ModificarClienteUsuario\ModificarDatosPersonales.aspx" />
     <Content Include="EstadoPedido.aspx" />
     <Content Include="Imagenes\logo.png" />
     <Content Include="Index.aspx" />
     <Content Include="InsertarPlato.aspx" />
     <Content Include="Menus\MenuCocina.aspx" />
-    <Content Include="ModificarClienteUsuario\ModificarDireccion.aspx" />
     <Content Include="ModificarClienteUsuario\PrincipalModificar.aspx" />
     <Content Include="ModificarPlato.aspx" />
     <Content Include="ModuloCocina.aspx" />
@@ -227,41 +222,6 @@
     <Compile Include="Menus\MenuCliente.aspx.designer.cs">
       <DependentUpon>MenuCliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ModificarClienteUsuario\AgregarContacto.aspx.cs">
-      <DependentUpon>AgregarContacto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\AgregarContacto.aspx.designer.cs">
-      <DependentUpon>AgregarContacto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\AgregarDireccion.aspx.cs">
-      <DependentUpon>AgregarDireccion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\AgregarDireccion.aspx.designer.cs">
-      <DependentUpon>AgregarDireccion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\MasterModificar.master.cs">
-      <DependentUpon>MasterModificar.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\MasterModificar.master.designer.cs">
-      <DependentUpon>MasterModificar.master</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\ModificarContacto.aspx.cs">
-      <DependentUpon>ModificarContacto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\ModificarContacto.aspx.designer.cs">
-      <DependentUpon>ModificarContacto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\ModificarDatosPersonales.aspx.cs">
-      <DependentUpon>ModificarDatosPersonales.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\ModificarDatosPersonales.aspx.designer.cs">
-      <DependentUpon>ModificarDatosPersonales.aspx</DependentUpon>
-    </Compile>
     <Compile Include="EstadoPedido.aspx.cs">
       <DependentUpon>EstadoPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -289,13 +249,6 @@
     </Compile>
     <Compile Include="Menus\MenuCocina.aspx.designer.cs">
       <DependentUpon>MenuCocina.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\ModificarDireccion.aspx.cs">
-      <DependentUpon>ModificarDireccion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\ModificarDireccion.aspx.designer.cs">
-      <DependentUpon>ModificarDireccion.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificarClienteUsuario\PrincipalModificar.aspx.cs">
       <DependentUpon>PrincipalModificar.aspx</DependentUpon>
@@ -336,7 +289,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Menus\MasterAdmin.master" />
-    <Content Include="ModificarClienteUsuario\MasterModificar.master" />
     <None Include="packages.config" />
     <Content Include="Principal.Master" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />

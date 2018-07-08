@@ -7,16 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class LineaPedido
+namespace Entidad
 {
-    public int PlatoID { get; set; }
-    public int PedidoID { get; set; }
-    public Nullable<short> Cantidad { get; set; }
-    public Nullable<decimal> Precio { get; set; }
-
-    public virtual Pedido Pedido { get; set; }
-    public virtual Plato Plato { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class LineaPedido
+    {
+        public int PlatoID { get; set; }
+        public int PedidoID { get; set; }
+        public Nullable<short> Cantidad { get; set; }
+        public Nullable<decimal> Precio { get; set; }
+    
+        public virtual Pedido Pedido { get; set; }
+        public virtual Plato Plato { get; set; }
+    }
 }

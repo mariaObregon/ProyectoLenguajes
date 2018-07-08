@@ -77,9 +77,9 @@ namespace Datos
         }
 
         public byte UltimoEstadoPedido(int idPedido) {
-           List<byte?>  ultimo = datos.f_UltimoEstado(idPedido).ToList();
+           List<f_UltimoEstado_Result>  ultimo = datos.f_UltimoEstado(idPedido).ToList();
             
-            return ultimo.First().Value;
+            return ultimo.Single<f_UltimoEstado_Result>().EstadoID;
         }
     }
 }

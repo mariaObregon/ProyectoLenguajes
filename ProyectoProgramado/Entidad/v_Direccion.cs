@@ -12,9 +12,15 @@ namespace Entidad
     using System;
     using System.Collections.Generic;
     
-    public partial class v_Estado
+    public partial class v_Direccion
     {
-        public byte EstadoID { get; set; }
-        public string DescripcionEstado { get; set; }
+        public byte DireccionID { get; set; }
+        public string LineaDireccion1 { get; set; }
+        public string LineaDireccion2 { get; set; }
+        public string LineaDireccion3 { get; set; }
+        public string Instrucciones { get; set; }
+        public string PartyID { get; set; }
+        public short GeoID { get; set; }
+        public byte TipoDireccionID { get; set; }
     }
 }

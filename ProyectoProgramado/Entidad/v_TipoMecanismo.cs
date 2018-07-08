@@ -7,11 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class v_TipoMecanismo
+namespace Entidad
 {
-    public short TipoMecanismoID { get; set; }
-    public string Descripcion { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class v_TipoMecanismo
+    {
+        public short TipoMecanismoID { get; set; }
+        public string Descripcion { get; set; }
+    }
 }

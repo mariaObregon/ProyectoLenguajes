@@ -7,20 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class TipoDireccion
+namespace Entidad
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public TipoDireccion()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class TipoDireccion
     {
-        this.Direccion = new HashSet<Direccion>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TipoDireccion()
+        {
+            this.Direccion = new HashSet<Direccion>();
+        }
+    
+        public byte TipoDireccionID { get; set; }
+        public string Descripcion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Direccion> Direccion { get; set; }
     }
-
-    public byte TipoDireccionID { get; set; }
-    public string Descripcion { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Direccion> Direccion { get; set; }
 }
