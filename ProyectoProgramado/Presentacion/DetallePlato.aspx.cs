@@ -13,11 +13,13 @@ namespace Presentacion
     {
         LogicaPlato lp = new LogicaPlato();
         List<f_buscarPlatoID_Result> plato;
+        List<f_buscarPlatoID_Result> carrito;
         public const int maxPlatoPermitido = 100;//Cantidad Maxima Pueda Agregar el cliente respecto a un plato especifico
         int platoID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            carrito = (List<f_buscarPlatoID_Result>) Session["carritoPlatos"];
 
             String idPlato = Session["idPlato"].ToString(); // Capturar error si viene null el id o es un string, no se caiga redireccione pagina errores
             platoID = Int32.Parse(idPlato);
@@ -37,6 +39,12 @@ namespace Presentacion
         protected void butRegresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("PrincipalLineaPedido.aspx");
+        }
+
+        protected void butAgregarPlato_Click(object sender, EventArgs e)
+        {
+            carrito.Add(lp.BuscarPlatoId(platoID)[0]);
+            
         }
     }
 }

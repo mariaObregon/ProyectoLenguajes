@@ -15,6 +15,12 @@ namespace Entidad
     {
         public int PlatoID { get; set; }
         public string Nombre { get; set; }
+
+        public static explicit operator f_buscarPlatoID_Result(object v)
+        {
+            throw new NotImplementedException();
+        }
+
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public byte[] Fotografia { get; set; }

@@ -12,6 +12,7 @@ namespace Presentacion
     public partial class PrincipalLineaPedido : System.Web.UI.Page
     {
         LogicaPlato lp = new LogicaPlato();
+        List<f_buscarPlatoID_Result> platosCarrito = new List<f_buscarPlatoID_Result>(); 
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +24,28 @@ namespace Presentacion
                 dropPlatosHab.DataValueField = "PlatoID";
                 dropPlatosHab.DataTextField = "NamePrice";
                 dropPlatosHab.DataBind();
+
+                ///Borrar probar
+
+                if (platosCarrito.Count <= 0)
+                {
+                    lbPrueba.Text = "Lista Nula";
+                }
+                else {
+
+                    String f = "";
+                    for (int i = 0; i < platosCarrito.Count; i++)
+                    {
+                        f += platosCarrito[i].Nombre + "\n";
+                    }
+
+                    lbPrueba.Text = f;
+
+                }
+
+                ///// Borrar probar
+
+
             }
 
             /*
@@ -39,6 +62,7 @@ namespace Presentacion
         {
             
             Session["idPlato"] = dropPlatosHab.SelectedValue;
+            Session["carritoPlatos"] = platosCarrito;
             Response.Redirect("DetallePlato.aspx");
 
         }
