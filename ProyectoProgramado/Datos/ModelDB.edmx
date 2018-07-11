@@ -142,6 +142,25 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Cliente' no tiene defin
           <Property Name="HabilitadoSN" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Direccion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v_Direccion">
+          <Key>
+            <PropertyRef Name="DireccionID" />
+            <PropertyRef Name="LineaDireccion1" />
+            <PropertyRef Name="PartyID" />
+            <PropertyRef Name="GeoID" />
+            <PropertyRef Name="TipoDireccionID" />
+          </Key>
+          <Property Name="DireccionID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LineaDireccion1" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LineaDireccion2" Type="nvarchar" MaxLength="100" />
+          <Property Name="LineaDireccion3" Type="nvarchar" MaxLength="100" />
+          <Property Name="Instrucciones" Type="nvarchar" MaxLength="100" />
+          <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GeoID" Type="smallint" Nullable="false" />
+          <Property Name="TipoDireccionID" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Estado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="v_Estado">
           <Key>
@@ -528,6 +547,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               <RowType>
                 <Property Name="NamePrice" Type="nvarchar" MaxLength="91" Nullable="false" />
                 <Property Name="PlatoID" Type="int" Nullable="false" />
+                <Property Name="Precio" Type="money" Nullable="false" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -782,6 +802,10 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Parameter Name="Habilitado" Type="bit" Mode="In" />
           <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="p_cambiarContraseña" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="NuevaContraseña" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="p_CambiarEstadoPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="EstadoID" Type="tinyint" Mode="In" />
           <Parameter Name="PedidoID" Type="int" Mode="In" />
@@ -816,7 +840,6 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="p_modificarMecanismo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ValorMecanismoNuevo" Type="varchar" Mode="In" />
           <Parameter Name="ValorMecanismo" Type="varchar" Mode="In" />
           <Parameter Name="TipoMecanismoID" Type="smallint" Mode="In" />
           <Parameter Name="MecanismoID" Type="smallint" Mode="In" />
@@ -896,6 +919,18 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
     [v_Cliente].[PartyID] AS [PartyID], 
     [v_Cliente].[HabilitadoSN] AS [HabilitadoSN]
     FROM [dbo].[v_Cliente] AS [v_Cliente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Direccion" EntityType="Self.v_Direccion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Direccion].[DireccionID] AS [DireccionID], 
+    [v_Direccion].[LineaDireccion1] AS [LineaDireccion1], 
+    [v_Direccion].[LineaDireccion2] AS [LineaDireccion2], 
+    [v_Direccion].[LineaDireccion3] AS [LineaDireccion3], 
+    [v_Direccion].[Instrucciones] AS [Instrucciones], 
+    [v_Direccion].[PartyID] AS [PartyID], 
+    [v_Direccion].[GeoID] AS [GeoID], 
+    [v_Direccion].[TipoDireccionID] AS [TipoDireccionID]
+    FROM [dbo].[v_Direccion] AS [v_Direccion]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Estado" EntityType="Self.v_Estado" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1080,6 +1115,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
         <ComplexType Name="f_listaPlatosHabilitados_Result">
           <Property Name="NamePrice" Type="String" MaxLength="91" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PlatoID" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
         </ComplexType>
         <ComplexType Name="f_mostrarClientes_Result">
           <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1293,6 +1329,23 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HabilitadoSN" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="v_Direccion">
+          <Key>
+            <PropertyRef Name="DireccionID" />
+            <PropertyRef Name="LineaDireccion1" />
+            <PropertyRef Name="PartyID" />
+            <PropertyRef Name="GeoID" />
+            <PropertyRef Name="TipoDireccionID" />
+          </Key>
+          <Property Name="DireccionID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LineaDireccion1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LineaDireccion2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LineaDireccion3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Instrucciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GeoID" Type="Int16" Nullable="false" />
+          <Property Name="TipoDireccionID" Type="Byte" Nullable="false" />
+        </EntityType>
         <EntityType Name="v_Estado">
           <Key>
             <PropertyRef Name="EstadoID" />
@@ -1501,6 +1554,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <EntitySet Name="TipoMecanismo" EntityType="Self.TipoMecanismo" />
           <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
           <EntitySet Name="v_Cliente" EntityType="Self.v_Cliente" />
+          <EntitySet Name="v_Direccion" EntityType="Self.v_Direccion" />
           <EntitySet Name="v_Estado" EntityType="Self.v_Estado" />
           <EntitySet Name="v_Geo" EntityType="Self.v_Geo" />
           <EntitySet Name="v_LineaPedido" EntityType="Self.v_LineaPedido" />
@@ -1711,6 +1765,10 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <Parameter Name="Habilitado" Mode="In" Type="Boolean" />
             <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="p_cambiarContraseña">
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+            <Parameter Name="NuevaContraseña" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="p_CambiarEstadoPedido">
             <Parameter Name="EstadoID" Mode="In" Type="Byte" />
             <Parameter Name="PedidoID" Mode="In" Type="Int32" />
@@ -1745,7 +1803,6 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="p_modificarMecanismo">
-            <Parameter Name="ValorMecanismoNuevo" Mode="In" Type="String" />
             <Parameter Name="ValorMecanismo" Mode="In" Type="String" />
             <Parameter Name="TipoMecanismoID" Mode="In" Type="Int16" />
             <Parameter Name="MecanismoID" Mode="In" Type="Int16" />
@@ -1950,6 +2007,20 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               <MappingFragment StoreEntitySet="v_Cliente">
                 <ScalarProperty Name="PartyID" ColumnName="PartyID" />
                 <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Direccion">
+            <EntityTypeMapping TypeName="PedidosExpressModel.v_Direccion">
+              <MappingFragment StoreEntitySet="v_Direccion">
+                <ScalarProperty Name="DireccionID" ColumnName="DireccionID" />
+                <ScalarProperty Name="LineaDireccion1" ColumnName="LineaDireccion1" />
+                <ScalarProperty Name="LineaDireccion2" ColumnName="LineaDireccion2" />
+                <ScalarProperty Name="LineaDireccion3" ColumnName="LineaDireccion3" />
+                <ScalarProperty Name="Instrucciones" ColumnName="Instrucciones" />
+                <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+                <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+                <ScalarProperty Name="TipoDireccionID" ColumnName="TipoDireccionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2199,6 +2270,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               <ComplexTypeMapping TypeName="PedidosExpressModel.f_listaPlatosHabilitados_Result">
                 <ScalarProperty Name="NamePrice" ColumnName="NamePrice" />
                 <ScalarProperty Name="PlatoID" ColumnName="PlatoID" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2328,6 +2400,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <FunctionImportMapping FunctionImportName="p_agregarUsuarioAdmin" FunctionName="PedidosExpressModel.Store.p_agregarUsuarioAdmin" />
           <FunctionImportMapping FunctionImportName="p_agregarUsuarioCocina" FunctionName="PedidosExpressModel.Store.p_agregarUsuarioCocina" />
           <FunctionImportMapping FunctionImportName="p_BloquearCliente" FunctionName="PedidosExpressModel.Store.p_BloquearCliente" />
+          <FunctionImportMapping FunctionImportName="p_cambiarContraseña" FunctionName="PedidosExpressModel.Store.p_cambiarContraseña" />
           <FunctionImportMapping FunctionImportName="p_CambiarEstadoPedido" FunctionName="PedidosExpressModel.Store.p_CambiarEstadoPedido" />
           <FunctionImportMapping FunctionImportName="p_EliminarPedido" FunctionName="PedidosExpressModel.Store.p_EliminarPedido" />
           <FunctionImportMapping FunctionImportName="p_EliminarPedidosRegistro" FunctionName="PedidosExpressModel.Store.p_EliminarPedidosRegistro" />

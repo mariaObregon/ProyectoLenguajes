@@ -5,33 +5,34 @@
             <tr>
                 <td class="auto-style31">&nbsp;</td>
                 <td class="auto-style32">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td style="width: 157px">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style31">
-                    <asp:Label ID="Label9" runat="server" Text="Seleccione un elemento de la lista"></asp:Label>
+                <td class="auto-style31" style="height: 26px">
+                    <asp:RadioButtonList ID="RadioButtonListFiltro" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonListFiltro_SelectedIndexChanged">
+                        <asp:ListItem Value="ID">Filtrar por ID</asp:ListItem>
+                        <asp:ListItem Value="Nombre">Filtrar por Nombre</asp:ListItem>
+                        <asp:ListItem Value="Completa">Lista Completa</asp:ListItem>
+                    </asp:RadioButtonList>
                 </td>
-                <td class="auto-style32">
-                    <asp:Label ID="LbUsuario" runat="server" Text="Usuario seleccionado"></asp:Label>
+                <td class="auto-style32" style="height: 26px">
                 </td>
-                <td>
-                    <asp:TextBox ID="TbUsuario" runat="server" CssClass="auto-style40" ReadOnly="True" Width="144px"></asp:TextBox>
-                </td>
+                <td style="height: 26px; width: 157px">
+                    &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style31">
-                    <asp:Label ID="Label10" runat="server" Text="Filtrar por Nombre"></asp:Label>
+                <td class="auto-style31" style="height: 35px">
+                    <asp:TextBox ID="TbValorFiltro" runat="server" Width="201px"></asp:TextBox>
                 </td>
-                <td class="auto-style32">
-                    <asp:TextBox ID="TextBox1" runat="server" Width="201px"></asp:TextBox>
+                <td class="auto-style32" style="height: 35px">
+                    <asp:Button ID="BtnFiltrar" runat="server" OnClick="BtnFiltrar_Click" Text="Buscar" Width="114px" />
                 </td>
-                <td>
-                    <asp:Button ID="Button1" runat="server" Text="Filtrar" Width="114px" />
-                </td>
+                <td style="height: 35px; width: 157px">
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style30" colspan="3">
-                    <asp:GridView ID="GridView1" runat="server">
+                    <asp:GridView ID="GridViewLista" runat="server">
                     </asp:GridView>
                 </td>
             </tr>

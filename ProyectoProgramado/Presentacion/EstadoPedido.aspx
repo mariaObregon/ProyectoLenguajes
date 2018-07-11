@@ -7,29 +7,76 @@
         .auto-style4 {
             width: 4px;
         }
+
+        body {  
+        background-size: cover;
+        background-image:url(/Imagenes/spaguetti.jpg); 
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;                    
+        } 
+        .boton {
+    border-radius:4px;
+    font-size:15px;
+    margin:10px;
+    color:#fff!important;
+    display:inline-block;
+    padding:10px 20px 10px 20px;
+    background:#1C5D54;
+    box-shadow:0 15px 20px -10px rgba(0, 0, 0, 0), inset 0 -2px 0 0 rgba(0, 0, 0, 0.2), inset 0 -16px 25px 0 #1C5D54;
+    transition:all .3s ease-in-out
+}
+.button:hover {
+    text-decoration:none;
+    box-shadow:0 0 0 0 rgba(0, 0, 0, 0), inset 0 -1px 0 0 rgba(0, 0, 0, 0.1), inset 0 10px 15px 5px #1C5D54;
+    color:#fff!important
+}
+.button:active {
+    box-shadow:0 0 0 0 rgba(0, 0, 0, 0.2), inset 0 -2px 0 0 rgba(0, 0, 0, 0.2), inset 0 50px 25px 10px #1C5D54;
+    color:#1C5D54!important;
+    position:relative;
+    top:1px;     
+    transition:all .1s ease-in-out
+}
+        .auto-style5 {
+            height: 62px;
+        }
+        .auto-style6 {
+            width: 4px;
+            height: 62px;
+        }
+        .auto-style7 {
+            height: 62px;
+            width: 840px;
+        }
+        .auto-style8 {
+            width: 840px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table class="auto-style3">
         <tr>
-            <td>&nbsp;</td>
-            <td class="auto-style4">&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td class="auto-style5"></td>
+            <td class="auto-style7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+            </td>
+            <td class="auto-style6"></td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</td>
+            <td class="auto-style8">
+                <asp:Panel ID="Panel1" runat="server" BackColor="#1C5E55" Height="74px" Width="867px">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="Label5" runat="server" Font-Bold="True" Font-Size="30pt" ForeColor="White" Text="Cambio de estados"></asp:Label>
+                </asp:Panel>
+            </td>
             <td class="auto-style4">&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="Linea" runat="server" AutoGenerateColumns="False" DataKeyNames="PedidoID" OnRowUpdating="Linea_RowUpdating" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="Linea_RowCancelingEdit" OnRowEditing="Linea_RowEditing" Width="790px" OnSelectedIndexChanged="Linea_SelectedIndexChanged">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</td>
+            <td class="auto-style8">
+                <asp:GridView ID="Linea" runat="server" AutoGenerateColumns="False" DataKeyNames="PedidoID" OnRowUpdating="Linea_RowUpdating" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCancelingEdit="Linea_RowCancelingEdit" OnRowEditing="Linea_RowEditing" Width="866px" OnSelectedIndexChanged="Linea_SelectedIndexChanged">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="# Pedido">
@@ -46,9 +93,6 @@
                             <EditItemTemplate>
                                 <asp:DropDownList ID="dpp" runat="server">
                                     <asp:ListItem Value="1">Entregado</asp:ListItem>
-                                    <asp:ListItem Value="2">A Tiempo</asp:ListItem>
-                                    <asp:ListItem Value="3">Sobre Tiempo</asp:ListItem>
-                                    <asp:ListItem Value="4">Demorado</asp:ListItem>
                                     <asp:ListItem Value="5">Anulado</asp:ListItem>
                                 </asp:DropDownList>
                             </EditItemTemplate>
@@ -63,15 +107,15 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Modificar">
                             <EditItemTemplate>
-                                <asp:Button ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar"></asp:Button>
-                                &nbsp;<asp:Button ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar"></asp:Button>
+                                <asp:Button cssclass="boton"  ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Actualizar"></asp:Button>
+                                &nbsp;<asp:Button cssclass="boton"  ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar"></asp:Button>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Button ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar"></asp:Button>
+                                <asp:Button cssclass="boton" ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar"></asp:Button>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
-                    <EditRowStyle BackColor="#faffbf" />
+                    <EditRowStyle BackColor="#1ABC9C" />
                     <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                     <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
@@ -84,34 +128,21 @@
                 </asp:GridView>
             </td>
             <td class="auto-style4">&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
+            <td class="auto-style8">&nbsp;</td>
             <td class="auto-style4">&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
+            <td class="auto-style8">&nbsp;</td>
             <td class="auto-style4">&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
+            <td class="auto-style8">&nbsp;</td>
             <td class="auto-style4">&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
         </tr>
     </table>
 </asp:Content>

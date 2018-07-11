@@ -26,5 +26,21 @@ namespace Datos
                 StrContraseña, StrValorMecanismo, ShTipoMecanismo, BoolHabilitado, ShGeoID, StrLineaDireccion1,
                 StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
         }
+
+        public List<f_mostrarClientes_Result> MostrarClientes() {
+
+            return datos.f_mostrarClientes().ToList();
+        }
+
+        public List<f_buscarClienteID_Result> BusquedaClienteID(String StrIDCliente)
+        {
+            return datos.f_buscarClienteID(StrIDCliente).ToList();
+        }
+
+        public List<f_buscarClienteNombre_Result> BusquedaClienteNombre(String StrNombreCliente)
+        {
+            return datos.f_buscarClienteNombre(StrNombreCliente).ToList();
+        }
+
     }
 }

@@ -10,11 +10,17 @@
 namespace Entidad
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class f_listaPlatosHabilitados_Result
+    public partial class v_Direccion
     {
-        public string NamePrice { get; set; }
-        public int PlatoID { get; set; }
-        public decimal Precio { get; set; }
+        public byte DireccionID { get; set; }
+        public string LineaDireccion1 { get; set; }
+        public string LineaDireccion2 { get; set; }
+        public string LineaDireccion3 { get; set; }
+        public string Instrucciones { get; set; }
+        public string PartyID { get; set; }
+        public short GeoID { get; set; }
+        public byte TipoDireccionID { get; set; }
     }
 }

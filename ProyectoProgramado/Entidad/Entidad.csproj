@@ -154,6 +154,9 @@
     <Compile Include="v_Cliente.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="v_Direccion.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="v_Estado.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>

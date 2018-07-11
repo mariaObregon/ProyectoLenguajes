@@ -1,4 +1,5 @@
 ﻿using Datos;
+using Entidad;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,22 @@ namespace Negocio
             dc.AgregarCliente(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido,
                 StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID, BoolHabilitado , ShGeoID, StrLineaDireccion1,
                 StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
+        }
+
+        public List<f_mostrarClientes_Result> MostrarClientes()
+        {
+
+            return dc.MostrarClientes();
+        }
+
+        public List<f_buscarClienteNombre_Result> BusquedaClienteNombre(String StrNombreCliente)
+        {
+            return dc.BusquedaClienteNombre(StrNombreCliente);
+        }
+
+        public List<f_buscarClienteID_Result> BusquedaClienteID(String StrIDCliente)
+        {
+            return dc.BusquedaClienteID(StrIDCliente);
         }
 
     }

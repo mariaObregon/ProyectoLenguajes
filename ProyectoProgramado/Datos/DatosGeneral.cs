@@ -18,9 +18,9 @@ namespace Datos
             datos.p_modificarParty(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña, StrPartyID);
         }
 
-        public void ModificarMecanismo(String StrValorMecanismoNuevo, String StrValorMecanismo, short ShTipoMecanismo, short ShMecanismoID, String StrPartyID)
+        public void ModificarMecanismo( String StrValorMecanismo, short ShTipoMecanismo, short ShMecanismoID, String StrPartyID)
         {
-            datos.p_modificarMecanismo(StrValorMecanismoNuevo, StrValorMecanismo, ShTipoMecanismo, ShMecanismoID, StrPartyID);
+            datos.p_modificarMecanismo( StrValorMecanismo, ShTipoMecanismo, ShMecanismoID, StrPartyID);
         }
 
         public void ModificarDireccion(Byte ByteDireccionID, short ShGeoID, String StrLineaDireccion1,
@@ -60,7 +60,50 @@ namespace Datos
             return usuario.ToList();
         }
 
+        public List<v_Party> ObtenerParty(String StrPartyID) {
 
+            var party = from p in datos.v_Party
+                        where p.PartyID == StrPartyID
+                        select p;
+
+
+            return party.ToList();
+        }
+
+        public List<v_MecanismoContacto> ObtenerMecanismo(String StrPartyID)
+        {
+            var contacto = from c in datos.v_MecanismoContacto
+                           where c.PartyID == StrPartyID
+                           select c;
+            return contacto.ToList();
+        }
+
+        public List<v_Direccion> ObtenerDireccion(String StrPartyID)
+        {
+
+            var direccion = from d in datos.v_Direccion
+                            where d.PartyID == StrPartyID
+                            select d;
+
+            return direccion.ToList();
+        }
+
+        public void CambiarContraseña(String StrNuevoPass, String StrPartyID) {
+
+            datos.p_cambiarContraseña(StrPartyID, StrNuevoPass);
+
+        }
+
+        public String  ObtenerContraseña(String StrPartyID) {
+
+            var party = from p in datos.v_Party
+                        where p.PartyID == StrPartyID
+                        select p.Contraseña;
+
+
+            return party.ToString();
+
+        }
 
     }
 }
