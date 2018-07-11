@@ -19,7 +19,17 @@ namespace Presentacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            carrito = (List<f_buscarPlatoID_Result>) Session["carritoPlatos"];
+            if (carrito.Count <= 0)
+            {
+                carrito = new List<f_buscarPlatoID_Result>();
+
+            }
+            else {
+                carrito = (List<f_buscarPlatoID_Result>)Session["carritoPlatos"];
+            }
+
+
+            
 
             String idPlato = Session["idPlato"].ToString(); // Capturar error si viene null el id o es un string, no se caiga redireccione pagina errores
             platoID = Int32.Parse(idPlato);
@@ -44,7 +54,7 @@ namespace Presentacion
         protected void butAgregarPlato_Click(object sender, EventArgs e)
         {
             carrito.Add(lp.BuscarPlatoId(platoID)[0]);
-            
+            Response.Redirect("PrincipalLineaPedido.aspx");
         }
     }
 }

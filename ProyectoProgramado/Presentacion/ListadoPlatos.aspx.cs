@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entidad;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +11,15 @@ namespace Presentacion
 {
     public partial class ListadoPlatos : System.Web.UI.Page
     {
+        List<f_buscarPlatoID_Result> platosCarrito; // new List<f_buscarPlatoID_Result>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (true)
+            {
+
+            }
 
         }
     }

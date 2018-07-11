@@ -12,7 +12,8 @@ namespace Presentacion
     public partial class PrincipalLineaPedido : System.Web.UI.Page
     {
         LogicaPlato lp = new LogicaPlato();
-        List<f_buscarPlatoID_Result> platosCarrito = new List<f_buscarPlatoID_Result>(); 
+      //  List<f_buscarPlatoID_Result> platosCarrito = new List<f_buscarPlatoID_Result>();
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,7 +28,7 @@ namespace Presentacion
 
                 ///Borrar probar
 
-                if (platosCarrito.Count <= 0)
+         /*       if (platosCarrito.Count <= 0)
                 {
                     lbPrueba.Text = "Lista Nula";
                 }
@@ -42,6 +43,7 @@ namespace Presentacion
                     lbPrueba.Text = f;
 
                 }
+                */
 
                 ///// Borrar probar
 
@@ -62,9 +64,14 @@ namespace Presentacion
         {
             
             Session["idPlato"] = dropPlatosHab.SelectedValue;
-            Session["carritoPlatos"] = platosCarrito;
+         /*   Session["carritoPlatos"] = platosCarrito; */
             Response.Redirect("DetallePlato.aspx");
 
         }
+
+      /*  protected void imgButCarritoCliente_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("ListadoPlatos.aspx");
+        }*/
     }
 }
