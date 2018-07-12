@@ -26,12 +26,13 @@ namespace Presentacion
                 if ((List<f_buscarPlatoID_Result>)Session["carrito"] == null)
                 {
                     carrito = new List<f_buscarPlatoID_Result>();
+                    Session["carrito"] = carrito;//Borrar si no funciona
                 }
                 else
                 {
 
                     carrito = (List<f_buscarPlatoID_Result>)Session["carrito"];
-
+                    Session["carrito"] = carrito;//Borrar si no funciona
                 }
 
                 String idPlato = Session["idPlato"].ToString(); // Capturar error si viene null el id o es un string, no se caiga redireccione pagina errores
@@ -59,7 +60,7 @@ namespace Presentacion
         protected void butAgregarPlato_Click(object sender, EventArgs e)
         {
             carrito.Add(lp.BuscarPlatoId(platoID)[0]);
-            Session["carrito"] = carrito;
+           // Session["carrito"] = carrito;
             Response.Redirect("PrincipalLineaPedido.aspx");
         }
     }

@@ -28,11 +28,12 @@ namespace Presentacion
                 if ((List<f_buscarPlatoID_Result>)Session["carrito"] == null)
                 {
                     carrito = new List<f_buscarPlatoID_Result>();
-
+                    Session["carrito"] = carrito;//Borrar si no funciona
                 }
                 else
                 {
                     carrito = (List<f_buscarPlatoID_Result>)Session["carrito"];
+                    Session["carrito"] = carrito;//Borrar si no funciona
                 }
 
             }
@@ -42,7 +43,7 @@ namespace Presentacion
         {
             
             Session["idPlato"] = dropPlatosHab.SelectedValue;
-            Session["carrito"] = carrito;
+          //  Session["carrito"] = carrito;
             Response.Redirect("DetallePlato.aspx");
 
         }

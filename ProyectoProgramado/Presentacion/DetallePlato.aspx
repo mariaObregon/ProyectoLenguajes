@@ -93,7 +93,9 @@
     </table>
 
     </ContentTemplate>
-
+         <Triggers>
+           <asp:PostBackTrigger ControlID="butAgregarPlato" />
+         </Triggers>
 
     </asp:UpdatePanel>
 
