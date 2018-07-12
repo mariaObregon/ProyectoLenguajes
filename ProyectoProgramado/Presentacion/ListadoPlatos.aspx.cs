@@ -15,12 +15,13 @@ namespace Presentacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            carrito = (List<f_buscarPlatoID_Result>)Session["carritoPlatos"];
+            carrito = (List<f_buscarPlatoID_Result>)Session["carrito"];
 
             if (carrito == null)
             {
                 //Poner un msj de que no hay platos agregados a la lista para realizar el pedido
-
+                String script = "No se cuenta con Platos en el carrito";
+               // ScriptManager.RegisterStartupScript(this,type,);
             }
             else
             {

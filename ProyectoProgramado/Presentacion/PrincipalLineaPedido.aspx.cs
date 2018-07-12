@@ -12,8 +12,7 @@ namespace Presentacion
     public partial class PrincipalLineaPedido : System.Web.UI.Page
     {
         LogicaPlato lp = new LogicaPlato();
-      //  List<f_buscarPlatoID_Result> platosCarrito = new List<f_buscarPlatoID_Result>();
-
+        List<f_buscarPlatoID_Result> carrito;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,52 +25,26 @@ namespace Presentacion
                 dropPlatosHab.DataTextField = "NamePrice";
                 dropPlatosHab.DataBind();
 
-                ///Borrar probar
-
-         /*       if (platosCarrito.Count <= 0)
+                if ((List<f_buscarPlatoID_Result>)Session["carrito"] == null)
                 {
-                    lbPrueba.Text = "Lista Nula";
-                }
-                else {
-
-                    String f = "";
-                    for (int i = 0; i < platosCarrito.Count; i++)
-                    {
-                        f += platosCarrito[i].Nombre + "\n";
-                    }
-
-                    lbPrueba.Text = f;
+                    carrito = new List<f_buscarPlatoID_Result>();
 
                 }
-                */
-
-                ///// Borrar probar
-
+                else
+                {
+                    carrito = (List<f_buscarPlatoID_Result>)Session["carrito"];
+                }
 
             }
-
-            /*
-            dropPlatosHab.Items.Clear();
-            dropPlatosHab.DataSource = lp.PlatosHabilitados();
-            dropPlatosHab.DataValueField = "PlatoID";
-            dropPlatosHab.DataTextField = "NamePrice";
-            dropPlatosHab.DataBind();
-            */
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             
             Session["idPlato"] = dropPlatosHab.SelectedValue;
-         /*   Session["carritoPlatos"] = platosCarrito; */
+            Session["carrito"] = carrito;
             Response.Redirect("DetallePlato.aspx");
 
         }
-
-      /*  protected void imgButCarritoCliente_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("ListadoPlatos.aspx");
-        }*/
     }
 }
