@@ -109,6 +109,9 @@
     <Compile Include="f_UltimoEstado_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="f_ultimoPedido_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Geo.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>

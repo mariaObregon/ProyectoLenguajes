@@ -36,7 +36,9 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td>
+                <asp:Button ID="butConfirmarPedido" runat="server" OnClick="butConfirmarPedido_Click" Text="Confirmar Pedido" />
+            </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>

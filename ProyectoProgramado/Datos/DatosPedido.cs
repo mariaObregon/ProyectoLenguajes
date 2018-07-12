@@ -81,5 +81,21 @@ namespace Datos
             
             return ultimo.Single<f_UltimoEstado_Result>().EstadoID;
         }
+
+        public void AgregarPedido(String partyId) {
+
+            datos.p_agregarPedido(partyId);
+
+        }
+
+        public List<f_ultimoPedido_Result> UltimoPedido() {
+
+            return datos.f_ultimoPedido().ToList();
+        }
+
+        public void InsertarLineaPedido(int platoID, int PedidoID, short cantidad, decimal precio) {
+
+            datos.p_agregarLineaPedido(platoID, PedidoID, cantidad, precio);
+        }
     }
 }

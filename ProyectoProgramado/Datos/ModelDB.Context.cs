@@ -270,6 +270,12 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_UltimoEstado_Result>("[PedidosExpressEntities].[f_UltimoEstado](@PedidoID)", pedidoIDParameter);
         }
     
+        [DbFunction("PedidosExpressEntities", "f_ultimoPedido")]
+        public virtual IQueryable<f_ultimoPedido_Result> f_ultimoPedido()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_ultimoPedido_Result>("[PedidosExpressEntities].[f_ultimoPedido]()");
+        }
+    
         public virtual int p_agregarCliente(string partyIDR, string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, Nullable<bool> habilitado, Nullable<short> geoID, string lineaDireccion1, string lineaDireccion2, string lineaDireccion3, string instrucciones, Nullable<byte> tipoDireccionID)
         {
             var partyIDRParameter = partyIDR != null ?
@@ -433,6 +439,15 @@ namespace Entidad
                 new ObjectParameter("PartyID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarParty", primerNombreParameter, segundoNombreParameter, apellido1Parameter, apellido2Parameter, contraseñaParameter, partyIDParameter);
+        }
+    
+        public virtual int p_agregarPedido(string partyID)
+        {
+            var partyIDParameter = partyID != null ?
+                new ObjectParameter("PartyID", partyID) :
+                new ObjectParameter("PartyID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("p_agregarPedido", partyIDParameter);
         }
     
         public virtual int p_agregarPlato(string nombre, string descripcion, Nullable<decimal> precio, byte[] fotografia, Nullable<bool> habilitadoSN)

@@ -94,5 +94,24 @@ namespace Negocio
         public int ConteoPedidos() {
             return dp.PedidosActivos().Count;
         }
+
+        public void AgregarPedido(String partyID) {
+            dp.AgregarPedido(partyID);
+        }
+
+        public void InsertarLineaPedido(int platoID, int PedidoID, short cantidad, decimal precio) {
+
+            dp.InsertarLineaPedido(platoID, PedidoID, cantidad, precio);
+
+        }
+
+        public int UltimoPedido() {
+
+            List<f_ultimoPedido_Result> ultimoPedido = dp.UltimoPedido();
+
+            return ultimoPedido[0].PedidoID;
+
+        }
+
     }
 }
