@@ -19,7 +19,7 @@ namespace Presentacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (carrito.Count <= 0)
+            if (carrito == null)
             {
                 carrito = new List<f_buscarPlatoID_Result>();
 
