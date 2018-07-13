@@ -113,5 +113,21 @@ namespace Negocio
 
         }
 
+        public List<String> ListaPedidoCliente(List<OrdenCliente> ordenes) {
+
+            List<String> lista = new List<string>();
+
+            for (int i = 0; i < ordenes.Count; i++)
+            {
+                lista.Add("Nombre Plato: " + ordenes[i].platoID.Nombre + 
+                    "\nDescripcion Plato: " + ordenes[i].platoID.Descripcion + 
+                    "\nPrecio Plato: " + ordenes[i].platoID.Precio + 
+                    "\nCantidad Ordenada: " + ordenes[i].cantidad); 
+            }
+
+            return lista;
+
+        }
+
     }
 }

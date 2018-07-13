@@ -49,6 +49,7 @@
     <Compile Include="LogicaPedido.cs" />
     <Compile Include="LogicaPlato.cs" />
     <Compile Include="LogicaUsuario.cs" />
+    <Compile Include="OrdenCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
