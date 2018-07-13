@@ -43,7 +43,17 @@ namespace Presentacion
                 //Cambiar ese uno(1) x un valor que venga del dropDown correspondiente a la cantidad de ese plato que desea insertar
                 lp.InsertarLineaPedido(carrito[i].PlatoID,lp.UltimoPedido(),1,carrito[i].Precio);
             }
+            //***
+            carrito = new List<f_buscarPlatoID_Result>();
+            Session["carrito"] = carrito;//Borrar si no funciona
+            //***
+            Response.Redirect("PrincipalLineaPedido.aspx");
 
+        }
+
+        protected void butPagPrincipal_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PrincipalLineaPedido.aspx");
         }
     }
 }
