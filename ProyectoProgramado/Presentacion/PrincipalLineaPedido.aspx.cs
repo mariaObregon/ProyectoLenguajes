@@ -12,7 +12,7 @@ namespace Presentacion
     public partial class PrincipalLineaPedido : System.Web.UI.Page
     {
         LogicaPlato lp = new LogicaPlato();
-        List<f_buscarPlatoID_Result> carrito;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,26 +25,13 @@ namespace Presentacion
                 dropPlatosHab.DataTextField = "NamePrice";
                 dropPlatosHab.DataBind();
 
-                if ((List<f_buscarPlatoID_Result>)Session["carrito"] == null)
-                {
-                    carrito = new List<f_buscarPlatoID_Result>();
-                    Session["carrito"] = carrito;
-                }
-                else
-                {
-                    carrito = (List<f_buscarPlatoID_Result>)Session["carrito"];
-                    Session["carrito"] = carrito;
-                }
-
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
-        {
-            
+        {   
             Session["idPlato"] = dropPlatosHab.SelectedValue;
             Response.Redirect("DetallePlato.aspx");
-
         }
     }
 }

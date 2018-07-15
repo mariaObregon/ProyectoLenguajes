@@ -13,7 +13,6 @@ namespace Presentacion
     {
         LogicaPlato lp = new LogicaPlato();
         List<f_buscarPlatoID_Result> plato;
-        List<f_buscarPlatoID_Result> carrito;//-----------------
         public const int maxPlatoPermitido = 100;
         int platoID;
         List<OrdenCliente> listaOrdenes;
@@ -21,21 +20,14 @@ namespace Presentacion
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if ((List<OrdenCliente>)Session["ordenes"] == null)//((List<f_buscarPlatoID_Result>)Session["carrito"] == null)
+            if ((List<OrdenCliente>)Session["ordenes"] == null)
             {
-                //   carrito = new List<f_buscarPlatoID_Result>();//---------------
-                //   Session["carrito"] = carrito;//------------------
-                //*******************************//
                 listaOrdenes = new List<OrdenCliente>();
                 Session["ordenes"] = listaOrdenes;
 
             }
             else
             {
-
-                //   carrito = (List<f_buscarPlatoID_Result>)Session["carrito"];//---------------
-                //   Session["carrito"] = carrito;//------------------------
-                //**********************************//
                 listaOrdenes = (List<OrdenCliente>)Session["ordenes"];
                 Session["ordenes"] = listaOrdenes;
 
@@ -55,12 +47,10 @@ namespace Presentacion
 
             if (!IsPostBack) {
 
-
                 dropCantidadPlatos.DataSource = lp.CantidadPlato(maxPlatoPermitido);
                 dropCantidadPlatos.DataBind();
 
             }
-
 
 
             }
@@ -73,13 +63,10 @@ namespace Presentacion
 
         protected void butAgregarPlato_Click(object sender, EventArgs e)
         {
-           // carrito.Add(lp.BuscarPlatoId(platoID)[0]);//----------------
-
             OrdenCliente orden = new OrdenCliente();
             orden.platoID = lp.BuscarPlatoId(platoID)[0];
             orden.cantidad = Int32.Parse(dropCantidadPlatos.SelectedValue);
             listaOrdenes.Add(orden);
-
             Response.Redirect("PrincipalLineaPedido.aspx");
         }
     }

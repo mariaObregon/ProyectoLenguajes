@@ -119,10 +119,28 @@ namespace Negocio
 
             for (int i = 0; i < ordenes.Count; i++)
             {
-                lista.Add("Nombre Plato: " + ordenes[i].platoID.Nombre + 
+                lista.Add(/*ordenes[i].platoID.PlatoID +*/
+                    "Nombre Plato: " + ordenes[i].platoID.Nombre + 
                     "\nDescripcion Plato: " + ordenes[i].platoID.Descripcion + 
                     "\nPrecio Plato: " + ordenes[i].platoID.Precio + 
                     "\nCantidad Ordenada: " + ordenes[i].cantidad); 
+            }
+
+            return lista;
+
+        }
+
+
+        public List<OrdenCliente> RetirarPlatoPedido(int index, List<OrdenCliente> lista) {
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (index == i)
+                {
+                    lista.RemoveAt(i);
+                }
+
+                
             }
 
             return lista;

@@ -7,13 +7,16 @@
         .auto-style5 {
             width: 246px;
         }
+        .auto-style6 {
+            width: 80px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table class="auto-style4">
         <tr>
             <td class="auto-style5">&nbsp;</td>
-            <td>&nbsp;</td>
+            <td class="auto-style6">&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -21,10 +24,13 @@
         </tr>
         <tr>
             <td class="auto-style5">
-                <asp:GridView ID="gridPlatosAgregados" runat="server">
+                <asp:GridView ID="gridPlatosAgregados" runat="server" OnRowDeleting="gridPlatosAgregados_RowDeleting" OnSelectedIndexChanged="gridPlatosAgregados_SelectedIndexChanged">
+                    <Columns>
+                        <asp:CommandField ButtonType="Button" HeaderText="Eliminar Plato" ShowDeleteButton="True" ShowHeader="True" />
+                    </Columns>
                 </asp:GridView>
             </td>
-            <td>&nbsp;</td>
+            <td class="auto-style6">&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -32,7 +38,7 @@
         </tr>
         <tr>
             <td class="auto-style5">&nbsp;</td>
-            <td>&nbsp;</td>
+            <td class="auto-style6">&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -42,7 +48,7 @@
             <td class="auto-style5">
                 <asp:Button ID="butConfirmarPedido" runat="server" OnClick="butConfirmarPedido_Click" Text="Confirmar Pedido" />
             </td>
-            <td>
+            <td class="auto-style6">
                 <asp:Button ID="butPagPrincipal" runat="server" OnClick="butPagPrincipal_Click" Text="Principal" />
             </td>
             <td>&nbsp;</td>
@@ -52,15 +58,17 @@
         </tr>
         <tr>
             <td class="auto-style5">&nbsp;</td>
-            <td>&nbsp;</td>
+            <td class="auto-style6">&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style5">&nbsp;</td>
-            <td>&nbsp;</td>
+            <td class="auto-style5">
+                <asp:Button ID="butLimpCarrito" runat="server" OnClick="butLimpCarrito_Click" Text="Limpiar Carrito" />
+            </td>
+            <td class="auto-style6">&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
