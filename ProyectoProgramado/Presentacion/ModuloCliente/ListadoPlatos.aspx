@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="ListadoPlatos.aspx.cs" Inherits="Presentacion.ModuloCliente.ListadoPlatos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="ListadoPlatos.aspx.cs" Inherits="Presentacion.ModuloCliente.ListadoPlatos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style4 {
@@ -16,6 +16,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <table class="auto-style4">
         <tr>
             <td class="auto-style5">&nbsp;</td>
@@ -27,10 +28,10 @@
         </tr>
         <tr>
             <td class="auto-style5">
-                <asp:GridView ID="gridPlatosAgregados" runat="server" OnRowCommand="gridPlatosAgregados_RowCommand" OnRowDeleting="gridPlatosAgregados_RowDeleting" OnSelectedIndexChanged="gridPlatosAgregados_SelectedIndexChanged">
+                <asp:GridView ID="gridPlatosAgregados" runat="server" OnRowDeleting="gridPlatosAgregados_RowDeleting" OnSelectedIndexChanged="gridPlatosAgregados_SelectedIndexChanged" OnRowEditing="gridPlatosAgregados_RowEditing1" OnRowUpdating="gridPlatosAgregados_RowUpdating">
                     <Columns>
                         <asp:CommandField ButtonType="Button" HeaderText="Eliminar Plato" ShowDeleteButton="True" ShowHeader="True" />
-                        <asp:CommandField ButtonType="Button" HeaderText="Modificar Plato" ShowHeader="True" ShowSelectButton="True" />
+                        <asp:CommandField ButtonType="Button" HeaderText="Modificar Plato" ShowCancelButton="False" ShowEditButton="True" ShowHeader="True" />
                     </Columns>
                 </asp:GridView>
             </td>
