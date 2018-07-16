@@ -70,6 +70,11 @@ namespace Presentacion.AdministracionPlatos
 
                 }
 
+                txtBuscPLato.Text = "";
+                txtModNombPlato.Text = "";
+                txtModDescPlato.Text = "";
+                txtModPrePlato.Text = "";
+
 
             }
             catch {

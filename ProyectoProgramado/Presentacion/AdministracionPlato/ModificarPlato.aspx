@@ -56,7 +56,7 @@
             <td>&nbsp;</td>
             <td>
                 <asp:Button ID="butBuscarPlato" runat="server" Text="Buscar" OnClick="ButBuscarPlato_Click" />
-                <asp:TextBox ID="txtBuscPLato" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtBuscPLato" runat="server" placeholder="Buscar Plato"></asp:TextBox> 
                 <asp:Label ID="labelBuscPlato" runat="server" Text="Buscar Plato"></asp:Label>
             </td>
             <td>&nbsp;</td>
@@ -82,7 +82,7 @@
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="txtModNombPlato" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtModNombPlato" runat="server" placeholder="Nombre Plato"></asp:TextBox>
                 Nombre Plato</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -96,7 +96,7 @@
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="txtModDescPlato" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtModDescPlato" runat="server" placeholder="Descripcion PLato"></asp:TextBox>
                 Descripcion Plato</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -110,7 +110,7 @@
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="txtModPrePlato" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtModPrePlato" runat="server" placeholder="Precio Plato"></asp:TextBox>
                 Precio Plato</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>

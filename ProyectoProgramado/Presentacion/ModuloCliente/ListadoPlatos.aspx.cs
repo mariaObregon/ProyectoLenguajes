@@ -106,7 +106,6 @@ namespace Presentacion.ModuloCliente
 
         protected void butCambioPlato_Click(object sender, EventArgs e)
         {
-            //Refrescar Para que se vea el cambio en cantidad una vez terminado despues de setear valores a falso
 
             numSeleccionadoModificar = (int)Session["index"];
             listaOrdenes = lp.ModificarPlatoPedido(numSeleccionadoModificar,listaOrdenes, Int32.Parse(dropCantidadModificar.SelectedValue));
