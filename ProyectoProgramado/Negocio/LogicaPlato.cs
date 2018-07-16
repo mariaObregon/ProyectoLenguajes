@@ -1,4 +1,5 @@
 ﻿using System;
+using Negocio.Excepciones;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,9 +55,15 @@ namespace Negocio
 
 
 
-        public void AgregarPlato(String nombre, String descripcion, decimal precio, byte[] imagen, bool habilitado)
+        public void AgregarPlato(String nombre, String descripcion, String precio, byte[] imagen, bool habilitado)
         {
-           dp.AgregarPlato(nombre, descripcion, precio, imagen, habilitado);
+                if (ValidarDecimalText(precio) && ValidarTextBox(nombre) && ValidarTextBox(descripcion))
+                {
+                    dp.AgregarPlato(nombre, descripcion, decimal.Parse(precio), imagen, habilitado);
+                }
+                else {
+                     throw new ExcepcionNoCoincide("No se inserto el plato revisar valores ingresados"); 
+                }
         }
 
         public bool EstadoHabilitado(String valor) {
@@ -79,7 +86,7 @@ namespace Negocio
 
                 input = new byte[fileLen - 1];
                 input = FileUpload1.FileBytes;
- 
+
             }
 
             return input;
@@ -133,27 +140,60 @@ namespace Negocio
 
             txt.MaxLength = max;
         }
-       /* public List<String> ListaPlatosSeleccion() {
+        /* public List<String> ListaPlatosSeleccion() {
 
-            List<f_listaPlatosHabilitados_Result> lista = PlatosHabilitados();
-            List<String> rLista = new List<string>();
+             List<f_listaPlatosHabilitados_Result> lista = PlatosHabilitados();
+             List<String> rLista = new List<string>();
 
-            if (lista.Count > 0)
+             if (lista.Count > 0)
+             {
+
+                 for (int i = 0; i < lista.Count; i++)
+                 {
+
+                     rLista.Add(lista[i].Nombre + "/" + lista[i].Precio);
+
+                 }
+
+             }
+             else { rLista.Add("Sin platos Habiles"); }
+
+             return rLista;
+
+         }*/
+
+
+        private bool ValidarDecimalText(String text) {
+
+            if (!text.Equals("") && Decimal.Parse(text) >= 0)
             {
-
-                for (int i = 0; i < lista.Count; i++)
-                {
-
-                    rLista.Add(lista[i].Nombre + "/" + lista[i].Precio);
-
-                }
-
+                return true;
             }
-            else { rLista.Add("Sin platos Habiles"); }
+            else {
+                throw new ExcepcionNoCoincide("No se inserto el plato, Ingrese un valor en precio superior a 0");
+            }
 
-            return rLista;
+        }
+
+   /*     private bool ValidarPrecio(Decimal precio) {
+
+
+            if (precio >= 0)
+                return true;
+            
+
+            return false;
 
         }*/
+
+        private bool ValidarTextBox(String texto) {
+
+            if (!texto.Equals(""))
+                return true;
+
+            return false;
+
+        }
 
     }
 }

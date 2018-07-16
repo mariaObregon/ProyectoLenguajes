@@ -24,7 +24,6 @@ namespace Presentacion.ModuloCliente
 
             if (listaOrdenes == null || listaOrdenes.Count <= 0) 
             {
-                //Poner un msj de que no hay platos agregados a la lista para realizar el pedido
                 String script = string.Format("MensajeError('{0}')", "No cuenta con ordenes en el carrito");
                 ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
             }

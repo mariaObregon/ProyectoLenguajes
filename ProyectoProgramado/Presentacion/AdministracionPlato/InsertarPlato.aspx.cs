@@ -1,4 +1,5 @@
 ﻿using Negocio;
+using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +24,32 @@ namespace Presentacion.AdministracionPlatos
 
         protected void ButGuardarPlato_Click(object sender, EventArgs e)
         {
-            byte[] newB = lp.ConvertirImagenBinario(InsertarImagenPlato);
 
-            lp.AgregarPlato(txtNombrePlato.Text, txtDescPlato.Text, Decimal.Parse(txtPrecioPlato.Text), newB, lp.EstadoHabilitado(DropDownList1.SelectedValue));
+            try {
 
-            txtNombrePlato.Text = "";
-            txtDescPlato.Text = "";
-            txtPrecioPlato.Text = "";
+
+                byte[] newB = lp.ConvertirImagenBinario(InsertarImagenPlato);
+
+                lp.AgregarPlato(txtNombrePlato.Text, txtDescPlato.Text, txtPrecioPlato.Text, newB, lp.EstadoHabilitado(DropDownList1.SelectedValue));
+
+                txtNombrePlato.Text = "";
+                txtDescPlato.Text = "";
+                txtPrecioPlato.Text = "";
+
+                //String script = string.Format("MensajeNotificacion('{0}')", resultado);
+                //ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
+
+            }
+            catch (ExcepcionNoCoincide ex) {
+
+                String script = string.Format("MensajeError('{0}')", ex.Message);
+                ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
+
+            }
+
+
+
+
 
         }
     

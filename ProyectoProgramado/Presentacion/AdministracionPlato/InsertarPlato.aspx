@@ -3,6 +3,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="JavaScript/ScriptFacebook.js"></script>
+    <script type="text/javascript" src="JavaScript/JavaScriptValidaciones.js"></script>
+
+
     <script type="text/javascript">
 
         function showimagepreview(input) {
@@ -32,7 +41,14 @@
 
        <ContentTemplate> 
 
-    <table class="auto-style3">
+    <div class="container">
+
+      <div class="row">
+
+          <div class="col-xs-12">
+
+
+              <table class="auto-style3">
         <tr>
             <td>
               <img src="NULL" id="img" alt="" style="width:200px" /></td>
@@ -176,6 +192,19 @@
             <td>&nbsp;</td>
         </tr>
     </table>
+
+
+
+          </div>
+
+
+
+      </div>
+
+
+    </div>
+
+    
 
          </ContentTemplate>
 
