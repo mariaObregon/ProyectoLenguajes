@@ -40,7 +40,7 @@ namespace Presentacion.AdministracionPlatos
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
 
             }
-            catch (ExcepcionNoCoincide ex) {
+            catch {
 
                 String script = string.Format("alert('No se inserto revise parametros')");
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);

@@ -94,9 +94,20 @@ namespace Negocio
 
         }
 
-        public void ModificarPlato(int IntPatoID, String StrNombre, String StrDescripcion, decimal DecPrecio, byte[] Imagen, bool BoolHabilitado)
+        public String ModificarPlato(int IntPatoID, String StrNombre, String StrDescripcion, String DecPrecio, byte[] Imagen, bool BoolHabilitado)
         {
-            dp.ModificarPlato(IntPatoID, StrNombre, StrDescripcion, DecPrecio, Imagen, BoolHabilitado);
+
+            if (ValidarDecimalText(DecPrecio) && ValidarTextBox(StrNombre) && ValidarTextBox(StrDescripcion))
+            {
+                dp.ModificarPlato(IntPatoID , StrNombre, StrDescripcion, decimal.Parse(DecPrecio), Imagen, BoolHabilitado);
+                return "Modificado exitosamente";
+            }
+            else
+            {
+                throw new ExcepcionNoCoincide("No se Modifico el plato revisar valores ingresados");
+            }
+
+            // dp.ModificarPlato(IntPatoID, StrNombre, StrDescripcion, DecPrecio, Imagen, BoolHabilitado);
         }
 
         public String PlatoHabilitado(bool estado) {
@@ -176,17 +187,6 @@ namespace Negocio
 
         }
 
-   /*     private bool ValidarPrecio(Decimal precio) {
-
-
-            if (precio >= 0)
-                return true;
-            
-
-            return false;
-
-        }*/
-
         private bool ValidarTextBox(String texto) {
 
             if (!texto.Equals(""))
@@ -194,6 +194,17 @@ namespace Negocio
 
             return false;
 
+        }
+
+        public bool idBusquedaNombre(String Text) {
+
+            if (Text.Contains("1") || Text.Contains("2") || Text.Contains("3") || Text.Contains("4")
+                || Text.Contains("5") || Text.Contains("6") || Text.Contains("7") || Text.Contains("8")
+                || Text.Contains("9") || Text.Contains("0"))
+                return true;
+
+            return false;
+            
         }
 
     }
