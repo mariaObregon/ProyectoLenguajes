@@ -270,7 +270,13 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_UltimoEstado_Result>("[PedidosExpressEntities].[f_UltimoEstado](@PedidoID)", pedidoIDParameter);
         }
     
-        public virtual int p_agregarCliente(string partyIDR, string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string contraseñaR, string valorMecanismoR, Nullable<short> tipoMecanismoIDR, Nullable<bool> habilitado, Nullable<short> geoID, string lineaDireccion1, string lineaDireccion2, string lineaDireccion3, string instrucciones, Nullable<byte> tipoDireccionID)
+        [DbFunction("PedidosExpressEntities", "f_ultimoPedido")]
+        public virtual IQueryable<f_ultimoPedido_Result> f_ultimoPedido()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<f_ultimoPedido_Result>("[PedidosExpressEntities].[f_ultimoPedido]()");
+        }
+    
+        public virtual int p_agregarCliente(string partyIDR, string primerNombreR, string segundoNombreR, string apellido1R, string apellido2R, string facebookID, Nullable<bool> habilitado, string contraseña, string direccion)
         {
             var partyIDRParameter = partyIDR != null ?
                 new ObjectParameter("PartyIDR", partyIDR) :
@@ -857,7 +863,7 @@ namespace Entidad
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -867,10 +873,10 @@ namespace Entidad
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -880,7 +886,7 @@ namespace Entidad
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
