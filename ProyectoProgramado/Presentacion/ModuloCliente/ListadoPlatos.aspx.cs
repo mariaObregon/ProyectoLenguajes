@@ -47,7 +47,6 @@ namespace Presentacion.ModuloCliente
 
         protected void butConfirmarPedido_Click(object sender, EventArgs e)
         {
-            //PartyID para agregar Pedido(Antes HardCode)
             lp.AgregarPedido(Session["Party"].ToString());
 
             for (int i = 0; i < listaOrdenes.Count; i++)
@@ -77,15 +76,6 @@ namespace Presentacion.ModuloCliente
 
         protected void gridPlatosAgregados_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //No se sie esto funciona
-            //int numSeleccionado = gridPlatosAgregados.SelectedIndex;
-
-            //lp.RetirarPlatoPedido(numSeleccionado,listaOrdenes);
-
-            //Session["ordenes"] = listaOrdenes;
-            //Response.Redirect("PrincipalLineaPedido.aspx");
-
-
         }
 
         protected void gridPlatosAgregados_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -100,16 +90,6 @@ namespace Presentacion.ModuloCliente
 
 
         }
-
-    /*   protected void gridPlatosAgregados_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            //Podria ser sacar esta a global y usarla despues
-            numSeleccionadoModificar = e.NewEditIndex;
-            dropCantidadModificar.Visible = true;
-            butCambioPlato.Visible = true;
-
-
-        } */
 
         protected void butCambioPlato_Click(object sender, EventArgs e)
         {

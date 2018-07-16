@@ -11,7 +11,7 @@
                 var reader = new FileReader();
                 reader.onload = function (e) {
 
-                    document.getElementsByTagName("img")[0].setAttribute("src", e.target.result);
+                    document.getElementsByTagName("img")[1].setAttribute("src", e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
             }

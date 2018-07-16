@@ -128,6 +128,11 @@ namespace Negocio
             return fullList;
         }
 
+
+        public void MaximoCaracteres(TextBox txt, int max) {
+
+            txt.MaxLength = max;
+        }
        /* public List<String> ListaPlatosSeleccion() {
 
             List<f_listaPlatosHabilitados_Result> lista = PlatosHabilitados();

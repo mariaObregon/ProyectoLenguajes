@@ -15,6 +15,10 @@ namespace Presentacion.AdministracionPlatos
         protected void Page_Load(object sender, EventArgs e)
         {
             Master.MenuVisible = true;
+            lp.MaximoCaracteres(txtNombrePlato,50);
+            lp.MaximoCaracteres(txtDescPlato, 50);
+            
+
         }
 
         protected void ButGuardarPlato_Click(object sender, EventArgs e)
@@ -22,6 +26,11 @@ namespace Presentacion.AdministracionPlatos
             byte[] newB = lp.ConvertirImagenBinario(InsertarImagenPlato);
 
             lp.AgregarPlato(txtNombrePlato.Text, txtDescPlato.Text, Decimal.Parse(txtPrecioPlato.Text), newB, lp.EstadoHabilitado(DropDownList1.SelectedValue));
+
+            txtNombrePlato.Text = "";
+            txtDescPlato.Text = "";
+            txtPrecioPlato.Text = "";
+
         }
     
     }
