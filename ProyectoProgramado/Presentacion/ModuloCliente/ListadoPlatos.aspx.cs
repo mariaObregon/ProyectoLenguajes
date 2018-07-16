@@ -127,7 +127,11 @@ namespace Presentacion.ModuloCliente
 
             //GridViewRow row = (GridViewRow)((e.CommandSource).NamingContainer);
 
-           // numSeleccionadoModificar = row.RowIndex;
+            // numSeleccionadoModificar = row.RowIndex;
+
+            GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
+            numSeleccionadoModificar = row.RowIndex;
+
             dropCantidadModificar.Visible = true;
             butCambioPlato.Visible = true;
 
