@@ -40,6 +40,15 @@ namespace Presentacion.ModuloCliente {
         protected global::System.Web.UI.WebControls.Button butCambioPlato;
         
         /// <summary>
+        /// Control lblNuevaCantidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNuevaCantidad;
+        
+        /// <summary>
         /// Control butConfirmarPedido.
         /// </summary>
         /// <remarks>
@@ -65,5 +74,14 @@ namespace Presentacion.ModuloCliente {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button butLimpCarrito;
+        
+        /// <summary>
+        /// Control lblPago.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPago;
     }
 }

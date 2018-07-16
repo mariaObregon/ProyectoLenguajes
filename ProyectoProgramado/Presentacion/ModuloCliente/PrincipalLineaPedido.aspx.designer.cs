@@ -31,15 +31,6 @@ namespace Presentacion.ModuloCliente {
         protected global::System.Web.UI.WebControls.ImageButton imgButCarritoCliente;
         
         /// <summary>
-        /// Control imgButClientUpdate.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButClientUpdate;
-        
-        /// <summary>
         /// Control dropPlatosHab.
         /// </summary>
         /// <remarks>

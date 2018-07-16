@@ -1,4 +1,5 @@
 ﻿using System;
+using Negocio.Excepciones;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,9 +55,16 @@ namespace Negocio
 
 
 
-        public void AgregarPlato(String nombre, String descripcion, decimal precio, byte[] imagen, bool habilitado)
+        public String AgregarPlato(String nombre, String descripcion, String precio, byte[] imagen, bool habilitado)
         {
-           dp.AgregarPlato(nombre, descripcion, precio, imagen, habilitado);
+                if (ValidarDecimalText(precio) && ValidarTextBox(nombre) && ValidarTextBox(descripcion))
+                {
+                    dp.AgregarPlato(nombre, descripcion, decimal.Parse(precio), imagen, habilitado);
+                return "Insertado exitosamente";
+                }
+                else {
+                     throw new ExcepcionNoCoincide("No se inserto el plato revisar valores ingresados"); 
+                }
         }
 
         public bool EstadoHabilitado(String valor) {
@@ -79,16 +87,27 @@ namespace Negocio
 
                 input = new byte[fileLen - 1];
                 input = FileUpload1.FileBytes;
- 
+
             }
 
             return input;
 
         }
 
-        public void ModificarPlato(int IntPatoID, String StrNombre, String StrDescripcion, decimal DecPrecio, byte[] Imagen, bool BoolHabilitado)
+        public String ModificarPlato(int IntPatoID, String StrNombre, String StrDescripcion, String DecPrecio, byte[] Imagen, bool BoolHabilitado)
         {
-            dp.ModificarPlato(IntPatoID, StrNombre, StrDescripcion, DecPrecio, Imagen, BoolHabilitado);
+
+            if (ValidarDecimalText(DecPrecio) && ValidarTextBox(StrNombre) && ValidarTextBox(StrDescripcion))
+            {
+                dp.ModificarPlato(IntPatoID , StrNombre, StrDescripcion, decimal.Parse(DecPrecio), Imagen, BoolHabilitado);
+                return "Modificado exitosamente";
+            }
+            else
+            {
+                throw new ExcepcionNoCoincide("No se Modifico el plato revisar valores ingresados");
+            }
+
+            // dp.ModificarPlato(IntPatoID, StrNombre, StrDescripcion, DecPrecio, Imagen, BoolHabilitado);
         }
 
         public String PlatoHabilitado(bool estado) {
@@ -128,27 +147,65 @@ namespace Negocio
             return fullList;
         }
 
-       /* public List<String> ListaPlatosSeleccion() {
 
-            List<f_listaPlatosHabilitados_Result> lista = PlatosHabilitados();
-            List<String> rLista = new List<string>();
+        public void MaximoCaracteres(TextBox txt, int max) {
 
-            if (lista.Count > 0)
+            txt.MaxLength = max;
+        }
+        /* public List<String> ListaPlatosSeleccion() {
+
+             List<f_listaPlatosHabilitados_Result> lista = PlatosHabilitados();
+             List<String> rLista = new List<string>();
+
+             if (lista.Count > 0)
+             {
+
+                 for (int i = 0; i < lista.Count; i++)
+                 {
+
+                     rLista.Add(lista[i].Nombre + "/" + lista[i].Precio);
+
+                 }
+
+             }
+             else { rLista.Add("Sin platos Habiles"); }
+
+             return rLista;
+
+         }*/
+
+
+        private bool ValidarDecimalText(String text) {
+
+            if (!text.Equals("") && Decimal.Parse(text) >= 0)
             {
-
-                for (int i = 0; i < lista.Count; i++)
-                {
-
-                    rLista.Add(lista[i].Nombre + "/" + lista[i].Precio);
-
-                }
-
+                return true;
             }
-            else { rLista.Add("Sin platos Habiles"); }
+            else {
+                throw new ExcepcionNoCoincide("No se inserto el plato, Ingrese un valor en precio superior a 0");
+            }
 
-            return rLista;
+        }
 
-        }*/
+        private bool ValidarTextBox(String texto) {
+
+            if (!texto.Equals(""))
+                return true;
+
+            return false;
+
+        }
+
+        public bool idBusquedaNombre(String Text) {
+
+            if (Text.Contains("1") || Text.Contains("2") || Text.Contains("3") || Text.Contains("4")
+                || Text.Contains("5") || Text.Contains("6") || Text.Contains("7") || Text.Contains("8")
+                || Text.Contains("9") || Text.Contains("0"))
+                return true;
+
+            return false;
+            
+        }
 
     }
 }

@@ -2,6 +2,16 @@
 <%@ MasterType VirtualPath="~/Principal.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="JavaScript/ScriptFacebook.js"></script>
+    <script type="text/javascript" src="JavaScript/JavaScriptValidaciones.js"></script>
+
+
     <script type="text/javascript">
 
         function showimagepreview(input) {
@@ -31,13 +41,22 @@
        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 
        <ContentTemplate>
-  
-    <table class="auto-style3">
+
+
+
+       <div class="container">
+
+        <div class="row">
+
+          <div class="col-xs-12">
+
+
+              <table class="auto-style3">
         <tr>
             <td>&nbsp;</td>
             <td>
-                <asp:Button ID="butBuscarPlato" runat="server" Text="Buscar" OnClick="ButBuscarPlato_Click" />
-                <asp:TextBox ID="txtBuscPLato" runat="server"></asp:TextBox>
+                <asp:Button ID="butBuscarPlato" class="btn btn-default btn-lg active" runat="server" Text="Buscar" OnClick="ButBuscarPlato_Click" Height="46px" />
+                <asp:TextBox ID="txtBuscPLato" runat="server" placeholder="Buscar Plato"></asp:TextBox> 
                 <asp:Label ID="labelBuscPlato" runat="server" Text="Buscar Plato"></asp:Label>
             </td>
             <td>&nbsp;</td>
@@ -63,7 +82,7 @@
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="txtModNombPlato" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtModNombPlato" runat="server" placeholder="Nombre Plato"></asp:TextBox>
                 Nombre Plato</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -77,7 +96,7 @@
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="txtModDescPlato" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtModDescPlato" runat="server" placeholder="Descripcion PLato"></asp:TextBox>
                 Descripcion Plato</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -91,7 +110,7 @@
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="txtModPrePlato" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtModPrePlato" runat="server" placeholder="Precio Plato"></asp:TextBox>
                 Precio Plato</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -163,7 +182,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="butModifPlato" runat="server" Text="Modificar" OnClick="ButModifPlato_Click" />
+                <asp:Button ID="butModifPlato" class="btn btn-primary btn-lg active" runat="server" Text="Modificar" OnClick="ButModifPlato_Click" />
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -175,13 +194,24 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
-    </table>
+
+</table>
+
+
+
+          </div>
+
+      </div>
+
+
+    </div>
 
 
        </ContentTemplate>
 
            <Triggers>
                <asp:PostBackTrigger ControlID="butModifPlato" />
+<asp:PostBackTrigger ControlID="butBuscarPlato"></asp:PostBackTrigger>
 <asp:PostBackTrigger ControlID="butBuscarPlato"></asp:PostBackTrigger>
            </Triggers>
 

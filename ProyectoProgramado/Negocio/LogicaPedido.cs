@@ -160,5 +160,22 @@ namespace Negocio
 
             return lista;
         }
+
+        public decimal CancelarMonto(List<OrdenCliente> lista) {
+
+            decimal monto = 0;
+
+            if (lista != null && lista.Count > 0)
+            {
+                for (int i = 0; i < lista.Count; i++)
+                {
+                    monto = monto + (lista[i].cantidad * lista[i].platoID.Precio);
+
+                }
+            }
+
+
+            return monto;
+        }
     }
 }

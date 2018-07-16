@@ -22,11 +22,12 @@ namespace Presentacion.ModuloCliente
 
             listaOrdenes = (List<OrdenCliente>)Session["ordenes"];
 
+            lblPago.Text = lp.CancelarMonto(listaOrdenes).ToString();
+
             if (listaOrdenes == null || listaOrdenes.Count <= 0) 
             {
-                //Poner un msj de que no hay platos agregados a la lista para realizar el pedido
-                String script = "No se cuenta con Platos en el carrito";
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "alert", script, true);
+                String script = string.Format("alert('No se tiene ningun elemento en la lista')");
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta",script ,true);
             }
             else
             {
@@ -47,8 +48,7 @@ namespace Presentacion.ModuloCliente
 
         protected void butConfirmarPedido_Click(object sender, EventArgs e)
         {
-            //Variable Session[PartyID] en vez de hardcode
-            lp.AgregarPedido("1");
+            lp.AgregarPedido(Session["Party"].ToString());
 
             for (int i = 0; i < listaOrdenes.Count; i++)
             {
@@ -57,7 +57,11 @@ namespace Presentacion.ModuloCliente
 
             listaOrdenes = new List<OrdenCliente>();
             Session["ordenes"] = listaOrdenes;
+
             Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
+
+            String script = string.Format("alert('Pedido Confirmado')");
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
 
         }
 
@@ -71,21 +75,17 @@ namespace Presentacion.ModuloCliente
 
             listaOrdenes = new List<OrdenCliente>();
             Session["ordenes"] = listaOrdenes;
+
+
             Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
+
+            String script = string.Format("alert('Se elimino las ordenes del carrito')");
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
 
         }
 
         protected void gridPlatosAgregados_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //No se sie esto funciona
-            //int numSeleccionado = gridPlatosAgregados.SelectedIndex;
-
-            //lp.RetirarPlatoPedido(numSeleccionado,listaOrdenes);
-
-            //Session["ordenes"] = listaOrdenes;
-            //Response.Redirect("PrincipalLineaPedido.aspx");
-
-
         }
 
         protected void gridPlatosAgregados_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -96,45 +96,43 @@ namespace Presentacion.ModuloCliente
             listaOrdenes = lp.RetirarPlatoPedido(numSeleccionado, listaOrdenes);
 
             Session["ordenes"] = listaOrdenes;
+
             Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
 
+            String script = string.Format("alert('Se elimino la orden del carrito')");
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
 
         }
 
-     /*   protected void gridPlatosAgregados_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            //Podria ser sacar esta a global y usarla despues
-            numSeleccionadoModificar = e.NewEditIndex;
-            dropCantidadModificar.Visible = true;
-            butCambioPlato.Visible = true;
-
-
-        } */
-
         protected void butCambioPlato_Click(object sender, EventArgs e)
         {
-            //Refrescar Para que se vea el cambio en cantidad una vez terminado despues de setear valores a falso
 
+            numSeleccionadoModificar = (int)Session["index"];
             listaOrdenes = lp.ModificarPlatoPedido(numSeleccionadoModificar,listaOrdenes, Int32.Parse(dropCantidadModificar.SelectedValue));
             Session["ordenes"] = listaOrdenes;
             dropCantidadModificar.Visible = false;
             butCambioPlato.Visible = false;
+            lblNuevaCantidad.Visible = false;
+
+            String script = string.Format("alert('Se altero la cantidad del plato en el pedido')");
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
         }
 
-        protected void gridPlatosAgregados_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gridPlatosAgregados_RowEditing1(object sender, GridViewEditEventArgs e)
         {
-            //No he probado mucho
 
-            //GridViewRow row = (GridViewRow)((e.CommandSource).NamingContainer);
-
-            // numSeleccionadoModificar = row.RowIndex;
-
-            GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
-            numSeleccionadoModificar = row.RowIndex;
-
+            numSeleccionadoModificar = e.NewEditIndex;
+            Session["index"] = numSeleccionadoModificar;
             dropCantidadModificar.Visible = true;
             butCambioPlato.Visible = true;
+            lblNuevaCantidad.Visible = true;
 
         }
+
+        protected void gridPlatosAgregados_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            Response.Redirect("/ModuloCliente/ListadoPLato.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
+        }
+
     }
 }
