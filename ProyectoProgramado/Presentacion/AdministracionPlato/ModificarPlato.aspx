@@ -55,7 +55,7 @@
         <tr>
             <td>&nbsp;</td>
             <td>
-                <asp:Button ID="butBuscarPlato" runat="server" Text="Buscar" OnClick="ButBuscarPlato_Click" />
+                <asp:Button ID="butBuscarPlato" class="btn btn-default btn-lg active" runat="server" Text="Buscar" OnClick="ButBuscarPlato_Click" Height="46px" />
                 <asp:TextBox ID="txtBuscPLato" runat="server" placeholder="Buscar Plato"></asp:TextBox> 
                 <asp:Label ID="labelBuscPlato" runat="server" Text="Buscar Plato"></asp:Label>
             </td>
@@ -182,7 +182,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="butModifPlato" runat="server" Text="Modificar" OnClick="ButModifPlato_Click" />
+                <asp:Button ID="butModifPlato" class="btn btn-primary btn-lg active" runat="server" Text="Modificar" OnClick="ButModifPlato_Click" />
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -211,6 +211,7 @@
 
            <Triggers>
                <asp:PostBackTrigger ControlID="butModifPlato" />
+<asp:PostBackTrigger ControlID="butBuscarPlato"></asp:PostBackTrigger>
 <asp:PostBackTrigger ControlID="butBuscarPlato"></asp:PostBackTrigger>
            </Triggers>
 

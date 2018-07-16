@@ -167,7 +167,7 @@
         </tr>
         <tr>
             <td>
-               <asp:Button ID="butGuardarPlato" runat="server" OnClick="ButGuardarPlato_Click" Text="Guardar Plato" />
+               <asp:Button ID="butGuardarPlato" class="btn btn-primary btn-lg active" runat="server" OnClick="ButGuardarPlato_Click" Text="Guardar Plato" />
             </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>

@@ -91,7 +91,7 @@
            </tr>
            <tr>
                <td class="auto-style4">
-                   <asp:DropDownList ID="dropPlatosHab" runat="server">
+                   <asp:DropDownList ID="dropPlatosHab" class="dropdown-header" runat="server">
                    </asp:DropDownList>
                    <asp:Label ID="labelPlatoshab" runat="server" Text="Platos Habilitados"></asp:Label>
                </td>
@@ -170,7 +170,7 @@
            <tr>
                <td class="auto-style4">&nbsp;</td>
                <td class="auto-style3">
-                   <asp:Button ID="butDetallePlato" runat="server" OnClick="Button1_Click" Text="Detalle Plato" />
+                   <asp:Button ID="butDetallePlato" class="btn btn-primary btn-lg active" runat="server" OnClick="Button1_Click" Text="Detalle Plato" />
                </td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>

@@ -14,7 +14,6 @@
             width: 100%;
         }
         .auto-style5 {
-            width: 246px;
         }
         .auto-style6 {
             width: 113px;
@@ -33,7 +32,7 @@
 
           <div class="col-xs-12">
 
-              <table class="auto-style4">
+              <table class="auto-style4" style="width:100%">
         <tr>
             <td class="auto-style5">&nbsp;</td>
             <td class="auto-style6">&nbsp;</td>
@@ -43,16 +42,25 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style5">
-                <asp:GridView ID="gridPlatosAgregados" runat="server" OnRowDeleting="gridPlatosAgregados_RowDeleting" OnSelectedIndexChanged="gridPlatosAgregados_SelectedIndexChanged" OnRowEditing="gridPlatosAgregados_RowEditing1" OnRowUpdating="gridPlatosAgregados_RowUpdating">
+            <td class="auto-style5" colspan="3">
+                <asp:GridView ID="gridPlatosAgregados" runat="server" OnRowDeleting="gridPlatosAgregados_RowDeleting" OnSelectedIndexChanged="gridPlatosAgregados_SelectedIndexChanged" OnRowEditing="gridPlatosAgregados_RowEditing1" OnRowUpdating="gridPlatosAgregados_RowUpdating" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:CommandField ButtonType="Button" HeaderText="Eliminar Plato" ShowDeleteButton="True" ShowHeader="True" />
                         <asp:CommandField ButtonType="Button" HeaderText="Modificar Plato" ShowCancelButton="False" ShowEditButton="True" ShowHeader="True" />
                     </Columns>
+                    <EditRowStyle BackColor="#999999" />
+                    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
             </td>
-            <td class="auto-style6">&nbsp;</td>
-            <td>&nbsp;</td>
             <td class="auto-style7">
                 <asp:DropDownList ID="dropCantidadModificar" runat="server" Visible="False">
                 </asp:DropDownList>
