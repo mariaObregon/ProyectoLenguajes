@@ -22,6 +22,8 @@ namespace Presentacion.ModuloCliente
 
             listaOrdenes = (List<OrdenCliente>)Session["ordenes"];
 
+            lblPago.Text = lp.CancelarMonto(listaOrdenes).ToString();
+
             if (listaOrdenes == null || listaOrdenes.Count <= 0) 
             {
                 String script = string.Format("MensajeError('{0}')", "No cuenta con ordenes en el carrito");
@@ -99,6 +101,7 @@ namespace Presentacion.ModuloCliente
             Session["ordenes"] = listaOrdenes;
             dropCantidadModificar.Visible = false;
             butCambioPlato.Visible = false;
+            lblNuevaCantidad.Visible = false;
         }
 
         protected void gridPlatosAgregados_RowEditing1(object sender, GridViewEditEventArgs e)
@@ -108,32 +111,14 @@ namespace Presentacion.ModuloCliente
             Session["index"] = numSeleccionadoModificar;
             dropCantidadModificar.Visible = true;
             butCambioPlato.Visible = true;
+            lblNuevaCantidad.Visible = true;
 
         }
 
         protected void gridPlatosAgregados_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            //No hace nada solo ver que no se caiga X=xD
-            for (int i = 0; i < 5; i++)
-            {
-
-            }
+            Response.Redirect("/ModuloCliente/ListadoPLato.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
         }
 
-        /*   protected void gridPlatosAgregados_RowCommand(object sender, GridViewCommandEventArgs e)
-           {
-               //No he probado mucho
-
-               //GridViewRow row = (GridViewRow)((e.CommandSource).NamingContainer);
-
-               // numSeleccionadoModificar = row.RowIndex;
-
-               //GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
-             //  numSeleccionadoModificar = row.RowIndex;
-
-               dropCantidadModificar.Visible = true;
-               butCambioPlato.Visible = true;
-
-           }*/
     }
 }

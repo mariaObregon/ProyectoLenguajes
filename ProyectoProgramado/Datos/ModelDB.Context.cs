@@ -910,5 +910,15 @@ namespace Entidad
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        [DbFunction("PedidosExpressEntities", "f_MontoCancelar")]
+        public virtual IQueryable<Nullable<decimal>> f_MontoCancelar(Nullable<int> pedidoID)
+        {
+            var pedidoIDParameter = pedidoID.HasValue ?
+                new ObjectParameter("PedidoID", pedidoID) :
+                new ObjectParameter("PedidoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<decimal>>("[PedidosExpressEntities].[f_MontoCancelar](@PedidoID)", pedidoIDParameter);
+        }
     }
 }
