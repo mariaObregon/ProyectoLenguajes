@@ -13,9 +13,9 @@ namespace Datos
         PedidosExpressEntities datos = new PedidosExpressEntities();
 
         public void ModificarParty(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
-                   String StrSegundoApellido, String StrContraseña, String StrPartyID)
+                   String StrSegundoApellido,  String StrPartyID)
         {
-            datos.p_modificarParty(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña, StrPartyID);
+            datos.p_modificarParty(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrPartyID);
         }
 
         public void ModificarMecanismo( String StrValorMecanismo, short ShTipoMecanismo, short ShMecanismoID, String StrPartyID)
@@ -88,7 +88,7 @@ namespace Datos
             return direccion.ToList();
         }
 
-        public void CambiarContraseña(String StrNuevoPass, String StrPartyID) {
+        public void CambiarContraseña(String StrPartyID, String StrNuevoPass) {
 
             datos.p_cambiarContraseña(StrPartyID, StrNuevoPass);
 

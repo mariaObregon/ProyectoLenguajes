@@ -24,6 +24,7 @@ namespace Presentacion.AdministracionUsuario
                 ListaUbicacion();
 
             }
+            Master.MenuVisible = true;
         }
 
         protected void BtnAgregarUsuario_Click(object sender, EventArgs e)
@@ -44,12 +45,15 @@ namespace Presentacion.AdministracionUsuario
             String StrInstrucciones = TbInstrucciones.Text;
             byte ByteTipoDireccion = Byte.Parse(DropDownListDireccion.SelectedValue);
 
-            if (DropDownListTipo.SelectedValue.Equals("2")) {
+            if (DropDownListTipo.SelectedValue.Equals("2"))
+            {
                 lu.AgregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido
                     , StrContraseña, StrValorMecanismo, ShMecanismoID, StrPartyID, ShGeoID, StrLinea1, StrLinea2
                     , StrLinea3, StrInstrucciones, ByteTipoDireccion);
 
-            } else if (DropDownListTipo.SelectedValue.Equals("3")) {
+            }
+            else if (DropDownListTipo.SelectedValue.Equals("3"))
+            {
                 lu.AgregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido
                     , StrContraseña, StrValorMecanismo, ShMecanismoID, StrPartyID, ShGeoID, StrLinea1, StrLinea2
                     , StrLinea3, StrInstrucciones, ByteTipoDireccion);
@@ -63,7 +67,7 @@ namespace Presentacion.AdministracionUsuario
 
         private void ListaTipoUsuario()
         {
-             
+
             DropDownListTipo.DataValueField = "TipoID";
             DropDownListTipo.DataTextField = "Descripcion";
             DropDownListTipo.DataSource = lg.CargarTipoUsuario();
@@ -101,5 +105,7 @@ namespace Presentacion.AdministracionUsuario
             DropDownListUbicacion.DataBind();
 
         }
+
+        
     }
 }

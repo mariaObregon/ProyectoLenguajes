@@ -101,5 +101,17 @@ namespace Presentacion.AdministracionCliente {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewBloqueo;
+        
+        /// <summary>
+        /// Propiedad Master.
+        /// </summary>
+        /// <remarks>
+        /// Propiedad generada automáticamente.
+        /// </remarks>
+        public new Presentacion.Principal Master {
+            get {
+                return ((Presentacion.Principal)(base.Master));
+            }
+        }
     }
 }

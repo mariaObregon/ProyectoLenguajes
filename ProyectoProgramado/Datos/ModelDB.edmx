@@ -68,9 +68,10 @@
           <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SegundoNombre" Type="nvarchar" MaxLength="50" />
-          <Property Name="Apellido1" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Apellido2" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Contraseña" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contraseña" Type="nvarchar" MaxLength="50" />
+          <Property Name="FacebookID" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
@@ -716,16 +717,10 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Parameter Name="SegundoNombreR" Type="nvarchar" Mode="In" />
           <Parameter Name="Apellido1R" Type="nvarchar" Mode="In" />
           <Parameter Name="Apellido2R" Type="nvarchar" Mode="In" />
-          <Parameter Name="ContraseñaR" Type="nvarchar" Mode="In" />
-          <Parameter Name="ValorMecanismoR" Type="varchar" Mode="In" />
-          <Parameter Name="TipoMecanismoIDR" Type="smallint" Mode="In" />
+          <Parameter Name="FacebookID" Type="nvarchar" Mode="In" />
           <Parameter Name="Habilitado" Type="bit" Mode="In" />
-          <Parameter Name="GeoID" Type="smallint" Mode="In" />
-          <Parameter Name="LineaDireccion1" Type="nvarchar" Mode="In" />
-          <Parameter Name="LineaDireccion2" Type="nvarchar" Mode="In" />
-          <Parameter Name="LineaDireccion3" Type="nvarchar" Mode="In" />
-          <Parameter Name="Instrucciones" Type="nvarchar" Mode="In" />
-          <Parameter Name="TipoDireccionID" Type="tinyint" Mode="In" />
+          <Parameter Name="Contraseña" Type="nvarchar" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="p_agregarDireccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GeoID" Type="smallint" Mode="In" />
@@ -850,7 +845,6 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Parameter Name="SegundoNombre" Type="nvarchar" Mode="In" />
           <Parameter Name="Apellido1" Type="nvarchar" Mode="In" />
           <Parameter Name="Apellido2" Type="nvarchar" Mode="In" />
-          <Parameter Name="Contraseña" Type="nvarchar" Mode="In" />
           <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="p_modificarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1256,9 +1250,10 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Property Name="PartyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FacebookID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Party" FromRole="Party" ToRole="Cliente" />
           <NavigationProperty Name="Direccion" Relationship="Self.FK_Direccion_Party" FromRole="Party" ToRole="Direccion" />
           <NavigationProperty Name="MecanismoContacto" Relationship="Self.FK_MecanismoContacto_Party1" FromRole="Party" ToRole="MecanismoContacto" />
@@ -1679,16 +1674,10 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <Parameter Name="SegundoNombreR" Mode="In" Type="String" />
             <Parameter Name="Apellido1R" Mode="In" Type="String" />
             <Parameter Name="Apellido2R" Mode="In" Type="String" />
-            <Parameter Name="ContraseñaR" Mode="In" Type="String" />
-            <Parameter Name="ValorMecanismoR" Mode="In" Type="String" />
-            <Parameter Name="TipoMecanismoIDR" Mode="In" Type="Int16" />
+            <Parameter Name="FacebookID" Mode="In" Type="String" />
             <Parameter Name="Habilitado" Mode="In" Type="Boolean" />
-            <Parameter Name="GeoID" Mode="In" Type="Int16" />
-            <Parameter Name="LineaDireccion1" Mode="In" Type="String" />
-            <Parameter Name="LineaDireccion2" Mode="In" Type="String" />
-            <Parameter Name="LineaDireccion3" Mode="In" Type="String" />
-            <Parameter Name="Instrucciones" Mode="In" Type="String" />
-            <Parameter Name="TipoDireccionID" Mode="In" Type="Byte" />
+            <Parameter Name="Contraseña" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="p_agregarDireccion">
             <Parameter Name="GeoID" Mode="In" Type="Int16" />
@@ -1813,7 +1802,6 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <Parameter Name="SegundoNombre" Mode="In" Type="String" />
             <Parameter Name="Apellido1" Mode="In" Type="String" />
             <Parameter Name="Apellido2" Mode="In" Type="String" />
-            <Parameter Name="Contraseña" Mode="In" Type="String" />
             <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="p_modificarPlato">
@@ -1943,6 +1931,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
                 <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
                 <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
                 <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="FacebookID" ColumnName="FacebookID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

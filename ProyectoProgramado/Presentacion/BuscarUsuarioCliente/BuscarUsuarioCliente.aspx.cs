@@ -16,6 +16,12 @@ namespace Presentacion.BuscarUsuarioCliente
         {
 
             FillDataGrid();
+            String tipo = Request.QueryString["Valor"].ToString();
+
+            Master.MenuVisible = true;
+
+
+
         }
 
         protected void BtnFiltrar_Click(object sender, EventArgs e)
@@ -33,7 +39,7 @@ namespace Presentacion.BuscarUsuarioCliente
             if (RadioButtonListFiltro.SelectedValue.Equals("Completa"))
             {
 
-               
+
                 switch (tipo)
                 {
                     case "usuario":
@@ -46,7 +52,7 @@ namespace Presentacion.BuscarUsuarioCliente
                     default:
                         break;
                 }
-                
+
             }
             else
             {
@@ -65,7 +71,8 @@ namespace Presentacion.BuscarUsuarioCliente
                             break;
                     }
                 }
-                else if (RadioButtonListFiltro.SelectedValue.Equals("Nombre")) {
+                else if (RadioButtonListFiltro.SelectedValue.Equals("Nombre"))
+                {
 
                     switch (tipo)
                     {
@@ -82,7 +89,7 @@ namespace Presentacion.BuscarUsuarioCliente
 
                 }
 
-                
+
             }
 
             GridViewLista.DataBind();
@@ -94,7 +101,9 @@ namespace Presentacion.BuscarUsuarioCliente
         {
             TbValorFiltro.Text = "";
             FillDataGrid();
-            
+
         }
+
+
     }
 }

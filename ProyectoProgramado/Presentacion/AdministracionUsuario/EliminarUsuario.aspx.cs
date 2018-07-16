@@ -15,17 +15,18 @@ namespace Presentacion.AdministracionUsuario
         protected void Page_Load(object sender, EventArgs e)
         {
 
-           // if (!IsPostBack)
-          //  {
-                FillDataGrid();
-           // }
+            // if (!IsPostBack)
+            //  {
+            FillDataGrid();
+            // }
+            Master.MenuVisible = true;
 
         }
 
         protected void GridViewEliminar_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
-            
+
             String StrPartyID = GridViewEliminar.Rows[e.RowIndex].Cells[1].Text;
 
             System.Diagnostics.Debug.WriteLine(StrPartyID);
@@ -33,7 +34,7 @@ namespace Presentacion.AdministracionUsuario
             lu.EliminarUsuario(StrPartyID);
 
             FillDataGrid();
-           // Response.Redirect("~/AdministracionUsuario/EliminarUsuario.aspx");
+            // Response.Redirect("~/AdministracionUsuario/EliminarUsuario.aspx");
 
         }
 
@@ -43,8 +44,8 @@ namespace Presentacion.AdministracionUsuario
         {
             GridViewEliminar.DataBind();
             GridViewEliminar.DataSource = lu.MostrarUsuarios();
-           GridViewEliminar.DataBind();
-            
+            GridViewEliminar.DataBind();
+
         }
 
         protected void BtnFiltrar_Click(object sender, EventArgs e)
@@ -52,8 +53,10 @@ namespace Presentacion.AdministracionUsuario
             GridViewEliminar.DataBind();
             GridViewEliminar.DataSource = lu.busquedaUsuarioNombre(TbNombre.Text);
             GridViewEliminar.DataBind();
-            
+
 
         }
+
+      
     }
 }

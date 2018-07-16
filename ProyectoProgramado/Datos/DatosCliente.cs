@@ -17,14 +17,10 @@ namespace Datos
         }
 
         public void AgregarCliente(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido, String StrSegundoApellido,
-                    String StrContraseña, String StrValorMecanismo, short ShTipoMecanismo, String StrPartyID, 
-                    Boolean BoolHabilitado, short ShGeoID, String StrLineaDireccion1, 
-                    String StrLineaDireccion2, String StrLineaDireccion3,
-                    String StrInstrucciones, Byte ByteTipoDireccionID)
+                    String StrContraseña, String StrDireccion,  String StrPartyID, Boolean BoolHabilitado)
         {
-            datos.p_agregarCliente(StrPartyID, StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido,
-                StrContraseña, StrValorMecanismo, ShTipoMecanismo, BoolHabilitado, ShGeoID, StrLineaDireccion1,
-                StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
+            datos.p_agregarCliente(StrPartyID, StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, 
+                StrSegundoApellido,null, BoolHabilitado, StrContraseña, StrDireccion);
         }
 
         public List<f_mostrarClientes_Result> MostrarClientes() {
@@ -42,5 +38,22 @@ namespace Datos
             return datos.f_buscarClienteNombre(StrNombreCliente).ToList();
         }
 
+        public void AgregarClienteFacebook(String StrPrimerNombre, String StrPartyID, String StrFacebookID)
+        {
+
+            datos.p_agregarCliente(StrPartyID, StrPrimerNombre, null, null, null, StrFacebookID, true, null, "Sin definir");
+        }
+
+        public Boolean EsClienteFacebook(String StrPartyID) {
+            var party = from p in datos.Party
+                        where p.PartyID == StrPartyID
+                        select p.FacebookID;
+            
+               return party.Single() == null;
+                    
+                
+            }
+
+        }
     }
-}
+

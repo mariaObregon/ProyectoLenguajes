@@ -41,11 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Excepciones\ExcepcionCampoVacio.cs" />
+    <Compile Include="Excepciones\ExcepcionContraseñaIncorrecta.cs" />
+    <Compile Include="Excepciones\ExcepcionExisteID.cs" />
+    <Compile Include="Excepciones\ExcepcionNoCoincide.cs" />
     <Compile Include="Excepciones\ExcepcionUsuarioIncorrecto.cs" />
     <Compile Include="Filtros.cs" />
     <Compile Include="LogicaCliente.cs" />
     <Compile Include="LogicaGeneral.cs" />
-    <Compile Include="LogicaLoginUsuarios.cs" />
+    <Compile Include="LogicaLogin.cs" />
     <Compile Include="LogicaPedido.cs" />
     <Compile Include="LogicaPlato.cs" />
     <Compile Include="LogicaUsuario.cs" />
