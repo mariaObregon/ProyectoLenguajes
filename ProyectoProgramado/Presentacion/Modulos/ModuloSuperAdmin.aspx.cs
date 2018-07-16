@@ -12,7 +12,7 @@ namespace Presentacion.Modulos
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            Master.MenuSuperAdminVisible = true;
+            Master.MenuVisible = true;
         }
     }
 }

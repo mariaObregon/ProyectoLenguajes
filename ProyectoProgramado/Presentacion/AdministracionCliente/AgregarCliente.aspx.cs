@@ -67,6 +67,8 @@ namespace Presentacion.AdministracionCliente
             catch (ExcepcionNoCoincide ex)
             {
 
+                String script = string.Format("MensajeError('{0}')", ex.Message);
+                ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
             }
             
 

@@ -117,6 +117,12 @@
                 font-size: 7px;
                 position: absolute;
             }
+        .auto-style5 {
+            width: 390px;
+            margin: 0 auto;
+            padding: 30px 0;
+            height: 590px;
+        }
     </style>
 </asp:Content>
 
@@ -127,7 +133,7 @@
         -->
 
 
-            <div class="signup-form">
+            <div class="auto-style5">
 
 
 

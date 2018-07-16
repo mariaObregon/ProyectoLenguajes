@@ -1,10 +1,5 @@
 ﻿using Negocio;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Presentacion.AdministracionCliente
 {
@@ -17,8 +12,10 @@ namespace Presentacion.AdministracionCliente
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack) {
+                FillDataGrid();
+            }
 
-            FillDataGrid();
             Master.MenuVisible = true;
         }
 
@@ -54,7 +51,13 @@ namespace Presentacion.AdministracionCliente
         protected void BtnFiltrar_Click(object sender, EventArgs e)
         {
             GridViewBloqueo.DataBind();
-            GridViewBloqueo.DataSource = lc.BusquedaClienteNombre(TbNombre.Text);
+            if (TbNombre.Text.Trim().Equals(""))
+            {
+                GridViewBloqueo.DataSource = lc.MostrarClientes();
+            }
+            else {
+                GridViewBloqueo.DataSource = lc.BusquedaClienteNombre(TbNombre.Text);
+            }
             GridViewBloqueo.DataBind();
 
             TbUsuario.Text = "";
@@ -82,8 +85,6 @@ namespace Presentacion.AdministracionCliente
             lc.BloquearCliente(StrPartyID, habilitar);
             FillDataGrid();
 
-        }
-
-        
+        }        
     }
 }
