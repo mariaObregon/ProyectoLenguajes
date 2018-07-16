@@ -82,7 +82,7 @@
         </tr>
         <tr>
             <td class="auto-style6">
-                <asp:Button ID="butAgregarPlato" runat="server" Text="Agregar" />
+                <asp:Button ID="butAgregarPlato" runat="server" OnClick="butAgregarPlato_Click" Text="Agregar" />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Button ID="butRegresar" runat="server" OnClick="butRegresar_Click" Text="Regresar" />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
@@ -95,7 +95,9 @@
     </table>
 
     </ContentTemplate>
-
+         <Triggers>
+           <asp:PostBackTrigger ControlID="butAgregarPlato" />
+         </Triggers>
 
     </asp:UpdatePanel>
 

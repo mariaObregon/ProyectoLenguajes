@@ -77,7 +77,7 @@
           <Key>
             <PropertyRef Name="PedidoID" />
           </Key>
-          <Property Name="PedidoID" Type="int" Nullable="false" />
+          <Property Name="PedidoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="EstadoID" Type="tinyint" Nullable="false" />
           <Property Name="PartyID" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -710,6 +710,15 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="f_ultimoPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PedidoID" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="p_agregarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PartyIDR" Type="nvarchar" Mode="In" />
@@ -748,6 +757,9 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Parameter Name="Apellido1" Type="nvarchar" Mode="In" />
           <Parameter Name="Apellido2" Type="nvarchar" Mode="In" />
           <Parameter Name="Contraseña" Type="nvarchar" Mode="In" />
+          <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="p_agregarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PartyID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="p_agregarPlato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1179,6 +1191,9 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
         <ComplexType Name="f_UltimoEstado_Result">
           <Property Name="EstadoID" Type="Byte" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="f_ultimoPedido_Result">
+          <Property Name="PedidoID" Type="Int32" Nullable="false" />
+        </ComplexType>
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="PartyID" />
@@ -1263,7 +1278,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <Key>
             <PropertyRef Name="PedidoID" />
           </Key>
-          <Property Name="PedidoID" Type="Int32" Nullable="false" />
+          <Property Name="PedidoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="HoraInicio" Type="Time" Precision="7" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_Pedido_Cliente" FromRole="Pedido" ToRole="Cliente" />
@@ -1668,6 +1683,7 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <FunctionImport Name="f_UltimoEstado" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_UltimoEstado_Result)">
             <Parameter Name="PedidoID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="f_ultimoPedido" IsComposable="true" ReturnType="Collection(PedidosExpressModel.f_ultimoPedido_Result)" />
           <FunctionImport Name="p_agregarCliente">
             <Parameter Name="PartyIDR" Mode="In" Type="String" />
             <Parameter Name="PrimerNombreR" Mode="In" Type="String" />
@@ -1705,6 +1721,9 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <Parameter Name="Apellido1" Mode="In" Type="String" />
             <Parameter Name="Apellido2" Mode="In" Type="String" />
             <Parameter Name="Contraseña" Mode="In" Type="String" />
+            <Parameter Name="PartyID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_agregarPedido">
             <Parameter Name="PartyID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="p_agregarPlato">
@@ -1836,11 +1855,11 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PedidosExpressModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PedidosExpressModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1851,17 +1870,6 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2379,11 +2387,19 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="PedidosExpressModel.Store.f_ultimoPedido" FunctionImportName="f_ultimoPedido">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PedidosExpressModel.f_ultimoPedido_Result">
+                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="p_agregarCliente" FunctionName="PedidosExpressModel.Store.p_agregarCliente" />
           <FunctionImportMapping FunctionImportName="p_agregarDireccion" FunctionName="PedidosExpressModel.Store.p_agregarDireccion" />
           <FunctionImportMapping FunctionImportName="p_agregarLineaPedido" FunctionName="PedidosExpressModel.Store.p_agregarLineaPedido" />
           <FunctionImportMapping FunctionImportName="p_agregarMecanismo" FunctionName="PedidosExpressModel.Store.p_agregarMecanismo" />
           <FunctionImportMapping FunctionImportName="p_agregarParty" FunctionName="PedidosExpressModel.Store.p_agregarParty" />
+          <FunctionImportMapping FunctionImportName="p_agregarPedido" FunctionName="PedidosExpressModel.Store.p_agregarPedido" />
           <FunctionImportMapping FunctionImportName="p_agregarPlato" FunctionName="PedidosExpressModel.Store.p_agregarPlato" />
           <FunctionImportMapping FunctionImportName="p_agregarUsuario" FunctionName="PedidosExpressModel.Store.p_agregarUsuario" />
           <FunctionImportMapping FunctionImportName="p_agregarUsuarioAdmin" FunctionName="PedidosExpressModel.Store.p_agregarUsuarioAdmin" />
@@ -2405,25 +2421,8 @@ advertencia 6002: La tabla o vista 'PedidosExpress.dbo.v_Usuario' no tiene defin
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PedidosExpressModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PedidosExpressModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PedidosExpressModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PedidosExpressModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PedidosExpressModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PedidosExpressModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="PedidosExpressModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PedidosExpressModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PedidosExpressModel.Store.sp_helpdiagrams" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PedidosExpressModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PedidosExpressModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>

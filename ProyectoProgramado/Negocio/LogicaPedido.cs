@@ -94,5 +94,71 @@ namespace Negocio
         public int ConteoPedidos() {
             return dp.PedidosActivos().Count;
         }
+
+        public void AgregarPedido(String partyID) {
+            dp.AgregarPedido(partyID);
+        }
+
+        public void InsertarLineaPedido(int platoID, int PedidoID, short cantidad, decimal precio) {
+
+            dp.InsertarLineaPedido(platoID, PedidoID, cantidad, precio);
+
+        }
+
+        public int UltimoPedido() {
+
+            List<f_ultimoPedido_Result> ultimoPedido = dp.UltimoPedido();
+
+            return ultimoPedido[0].PedidoID;
+
+        }
+
+        public List<String> ListaPedidoCliente(List<OrdenCliente> ordenes) {
+
+            List<String> lista = new List<string>();
+
+            for (int i = 0; i < ordenes.Count; i++)
+            {
+                lista.Add(/*ordenes[i].platoID.PlatoID +*/
+                    "Nombre Plato: " + ordenes[i].platoID.Nombre + 
+                    "\nDescripcion Plato: " + ordenes[i].platoID.Descripcion + 
+                    "\nPrecio Plato: " + ordenes[i].platoID.Precio + 
+                    "\nCantidad Ordenada: " + ordenes[i].cantidad); 
+            }
+
+            return lista;
+
+        }
+
+
+        public List<OrdenCliente> RetirarPlatoPedido(int index, List<OrdenCliente> lista) {
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (index == i)
+                {
+                    lista.RemoveAt(i);
+                }
+ 
+            }
+
+            return lista;
+
+        }
+
+
+        public List<OrdenCliente> ModificarPlatoPedido(int index, List<OrdenCliente> lista , int nuevaCantidad) {
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (index == i)
+                {
+                    lista[i].cantidad = nuevaCantidad;
+                }
+
+            }
+
+            return lista;
+        }
     }
 }

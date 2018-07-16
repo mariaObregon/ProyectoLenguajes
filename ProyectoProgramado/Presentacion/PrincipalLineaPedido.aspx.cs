@@ -13,6 +13,7 @@ namespace Presentacion
     {
         LogicaPlato lp = new LogicaPlato();
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -23,24 +24,14 @@ namespace Presentacion
                 dropPlatosHab.DataValueField = "PlatoID";
                 dropPlatosHab.DataTextField = "NamePrice";
                 dropPlatosHab.DataBind();
+
             }
-
-            /*
-            dropPlatosHab.Items.Clear();
-            dropPlatosHab.DataSource = lp.PlatosHabilitados();
-            dropPlatosHab.DataValueField = "PlatoID";
-            dropPlatosHab.DataTextField = "NamePrice";
-            dropPlatosHab.DataBind();
-            */
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
-        {
-            
+        {   
             Session["idPlato"] = dropPlatosHab.SelectedValue;
             Response.Redirect("DetallePlato.aspx");
-
         }
     }
 }
