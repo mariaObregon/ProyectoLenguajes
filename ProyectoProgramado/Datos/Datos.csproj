@@ -69,11 +69,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
     <EntityDeploy Include="ModelDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="ModelDB.edmx.diagram">
       <DependentUpon>ModelDB.edmx</DependentUpon>
     </None>
