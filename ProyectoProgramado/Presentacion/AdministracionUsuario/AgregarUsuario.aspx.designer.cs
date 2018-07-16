@@ -64,7 +64,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TbUsuario;
         
         /// <summary>
         /// Control Label2.
@@ -82,7 +82,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbPass;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword TbPass;
         
         /// <summary>
         /// Control Label3.
@@ -100,7 +100,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbConfirmarPass;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword TbConfirmarPass;
         
         /// <summary>
         /// Control Label5.
@@ -118,7 +118,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbPrimerNombre;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TbPrimerNombre;
         
         /// <summary>
         /// Control Label6.
@@ -136,7 +136,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbSegundoNombre;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TbSegundoNombre;
         
         /// <summary>
         /// Control Label7.
@@ -154,7 +154,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbPrimerApellido;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TbPrimerApellido;
         
         /// <summary>
         /// Control Label8.
@@ -172,7 +172,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbSegundoApellido;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TbSegundoApellido;
         
         /// <summary>
         /// Control Label16.
@@ -217,7 +217,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbContacto;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TbContacto;
         
         /// <summary>
         /// Control Label17.
@@ -307,7 +307,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbLinea1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TbLinea1;
         
         /// <summary>
         /// Control TbLinea2.
@@ -316,7 +316,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbLinea2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TbLinea2;
         
         /// <summary>
         /// Control TbLinea3.
@@ -325,7 +325,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbLinea3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TbLinea3;
         
         /// <summary>
         /// Control TbInstrucciones.
@@ -334,7 +334,7 @@ namespace Presentacion.AdministracionUsuario {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbInstrucciones;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TbInstrucciones;
         
         /// <summary>
         /// Control Label21.
@@ -353,6 +353,24 @@ namespace Presentacion.AdministracionUsuario {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListTipo;
+        
+        /// <summary>
+        /// Control divMsj.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsj;
+        
+        /// <summary>
+        /// Control msj.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msj;
         
         /// <summary>
         /// Control BtnAgregarUsuario.

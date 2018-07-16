@@ -1,4 +1,5 @@
 ﻿using Negocio;
+using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,40 +30,59 @@ namespace Presentacion.AdministracionUsuario
 
         protected void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            String StrPrimerNombre = TbPrimerNombre.Text;
-            String StrSegundoNombre = TbSegundoNombre.Text;
-            String StrPrimerApellido = TbPrimerApellido.Text;
-            String StrSegundoApellido = TbSegundoApellido.Text;
-            String StrContraseña = TbPass.Text;
-            String StrConfContraseña = TbConfirmarPass.Text;
-            String StrValorMecanismo = TbContacto.Text;
-            short ShMecanismoID = short.Parse(DropDownListContacto.SelectedValue);
-            String StrPartyID = TbUsuario.Text;
-            short ShGeoID = short.Parse(DropDownListUbicacion.SelectedValue);
-            String StrLinea1 = TbLinea1.Text;
-            String StrLinea2 = TbLinea2.Text;
-            String StrLinea3 = TbLinea3.Text;
-            String StrInstrucciones = TbInstrucciones.Text;
-            byte ByteTipoDireccion = Byte.Parse(DropDownListDireccion.SelectedValue);
+            try {
+                String StrPrimerNombre = TbPrimerNombre.Value;
+                String StrSegundoNombre = TbSegundoNombre.Value;
+                String StrPrimerApellido = TbPrimerApellido.Value;
+                String StrSegundoApellido = TbSegundoApellido.Value;
+                String StrContraseña = TbPass.Value;
+                String StrConfContraseña = TbConfirmarPass.Value;
+                String StrValorMecanismo = TbContacto.Value;
+                short ShMecanismoID = short.Parse(DropDownListContacto.SelectedValue);
+                String StrPartyID = TbUsuario.Value;
+                short ShGeoID = short.Parse(DropDownListUbicacion.SelectedValue);
+                String StrLinea1 = TbLinea1.Value;
+                String StrLinea2 = TbLinea2.Value;
+                String StrLinea3 = TbLinea3.Value;
+                String StrInstrucciones = TbInstrucciones.Value;
+                byte ByteTipoDireccion = Byte.Parse(DropDownListDireccion.SelectedValue);
+                String StrConfContrase = TbConfirmarPass.Value;
+                if (DropDownListTipo.SelectedValue.Equals("2"))
+                {
+                    lu.AgregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido
+                        , StrContraseña, StrConfContraseña, StrValorMecanismo, ShMecanismoID, StrPartyID, ShGeoID, StrLinea1, StrLinea2
+                        , StrLinea3, StrInstrucciones, ByteTipoDireccion);
 
-            if (DropDownListTipo.SelectedValue.Equals("2"))
-            {
-                lu.AgregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido
-                    , StrContraseña, StrValorMecanismo, ShMecanismoID, StrPartyID, ShGeoID, StrLinea1, StrLinea2
-                    , StrLinea3, StrInstrucciones, ByteTipoDireccion);
-
+                }
+                else if (DropDownListTipo.SelectedValue.Equals("3"))
+                {
+                    lu.AgregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido
+                        , StrContraseña, StrConfContraseña, StrValorMecanismo, ShMecanismoID, StrPartyID, ShGeoID, StrLinea1, StrLinea2
+                        , StrLinea3, StrInstrucciones, ByteTipoDireccion);
+                    Response.Redirect("/Modulos/ModuloSuperAdmin.aspx?tipo=superAdmin");
+                }
             }
-            else if (DropDownListTipo.SelectedValue.Equals("3"))
+            catch (ExcepcionExisteID ex)
             {
-                lu.AgregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido
-                    , StrContraseña, StrValorMecanismo, ShMecanismoID, StrPartyID, ShGeoID, StrLinea1, StrLinea2
-                    , StrLinea3, StrInstrucciones, ByteTipoDireccion);
+                System.Diagnostics.Debug.WriteLine("Entra a excepcion");
+
+                divMsj.Attributes.Add("style", "display:inline");
+                msj.Text = ex.Message;
+                //  String  script = string.Format("MensajeError('{0}')", ex.Message);
+                //  ClientScript.RegisterStartupScript(this.GetType(), "key",script, true);
+            }
+            catch (ExcepcionNoCoincide ex)
+            {
+                divMsj.Attributes.Add("style", "display:inline");
+                msj.Text = ex.Message;
+                //String script = string.Format("MensajeError('{0}')", ex.Message);
+                // ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
             }
         }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/AdministracionUsuario/PrincipalUsuario.aspx");
+            Response.Redirect("/Modulos/ModuloSuperAdmin.aspx");
         }
 
         private void ListaTipoUsuario()

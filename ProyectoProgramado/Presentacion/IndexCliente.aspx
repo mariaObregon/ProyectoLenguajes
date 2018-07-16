@@ -84,7 +84,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-   
+
     <!-- Script generado por Facebook https://developers.facebook.com/ -->
     <script>
         window.fbAsyncInit = function () {
@@ -123,26 +123,33 @@
                 <input type="password" class="form-control" runat="server" id="password" placeholder="Password" required="required">
             </div>
         </div>
+
+        <div class="input-group" style="display: none" id="divMsj" runat="server">
+
+            <asp:Label ID="msj" runat="server" class="fa fa-comment-o" ForeColor="#CC0000">msj</asp:Label>
+        </div>
+
+
         <div class="form-group">
-           
-                <asp:Button ID="BtnLogin" class="btn btn-primary login-btn btn-block"  runat="server" OnClick="BtnLogin_Click" Text="Log in" />
-            
+
+            <asp:Button ID="BtnLogin" class="btn btn-primary login-btn btn-block" runat="server" OnClick="BtnLogin_Click" Text="Log in" />
+
         </div>
         <div class="or-seperator"><i>o</i></div>
         <p class="text-center">Login con Facebook</p>
 
-       
+
         <div class="text-center">
-        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with"
-            data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"
-            data-onlogin="checkLoginState();" data-scope="public_profile,email">
-            Facebook         
+            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with"
+                data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"
+                data-onlogin="checkLoginState();" data-scope="public_profile,email">
+                Facebook         
+            </div>
         </div>
-       </div>
         <br />
 
         <p class="text-center text-muted small">No tienes una cuenta? <a href="/AdministracionCliente/AgregarCliente.aspx">Registrate aquí!</a></p>
     </div>
 
-        
+
 </asp:Content>

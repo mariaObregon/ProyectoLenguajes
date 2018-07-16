@@ -183,6 +183,11 @@
                     <input type="text" class="form-control" runat="server" id="direccionMod" placeholder="Direccion">
                 </div>
 
+                 <div class="input-group" style="display:none" id="divMsjDatos" runat="server">
+
+                       <asp:Label ID="LbMsjDatos" runat="server" class="fa fa-comment-o" ForeColor="#CC0000">msj</asp:Label>
+                    </div>
+
                 <div class="form-group">
                     <div class="text-center">
                         <div class="form-group">
@@ -214,6 +219,12 @@
                         </div>
 
                     </div>
+
+                    <div class="input-group" style="display:none" id="divMsj" runat="server">
+
+                       <asp:Label ID="LbMsjContra" runat="server" class="fa fa-comment-o" ForeColor="#CC0000">msj</asp:Label>
+                    </div>
+
 
                     <div class="form-group">
                         <div class="text-center">

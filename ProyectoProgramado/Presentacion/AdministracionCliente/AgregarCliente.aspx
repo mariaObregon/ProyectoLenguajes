@@ -117,23 +117,20 @@
                 font-size: 7px;
                 position: absolute;
             }
-        .auto-style5 {
-            width: 390px;
-            margin: 0 auto;
-            padding: 30px 0;
-            height: 590px;
-        }
+    .auto-style5 {
+        width: 390px;
+        margin: 0 auto;
+        padding: 30px 0;
+        height: 590px;
+    }
     </style>
 </asp:Content>
 
 <asp:Content ID="Body" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <!-- 
-    <asp:UpdatePanel ID="UpdatePanel" runat="server">
-        <ContentTemplate>
-        -->
+  
 
 
-            <div class="auto-style5">
+            <div class="signup-form">
 
 
 
@@ -141,67 +138,74 @@
                 <p>Ingrese los siguientes datos para crear una cuenta!</p>
                 <hr>
 
-                <div class="form-group">
-                    <div class="input-group">
+                <div class="form-group" >
+                    <div class="input-group" >
                         <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
-                        <input type="email" class="form-control" runat="server" id="email" placeholder="E-mail" required="required">
+                        <input type="email" class="form-control" runat="server" id="email" placeholder="E-mail" required="required"  >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user " ></i></span>
+                        <input type="text" class="form-control" runat="server" id="primerNombre" placeholder="Primer nombre" required="required"  >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" runat="server" id="segundoNombre" placeholder="Segundo nombre" >
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" runat="server" id="primerNombre" placeholder="Primer nombre" required="required">
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" runat="server" id="segundoNombre" placeholder="Segundo nombre">
+                        <input type="text" class="form-control" runat="server" id="primerApellido" placeholder="Primer apellido" required="required"  >
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" runat="server" id="primerApellido" placeholder="Primer apellido" required="required">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" runat="server" id="segundoApellido" placeholder="Segundo apellido" required="required">
+                        <input type="text" class="form-control" runat="server" id="segundoApellido" placeholder="Segundo apellido" required="required" >
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                        <input type="text" class="form-control" runat="server" id="direccion" placeholder="Direccion" required="required">
+                        <input type="text" class="form-control" runat="server" id="direccion" placeholder="Direccion" required="required" >
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <input type="password" class="form-control" runat="server" id="password" placeholder="Contraseña" required="required">
+                        <input type="password" class="form-control" runat="server" id="password" placeholder="Contraseña" required="required"  >
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <input type="password" class="form-control" id="confirm_password" runat="server" placeholder="Confirmar Contraseña" required="required">
+                        <input type="password" class="form-control" id="confirm_password" runat="server" placeholder="Confirmar Contraseña" required="required" >
                     </div>
 
                 </div>
+
+                  <div class="input-group" style="display:none" id="divMsj" runat="server">
+
+                       <asp:Label ID="msj" runat="server" class="fa fa-comment-o" ForeColor="#CC0000">msj</asp:Label>
+                    </div>
+
+
                 <div class="form-group">
                     <div class="text-center">
                         <div class="form-group">
-                            <asp:Button ID="BtnAgregarCliente" class="btn btn-primary btn-lg" runat="server" OnClick="BtnAgregarCliente_Click" Text="Registrarse" Width="100%" />
+                            <asp:Button ID="BtnAgregarCliente" class="btn btn-primary btn-lg btn-block" runat="server" OnClick="BtnAgregarCliente_Click" Text="Registrarse" />
                         </div>
                     </div>
                 </div>
@@ -215,8 +219,5 @@
                 </div>
             </div>
 
-      <!--  </ContentTemplate>
-    </asp:UpdatePanel>
-    -->
 
 </asp:Content>

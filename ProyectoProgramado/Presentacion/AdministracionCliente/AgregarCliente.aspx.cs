@@ -61,14 +61,17 @@ namespace Presentacion.AdministracionCliente
             {
                 System.Diagnostics.Debug.WriteLine("Entra a excepcion");
 
-                String  script = string.Format("MensajeError('{0}')", ex.Message);
-                ClientScript.RegisterStartupScript(this.GetType(), "key",script, true);
+                divMsj.Attributes.Add("style", "display:inline");
+                msj.Text = ex.Message;
+              //  String  script = string.Format("MensajeError('{0}')", ex.Message);
+              //  ClientScript.RegisterStartupScript(this.GetType(), "key",script, true);
             }
             catch (ExcepcionNoCoincide ex)
             {
-
-                String script = string.Format("MensajeError('{0}')", ex.Message);
-                ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
+                divMsj.Attributes.Add("style", "display:inline");
+                msj.Text = ex.Message;
+                //String script = string.Format("MensajeError('{0}')", ex.Message);
+                // ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
             }
             
 

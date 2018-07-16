@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Presentacion.Index" %>
+
 <%@ MasterType VirtualPath="~/Principal.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -9,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="JavaScript/JavaScriptValidaciones.js"></script>
+    <script type="text/javascript" src="JavaScript/JavaScriptValidaciones.js"></script>
     <style type="text/css">
         main {
             color: #4e4e4e;
@@ -111,29 +112,29 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<!--
-    <asp:UpdatePanel ID="UpdatePanel" runat="server">
-        <ContentTemplate>
-            -->
-            <div class="login-form">
-                <h2 class="text-center">Login</h2>
 
-                <div class="avatar">
-                    <img src="Imagenes/avatar.png" alt="Avatar">
-                </div>
-                <div class="form-group">
-                    <input type="text" id="username" class="form-control input-lg" runat="server" placeholder="Usuario" required="required">
-                </div>
-                <div class="form-group">
-                    <input type="password" id="password" class="form-control input-lg" runat="server" placeholder="Contraseña" required="required">
-                </div>
-               
-                <div class="form-group">
-                    <asp:Button ID="LoginButton" class="btn btn-primary btn-lg btn-block login-btn" runat="server" CommandName="Login" OnClick="LoginButton_Click" Text="Inicio de sesión" />
-                </div>
-             </div>
-                <!--
-        </ContentTemplate>
-    </asp:UpdatePanel>
--->
+    <div class="login-form">
+        <h2 class="text-center">Login</h2>
+
+        <div class="avatar">
+            <img src="Imagenes/avatar.png" alt="Avatar">
+        </div>
+        <div class="form-group">
+            <input type="text" id="username" class="form-control input-lg" runat="server" placeholder="Usuario" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" id="password" class="form-control input-lg" runat="server" placeholder="Contraseña" required="required">
+        </div>
+
+        <div class="input-group" style="display: none" id="divMsj" runat="server">
+
+            <asp:Label ID="msj" runat="server" class="fa fa-comment-o" ForeColor="#CC0000">msj</asp:Label>
+        </div>
+
+
+        <div class="form-group">
+            <asp:Button ID="LoginButton" class="btn btn-primary btn-lg btn-block login-btn" runat="server" CommandName="Login" OnClick="LoginButton_Click" Text="Inicio de sesión" />
+        </div>
+    </div>
+
 </asp:Content>

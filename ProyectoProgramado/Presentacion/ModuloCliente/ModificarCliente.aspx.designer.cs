@@ -58,6 +58,24 @@ namespace Presentacion.ModuloCliente {
         protected global::System.Web.UI.HtmlControls.HtmlInputText direccionMod;
         
         /// <summary>
+        /// Control divMsjDatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsjDatos;
+        
+        /// <summary>
+        /// Control LbMsjDatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbMsjDatos;
+        
+        /// <summary>
         /// Control BtnModificarDatos.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,24 @@ namespace Presentacion.ModuloCliente {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText confirm_password;
+        
+        /// <summary>
+        /// Control divMsj.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsj;
+        
+        /// <summary>
+        /// Control LbMsjContra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbMsjContra;
         
         /// <summary>
         /// Control BtnModificarContraseña.

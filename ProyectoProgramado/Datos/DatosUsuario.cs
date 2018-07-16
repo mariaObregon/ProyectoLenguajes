@@ -61,6 +61,17 @@ namespace Datos
 
         }
 
+        public String ObtenerTipo(String StrPartyID) {
+
+            var tipo = from u in datos.v_Usuario
+                       join tu in datos.v_TipoUsuario
+                       on u.TipoID equals tu.TipoID
+                       where u.PartyID == StrPartyID
+                       select tu.Descripcion;
+
+            return tipo.ToString();           
+        }
+
     }
   
 }

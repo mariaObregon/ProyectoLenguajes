@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="ModificarUsuario.aspx.cs" Inherits="Presentacion.AdministracionUsuario.ModificarUsuario" %>
+
 <%@ MasterType VirtualPath="~/Principal.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -55,6 +56,11 @@
             </tr>
             <tr>
                 <td colspan="4" style="background-color: #C0C0C0; border-color: #C0C0C0; text-align: right;">
+                    <div class="input-group" style="display: none" id="divMsjContra" runat="server">
+
+                        <asp:Label ID="msjContra" runat="server" class="fa fa-comment-o" ForeColor="#CC0000">msj</asp:Label>
+                    </div>
+
                     <asp:Button ID="BtnContraseña" runat="server" Height="36px" OnClick="BtnContraseña_Click" Text="Modificar contraseña" Width="300px" />
                 </td>
             </tr>
@@ -115,6 +121,12 @@
             </tr>
             <tr>
                 <td style="background-color: #C0C0C0; border-color: #C0C0C0; text-align: right;" colspan="4">
+
+                    <div class="input-group" style="display: none" id="divMsj" runat="server">
+
+                        <asp:Label ID="msjDatos" runat="server" class="fa fa-comment-o" ForeColor="#CC0000">msj</asp:Label>
+                    </div>
+
                     <asp:Button ID="BtnModificarDatosP" runat="server" Height="36px" OnClick="BtnModificarDatosP_Click" Text="Modificar datos" Width="300px" />
                 </td>
             </tr>
@@ -157,6 +169,11 @@
             </tr>
             <tr>
                 <td class="auto-style94" style="background-color: #C0C0C0; border-color: #C0C0C0; text-align: right;" colspan="4">
+                     <div class="input-group" style="display: none" id="divMsjContacto" runat="server">
+
+                        <asp:Label ID="msjContact" runat="server" class="fa fa-comment-o" ForeColor="#CC0000">msj</asp:Label>
+                    </div>
+
                     <asp:Button ID="BtnModificarContacto" runat="server" Height="36px" OnClick="BtnModificarContacto_Click" Text="Modificar Contacto" Width="300px" />
                 </td>
             </tr>
@@ -228,6 +245,10 @@
             </tr>
             <tr>
                 <td class="auto-style64" style="background-color: #C0C0C0; border-color: #C0C0C0; text-align: right;" colspan="4">
+                    <div class="input-group" style="display: none" id="divMsjDir" runat="server">
+
+                        <asp:Label ID="msjDir" runat="server" class="fa fa-comment-o" ForeColor="#CC0000">msj</asp:Label>
+                    </div>
                     <asp:Button ID="BtnModificarDireccion" runat="server" Height="36px" OnClick="BtnModificarDireccion_Click" Text="Modificar Dirección" Width="300px" />
                 </td>
             </tr>
@@ -235,7 +256,7 @@
     </asp:Panel>
 
 
-    <asp:Panel ID="PanelMostarLista" runat="server">
+    <asp:Panel ID="PanelMostarLista" runat="server" Height="333px">
         <table class="auto-style19">
             <tr>
                 <td class="auto-style31">

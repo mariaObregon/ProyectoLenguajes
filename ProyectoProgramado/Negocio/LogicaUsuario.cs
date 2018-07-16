@@ -1,5 +1,6 @@
 ﻿using Datos;
 using Entidad;
+using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,11 @@ namespace Negocio
         {
             if (idUsuario.Trim() != "" || idUsuario != null)
             {
-                 du.EliminarUsuario(idUsuario);
+                du.EliminarUsuario(idUsuario);
                 return "Usuario eliminado";
             }
-            else {
+            else
+            {
                 return "Usuario inválido";
             }
         }
@@ -34,25 +36,51 @@ namespace Negocio
         }
 
         public void AgregarUsuarioAdmin(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
-                   String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
+                   String StrSegundoApellido, String StrContraseña, String StrConfContraseña, String StrValorMecanismo,
                    short ShTipoMecanismo, String StrPartyID, short ShGeoID,
                     String StrLineaDireccion1, String StrLineaDireccion2, String StrLineaDireccion3,
                     String StrInstrucciones, Byte ByteTipoDireccionID)
         {
-            du.AgregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido,
+
+            if (du.BusquedaUsuarioId(StrPartyID).Any())
+            {
+                throw new ExcepcionExisteID();
+            }
+            else if (!StrContraseña.Equals(StrConfContraseña))
+            {
+                throw new ExcepcionNoCoincide();
+            }
+            else
+            {
+                du.AgregarUsuarioAdmin(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido,
                 StrContraseña, StrValorMecanismo, ShTipoMecanismo, StrPartyID, ShGeoID, StrLineaDireccion1,
                 StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
+            }
+
+
         }
 
         public void AgregarUsuarioCocina(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
-                  String StrSegundoApellido, String StrContraseña, String StrValorMecanismo,
+                  String StrSegundoApellido, String StrContraseña, String StrConfContraseña, String StrValorMecanismo,
                   short ShTipoMecanismo, String StrPartyID, short ShGeoID,
                     String StrLineaDireccion1, String StrLineaDireccion2, String StrLineaDireccion3,
                     String StrInstrucciones, Byte ByteTipoDireccionID)
         {
-            du.AgregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña,
-                StrValorMecanismo, ShTipoMecanismo, StrPartyID ,ShGeoID, StrLineaDireccion1,
+
+            if (du.BusquedaUsuarioId(StrPartyID).Any())
+            {
+                throw new ExcepcionExisteID();
+            }
+            else if (!StrContraseña.Equals(StrConfContraseña))
+            {
+                throw new ExcepcionNoCoincide();
+            }
+            else
+            {
+                du.AgregarUsuarioCocina(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña,
+                StrValorMecanismo, ShTipoMecanismo, StrPartyID, ShGeoID, StrLineaDireccion1,
                 StrLineaDireccion2, StrLineaDireccion3, StrInstrucciones, ByteTipoDireccionID);
+            }
         }
 
         public void ModificarUsuario(String StrPartyID, Byte ShTipoID)
@@ -66,5 +94,14 @@ namespace Negocio
             return du.MostrarUsuarios();
 
         }
+
+        public String ObtenerTipo(String StrPartyID)
+        {
+
+            return du.ObtenerTipo(StrPartyID);
+        }
+
+
+
     }
 }

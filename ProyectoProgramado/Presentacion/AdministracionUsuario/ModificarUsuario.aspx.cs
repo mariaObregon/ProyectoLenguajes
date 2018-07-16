@@ -1,5 +1,6 @@
 ﻿using Entidad;
 using Negocio;
+using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,6 +128,7 @@ namespace Presentacion.AdministracionUsuario
 
         protected void BtnModificarDireccion_Click(object sender, EventArgs e)
         {
+            try { 
             Byte ByteDireccionID = Byte.Parse(DropDownListTipoDireccion.SelectedValue);
             short ShGeoID = short.Parse(DropDownListUbicacion.SelectedValue);
             String StrLineaDireccion1 = TbLinea1.Text;
@@ -139,7 +141,17 @@ namespace Presentacion.AdministracionUsuario
             lg.ModificarDireccion(ByteDireccionID, ShGeoID, StrLineaDireccion1, StrLineaDireccion2, StrLineaDireccion3,
                 StrInstrucciones, ByteTipoDireccionID, StrPartyID);
 
-            FillDataGrid();
+                divMsjDir.Attributes.Add("style", "display:inline");
+                msjDir.Text = "Direccion modificada con éxito";
+
+                FillDataGrid();
+
+            }
+            catch (ExcepcionCampoVacio ex)
+            {
+                divMsjDir.Attributes.Add("style", "display:inline");
+                msjDir.Text = ex.Message;
+            }
 
         }
 
@@ -153,8 +165,11 @@ namespace Presentacion.AdministracionUsuario
             v_MecanismoContacto contacto = lg.ObtenerMecanismo(StrPartyID).Single();
 
             short ShMecanismoID = contacto.MecanismoID;
-
+            
             lg.ModificarMecanismo(StrValorMecanismo, ShTipoMecanismo, ShMecanismoID, StrPartyID);
+
+            divMsjContacto.Attributes.Add("style", "display:inline");
+            msjContact.Text = "Contacto modificado con éxito";
 
             FillDataGrid();
 
@@ -163,6 +178,7 @@ namespace Presentacion.AdministracionUsuario
 
         protected void BtnModificarDatosP_Click(object sender, EventArgs e)
         {
+            try {
             String StrPrimerNombre = TbPrimerNombre.Text;
             String StrSegundoNombre = TbSegundoNombre.Text;
             String StrPrimerApellido = TbPrimerApellido.Text;
@@ -172,7 +188,17 @@ namespace Presentacion.AdministracionUsuario
 
             lg.ModificarParty(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrPartyID);
 
-            FillDataGrid();
+                divMsj.Attributes.Add("style", "display:inline");
+                msjDatos.Text ="Datos modificados con éxito";
+
+                FillDataGrid();
+            }
+            catch (ExcepcionCampoVacio ex)
+            {
+
+                divMsj.Attributes.Add("style", "display:inline");
+                msjDatos.Text = ex.Message;
+            }
         }
 
         private void LLenarCampos()
@@ -200,12 +226,23 @@ namespace Presentacion.AdministracionUsuario
 
         protected void BtnContraseña_Click(object sender, EventArgs e)
         {
+
+            try { 
             String StrContraseña = TbPass.Text;
             String StrConfirmar = TbConfirmar.Text;
             String StrNueva = TbNuevoPass.Text;
             String StrPartyID = TbUsuario.Text;
 
             lg.CambiarContraseña(StrContraseña, StrNueva, StrConfirmar, StrPartyID);
+
+                divMsjContra.Attributes.Add("style", "display:inline");
+                msjContra.Text = "Contraseña modificada con éxito";
+            }
+            catch (ExcepcionNoCoincide ex)
+            {
+                divMsjContra.Attributes.Add("style", "display:inline");
+                msjContra.Text = ex.Message;
+            }
         }
 
         private void Clear()

@@ -24,13 +24,13 @@
 
 
 <asp:Content ID="Body" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   
+            <asp:Panel ID="PanelMostarLista" runat="server" Width="100%" Height="431px">
 
-    <asp:Panel ID="PanelMostarLista" runat="server" Width="100%" Height="328px">
 
-        <table class="auto-style19" style="width: 100%">
+                <table class="auto-style19" style="width: 100%">
 
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+
 
                     <tr>
                         <td colspan="4">
@@ -66,31 +66,28 @@
                         <td class="auto-style5">&nbsp;</td>
                         <td class="auto-style43">&nbsp;</td>
                     </tr>
+                    <tr>
+                        <td class="auto-style30" colspan="5">
+                            <asp:GridView ID="GridViewBloqueo" runat="server" OnSelectedIndexChanged="GridViewBloqueo_SelectedIndexChanged" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" Height="217px">
+                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                <Columns>
+                                    <asp:CommandField ShowSelectButton="True" />
+                                </Columns>
+                                <EditRowStyle BackColor="#999999" />
+                                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                            </asp:GridView>
+                        </td>
+                    </tr>
+                </table>
 
-                </ContentTemplate>
-            </asp:UpdatePanel>
-
-            <tr>
-                <td class="auto-style30" colspan="5">
-                    <asp:GridView ID="GridViewBloqueo" runat="server" OnSelectedIndexChanged="GridViewBloqueo_SelectedIndexChanged" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%">
-                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                        <Columns>
-                            <asp:CommandField ShowSelectButton="True" />
-                        </Columns>
-                        <EditRowStyle BackColor="#999999" />
-                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-                    </asp:GridView>
-                </td>
-            </tr>
-        </table>
-    </asp:Panel>
-
+            </asp:Panel>
+       
 </asp:Content>

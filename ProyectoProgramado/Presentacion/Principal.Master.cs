@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,49 +10,68 @@ namespace Presentacion
 {
     public partial class Principal : System.Web.UI.MasterPage
     {
+        LogicaUsuario lu = new LogicaUsuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void MenuAdministrador_MenuItemClick(object sender, MenuEventArgs e)
         {
             String opcion = MenuAdministrador.SelectedValue;
-
+            String tipo = Request.QueryString["tipo"].ToString();
+            
             switch (opcion)
             {
+                case "Inicio":
+
+                    
+      
+                    
+                     if (tipo.Equals("admin"))
+                    {
+                        Response.Redirect("/Modulos/ModuloAdmin.aspx?tipo=admin");
+                    }
+                    else if (tipo.Equals("superAdmin"))
+                    {
+                        Response.Redirect("~/Modulos/ModuloSuperAdmin.aspx?tipo=superAdmin");
+                    }
+                    else {
+                        Response.Redirect("~/Modulos/ModuloCocina.aspx?UltimaEntregada=0&EstadoAnterior=0");
+                    }
+                    break;
 
                 case "Habilitar cliente":
-                    Response.Redirect("~/AdministracionCliente/BloqueoCliente.aspx", false);
+                    Response.Redirect("~/AdministracionCliente/BloqueoCliente.aspx?tipo=" + tipo, false);
 
                     break;
 
                 case "Buscar cliente":
-                    Response.Redirect("~/BuscarUsuarioCliente/BuscarUsuarioCliente.aspx?valor=cliente", false);
+                    Response.Redirect("~/BuscarUsuarioCliente/BuscarUsuarioCliente.aspx?valor=cliente&tipo=" + tipo, false);
 
                     break;
 
-                
+
 
                 case "Mostrar pedidos":
-                    Response.Redirect("~/AdministracionPedido/AdministracionPedidos.aspx", false);
+                    Response.Redirect("~/AdministracionPedido/AdministracionPedidos.aspx?tipo=" + tipo, false);
 
                     break;
 
                 case "Cambiar estado":
-                    Response.Redirect("~/AdministracionPedido/EstadoPedido.aspx", false);
+                    Response.Redirect("~/AdministracionPedido/EstadoPedido.aspx?tipo=" + tipo, false);
 
                     break;
 
-                
+
 
                 case "Agregar plato":
-                    Response.Redirect("~/AdministracionPlato/InsertarPlato.aspx", false);
+                    Response.Redirect("~/AdministracionPlato/InsertarPlato.aspx?tipo=" + tipo, false);
 
                     break;
 
                 case "Modificar plato":
-                    Response.Redirect("~/AdministracionPlato/ModificarPlato.aspx", false);
+                    Response.Redirect("~/AdministracionPlato/ModificarPlato.aspx?tipo=" + tipo, false);
 
                     break;
 
@@ -97,7 +117,7 @@ namespace Presentacion
                 default:
                     break;
             }
-            }
+        }
 
         protected void MenuSuperAdmin_MenuItemClick(object sender, MenuEventArgs e)
         {

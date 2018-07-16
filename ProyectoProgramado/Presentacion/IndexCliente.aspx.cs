@@ -40,8 +40,10 @@ namespace Presentacion
             }
             catch (ExcepcionUsuarioIncorrecto ex)
             {
-                String script = string.Format("MensajeError('{0}')", ex.Message);
-                ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
+                // String script = string.Format("MensajeError('{0}')", ex.Message);
+                //ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
+                divMsj.Attributes.Add("style", "display:inline");
+                msj.Text = ex.Message;
             }
 
           

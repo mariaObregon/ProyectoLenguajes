@@ -85,6 +85,24 @@ namespace Presentacion.AdministracionUsuario {
         protected global::System.Web.UI.WebControls.TextBox TbConfirmar;
         
         /// <summary>
+        /// Control divMsjContra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsjContra;
+        
+        /// <summary>
+        /// Control msjContra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msjContra;
+        
+        /// <summary>
         /// Control BtnContraseña.
         /// </summary>
         /// <remarks>
@@ -184,6 +202,24 @@ namespace Presentacion.AdministracionUsuario {
         protected global::System.Web.UI.WebControls.TextBox TbSegundoApellido;
         
         /// <summary>
+        /// Control divMsj.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsj;
+        
+        /// <summary>
+        /// Control msjDatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msjDatos;
+        
+        /// <summary>
         /// Control BtnModificarDatosP.
         /// </summary>
         /// <remarks>
@@ -245,6 +281,24 @@ namespace Presentacion.AdministracionUsuario {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbContacto;
+        
+        /// <summary>
+        /// Control divMsjContacto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsjContacto;
+        
+        /// <summary>
+        /// Control msjContact.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msjContact;
         
         /// <summary>
         /// Control BtnModificarContacto.
@@ -380,6 +434,24 @@ namespace Presentacion.AdministracionUsuario {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbInstrucciones;
+        
+        /// <summary>
+        /// Control divMsjDir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsjDir;
+        
+        /// <summary>
+        /// Control msjDir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msjDir;
         
         /// <summary>
         /// Control BtnModificarDireccion.

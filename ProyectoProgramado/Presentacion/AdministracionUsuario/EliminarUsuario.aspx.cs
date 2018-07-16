@@ -15,10 +15,10 @@ namespace Presentacion.AdministracionUsuario
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            // if (!IsPostBack)
-            //  {
-            FillDataGrid();
-            // }
+            if (!IsPostBack)
+            {
+                FillDataGrid();
+            }
             Master.MenuVisible = true;
 
         }
@@ -51,12 +51,19 @@ namespace Presentacion.AdministracionUsuario
         protected void BtnFiltrar_Click(object sender, EventArgs e)
         {
             GridViewEliminar.DataBind();
-            GridViewEliminar.DataSource = lu.busquedaUsuarioNombre(TbNombre.Text);
+            if (TbNombre.Text.Trim().Equals(""))
+            {
+                GridViewEliminar.DataSource = lu.MostrarUsuarios();
+            }
+            else
+            {
+                GridViewEliminar.DataSource = lu.busquedaUsuarioNombre(TbNombre.Text);
+            }
             GridViewEliminar.DataBind();
 
 
         }
 
-      
+
     }
 }

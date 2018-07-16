@@ -28,20 +28,27 @@ namespace Presentacion
                 String StrUsuario = username.Value;
                 //  byte tipo = byte.Parse(TypeDropDownList.SelectedValue);
 
-                lg.VerificarLogin(StrPass, StrUsuario);
+                
 
                 if (lg.UsuarioAdmin(StrUsuario))
                 {
-                    Response.Redirect("~/Modulos/ModuloAdmin.aspx");
+                    lg.VerificarLogin(StrPass, StrUsuario);
+                    Response.Redirect("/Modulos/ModuloAdmin.aspx?tipo=admin");
+                    
                 }
                 else if (lg.UsuarioSuperAdmin(StrUsuario))
                 {
-                    Response.Redirect("~/Modulos/ModuloSuperAdmin.aspx");
+                    lg.VerificarLogin(StrPass, StrUsuario);
+                    Response.Redirect("~/Modulos/ModuloSuperAdmin.aspx?tipo=superAdmin");
+                   
                 }
                 else if (lg.UsuarioCocina(StrUsuario))
                 {
+                    lg.VerificarLogin(StrPass, StrUsuario);
                     Response.Redirect("~/Modulos/ModuloCocina.aspx?UltimaEntregada=0&EstadoAnterior=0");
+                    
                 }
+
 
 
 
@@ -49,8 +56,11 @@ namespace Presentacion
             }
             catch (ExcepcionUsuarioIncorrecto ex)
             {
-                String script = string.Format("MensajeError('{0}')", ex.Message);
-                ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
+                // String script = string.Format("MensajeError('{0}')", ex.Message);
+                //ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
+
+                divMsj.Attributes.Add("style", "display:inline");
+                msj.Text = ex.Message;
             }
 
         }
