@@ -30,20 +30,20 @@ namespace Presentacion.AdministracionPlatos
 
                 byte[] newB = lp.ConvertirImagenBinario(InsertarImagenPlato);
 
-                lp.AgregarPlato(txtNombrePlato.Text, txtDescPlato.Text, txtPrecioPlato.Text, newB, lp.EstadoHabilitado(DropDownList1.SelectedValue));
+                String scriptText = lp.AgregarPlato(txtNombrePlato.Text, txtDescPlato.Text, txtPrecioPlato.Text, newB, lp.EstadoHabilitado(DropDownList1.SelectedValue));
 
                 txtNombrePlato.Text = "";
                 txtDescPlato.Text = "";
                 txtPrecioPlato.Text = "";
 
-                //String script = string.Format("MensajeNotificacion('{0}')", resultado);
-                //ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
+                String script = string.Format("alert('" + scriptText + "')");
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
 
             }
             catch (ExcepcionNoCoincide ex) {
 
-                String script = string.Format("MensajeError('{0}')", ex.Message);
-                ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
+                String script = string.Format("alert('No se inserto revise parametros')");
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
 
             }
 

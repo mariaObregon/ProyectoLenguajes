@@ -165,11 +165,15 @@ namespace Negocio
 
             decimal monto = 0;
 
-            for (int i = 0; i < lista.Count; i++)
+            if (lista != null && lista.Count > 0)
             {
-               monto = monto + (lista[i].cantidad * lista[i].platoID.Precio);
+                for (int i = 0; i < lista.Count; i++)
+                {
+                    monto = monto + (lista[i].cantidad * lista[i].platoID.Precio);
 
+                }
             }
+
 
             return monto;
         }

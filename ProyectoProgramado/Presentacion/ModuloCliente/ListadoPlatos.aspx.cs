@@ -26,8 +26,8 @@ namespace Presentacion.ModuloCliente
 
             if (listaOrdenes == null || listaOrdenes.Count <= 0) 
             {
-                String script = string.Format("MensajeError('{0}')", "No cuenta con ordenes en el carrito");
-                ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
+                String script = string.Format("alert('No se tiene ningun elemento en la lista')");
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta",script ,true);
             }
             else
             {

@@ -55,11 +55,12 @@ namespace Negocio
 
 
 
-        public void AgregarPlato(String nombre, String descripcion, String precio, byte[] imagen, bool habilitado)
+        public String AgregarPlato(String nombre, String descripcion, String precio, byte[] imagen, bool habilitado)
         {
                 if (ValidarDecimalText(precio) && ValidarTextBox(nombre) && ValidarTextBox(descripcion))
                 {
                     dp.AgregarPlato(nombre, descripcion, decimal.Parse(precio), imagen, habilitado);
+                return "Insertado exitosamente";
                 }
                 else {
                      throw new ExcepcionNoCoincide("No se inserto el plato revisar valores ingresados"); 
