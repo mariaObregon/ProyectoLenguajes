@@ -139,13 +139,26 @@ namespace Negocio
                 {
                     lista.RemoveAt(i);
                 }
-
-                
+ 
             }
 
             return lista;
 
         }
 
+
+        public List<OrdenCliente> ModificarPlatoPedido(int index, List<OrdenCliente> lista , int nuevaCantidad) {
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (index == i)
+                {
+                    lista[i].cantidad = nuevaCantidad;
+                }
+
+            }
+
+            return lista;
+        }
     }
 }
