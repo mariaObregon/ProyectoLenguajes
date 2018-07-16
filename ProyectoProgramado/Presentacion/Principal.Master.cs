@@ -87,7 +87,7 @@ namespace Presentacion
             switch (opcion)
             {
                 case "inicio":
-                    Response.Redirect("/ModuloCliente/mientras.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
+                    Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
                     break;
 
                 case "configuracion":

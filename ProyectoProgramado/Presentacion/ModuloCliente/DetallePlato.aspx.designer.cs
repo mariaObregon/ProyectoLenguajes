@@ -7,63 +7,81 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Presentacion {
+namespace Presentacion.ModuloCliente {
     
     
-    public partial class PrincipalLineaPedido {
+    public partial class DetallePlato {
         
         /// <summary>
-        /// Control UpdatePanel1.
+        /// Control UpdatePanel3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
-        /// Control imgButCarritoCliente.
+        /// Control lbNombrePlato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButCarritoCliente;
+        protected global::System.Web.UI.WebControls.Label lbNombrePlato;
         
         /// <summary>
-        /// Control imgButClientUpdate.
+        /// Control lbPrecioPlato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgButClientUpdate;
+        protected global::System.Web.UI.WebControls.Label lbPrecioPlato;
         
         /// <summary>
-        /// Control dropPlatosHab.
+        /// Control lbDescPlato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropPlatosHab;
+        protected global::System.Web.UI.WebControls.Label lbDescPlato;
         
         /// <summary>
-        /// Control labelPlatoshab.
+        /// Control dropCantidadPlatos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelPlatoshab;
+        protected global::System.Web.UI.WebControls.DropDownList dropCantidadPlatos;
         
         /// <summary>
-        /// Control butDetallePlato.
+        /// Control imgPlatoDeta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button butDetallePlato;
+        protected global::System.Web.UI.WebControls.Image imgPlatoDeta;
+        
+        /// <summary>
+        /// Control butAgregarPlato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button butAgregarPlato;
+        
+        /// <summary>
+        /// Control butRegresar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button butRegresar;
     }
 }

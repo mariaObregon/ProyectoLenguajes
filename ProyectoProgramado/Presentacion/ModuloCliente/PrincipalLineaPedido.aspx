@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="PrincipalLineaPedido.aspx.cs" Inherits="Presentacion.PrincipalLineaPedido" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="PrincipalLineaPedido.aspx.cs" Inherits="Presentacion.ModuloCliente.PrincipalLineaPedido" %>
+<%@ MasterType VirtualPath="~/Principal.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -16,7 +16,7 @@
 
       void ImageButtonCarrito_Click(object sender, ImageClickEventArgs e) 
       {
-        Response.Redirect("ListadoPlatos.aspx");
+        Response.Redirect("/ModuloCliente/ListadoPlatos.aspx");
       }
 
    </script>

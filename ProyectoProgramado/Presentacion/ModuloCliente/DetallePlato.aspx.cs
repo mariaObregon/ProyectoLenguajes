@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using Entidad;
 using Negocio;
 
-namespace Presentacion
+namespace Presentacion.ModuloCliente
 {
     public partial class DetallePlato : System.Web.UI.Page
     {
@@ -58,7 +58,7 @@ namespace Presentacion
 
         protected void butRegresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("PrincipalLineaPedido.aspx");
+            Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
         }
 
         protected void butAgregarPlato_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace Presentacion
             orden.platoID = lp.BuscarPlatoId(platoID)[0];
             orden.cantidad = Int32.Parse(dropCantidadPlatos.SelectedValue);
             listaOrdenes.Add(orden);
-            Response.Redirect("PrincipalLineaPedido.aspx");
+            Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Presentacion
+namespace Presentacion.ModuloCliente
 {
     public partial class ListadoPlatos : System.Web.UI.Page
     {
@@ -57,13 +57,13 @@ namespace Presentacion
 
             listaOrdenes = new List<OrdenCliente>();
             Session["ordenes"] = listaOrdenes;
-            Response.Redirect("PrincipalLineaPedido.aspx");
+            Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
 
         }
 
         protected void butPagPrincipal_Click(object sender, EventArgs e)
         {
-            Response.Redirect("PrincipalLineaPedido.aspx");
+            Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
         }
 
         protected void butLimpCarrito_Click(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace Presentacion
 
             listaOrdenes = new List<OrdenCliente>();
             Session["ordenes"] = listaOrdenes;
-            Response.Redirect("PrincipalLineaPedido.aspx");
+            Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
 
         }
 
@@ -96,7 +96,7 @@ namespace Presentacion
             listaOrdenes = lp.RetirarPlatoPedido(numSeleccionado, listaOrdenes);
 
             Session["ordenes"] = listaOrdenes;
-            Response.Redirect("PrincipalLineaPedido.aspx");
+            Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
 
 
         }

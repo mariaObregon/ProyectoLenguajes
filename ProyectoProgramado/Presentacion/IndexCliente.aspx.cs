@@ -34,7 +34,7 @@ namespace Presentacion
                 {
                     Session["Party"] = StrUsuario;
 
-                    Response.Redirect("/ModuloCliente/mientras.aspx?nombre= &correo=" + StrUsuario + "&id= ", false);
+                    Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + StrUsuario + "&id= ", false);
                 }
               
             }

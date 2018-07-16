@@ -8,7 +8,7 @@ function Facebook_correctLogin() {
         facebookUser = response;
 
         
-        window.location.href = "/ModuloCliente/mientras.aspx?nombre=" + facebookUser.first_name + "&correo=" + facebookUser.email + "&id=" + facebookUser.id;
+        window.location.href = "/ModuloCliente/PrincipalLineaPedido.aspx?nombre=" + facebookUser.first_name + "&correo=" + facebookUser.email + "&id=" + facebookUser.id;
 
         console.log('____________________');
         console.log('Bienvenido ' + facebookUser.name);

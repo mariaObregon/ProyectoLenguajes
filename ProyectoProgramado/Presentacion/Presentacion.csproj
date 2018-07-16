@@ -90,7 +90,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="DetallePlato.aspx" />
+    <Content Include="ModuloCliente\DetallePlato.aspx" />
     <Content Include="Imagenes\118.jpg" />
     <Content Include="Imagenes\13.jpg" />
     <Content Include="Imagenes\14.jpg" />
@@ -105,16 +105,15 @@
     <Content Include="IndexCliente.aspx" />
     <Content Include="JavaScript\JavaScriptValidaciones.js" />
     <Content Include="JavaScript\ScriptFacebook.js" />
-    <Content Include="ListadoPlatos.aspx" />
+    <Content Include="ModuloCliente\ListadoPlatos.aspx" />
     <Content Include="ModuloCliente\ModificarCliente.aspx" />
-    <Content Include="ModuloCliente\mientras.aspx" />
     <Content Include="Modulos\ModuloAdmin.aspx" />
     <Content Include="AdministracionPedido\EstadoPedido.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="AdministracionUsuario\ModificarUsuario.aspx" />
     <Content Include="Modulos\ModuloCocina.aspx" />
     <Content Include="Modulos\ModuloSuperAdmin.aspx" />
-    <Content Include="PrincipalLineaPedido.aspx" />
+    <Content Include="ModuloCliente\PrincipalLineaPedido.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -211,11 +210,11 @@
     <Compile Include="BuscarUsuarioCliente\BuscarUsuarioCliente.aspx.designer.cs">
       <DependentUpon>BuscarUsuarioCliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DetallePlato.aspx.cs">
+    <Compile Include="ModuloCliente\DetallePlato.aspx.cs">
       <DependentUpon>DetallePlato.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DetallePlato.aspx.designer.cs">
+    <Compile Include="ModuloCliente\DetallePlato.aspx.designer.cs">
       <DependentUpon>DetallePlato.aspx</DependentUpon>
     </Compile>
     <Compile Include="IndexCliente.aspx.cs">
@@ -225,11 +224,11 @@
     <Compile Include="IndexCliente.aspx.designer.cs">
       <DependentUpon>IndexCliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListadoPlatos.aspx.cs">
+    <Compile Include="ModuloCliente\ListadoPlatos.aspx.cs">
       <DependentUpon>ListadoPlatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListadoPlatos.aspx.designer.cs">
+    <Compile Include="ModuloCliente\ListadoPlatos.aspx.designer.cs">
       <DependentUpon>ListadoPlatos.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModuloCliente\ModificarCliente.aspx.cs">
@@ -238,13 +237,6 @@
     </Compile>
     <Compile Include="ModuloCliente\ModificarCliente.aspx.designer.cs">
       <DependentUpon>ModificarCliente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModuloCliente\mientras.aspx.cs">
-      <DependentUpon>mientras.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModuloCliente\mientras.aspx.designer.cs">
-      <DependentUpon>mientras.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\ModuloAdmin.aspx.cs">
       <DependentUpon>ModuloAdmin.aspx</DependentUpon>
@@ -295,11 +287,11 @@
     <Compile Include="Principal.Master.designer.cs">
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
-    <Compile Include="PrincipalLineaPedido.aspx.cs">
+    <Compile Include="ModuloCliente\PrincipalLineaPedido.aspx.cs">
       <DependentUpon>PrincipalLineaPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PrincipalLineaPedido.aspx.designer.cs">
+    <Compile Include="ModuloCliente\PrincipalLineaPedido.aspx.designer.cs">
       <DependentUpon>PrincipalLineaPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
