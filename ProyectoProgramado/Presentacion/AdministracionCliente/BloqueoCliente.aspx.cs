@@ -13,39 +13,41 @@ namespace Presentacion.AdministracionCliente
         LogicaCliente lc = new LogicaCliente();
 
         private Boolean habilitar;
-      
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
             FillDataGrid();
+            Master.MenuVisible = true;
         }
 
         protected void GridViewBloqueo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             String StrPartyID = GridViewBloqueo.SelectedRow.Cells[1].Text;
-           
+
             System.Diagnostics.Debug.WriteLine(StrPartyID);
 
             TbUsuario.Text = StrPartyID;
-           
+
         }
 
         private void FillDataGrid()
         {
-           
-                GridViewBloqueo.DataBind();
+
+            GridViewBloqueo.DataBind();
             if (TbNombre.Text.Trim().Equals(String.Empty))
             {
                 GridViewBloqueo.DataSource = lc.MostrarClientes();
             }
-            else {
+            else
+            {
                 GridViewBloqueo.DataSource = lc.BusquedaClienteNombre(TbNombre.Text);
             }
-           
-                GridViewBloqueo.DataBind();
-           
+
+            GridViewBloqueo.DataBind();
+
 
         }
 
@@ -73,12 +75,15 @@ namespace Presentacion.AdministracionCliente
 
         }
 
-        private void HabilitarDeshabiliar(String StrPartyID) {
+        private void HabilitarDeshabiliar(String StrPartyID)
+        {
             System.Diagnostics.Debug.WriteLine(StrPartyID + "Deshabilitar");
 
             lc.BloquearCliente(StrPartyID, habilitar);
             FillDataGrid();
 
         }
+
+        
     }
 }

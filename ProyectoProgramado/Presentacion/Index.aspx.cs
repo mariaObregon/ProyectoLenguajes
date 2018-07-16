@@ -7,18 +7,16 @@ namespace Presentacion
     public partial class Index : System.Web.UI.Page
     {
 
-        LogicaLoginUsuarios lg = new LogicaLoginUsuarios();
-       
+        LogicaLogin lg = new LogicaLogin();
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                ListaTipoUsuario();
+                //  ListaTipoUsuario();
 
             }
-
-
 
         }
 
@@ -26,40 +24,38 @@ namespace Presentacion
         {
             try
             {
-                String StrPass = Password.Text;
-                String StrUsuario = UserName.Text;
-                byte tipo = byte.Parse(TypeDropDownList.SelectedValue);
-                System.Diagnostics.Debug.WriteLine("TIPO: " + tipo);
-                lg.VerificarLogin(StrPass, tipo, StrUsuario);
+                String StrPass = password.Value;
+                String StrUsuario = username.Value;
+                //  byte tipo = byte.Parse(TypeDropDownList.SelectedValue);
 
-                switch (tipo)
+                lg.VerificarLogin(StrPass, StrUsuario);
+
+                if (lg.UsuarioAdmin(StrUsuario))
                 {
-                    case 1:
-                        Response.Redirect("~/Menus/MenuAdmin.aspx");
-                        break;
-
-                    case 2:
-                        Response.Redirect("~/Menus/MenuAdmin.aspx");
-                        break;
-                    case 3:
-                        Response.Redirect("~/Menus/MenuCocina.aspx");
-                        break;
-                    default:
-                        break;
-
+                    Response.Redirect("~/Modulos/ModuloAdmin.aspx");
                 }
+                else if (lg.UsuarioSuperAdmin(StrUsuario))
+                {
+                    Response.Redirect("~/Modulos/ModuloSuperAdmin.aspx");
+                }
+                else if (lg.UsuarioCocina(StrUsuario))
+                {
+                    Response.Redirect("~/Modulos/ModuloCocina.aspx?UltimaEntregada=0&EstadoAnterior=0");
+                }
+
+
 
 
             }
             catch (ExcepcionUsuarioIncorrecto ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                String script = string.Format("MensajeError('{0}')", ex.Message);
+                ClientScript.RegisterStartupScript(this.GetType(), "key", script, true);
             }
-
 
         }
 
-        private void ListaTipoUsuario()
+        /**private void ListaTipoUsuario()
         {
 
             TypeDropDownList.DataValueField = "TipoID";
@@ -68,6 +64,7 @@ namespace Presentacion
             TypeDropDownList.DataBind();
 
         }
+    */
 
     }
 }

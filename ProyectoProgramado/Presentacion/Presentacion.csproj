@@ -78,11 +78,11 @@
   <ItemGroup>
     <Content Include="AdministracionCliente\AgregarCliente.aspx" />
     <Content Include="AdministracionCliente\BloqueoCliente.aspx" />
-    <Content Include="AdministracionCliente\PrincipalCliente.aspx" />
+    <Content Include="AdministracionPedido\AdministracionPedidos.aspx" />
+    <Content Include="AdministracionPlato\InsertarPlato.aspx" />
+    <Content Include="AdministracionPlato\ModificarPlato.aspx" />
     <Content Include="AdministracionUsuario\AgregarUsuario.aspx" />
-    <Content Include="AdministracionPedidos.aspx" />
     <Content Include="AdministracionUsuario\EliminarUsuario.aspx" />
-    <Content Include="AdministracionUsuario\PrincipalUsuario.aspx" />
     <Content Include="BuscarUsuarioCliente\BuscarUsuarioCliente.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -94,6 +94,7 @@
     <Content Include="Imagenes\118.jpg" />
     <Content Include="Imagenes\13.jpg" />
     <Content Include="Imagenes\14.jpg" />
+    <Content Include="Imagenes\avatar.png" />
     <Content Include="Imagenes\food.jpg" />
     <Content Include="Imagenes\kk.png" />
     <Content Include="Imagenes\pasta.jpg" />
@@ -101,16 +102,18 @@
     <Content Include="Imagenes\shr.jpg" />
     <Content Include="Imagenes\spaguetti.jpg" />
     <Content Include="Imagenes\spoon.jpg" />
+    <Content Include="IndexCliente.aspx" />
+    <Content Include="JavaScript\JavaScriptValidaciones.js" />
+    <Content Include="JavaScript\ScriptFacebook.js" />
     <Content Include="ListadoPlatos.aspx" />
-    <Content Include="Menus\MenuAdmin.aspx" />
-    <Content Include="Menus\MenuCliente.aspx" />
-    <Content Include="EstadoPedido.aspx" />
+    <Content Include="ModuloCliente\ModificarCliente.aspx" />
+    <Content Include="ModuloCliente\mientras.aspx" />
+    <Content Include="Modulos\ModuloAdmin.aspx" />
+    <Content Include="AdministracionPedido\EstadoPedido.aspx" />
     <Content Include="Index.aspx" />
-    <Content Include="InsertarPlato.aspx" />
-    <Content Include="Menus\MenuCocina.aspx" />
-    <Content Include="ModificarClienteUsuario\PrincipalModificar.aspx" />
-    <Content Include="ModificarPlato.aspx" />
-    <Content Include="ModuloCocina.aspx" />
+    <Content Include="AdministracionUsuario\ModificarUsuario.aspx" />
+    <Content Include="Modulos\ModuloCocina.aspx" />
+    <Content Include="Modulos\ModuloSuperAdmin.aspx" />
     <Content Include="PrincipalLineaPedido.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -147,7 +150,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Temp.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -167,12 +169,26 @@
     <Compile Include="AdministracionCliente\BloqueoCliente.aspx.designer.cs">
       <DependentUpon>BloqueoCliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdministracionCliente\PrincipalCliente.aspx.cs">
-      <DependentUpon>PrincipalCliente.aspx</DependentUpon>
+    <Compile Include="AdministracionPedido\AdministracionPedidos.aspx.cs">
+      <DependentUpon>AdministracionPedidos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdministracionCliente\PrincipalCliente.aspx.designer.cs">
-      <DependentUpon>PrincipalCliente.aspx</DependentUpon>
+    <Compile Include="AdministracionPedido\AdministracionPedidos.aspx.designer.cs">
+      <DependentUpon>AdministracionPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionPlato\InsertarPlato.aspx.cs">
+      <DependentUpon>InsertarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionPlato\InsertarPlato.aspx.designer.cs">
+      <DependentUpon>InsertarPlato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministracionPlato\ModificarPlato.aspx.cs">
+      <DependentUpon>ModificarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionPlato\ModificarPlato.aspx.designer.cs">
+      <DependentUpon>ModificarPlato.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdministracionUsuario\AgregarUsuario.aspx.cs">
       <DependentUpon>AgregarUsuario.aspx</DependentUpon>
@@ -181,26 +197,12 @@
     <Compile Include="AdministracionUsuario\AgregarUsuario.aspx.designer.cs">
       <DependentUpon>AgregarUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdministracionPedidos.aspx.cs">
-      <DependentUpon>AdministracionPedidos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdministracionPedidos.aspx.designer.cs">
-      <DependentUpon>AdministracionPedidos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AdministracionUsuario\EliminarUsuario.aspx.cs">
       <DependentUpon>EliminarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdministracionUsuario\EliminarUsuario.aspx.designer.cs">
       <DependentUpon>EliminarUsuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdministracionUsuario\PrincipalUsuario.aspx.cs">
-      <DependentUpon>PrincipalUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdministracionUsuario\PrincipalUsuario.aspx.designer.cs">
-      <DependentUpon>PrincipalUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="BuscarUsuarioCliente\BuscarUsuarioCliente.aspx.cs">
       <DependentUpon>BuscarUsuarioCliente.aspx</DependentUpon>
@@ -216,6 +218,13 @@
     <Compile Include="DetallePlato.aspx.designer.cs">
       <DependentUpon>DetallePlato.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IndexCliente.aspx.cs">
+      <DependentUpon>IndexCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IndexCliente.aspx.designer.cs">
+      <DependentUpon>IndexCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListadoPlatos.aspx.cs">
       <DependentUpon>ListadoPlatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -223,32 +232,32 @@
     <Compile Include="ListadoPlatos.aspx.designer.cs">
       <DependentUpon>ListadoPlatos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Menus\MasterAdmin.master.cs">
-      <DependentUpon>MasterAdmin.master</DependentUpon>
+    <Compile Include="ModuloCliente\ModificarCliente.aspx.cs">
+      <DependentUpon>ModificarCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Menus\MasterAdmin.master.designer.cs">
-      <DependentUpon>MasterAdmin.master</DependentUpon>
+    <Compile Include="ModuloCliente\ModificarCliente.aspx.designer.cs">
+      <DependentUpon>ModificarCliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Menus\MenuAdmin.aspx.cs">
-      <DependentUpon>MenuAdmin.aspx</DependentUpon>
+    <Compile Include="ModuloCliente\mientras.aspx.cs">
+      <DependentUpon>mientras.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Menus\MenuAdmin.aspx.designer.cs">
-      <DependentUpon>MenuAdmin.aspx</DependentUpon>
+    <Compile Include="ModuloCliente\mientras.aspx.designer.cs">
+      <DependentUpon>mientras.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Menus\MenuCliente.aspx.cs">
-      <DependentUpon>MenuCliente.aspx</DependentUpon>
+    <Compile Include="Modulos\ModuloAdmin.aspx.cs">
+      <DependentUpon>ModuloAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Menus\MenuCliente.aspx.designer.cs">
-      <DependentUpon>MenuCliente.aspx</DependentUpon>
+    <Compile Include="Modulos\ModuloAdmin.aspx.designer.cs">
+      <DependentUpon>ModuloAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EstadoPedido.aspx.cs">
+    <Compile Include="AdministracionPedido\EstadoPedido.aspx.cs">
       <DependentUpon>EstadoPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EstadoPedido.aspx.designer.cs">
+    <Compile Include="AdministracionPedido\EstadoPedido.aspx.designer.cs">
       <DependentUpon>EstadoPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
@@ -258,40 +267,26 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="InsertarPlato.aspx.cs">
-      <DependentUpon>InsertarPlato.aspx</DependentUpon>
+    <Compile Include="AdministracionUsuario\ModificarUsuario.aspx.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="InsertarPlato.aspx.designer.cs">
-      <DependentUpon>InsertarPlato.aspx</DependentUpon>
+    <Compile Include="AdministracionUsuario\ModificarUsuario.aspx.designer.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Menus\MenuCocina.aspx.cs">
-      <DependentUpon>MenuCocina.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Menus\MenuCocina.aspx.designer.cs">
-      <DependentUpon>MenuCocina.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\PrincipalModificar.aspx.cs">
-      <DependentUpon>PrincipalModificar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarClienteUsuario\PrincipalModificar.aspx.designer.cs">
-      <DependentUpon>PrincipalModificar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarPlato.aspx.cs">
-      <DependentUpon>ModificarPlato.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarPlato.aspx.designer.cs">
-      <DependentUpon>ModificarPlato.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModuloCocina.aspx.cs">
+    <Compile Include="Modulos\ModuloCocina.aspx.cs">
       <DependentUpon>ModuloCocina.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModuloCocina.aspx.designer.cs">
+    <Compile Include="Modulos\ModuloCocina.aspx.designer.cs">
       <DependentUpon>ModuloCocina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\ModuloSuperAdmin.aspx.cs">
+      <DependentUpon>ModuloSuperAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\ModuloSuperAdmin.aspx.designer.cs">
+      <DependentUpon>ModuloSuperAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
@@ -308,16 +303,8 @@
       <DependentUpon>PrincipalLineaPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Temp.aspx.cs">
-      <DependentUpon>Temp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Temp.aspx.designer.cs">
-      <DependentUpon>Temp.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Menus\MasterAdmin.master" />
     <None Include="packages.config" />
     <Content Include="Principal.Master" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
@@ -348,10 +335,7 @@
       <Name>Negocio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AdministracionPedidos\" />
-    <Folder Include="AdministracionPlatos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>

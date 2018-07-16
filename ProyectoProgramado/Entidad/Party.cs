@@ -27,6 +27,7 @@ namespace Entidad
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
         public string Contraseña { get; set; }
+        public string FacebookID { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

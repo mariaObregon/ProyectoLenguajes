@@ -1,224 +1,216 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menus/MasterAdmin.master" AutoEventWireup="true" CodeBehind="AgregarCliente.aspx.cs" Inherits="Presentacion.AdministracionCliente.AgregarCliente" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-    <asp:Panel ID="PanelContenedor" runat="server" Height="529px" Width="1317px">
-        
-        <asp:UpdatePanel ID="UpdatePanel" runat="server">
-            <ContentTemplate>
-                <table class="auto-style3" style="border-color: #C0C0C0; font-family: verdana, Geneva, Tahoma, sans-serif; color: #000000; background-color: #C0C0C0; font-size: small;">
-                    <tr>
-                        <td class="auto-style48" colspan="8" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0; text-align: center;">
-                            <asp:Label ID="Label20" runat="server" Text="REGISTRAR CLIENTE NUEVO"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style48" colspan="2" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:Label ID="Label19" runat="server" ForeColor="Red" Text="Datos obligatorios*"></asp:Label>
-                        </td>
-                        <td class="auto-style71" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td class="auto-style39" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0"></td>
-                        <td class="auto-style75" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td class="auto-style60" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td class="auto-style71" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style48" colspan="8" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #808080; border-color: #C0C0C0; text-align: center; color: #FFFFFF;">
-                            <asp:Label ID="Label18" runat="server" Text="Datos personales"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style48" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:Label ID="LbUsuario" runat="server" Text="Usuario*"></asp:Label>
-                        </td>
-                        <td class="auto-style65" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:TextBox ID="TbUsuario" runat="server"></asp:TextBox>
-                        </td>
-                        <td class="auto-style71" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:Label ID="Label2" runat="server" Text="Contraseña*"></asp:Label>
-                        </td>
-                        <td class="auto-style39" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:TextBox ID="TbPass" runat="server"></asp:TextBox>
-                        </td>
-                        <td class="auto-style75" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:Label ID="Label3" runat="server" Text="Confirmar contraseña*"></asp:Label>
-                        </td>
-                        <td class="auto-style60" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:TextBox ID="TbConfirmarPass" runat="server"></asp:TextBox>
-                        </td>
-                        <td class="auto-style71" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style49" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:Label ID="Label5" runat="server" Text="Primer Nombre*"></asp:Label>
-                        </td>
-                        <td class="auto-style66" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:TextBox ID="TbPrimerNombre" runat="server"></asp:TextBox>
-                        </td>
-                        <td class="auto-style72" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:Label ID="Label6" runat="server" Text="Segundo Nombre"></asp:Label>
-                        </td>
-                        <td class="auto-style40" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:TextBox ID="TbSegundoNombre" runat="server"></asp:TextBox>
-                        </td>
-                        <td class="auto-style74" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:Label ID="Label7" runat="server" Text="Primer Apellido*"></asp:Label>
-                        </td>
-                        <td class="auto-style61" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:TextBox ID="TbPrimerApellido" runat="server"></asp:TextBox>
-                        </td>
-                        <td class="auto-style72" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:Label ID="Label8" runat="server" Text="Segundo Apellido*"></asp:Label>
-                        </td>
-                        <td class="auto-style4" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">
-                            <asp:TextBox ID="TbSegundoApellido" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style49" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td class="auto-style66" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td class="auto-style72" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td class="auto-style40" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td class="auto-style74" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td class="auto-style61" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td class="auto-style72" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                        <td class="auto-style4" style="border-style: none; font-family: verdana, Geneva, Tahoma, sans-serif; font-size: small; background-color: #C0C0C0; border-color: #C0C0C0">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style49" colspan="8" style="background-color: #FFFFFF">
-                            <hr />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style52" colspan="3">&nbsp;</td>
-                        <td class="auto-style39">&nbsp;</td>
-                        <td class="auto-style75">&nbsp;</td>
-                        <td class="auto-style60">&nbsp;</td>
-                        <td class="auto-style71">&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style52" colspan="8" style="color: #FFFFFF; text-align: center; background-color: #808080">
-                            <asp:Label ID="Label16" runat="server" Text="Mecanismo de Contacto"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style41" colspan="2">
-                            <asp:Label ID="Label4" runat="server" Text="Seleccione una forma de contacto*"></asp:Label>
-                        </td>
-                        <td class="auto-style38" colspan="2">
-                            <asp:DropDownList ID="DropDownListContacto" runat="server">
-                            </asp:DropDownList>
-                        </td>
-                        <td class="auto-style74">
-                            <asp:Label ID="Label10" runat="server" Text="Contacto*"></asp:Label>
-                        </td>
-                        <td class="auto-style61">
-                            <asp:TextBox ID="TbContacto" runat="server"></asp:TextBox>
-                        </td>
-                        <td class="auto-style72">&nbsp;</td>
-                        <td class="auto-style4">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style41" colspan="2">&nbsp;</td>
-                        <td class="auto-style38" colspan="2">&nbsp;</td>
-                        <td class="auto-style74">&nbsp;</td>
-                        <td class="auto-style61">&nbsp;</td>
-                        <td class="auto-style72">&nbsp;</td>
-                        <td class="auto-style4">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style49" colspan="8" style="background-color: #FFFFFF">
-                            <hr />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style48">&nbsp;</td>
-                        <td class="auto-style65">&nbsp;</td>
-                        <td class="auto-style71">&nbsp;</td>
-                        <td class="auto-style39">&nbsp;</td>
-                        <td class="auto-style75">&nbsp;</td>
-                        <td class="auto-style60">&nbsp;</td>
-                        <td class="auto-style71">&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style48" colspan="8" style="text-align: center; background-color: #808080; color: #FFFFFF">
-                            <asp:Label ID="Label17" runat="server" Text="Dirección"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style31" colspan="2">
-                            <asp:Label ID="Label15" runat="server" Text="Seleccione el tipo de dirección*"></asp:Label>
-                        </td>
-                        <td class="auto-style37" colspan="2">
-                            <asp:DropDownList ID="DropDownListDireccion" runat="server">
-                            </asp:DropDownList>
-                        </td>
-                        <td class="auto-style75">
-                            <asp:Label ID="Label9" runat="server" Text="Seleccione una ubicación*"></asp:Label>
-                        </td>
-                        <td class="auto-style33" colspan="2">
-                            <asp:DropDownList ID="DropDownListUbicacion" runat="server">
-                            </asp:DropDownList>
-                        </td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style69" colspan="2">
-                            <asp:Label ID="Label11" runat="server" Text="Linea de dirección 1*"></asp:Label>
-                        </td>
-                        <td class="auto-style68" colspan="2">
-                            <asp:Label ID="Label12" runat="server" Text="Linea de dirección 2"></asp:Label>
-                        </td>
-                        <td class="auto-style64" colspan="2">
-                            <asp:Label ID="Label13" runat="server" Text="Linea de dirección 3"></asp:Label>
-                        </td>
-                        <td class="auto-style72">
-                            <asp:Label ID="Label14" runat="server" Text="Instrucciones"></asp:Label>
-                        </td>
-                        <td class="auto-style4">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style43" colspan="2">
-                            <asp:TextBox ID="TbLinea1" runat="server" Width="290px"></asp:TextBox>
-                        </td>
-                        <td class="auto-style43" colspan="2">
-                            <asp:TextBox ID="TbLinea2" runat="server" Width="290px"></asp:TextBox>
-                        </td>
-                        <td class="auto-style43" colspan="2">
-                            <asp:TextBox ID="TbLinea3" runat="server" Width="290px"></asp:TextBox>
-                        </td>
-                        <td class="auto-style43" colspan="2">
-                            <asp:TextBox ID="TbInstrucciones" runat="server" Width="290px"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style48">&nbsp;</td>
-                        <td class="auto-style65">&nbsp;</td>
-                        <td class="auto-style71">&nbsp;</td>
-                        <td class="auto-style39">&nbsp;</td>
-                        <td class="auto-style75">&nbsp;</td>
-                        <td class="auto-style60">&nbsp;</td>
-                        <td class="auto-style71">&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style48">&nbsp;</td>
-                        <td class="auto-style65">&nbsp;</td>
-                        <td class="auto-style71">&nbsp;</td>
-                        <td class="auto-style39">&nbsp;</td>
-                        <td class="auto-style75">&nbsp;</td>
-                        <td class="auto-style60">&nbsp;</td>
-                        <td class="auto-style71">
-                            <asp:Button ID="BtnAgregarCliente" runat="server" OnClick="BtnAgregarCliente_Click" Text="Insertar Cliente" Width="141px" />
-                        </td>
-                        <td>
-                            <asp:Button ID="BtnCancelar" runat="server" OnClick="BtnCancelar_Click" Text="Cancelar" Width="111px" />
-                        </td>
-                    </tr>
-                </table>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </asp:Panel>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="AgregarCliente.aspx.cs" Inherits="Presentacion.AdministracionCliente.AgregarCliente" %>
+
+<%@ MasterType VirtualPath="~/Principal.Master" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <!--Plantilla obtenida y modificada https://www.tutorialrepublic.com/snippets/preview.php?topic=bootstrap&file=sign-up-form-with-icons -->
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../JavaScript/JavaScriptValidaciones.js"></script>
+
+    <style type="text/css">
+        .form-control, .form-control:focus, .input-group-addon {
+            border-color: #e1e1e1;
+        }
+
+        .form-control, .btn {
+            min-height: 38px;
+            border-radius: 2px;
+        }
+
+        .signup-form {
+            width: 390px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+            .signup-form form {
+                color: #999;
+                border-radius: 3px;
+                margin-bottom: 15px;
+                background: #fff;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                padding: 30px;
+            }
+
+            .signup-form h2 {
+                color: #333;
+                font-weight: bold;
+                margin-top: 0;
+            }
+
+            .signup-form hr {
+                margin: 0 -30px 20px;
+            }
+
+            .signup-form .form-group {
+                margin-bottom: 20px;
+            }
+
+            .signup-form label {
+                font-weight: normal;
+                font-size: 13px;
+            }
+
+            .signup-form .form-control {
+                min-height: 38px;
+                box-shadow: none !important;
+            }
+
+            .signup-form .input-group-addon {
+                max-width: 42px;
+                text-align: center;
+            }
+
+            .signup-form input[type="checkbox"] {
+                margin-top: 2px;
+            }
+
+            .signup-form .btn {
+                font-size: 16px;
+                font-weight: bold;
+                background: #19aa8d;
+                border: none;
+                min-width: 140px;
+            }
+
+                .signup-form .btn:hover, .signup-form .btn:focus {
+                    background: #179b81;
+                    outline: none;
+                }
+
+            .signup-form a {
+                color: #19aa8d;
+                text-decoration: underline;
+            }
+
+                .signup-form a:hover {
+                    text-decoration: none;
+                }
+
+            .signup-form form a {
+                color: #19aa8d;
+                text-decoration: none;
+            }
+
+                .signup-form form a:hover {
+                    text-decoration: underline;
+                }
+
+            .signup-form .fa {
+                font-size: 21px;
+            }
+
+            .signup-form .fa-paper-plane {
+                font-size: 18px;
+            }
+
+            .signup-form .fa-check {
+                color: #fff;
+                left: 17px;
+                top: 18px;
+                font-size: 7px;
+                position: absolute;
+            }
+    </style>
+</asp:Content>
+
+<asp:Content ID="Body" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <!-- 
+    <asp:UpdatePanel ID="UpdatePanel" runat="server">
+        <ContentTemplate>
+        -->
+
+
+            <div class="signup-form">
+
+
+
+                <h2>Registro</h2>
+                <p>Ingrese los siguientes datos para crear una cuenta!</p>
+                <hr>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
+                        <input type="email" class="form-control" runat="server" id="email" placeholder="E-mail" required="required">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" runat="server" id="primerNombre" placeholder="Primer nombre" required="required">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" runat="server" id="segundoNombre" placeholder="Segundo nombre">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" runat="server" id="primerApellido" placeholder="Primer apellido" required="required">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" runat="server" id="segundoApellido" placeholder="Segundo apellido" required="required">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                        <input type="text" class="form-control" runat="server" id="direccion" placeholder="Direccion" required="required">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password" class="form-control" runat="server" id="password" placeholder="Contraseña" required="required">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password" class="form-control" id="confirm_password" runat="server" placeholder="Confirmar Contraseña" required="required">
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="text-center">
+                        <div class="form-group">
+                            <asp:Button ID="BtnAgregarCliente" class="btn btn-primary btn-lg" runat="server" OnClick="BtnAgregarCliente_Click" Text="Registrarse" Width="100%" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="text-center">
+                        Ya tienes una cuenta? <a href="../IndexCliente.aspx">Inicia sesion aquí!</a>
+                    </div>
+
+                </div>
+            </div>
+
+      <!--  </ContentTemplate>
+    </asp:UpdatePanel>
+    -->
+
 </asp:Content>

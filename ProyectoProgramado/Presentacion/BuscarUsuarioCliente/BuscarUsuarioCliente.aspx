@@ -1,5 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menus/MasterAdmin.master" AutoEventWireup="true" CodeBehind="BuscarUsuarioCliente.aspx.cs" Inherits="Presentacion.BuscarUsuarioCliente.BuscarUsuarioCliente" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="BuscarUsuarioCliente.aspx.cs" Inherits="Presentacion.BuscarUsuarioCliente.BuscarUsuarioCliente" %>
+<%@ MasterType VirtualPath="~/Principal.Master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="PanelMostarLista" runat="server">
         <table class="auto-style19">
             <tr>

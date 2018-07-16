@@ -11,9 +11,9 @@ namespace Negocio
         DatosGeneral dg = new DatosGeneral();
 
         public void ModificarParty(String StrPrimerNombre, String StrSegundoNombre, String StrPrimerApellido,
-                   String StrSegundoApellido, String StrContraseña, String StrPartyID)
+                   String StrSegundoApellido, String StrPartyID)
         {
-            dg.ModificarParty(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrContraseña, StrPartyID);
+            dg.ModificarParty(StrPrimerNombre, StrSegundoNombre, StrPrimerApellido, StrSegundoApellido, StrPartyID);
         }
 
         public void ModificarMecanismo( String StrValorMecanismo, short ShTipoMecanismo, short ShMecanismoID, String StrPartyID)
@@ -60,8 +60,6 @@ namespace Negocio
 
         public List<v_Party> ObtenerParty(String StrPartyID)
         {
-
-
 
             return dg.ObtenerParty(StrPartyID);
         }

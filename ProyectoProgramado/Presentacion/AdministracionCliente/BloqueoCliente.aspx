@@ -1,6 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menus/MasterAdmin.master" AutoEventWireup="true" CodeBehind="BloqueoCliente.aspx.cs" Inherits="Presentacion.AdministracionCliente.BloqueoCliente" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-    <asp:Panel ID="PanelMostarLista" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="BloqueoCliente.aspx.cs" Inherits="Presentacion.AdministracionCliente.BloqueoCliente" %>
+<%@ MasterType VirtualPath="~/Principal.Master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+
+
+<asp:Content ID="Body" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     <asp:Panel ID="PanelMostarLista" runat="server">
         <table class="auto-style19">
             <tr>
                 <td class="auto-style31">&nbsp;</td>
