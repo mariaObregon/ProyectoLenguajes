@@ -57,7 +57,11 @@ namespace Presentacion.ModuloCliente
 
             listaOrdenes = new List<OrdenCliente>();
             Session["ordenes"] = listaOrdenes;
+
             Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
+
+            String script = string.Format("alert('Pedido Confirmado')");
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
 
         }
 
@@ -71,7 +75,12 @@ namespace Presentacion.ModuloCliente
 
             listaOrdenes = new List<OrdenCliente>();
             Session["ordenes"] = listaOrdenes;
+
+
             Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
+
+            String script = string.Format("alert('Se elimino las ordenes del carrito')");
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
 
         }
 
@@ -87,8 +96,11 @@ namespace Presentacion.ModuloCliente
             listaOrdenes = lp.RetirarPlatoPedido(numSeleccionado, listaOrdenes);
 
             Session["ordenes"] = listaOrdenes;
+
             Response.Redirect("/ModuloCliente/PrincipalLineaPedido.aspx?nombre= &correo=" + Session["Party"].ToString() + "&id= ", false);
 
+            String script = string.Format("alert('Se elimino la orden del carrito')");
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
 
         }
 
@@ -102,6 +114,9 @@ namespace Presentacion.ModuloCliente
             dropCantidadModificar.Visible = false;
             butCambioPlato.Visible = false;
             lblNuevaCantidad.Visible = false;
+
+            String script = string.Format("alert('Se altero la cantidad del plato en el pedido')");
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, true);
         }
 
         protected void gridPlatosAgregados_RowEditing1(object sender, GridViewEditEventArgs e)

@@ -62,8 +62,7 @@
                <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>
-                   <asp:ImageButton ID="imgButClientUpdate" runat="server" ImageUrl="~/Imagenes/webservices-http-api-playsms-para-agregar-una-cuenta-de-usuario.png" Width="50px" />
-               </td>
+                   &nbsp;</td>
                <td>&nbsp;</td>
            </tr>
            <tr>
@@ -71,7 +70,7 @@
                <td class="auto-style3">&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
-               <td>&nbsp;</td>
+               <td>Carrito Compras<br /> </td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
@@ -199,6 +198,7 @@
 
          <Triggers>
            <asp:PostBackTrigger ControlID="butDetallePlato" />
+<asp:PostBackTrigger ControlID="dropPlatosHab"></asp:PostBackTrigger>
 <asp:PostBackTrigger ControlID="dropPlatosHab"></asp:PostBackTrigger>
 <asp:PostBackTrigger ControlID="dropPlatosHab"></asp:PostBackTrigger>
 <asp:PostBackTrigger ControlID="dropPlatosHab"></asp:PostBackTrigger>
