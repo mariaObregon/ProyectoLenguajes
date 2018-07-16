@@ -104,7 +104,7 @@
                 <asp:Button ID="butLimpCarrito" runat="server" OnClick="butLimpCarrito_Click" Text="Limpiar Carrito" />
             </td>
             <td class="auto-style6"><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">₡ </span>
-                <asp:Label ID="lblPago" runat="server" Text="0"></asp:Label>
+                <asp:Label ID="lblPago" runat="server" Text="0" Font-Size="X-Large"></asp:Label>
                 <br />
                 Monto A Cancelar</td>
             <td>&nbsp;</td>
